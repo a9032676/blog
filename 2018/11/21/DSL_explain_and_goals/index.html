@@ -1,205 +1,195 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>DSL的解释与目标 | 9032676&#39;s Blog | 为探索而生</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="theme-color" content="#00FFCD">
-  
-  
-  <meta name="keywords" content="DSL,Code Design">
-  <meta name="description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 三怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>对DSL的解释与设计目的 | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="DSL,Code Design">
+    <meta name="description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
 <meta name="keywords" content="DSL,Code Design">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DSL的解释与目标">
-<meta property="og:url" content="http://9032676.com/2018/11/21/DSL_explain_and_goals/index.html">
+<meta property="og:title" content="对DSL的解释与设计目的">
+<meta property="og:url" content="http://www.9032676.com/2018/11/21/DSL_explain_and_goals/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
-<meta property="og:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 三怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-21T18:20:48.631Z">
+<meta property="og:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-11-22T00:56:42.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DSL的解释与目标">
-<meta name="twitter:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 三怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
-  
-    <link rel="alternative" href="/atom.xml" title="9032676&#39;s Blog" type="application/atom+xml">
-  
-  <meta name="summary" content="">
-  <link rel="shortcut icon" href="/img/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
-<body>
-  <div id="loading" class="active"></div>
+<meta name="twitter:title" content="对DSL的解释与设计目的">
+<meta name="twitter:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-  <nav id="menu" class="hide" >
-   <div class="inner flex-row-vertical">
-  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-      <i class="icon icon-lg icon-close"></i>
-  </a>
-  <div class="brand-wrap">
-    <div class="brand">
-      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
-      <hgroup class="introduce">
-        <h5 class="nickname">9032676</h5>
-        <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
-      </hgroup>
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me">
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
     </div>
   </div>
-  <div class="scroll-wrap flex-col">
-    <ul class="nav">
-      
-          <li class="waves-block waves-effect">
-            <a href="/">
-              <i class="icon icon-lg icon-home"></i>
-              主页
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/archives">
-              <i class="icon icon-lg icon-archives"></i>
-              Archives
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/tags">
-              <i class="icon icon-lg icon-tags"></i>
-              Tags
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://github.com/a9032676" target="_blank">
-              <i class="icon icon-lg icon-github"></i>
-              Github
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/404">
-              <i class="icon icon-lg icon-link"></i>
-              测试
-            </a>
-          </li>
-      
-    </ul>
+</aside>
 
-    <footer class="footer">
-  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC"></a></p>
-  <p>9032676&#39;s Blog &copy; 2018</p>
-  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
-  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
-  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
-</footer>
-
-  </div>
-</div>
-
-  </nav>
-  <main id="main">
-    <header class="top-header" id="header">
+    <main id="main">
+        <header class="top-header" id="header">
     <div class="flex-row">
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">DSL的解释与目标</div>
+        <div class="flex-col header-title ellipsis">对DSL的解释与设计目的</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
         </div>
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
             <i class="icon icon-lg icon-share-alt"></i>
         </a>
         
     </div>
 </header>
-<header class="content-header">
-  <div class="container">
-    <h1 class="author">DSL的解释与目标</h1>
-    <h5 class="subtitle">
-        
-            <time datetime="2018-11-21T14:29:41.000Z" itemprop="datePublished" class="page-time">
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">对DSL的解释与设计目的</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-21T14:29:41.000Z" itemprop="datePublished" class="page-time">
   2018-11-21
 </time>
 
 
-        
-    </h5>
-  </div>
+            
+        </h5>
+    </div>
+
+    
+
+
 </header>
 
-    <div class="container body-wrap">
-      <article id="post-DSL_explain_and_goals" class="article article-type-post" itemprop="blogPost">
-    <div class="post-meta flex-row">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code-Design/">Code Design</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSL/">DSL</a></li></ul>
 
-    </div>
-    <div class="post-body">
-        <aside class="post-widget" id="post-widget">
-
-            
-            <div class="post-share" id="post-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-            
-
-            
-            <nav class="post-toc-wrap" id="post-toc">
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DSL-的本质与解释"><span class="post-toc-number">1.</span> <span class="post-toc-text">DSL 的本质与解释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DSL-的设计目标"><span class="post-toc-number">2.</span> <span class="post-toc-text">DSL 的设计目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#延伸阅读"><span class="post-toc-number">4.</span> <span class="post-toc-text">延伸阅读</span></a></li></ol>
-            </nav>
+        </nav>
+    </aside>
+
+
+<article id="post-DSL_explain_and_goals" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">对DSL的解释与设计目的</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-21 22:29:41" datetime="2018-11-21T14:29:41.000Z" itemprop="datePublished">2018-11-21</time>
+
             
-        </aside>
 
-        <div class="post-main">
 
-            <div class="post-content" id="post-content" itemprop="postContent">
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
             <p>一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。</p>
-<h2 id="DSL-的本质与解释"><a href="#DSL-的本质与解释" class="headerlink" title="DSL 的本质与解释"></a>DSL 的本质与解释</h2><p>首先，我们来看看 Wiki 三怎么解释 DSL 的：</p>
+<h2 id="DSL-的本质与解释"><a href="#DSL-的本质与解释" class="headerlink" title="DSL 的本质与解释"></a>DSL 的本质与解释</h2><p>首先，我们来看看 Wiki 是怎么解释 DSL 的：</p>
 <blockquote>
 <p>A domain-specific language (DSL) is a computer language specialized to a particular application domain. This is in contrast to a general-purpose language (GPL), which is broadly applicable across domains （原文出处：<a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener">Wiki: Domain-Specific Language</a>）</p>
 </blockquote>
@@ -215,7 +205,7 @@
 <ul>
 <li>DSL 相较于 GPL 而言范用性要低，因为需要专注于单个特定领域</li>
 <li>DSL 理应在特定领域上比基于 GPL 发挥的作用更大更广</li>
-<li>DSL 应该要尽可能地将冗余部分最小化，更为简单</li>
+<li>DSL 应该要尽可能地将（语法设计）冗余部分最小化，更为简单</li>
 </ul>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总括而言，虽然 GPL 出来的产物可以广泛地应用在不同领域上，例如序列化，上述的 Maven 包管理等，有些时候这类语言在解决某些领域上的特定问题就很困难。而 DSL 则可以解决某些特定领域的问题，而且提出该领域应用更优的解决方案，就如同上述的 Gradle，SQL 等。</p>
 <h2 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h2><ul>
@@ -224,21 +214,91 @@
 <li><a href="https://www.jetbrains.com/mps/concepts/domain-specific-languages/" target="_blank" rel="noopener">Domain-Specific Languages - Jetbrains</a></li>
 </ul>
 
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-11-22T00:56:42.288Z" itemprop="dateUpdated">2018-11-22 08:56:42</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.9032676.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code-Design/">Code Design</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSL/">DSL</a></li></ul>
+
 
             
-            
-            <blockquote>
-                <p>
-                本文地址：
-                <a href="http://9032676.com/2018/11/21/DSL_explain_and_goals/" target="_blank" rel="external">http://9032676.com/2018/11/21/DSL_explain_and_goals/</a>
-                </p>
-                <footer><cite><a href="http://9032676.com">@9032676's Blog</a></cite></footer>
-            </blockquote>
-            </div>
-            
-<nav class="post-nav">
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/&title=《对DSL的解释与设计目的》 — 9032676's Blog&pic=http://www.9032676.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/&title=《对DSL的解释与设计目的》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《对DSL的解释与设计目的》 — 9032676's Blog&url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/&via=http://www.9032676.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
-    <div class="waves-block waves-effect prev fl">
+    <div class="waves-block waves-effect prev">
       <a href="/2018/11/22/Kotlin_design_more_likely_for_dsl/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">在Kotlin上让你的代码语法更为DSL</h4>
@@ -250,77 +310,128 @@
 </nav>
 
 
-            
-            
+
+    
 
 
 
-        </div>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
     </div>
-  </main>
-<div class="mask" id="mask"></div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<script>
-var BLOG_SHARE = {
-    title: "DSL的解释与目标",
-    pic: "/img/logo.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "http://9032676.com/2018/11/21/DSL_explain_and_goals/index.html"
-};
-</script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
+
+
+<div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/&title=《对DSL的解释与设计目的》 — 9032676's Blog&pic=http://www.9032676.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
       <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
           <i class="icon icon-weixin"></i>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/&title=《对DSL的解释与设计目的》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《对DSL的解释与设计目的》 — 9032676's Blog&url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/&via=http://www.9032676.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.9032676.com/2018/11/21/DSL_explain_and_goals/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
         </a>
       </li>
     </ul>
  </div>
 
 
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3a226EMAxFUf7/p+lrpQ7pPnZaCWfnacQwwGIkK75cF173t/V05On89Tn8+IYlQ4aM1zLu5SKPtb7xz+ukn9fPJkOGjHMY/Pbr33L8OpTHQVmGDBkyQEithV0efGXIkCGjH3DXobOTKsuQIUMGT2LJpZ+CKUmMa+fIkCHjBAYPhf//+U/6GzJkyHgV4w5XLTWtpbjBU8mQIWM0gwc4smXcdbX0CjJkyJjNIA9BQiH5FpXMwsT44u9ShgwZr2XwbVxaGkuDNbkaCs0yZMg4gNG5AS+f8SNxyJYhQ8Y4Bh9l6LQb924cH6uGMmTIGM1IN3y1Mlm/tbBhIEyGDBkvZ9RK+aQwR46kKfGHraEMGTKGMtJN2C4Aj5bBr2TIkDGUwUcoeKKbNglqYxwf/gcZMmSMZvBBh7QZyYtr6SsLvpYhQ8bLGWm6WBuY4K+GNFN/2eHKkCFjKIMnpelWMg24tbRZhgwZJzBIYO1sKPvnoCeUIUPGAQweZHkhLB3CIFvJYORChgwZxzC2lcNwgpq2GWTIkHEagxe/9gbcILCSqqEMGTJGM9KQl6amtTJcUG6TIUPGOMYdLpJq9pud8bCaDBkyRjPSANdpVdbak61hCxkyZAxi1MJlWibj6Wgx4MqQIeMARtpc5Glw7XXETQgZMmTISBuK4ThFeqYMGTJkdPJgssXsDHOgOVwZMmQMZaS335X0psW4DeU2GTJkvJBRC3md4lqa+hY3izJkyJjA+ALHjbwquVeGswAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
 
-<script src="/js/main.js"></script>
 
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
     <ul class="search-result" id="search-result"></ul>
 </div>
-<script type="text/template" id="search-tpl">
+<template id="search-tpl">
 <li class="item">
-    <a href="/{path}" class="waves-block waves-effect">
+    <a href="{path}" class="waves-block waves-effect">
         <div class="title ellipsis" title="{title}">{title}</div>
         <div class="flex-row flex-middle">
             <div class="tags ellipsis">
@@ -330,13 +441,16 @@ var BLOG_SHARE = {
         </div>
     </a>
 </li>
-</script>
+</template>
 
-<script src="/js/search.js"></script>
-
-
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
