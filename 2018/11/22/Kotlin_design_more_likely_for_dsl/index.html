@@ -25,7 +25,7 @@
 <meta name="keywords" content="Kotlin,DSL,Lambda">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Kotlin上让你的代码语法更为DSL">
-<meta property="og:url" content="http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/index.html">
+<meta property="og:url" content="http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="相信近年来，也许有这么一批人会认为 Java 语法过于保守及传统，代码写起来就显得有点臃肿了，不直观也不方便，而相对于 Java 而言，Kotlin 虽然与 Java 同属 JVM 平台衍生出来的计算机语言，Kotlin 的语法却比起 Java 来讲有更大的语法自由度（这里仅从语法角度分析），因此我们得以很好地实现某些看起来更简洁更方便的写法，就如同我们今天要讲的主题：在 Kotlin 上让你的代">
 <meta property="og:locale" content="zh_CN">
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -198,7 +198,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-11-21T18:00:11.722Z" itemprop="dateUpdated">2018-11-22 02:00:11</time>
+    Last updated: <time datetime="2018-11-21T18:00:11.722Z" itemprop="dateUpdated">2018-11-22 02:00:11</time>
 </span><br>
 
 
@@ -206,7 +206,7 @@
     </div>
     
     <footer>
-        <a href="http://www.9032676.com">
+        <a href="http://blog.e7mc.com">
             <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
@@ -228,7 +228,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&pic=http://www.9032676.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -238,22 +238,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&via=http://www.9032676.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -329,7 +329,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -351,7 +351,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&pic=http://www.9032676.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -361,22 +361,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&title=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&via=http://www.9032676.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Kotlin上让你的代码语法更为DSL》 — 9032676's Blog&url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -387,7 +387,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3aQY6kMAwF0L7/pXukWc1igP/jhKrFy6oECPLSUuy28/MTj9+/4+r6v+Pq+asr929O5rBh4OHh4S1N/WpcTeX+Y/fP59+aPIOHh4d3mne/Nee8lp0vzeLX8fDw8D7KW9v6Jyl4/jweHh7eN/OSIsJa2PiKwICHh4cX8/KNOLmbhJZ5mXhzrQUPDw8v5rUNsG/4fbC/h4eHhzfoqicb7q5A0r4nmi0eHh7eAV5bWp0Ekrykm9wtiiB4eHh4W3l526kt2u4KJ5PmGR4eHt45Xt7cmiTTk5CzWGLGw8PDO8Bba9hfbsSD5DtPr/N0HA8PD+8EL0pMlw5j5RPKN/26VIGHh4f3Ci8/gNVOJQ8ha0nzZX8PDw8Pbysvn9auI1N5gXitGYaHh4f3Jq8NDLsaYGsLlLwHDw8P7wSv3XBPpL9rBxeigjIeHh7eYd6kVd+m45NSRZHu4+Hh4R3gtVNMPrC2HJN210MgwcPDwzvAm5QAkiZZXqSYN9geKi54eHh4Y1576KpuPg2Wrz1D9Z+34eHh4R3jrW397SaeB48kVEQLhIeHh3eMt+0f/rbAWo52IfDw8PBO8PKjAO2RrPlytAk9Hh4e3qd4k226bV+dCELbBh4eHl65mbZHRZPA0C5Ee4Dg8g14eHh4W3l586ltVq2FijZRfviT4OHh4b3CS1r7ayWDPBi0BYWHQ1d4eHh4W3ntpp9faUsP81Lsw/N4eHh4m3i/5ZgXfNuUPV+4h2IEHh4e3ibefIp5uXYtdb7/7qTAgYeHhzfhrR2lWjubkG/uk+IvHh4e3ju8tVQ4X5S8BLzWHqtv4+Hh4b3Cy5tbawXftsRQtL7w8PDwPspb+3Bexm0LGQ/hBA8PD+8Yb1KMSJLm/M3tYYKHxcXDw8M7wGsbYHlIyH9PrkyONeDh4eGVvD/mrcU6i3fcHQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3awW7cMAwE0Pz/T6dATy2K9c6IFLIFnk+BN/Hq6WAyQ319xdf37yv5nT+vf+8/P/PVnVdPWLvw8PDwjpb+6nrmPd9/9YTnRT//Vb5mPDw8vNu856Uni8sLQ75ZC9uNh4eH96O8pAy0jXXeuOPh4eH9j7wcnzfoyad4eHh4n8lrX+vfwdW2xW1LvZy14OHh4cW8dgD2CT9fnO/h4eHhDabq89f92XAradyjdeLh4eFd4OUB69lBqLzxbaOKomDg4eHhXeZNHtQelpqM1orQGQ8PD2+Vl7+g86LSHqhqR25FEIyHh4d3gTdJO5+b43ZrlgdaeHh4eNd40Yu13KC8IW6PAtSlAg8PD+8Cb9Ii52FBu4l5MFGHy3h4eHhjXvs1bdloI9qtiORwF/Hw8PAG/63nI7E2XMgBC6M4PDw8vAu8JEpom9q8Od7KYN+w8fDw8FZ5Z8ehJkdU80g3ATwHwXh4eHg3eG2EujW1341xi6MGeHh4eGNePoxv75+1wnlZiu7j4eHhXeDlg6s2Wm2D2hbZHizAw8PD2+K1R0LPXtbtwYKkpY42Dg8PD+8aLw8X2qHX2WHWPOZ4U0Lw8PDwLvPyBvds6JUXm/w59dEBPDw8vDFv0jonMUE+9GpHaG2UjIeHh3eDl7etk+Agj3HbT4vYFw8PD2+V17702y+bwPISsjAExMPDw4vLwHzpScC6FVVEhQEPDw/vGq893nQ2AMtDhDa8WKh1eHh4eEewZPh0FuNOItp8s/56Gh4eHt4F3nwclRSG5L2dN9PtevDw8PBu8PJikDTNk4g2BxSFAQ8PD+8a7yx02CoP89r1pjDg4eHhfQDv7GXdhhcLz8fDw8P7Ud5Z2Jq07G3JKcZmeHh4eNd47dDrrJluD1StDbfw8PDwVnntAOzsYEHeXreRcX6UAQ8PD2/M+wV72g0Bk4uLggAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

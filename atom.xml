@@ -5,9 +5,9 @@
   <subtitle>为探索而生</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.9032676.com/"/>
+  <link href="http://blog.e7mc.com/"/>
   <updated>2018-11-21T18:00:11.722Z</updated>
-  <id>http://www.9032676.com/</id>
+  <id>http://blog.e7mc.com/</id>
   
   <author>
     <name>9032676</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>在Kotlin上让你的代码语法更为DSL</title>
-    <link href="http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/"/>
-    <id>http://www.9032676.com/2018/11/22/Kotlin_design_more_likely_for_dsl/</id>
+    <link href="http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/"/>
+    <id>http://blog.e7mc.com/2018/11/22/Kotlin_design_more_likely_for_dsl/</id>
     <published>2018-11-21T17:20:36.000Z</published>
     <updated>2018-11-21T18:00:11.722Z</updated>
     
@@ -35,18 +35,18 @@
     </summary>
     
     
-      <category term="Kotlin" scheme="http://www.9032676.com/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="http://blog.e7mc.com/tags/Kotlin/"/>
     
-      <category term="DSL" scheme="http://www.9032676.com/tags/DSL/"/>
+      <category term="DSL" scheme="http://blog.e7mc.com/tags/DSL/"/>
     
-      <category term="Lambda" scheme="http://www.9032676.com/tags/Lambda/"/>
+      <category term="Lambda" scheme="http://blog.e7mc.com/tags/Lambda/"/>
     
   </entry>
   
   <entry>
     <title>对DSL的解释与设计目的</title>
-    <link href="http://www.9032676.com/2018/11/21/DSL_explain_and_goals/"/>
-    <id>http://www.9032676.com/2018/11/21/DSL_explain_and_goals/</id>
+    <link href="http://blog.e7mc.com/2018/11/21/DSL_explain_and_goals/"/>
+    <id>http://blog.e7mc.com/2018/11/21/DSL_explain_and_goals/</id>
     <published>2018-11-21T14:29:41.000Z</published>
     <updated>2018-11-22T07:09:17.481Z</updated>
     
@@ -63,9 +63,9 @@
     </summary>
     
     
-      <category term="DSL" scheme="http://www.9032676.com/tags/DSL/"/>
+      <category term="DSL" scheme="http://blog.e7mc.com/tags/DSL/"/>
     
-      <category term="Code Design" scheme="http://www.9032676.com/tags/Code-Design/"/>
+      <category term="Code Design" scheme="http://blog.e7mc.com/tags/Code-Design/"/>
     
   </entry>
   
