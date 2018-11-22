@@ -28,8 +28,8 @@
 <meta property="og:url" content="http://www.9032676.com/2018/11/21/DSL_explain_and_goals/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
-<meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-11-22T00:56:42.288Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2018-11-22T07:09:17.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对DSL的解释与设计目的">
 <meta name="twitter:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -193,7 +193,7 @@
 <blockquote>
 <p>A domain-specific language (DSL) is a computer language specialized to a particular application domain. This is in contrast to a general-purpose language (GPL), which is broadly applicable across domains （原文出处：<a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener">Wiki: Domain-Specific Language</a>）</p>
 </blockquote>
-<p>而把上面择要翻译过来就是：DSL (领域特定语言) 是专注于某个应用程序领域的计算机语言，而对比起 GPL （通用程序设计语言，例如 Java/ C/ Python…），DSL 能够在特定的应用领域中具有更大的拓展性及其延伸性。看到这里可能还有部分人不明白这到底是怎么一回事，其实简单来说 DSL 就是为解决特定领域的事情而生的，如果曾经作为 Java 程序员，你可能会经常使用 Maven 跟 Gradle 这两款包管理器去管理你的依赖/库，而透过对比两者语法上更是大相径庭，例如 Maven 采用的是 XML 语法的标记语言，因此我们先来看一下在 Maven 引用依赖部分是怎么写的：</p>
+<p>而把上面择要翻译过来就是：DSL (领域特定语言) 是专注于某个应用程序领域的计算机语言，而对比起 GPL （通用程序设计语言，例如 Java / C / Python…），DSL 能够在特定的应用领域中具有更大的拓展性及其延伸性。看到这里可能还有部分人不明白这到底是怎么一回事，其实简单来说 DSL 就是为解决特定领域的事情而生的，如果曾经作为 Java 程序员，你可能会经常使用 Maven 跟 Gradle 这两款包管理器去管理你的依赖/库，而透过对比两者语法上更是大相径庭，例如 Maven 采用的是 XML 语法的标记语言，因此我们先来看一下在 Maven 引用依赖部分是怎么写的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;group&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;project&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 <p>而 Gradle 则是像这样:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile group: &quot;group&quot;, name: &quot;project&quot;, version: 1.0.0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -221,7 +221,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-22T00:56:42.288Z" itemprop="dateUpdated">2018-11-22 08:56:42</time>
+    最終更新：<time datetime="2018-11-22T07:09:17.481Z" itemprop="dateUpdated">2018-11-22 15:09:17</time>
 </span><br>
 
 
@@ -352,7 +352,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
