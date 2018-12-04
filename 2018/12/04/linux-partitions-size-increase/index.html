@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>记录一次在 Linux 下增加分区大小的过程 | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Ubuntu,Linux,Partition">
+    <meta name="description" content="最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 java.io.IOException: No space left on device，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。">
+<meta name="keywords" content="Ubuntu,Linux,Partition">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录一次在 Linux 下增加分区大小的过程">
+<meta property="og:url" content="http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 java.io.IOException: No space left on device，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2018-12-04T03:10:10.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记录一次在 Linux 下增加分区大小的过程">
+<meta name="twitter:description" content="最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 java.io.IOException: No space left on device，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me">
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">记录一次在 Linux 下增加分区大小的过程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">记录一次在 Linux 下增加分区大小的过程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-04T01:23:54.000Z" itemprop="datePublished" class="page-time">
+  2018-12-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何扩容"><span class="post-toc-number">1.</span> <span class="post-toc-text">如何扩容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出空间不足的分区"><span class="post-toc-number">2.</span> <span class="post-toc-text">找出空间不足的分区</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询分区挂载情况"><span class="post-toc-number">3.</span> <span class="post-toc-text">查询分区挂载情况</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始调整"><span class="post-toc-number">4.</span> <span class="post-toc-text">开始调整</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-linux-partitions-size-increase" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">记录一次在 Linux 下增加分区大小的过程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-04 09:23:54" datetime="2018-12-04T01:23:54.000Z" itemprop="datePublished">2018-12-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 <code>java.io.IOException: No space left on device</code>，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。</p>
+<h2 id="如何扩容"><a href="#如何扩容" class="headerlink" title="如何扩容"></a>如何扩容</h2><ol>
+<li><p>使用 GUI 工具：GParted （本篇文章不进行阐述）</p>
+</li>
+<li><p>利用 fdisk 等指令进行扩容</p>
+</li>
+</ol>
+<h2 id="找出空间不足的分区"><a href="#找出空间不足的分区" class="headerlink" title="找出空间不足的分区"></a>找出空间不足的分区</h2><p>首先使用 <code>df -h | grep &quot;dev/sda&quot;</code> 指令查看 <code>/dev/sda</code> 以下各个分区占用比<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  df -h | grep &quot;sda&quot;</span><br><span class="line">/dev/sda10       22G   21G   96M 100% /</span><br><span class="line">/dev/sda8       1.9G  467M  1.3G  27% /media/a9032676/b2b692f8-bdcf-46c1-9998-503b0970f5b3</span><br><span class="line">/dev/sda9        19G  2.8G   15G  16% /media/a9032676/9b5cdc3a-f296-490a-b329-6ae23acee7de</span><br><span class="line">/dev/sda7       4.7G   20M  4.4G   1% /media/a9032676/1bbfb6fa-f919-4460-86f9-5ced5a900ec8</span><br></pre></td></tr></table></figure></p>
+<p>可以得出挂载于 <code>/</code> 的根分区 <code>/dev/sda10</code> 空间严重不足，剩下 96MB。然后我们使用 <code>fdisk -l</code> 指令查询各分区大小及总和<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo fdisk -l /dev/sda</span><br><span class="line">Disk /dev/sda: 232.9 GiB, 250059350016 bytes, 488397168 sectors</span><br><span class="line">/dev/sda1  *         2048   1126399   1124352   549M  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda2         1126400 383537151 382410752 182.4G  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda3       383539198 488396799 104857602    50G  5 Extended</span><br><span class="line">/dev/sda5       383539200 383928319    389120   190M 83 Linux</span><br><span class="line">/dev/sda6       383930368 387928063   3997696   1.9G 82 Linux swap / Solaris</span><br><span class="line">/dev/sda7       387930112 397928447   9998336   4.8G 83 Linux</span><br><span class="line">/dev/sda8       397930496 401928191   3997696   1.9G 83 Linux</span><br><span class="line">/dev/sda9       401930240 441927679  39997440  19.1G 83 Linux</span><br><span class="line">/dev/sda10      441929728 488396799  46467072  22.2G 83 Linux</span><br><span class="line"> a9032676@90-Ubuntu  ~ </span><br></pre></td></tr></table></figure></p>
+<p>可以看到这个盘大小总和是 232.9GB，而由于双系统的缘故， <code>/dev/sda1</code> 与 <code>/dev/sda2</code> 这两个分区是 Windows 10 的，因此是 NTFS 文件系统。<code>/dev/sda5</code> 为 <code>grub</code> 预留分区，其余则都是 Linux 的 ext4 文件系统。</p>
+<h2 id="查询分区挂载情况"><a href="#查询分区挂载情况" class="headerlink" title="查询分区挂载情况"></a>查询分区挂载情况</h2><p>确定了是 <code>/dev/sda10</code> 分区空间不足后，我们利用 <code>mount -l | grep &quot;/dev/sda&quot;</code> 指令查看分区实际挂载情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo mount -l | grep &quot;/dev/sda&quot;</span><br><span class="line">/dev/sda10 on / type ext4 (rw,relatime,errors=remount-ro,data=ordered)</span><br><span class="line">/dev/sda8 on /media/a9032676/b2b692f8-bdcf-46c1-9998-503b0970f5b3 type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br><span class="line">/dev/sda9 on /media/a9032676/9b5cdc3a-f296-490a-b329-6ae23acee7de type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br><span class="line">/dev/sda7 on /media/a9032676/1bbfb6fa-f919-4460-86f9-5ced5a900ec8 type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br></pre></td></tr></table></figure>
+<p>透过上面的输出发现，自重装系统之后，我一直犯下了个低级错误，除了 sda7/8/9/10 以外的 <code>/dev/sda3</code> 扩展分区并没有实际挂载点，实际上这个分区本来是应该挂载到 <code>/</code> 上的，当初重装系统之后在引导处分好 <code>/dev/sda3</code> 后却忘记了引导并不会帮你将分区设成开机自动挂载，导致了这里多出了多余的 50G 扩展分区，因此我们要利用这 50G 的空间并且扩容到 <code>/dev/sda10</code> 里去。</p>
+<h2 id="开始调整"><a href="#开始调整" class="headerlink" title="开始调整"></a>开始调整</h2><p>首先我们使用 <code>fdisk /dev/sda1</code></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-12-04T03:10:10.819Z" itemprop="dateUpdated">2018-12-04 11:10:10</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Partition/">Partition</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/22/Kotlin_code_design_more_beautiful/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在 Kotlin 上让你的代码更加优雅</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2018/12/04/linux-partitions-size-increase/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3aQYrDMAwF0N7/0h2YVWFw+iXZTQdeViUkTp4XkSrp8YiP5+/x+nt15vX833uT63tXjg48PDy81quvjtUrJquttqb63OT8cgvw8PDwjvGSYDB55PXHvfcO0Tp4eHh4t/KqD8hDS5KO4+Hh4f1HXvWR1ysn6TseHh7eN/N2FQVy2KRAfKTWgoeHh1erBpQbYPf+Pt7fw8PDw2t11auNsfldSQgpvCEeHh7eAd71AybTTUlQmSfZUcDAw8PD28q7/hufNPt75YPqFjc3CA8PD+8ALx+oyj/ivQGspHmWvNWb/h4eHh7eJl6eEBeWi+/ttbJGJV08PDy8TbxeG6wKyANSvtHbSip4eHh4Ma/6mN7+zQek8nS/UIzAw8PDG/Pm7fxeElwNG81ohoeHhzfmTRpOvfJEEiTycas3Ijw8PLzDvMJt8Qd98pWugvHw8PA+z5sXYXuYXrk2Srvx8PDwbuLNixd5/61XCG4WcPHw8PBavLxEW0VWX2VXao6Hh4d3mldtdM2LC0nptjcptkyp8fDw8A7w8jJENZ2dJOh5ZFuewcPDwzvG6xVqT185GcyKdhcPDw+vxcsXzUu31VJvua21dcvw8PDwqrxksGlyZS88VFtly/fBw8PDO8CrJtbzwJA3zKJCbbUNhoeHh7eJly+RFyySULFrawr/FfDw8PA28Saf/rxhVk2mJ8XlZUkCDw8P7yO8ye/J8EF13OrNPwY8PDy8Tbxn8ajuXN48623Nm9Xw8PDwDvAmA0/52NOuCDZvm+Hh4eHt4uUJ7pzaKwr3AgYeHh7ead6kGFFt9ucDVfPQhYeHh/cNvGppIClD9DYoGnHAw8PDu5W3q001Hx0oFG3x8PDwjvEmjfzqsFTvufnKeHh4eKd51b/6SaqdAHYNdW3u7+Hh4eFdnfkBWUgr8IrYAYwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
