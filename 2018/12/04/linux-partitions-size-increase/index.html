@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 java.io.IOException: No space left on device，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2018-12-04T04:44:32.845Z">
+<meta property="og:updated_time" content="2018-12-04T04:48:37.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录一次在 Linux 下增加分区大小的过程">
 <meta name="twitter:description" content="最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 java.io.IOException: No space left on device，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。">
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -198,7 +198,7 @@
 <p>可以看到这个盘大小总和是 232.9G，而由于双系统的缘故， <code>/dev/sda1</code> 与 <code>/dev/sda2</code> 这两个分区是 Windows 10 的，因此是 NTFS 文件系统。<code>/dev/sda5</code> 为 <code>grub</code> 预留分区，而扩展分区 <code>/dev/sda3</code> 则作为我 Ubuntu 系统所有文件的主分区，可以看见扇区从 <code>383539198</code> 横跨到 <code>488396799</code>，途中包含了 <code>sda5</code> 到 <code>sda10</code> 这几个分区，而他们都是 ext4 文件系统的逻辑分区，加起来刚刚好 50G。</p>
 <h2 id="查询分区挂载情况"><a href="#查询分区挂载情况" class="headerlink" title="查询分区挂载情况"></a>查询分区挂载情况</h2><p>确定了是 <code>/dev/sda10</code> 分区空间不足后，我们利用 <code>mount -l | grep &quot;/dev/sda&quot;</code> 指令查看分区实际挂载情况。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo mount -l | grep &quot;/dev/sda&quot;</span><br><span class="line">/dev/sda10 on / type ext4 (rw,relatime,errors=remount-ro,data=ordered)</span><br><span class="line">/dev/sda8 on /media/a9032676/b2b692f8-bdcf-46c1-9998-503b0970f5b3 type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br><span class="line">/dev/sda9 on /media/a9032676/9b5cdc3a-f296-490a-b329-6ae23acee7de type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br><span class="line">/dev/sda7 on /media/a9032676/1bbfb6fa-f919-4460-86f9-5ced5a900ec8 type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br></pre></td></tr></table></figure>
-<p>从以上情况总括出：这台电脑两个系统都是安装在了同一个盘上面（因为是 SSD），合计可用大小是 232.9G，而分给 Ubuntu 的总共有 50G，Windows 则占用了 182.4G（撇除系统保留的 549M）。但现在 Ubuntu 挂载在根目录的分区 <code>/dev/sda10</code> 已经所剩无几，因此我打算的是从 Windows 处 <code>/dev/sda2</code> 剩余空间多释放释放 30G 的空间让 Ubuntu 来分配。</p>
+<p>从以上情况总括出：这台电脑两个系统都是安装在了同一个盘上面（因为是 SSD），合计可用大小是 232.9G，而分给 Ubuntu 的总共有 50G，Windows 则占用了 182.4G（撇除系统保留的 549M）。但现在 Ubuntu 挂载在根目录的分区 <code>/dev/sda10</code> 已经所剩无几，因此我打算的是从 Windows 处 <code>/dev/sda2</code> 释放 30G 的空间为 <code>/dev/sda10</code> 增加容量。</p>
 <h2 id="开始调整"><a href="#开始调整" class="headerlink" title="开始调整"></a>开始调整</h2><ol>
 <li><p>重启电脑，将系统更换成 Windows 10。</p>
 </li>
@@ -225,7 +225,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-12-04T04:44:32.845Z" itemprop="dateUpdated">2018-12-04 12:44:32</time>
+    最終更新：<time datetime="2018-12-04T04:48:37.968Z" itemprop="dateUpdated">2018-12-04 12:48:37</time>
 </span><br>
 
 
@@ -356,7 +356,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
