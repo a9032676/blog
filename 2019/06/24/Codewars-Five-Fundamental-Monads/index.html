@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="This kata corresponds to Five-Fundamental-Monads in CodewarsDifficulty: 4 kyuTags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING QuestionsIn this kata we will implement five of the most f">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-06-25T09:55:09.724Z">
+<meta property="og:updated_time" content="2019-06-25T10:12:25.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codewars: Haskell Five Fundamental Monads">
 <meta name="twitter:description" content="This kata corresponds to Five-Fundamental-Monads in CodewarsDifficulty: 4 kyuTags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING QuestionsIn this kata we will implement five of the most f">
@@ -208,7 +208,8 @@
 <p>So let’s implement <code>return</code> function on <code>Maybe Monad</code> first, it seems like the identity monad, but still have some different. In this case we need to specify the <code>Nothing</code> and <code>Just</code>, just take a look at the type definition of <code>return</code> function, it’s must provide a parameter <code>a</code>, then we can wrapping it into <code>Just a</code> to becomes <code>return = Just</code> in instance.</p>
 <p>Second, after completed <code>return</code> function, to finish the <code>&gt;&gt;=</code> function, it’s also cloused to the identity instance, but we know when we put a <code>Nothing</code> into <code>f</code>, there must always return <code>Nothing</code>, otherwise return the result moand from <code>f</code>, so here could be using pattern-matching to partition these two case.</p>
 <p>Finally the <code>Maybe Monad</code> likes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">instance Monad Maybe where</span><br><span class="line">  return = Just</span><br><span class="line">  Nothing &gt;&gt;= f = Nothing</span><br><span class="line">  (Just v) &gt;&gt;= f = f v</span><br></pre></td></tr></table></figure></p>
-<h3 id="State-Monad"><a href="#State-Monad" class="headerlink" title="State Monad"></a>State Monad</h3><h3 id="Reader-Monad"><a href="#Reader-Monad" class="headerlink" title="Reader Monad"></a>Reader Monad</h3><h3 id="Writer-Monad"><a href="#Writer-Monad" class="headerlink" title="Writer Monad"></a>Writer Monad</h3><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2>
+<h3 id="State-Monad"><a href="#State-Monad" class="headerlink" title="State Monad"></a>State Monad</h3><h3 id="Reader-Monad"><a href="#Reader-Monad" class="headerlink" title="Reader Monad"></a>Reader Monad</h3><h3 id="Writer-Monad"><a href="#Writer-Monad" class="headerlink" title="Writer Monad"></a>Writer Monad</h3><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Great thanks to Henry for fixing my low B English grammer problem!</p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -216,7 +217,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-06-25T09:55:09.724Z" itemprop="dateUpdated">2019-06-25 17:55:09</time>
+    最終更新：<time datetime="2019-06-25T10:12:25.593Z" itemprop="dateUpdated">2019-06-25 18:12:25</time>
 </span><br>
 
 
