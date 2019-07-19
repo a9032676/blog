@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Cat Theory,FP,PL">
+    <meta name="description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 “魔法”，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
+<meta name="keywords" content="Cat Theory,FP,PL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity">
+<meta property="og:url" content="http://blog.e7mc.com/2019/07/19/Category-Theory/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 “魔法”，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-07-19T16:14:26.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity">
+<meta name="twitter:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 “魔法”，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me">
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-19T11:13:32.000Z" itemprop="datePublished" class="page-time">
+  2019-07-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念（Concept）"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念（Concept）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象与态射（Function-and-Morphism）"><span class="post-toc-number">2.</span> <span class="post-toc-text">对象与态射（Function and Morphism）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组合（Composition）"><span class="post-toc-number">3.</span> <span class="post-toc-text">组合（Composition）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单位元（Identity）"><span class="post-toc-number">4.</span> <span class="post-toc-text">单位元（Identity）</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Category-Theory" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-19 19:13:32" datetime="2019-07-19T11:13:32.000Z" itemprop="datePublished">2019-07-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在入坑接触 Haskell 一段时间后，碰到很多类似 <code>Functor</code> <code>Applicative</code> <code>Monad</code> 等等这些诸如此类的 “魔法”，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 <code>Monoid（么半群）</code> <code>Semigroup（半群）</code> 等等这些群论以至于范畴论上的概念出来。于是乎为了能够 <ruby>彻底弄清楚这一大堆东西<rp> (</rp><rt>mǎn zú hào qí xīn</rt><rp>) </rp></ruby>（顺便记录下学习的过程），特意开了本篇作为学习笔记，也希望能够记录这个入坑 <ruby>猫论<rp> (</rp><rt>Category Theory</rt><rp>) </rp></ruby> 到入土的心路历程（笑。</p>
+<h2 id="概念（Concept）"><a href="#概念（Concept）" class="headerlink" title="概念（Concept）"></a>概念（Concept）</h2><blockquote>
+<p>研究范畴就是试图以“公理化”的方法抓住在各种相关连的“数学结构”中的共同特性，并以结构间的“结构保持函数”将这些结构相关起来。因此，对范畴论系统化的研究将允许任何一个此类数学结构的普遍结论由范畴的公理中证出。</p>
+</blockquote>
+<p>范畴论这门学问，虽然分类上是属于数学的基础内容，但个人反倒觉得像是一门 “数学上的抽象语言”。就如同上面引文提及：它负责对数学结构中的共同特性，加以公理化的形式把这一个个的数学结构连接起来。举个例子：就如同数学上最简单的加减乘除这些 “二元运算”，均能被视为是一种连接两个数学结构之间的一个公理化的连接，因此才被称为 “二元运算”。</p>
+<h2 id="对象与态射（Function-and-Morphism）"><a href="#对象与态射（Function-and-Morphism）" class="headerlink" title="对象与态射（Function and Morphism）"></a>对象与态射（Function and Morphism）</h2><p>通俗地讲，一个最简单的范畴结构可以由一个 <code>对象（Object）</code> 与 <code>态射（Morphism）</code> 组合而成的，一个对象可以是任何东西（例如一个自然数或是个英文字母等等），而态射就相等于过程，然后把一个个对象之间像是加上了一个个箭头（Arrow）一样将它们逐一连接起来，首先由对象A态射到对象B，最终由对象B再态射到对象C，正如这样：$$ A \to B \to C $$ 从上面我们可以很清晰的看到似乎就只是加上了箭头作为对象之间的连接，就形成了一个包含三个对象，两次态射的范畴了。</p>
+<h2 id="组合（Composition）"><a href="#组合（Composition）" class="headerlink" title="组合（Composition）"></a>组合（Composition）</h2><p>现在我们要提及到另一个重要的概念：<code>组合（Composition）</code>。上面对象与态射的小章节已经举出了一个简单的范畴例子，实际上我们可以为上面的态射给命名一下，例如改成这样：$$ A \underset{f}{\to} B \underset{g}{\to} C $$ 于是乎现在会更加直观地看到态射的名字了，我们设对象 $A$ 到 $B$ 的态射称为 $f$ ，而从对象 $B$ 到 $C$ 的态射为 $g$，最终由于对象 $A$ $B$ $C$ 会透过态射形成一个具备可传递性质的范畴，对象 $A$ 态射到 $C$ 的时候就会形成一个态射的组合（Composition of morphism），因此可以演变成这样：$$ A \underset{g \circ f}\to C $$ 我们看到上面由 $A$ 到 $C$ 的过程实际就是把 态射 $g$ 和 $f$ 给组合起来，形成一个新的态射，称之为 $g \circ f$</p>
+<h2 id="单位元（Identity）"><a href="#单位元（Identity）" class="headerlink" title="单位元（Identity）"></a>单位元（Identity）</h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-07-19T16:14:26.923Z" itemprop="dateUpdated">2019-07-20 00:14:26</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cat-Theory/">Cat Theory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FP/">FP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PL/">PL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/07/19/Category-Theory/&title=《一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/07/19/Category-Theory/&title=《一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/07/19/Category-Theory/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity》 — 9032676's Blog&url=http://blog.e7mc.com/2019/07/19/Category-Theory/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/07/19/Category-Theory/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/24/Codewars-Five-Fundamental-Monads/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Codewars: Haskell Five Fundamental Monads</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/07/19/Category-Theory/&title=《一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/07/19/Category-Theory/&title=《一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/07/19/Category-Theory/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第一章: Abstraction, Composition and Identity》 — 9032676's Blog&url=http://blog.e7mc.com/2019/07/19/Category-Theory/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/07/19/Category-Theory/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3ay27DIBAF0Pz/T6fbSpXJvWBXMT6sqtROOCxG8+D1itd7uMbP//7k6L9/331dsTAwMG7LSLbYMlZgk7+LgYHxAMY48LXhsg2aY0YUlDEwMDCGXz2XCCbfj4GBgTHHGD/TfpIfBwYGBkZSxCYBdJwUfkUtjoGBcUNGXmT+/9+XzDcwMDBuxXiXK6e2qeF7YWFgYOzNyANce80iga0EXAwMjOcw5tr9eXrXbroN0PXJYWBg3JCRt72uG1UmLbbxQWNgYOzNSBK+FVJ+NO0Is85bMTAwbs5YKSPXm2tFtX10KBgYGFsz2kZYfVVr+ZvrCxYYGBhbM1aCXd5oSwD51j/AMDAwtmAkra627FxPNJN3D++MYGBgbMdYuSqRB9B6EysADAyM7RhJqB2v5N0rDuVD1xADA2M7xlxp2jbg8sI4TxMxMDCew8gTuORiRH1VomTXzUMMDIybM85q1p97bWIMKKpwDAyMTRltAG3HButB/AMGAwNjU0ab0uWbyJ/Py+BDDAYGxgMYSa6VjwrygUH+K8UgEwMDY1NGmwKut/CSgJuPEDAwMHZlnBVM14NmkjIeHjQGBsbWjHYymGPyIrYtkk8YcGJgYNyQkYTIZKNtuz9PAeuuIQYGxqaMucCXtPvnhpRt6MfAwMCYG2quXOaYzF4xMDAwyssTxQCyvARWTGIxMDA2YuQpXZvqjZO/uRY/BgbG0xht3pWExWTrebo517bDwMDYgvEDvZT6CENps+IAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
