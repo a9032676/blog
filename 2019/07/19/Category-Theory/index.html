@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 “魔法”，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-07-20T07:41:46.436Z">
+<meta property="og:updated_time" content="2019-07-20T09:03:31.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第一章: 组合的本质">
 <meta name="twitter:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 “魔法”，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
@@ -165,7 +165,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念（Concept）"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念（Concept）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象与态射（Object-and-Morphism）"><span class="post-toc-number">2.</span> <span class="post-toc-text">对象与态射（Object and Morphism）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组合（Composition）"><span class="post-toc-number">3.</span> <span class="post-toc-text">组合（Composition）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-Haskell-上的函数组合"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">在 Haskell 上的函数组合</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组合的特性（Properties-of-Composition）"><span class="post-toc-number">4.</span> <span class="post-toc-text">组合的特性（Properties of Composition）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结合律（Associative-Property）"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">结合律（Associative Property）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单位元（Identity）"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">单位元（Identity）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组合的本质（）"><span class="post-toc-number">5.</span> <span class="post-toc-text">组合的本质（）</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念（Concept）"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念（Concept）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象与态射（Object-and-Morphism）"><span class="post-toc-number">2.</span> <span class="post-toc-text">对象与态射（Object and Morphism）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组合（Composition）"><span class="post-toc-number">3.</span> <span class="post-toc-text">组合（Composition）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-Haskell-上的函数组合"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">在 Haskell 上的函数组合</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组合的特性（Properties-of-Composition）"><span class="post-toc-number">4.</span> <span class="post-toc-text">组合的特性（Properties of Composition）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结合律（Associative-Property）"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">结合律（Associative Property）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单位元（Identity）"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">单位元（Identity）</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -204,8 +204,8 @@
 <p>分别是首先对字符串清除空格和后续的把字符串转换为全小写的函数。现在我们可以简单地把它们组合在一起，形成一个复合函数，在 Haskell 里面以 Point-free 形式写出来的代码大概像是这样：<code>lower . trim</code>，就已经成为了一个简单的函数组合了！</p>
 <h2 id="组合的特性（Properties-of-Composition）"><a href="#组合的特性（Properties-of-Composition）" class="headerlink" title="组合的特性（Properties of Composition）"></a>组合的特性（Properties of Composition）</h2><p>组合（Composition）有两个非常重要的特性，在任何范畴内都必须满足这些特性，才能被称之为组合。</p>
 <h3 id="结合律（Associative-Property）"><a href="#结合律（Associative-Property）" class="headerlink" title="结合律（Associative Property）"></a>结合律（Associative Property）</h3><p>组合是可结合的，也就是指出一个二元运算（这里是组合）只要它们算子（态射）的位置没有被改变，那就不会对整个组合过程的结果产生影响，也就是即使我们给组合加上改变优先级的运算符（例如括号），也并不会改变整个过程的结果。现在给出三个对象，它们分别是 $f$，$g$，$h$。然后把它们组合到一起：$$(h \circ g) \circ f = h \circ (g \circ f) = h \circ g \circ f$$ 最终可以看出它们的结果均是相等的。</p>
-<h3 id="单位元（Identity）"><a href="#单位元（Identity）" class="headerlink" title="单位元（Identity）"></a>单位元（Identity）</h3><p>单位元就如同一个特殊的单位（Unit），任何对象与其组合结果都会返回对象自身：$$f \circ id_A = f $$ 以及 $$ id_A \circ f = f $$</p>
-<h2 id="组合的本质（）"><a href="#组合的本质（）" class="headerlink" title="组合的本质（）"></a>组合的本质（）</h2>
+<h3 id="单位元（Identity）"><a href="#单位元（Identity）" class="headerlink" title="单位元（Identity）"></a>单位元（Identity）</h3><p>单位元就如同一个特殊的单位（Unit），任何对象与其组合结果都会返回对象自身：$$ A \xrightarrow[id_A]{} A $$ $$f \circ id_A = id_A \circ f = f $$ 但要切记，上面的单位元 $id_A$ 依旧是一种态射，只不过组合后的结果还是落入了与 $f$ 同一个范畴内。就如同 $2 * 1$一样（$1$ 是乘法单位元），它的运算结果永远都只会是整数（这里的范畴可以是整数乘法群，且群论上已定义了封闭性，所以结果不会是其他什么像是字符串，其他类型的自然数等等的这类东西），且最终它运算得出来的结果都会是等于 $2$，也就是等于自身，因此 $1$ 便符合了作为乘法单位元特性。</p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -213,7 +213,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-20T07:41:46.436Z" itemprop="dateUpdated">2019-07-20 15:41:46</time>
+    Last updated: <time datetime="2019-07-20T09:03:31.191Z" itemprop="dateUpdated">2019-07-20 17:03:31</time>
 </span><br>
 
 
