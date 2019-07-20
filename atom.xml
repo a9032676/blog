@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.e7mc.com/"/>
-  <updated>2019-07-20T11:09:41.280Z</updated>
+  <updated>2019-07-20T11:15:43.118Z</updated>
   <id>http://blog.e7mc.com/</id>
   
   <author>
@@ -17,16 +17,20 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Category-Theory-2</title>
+    <title>一个 Haskeller 的范畴论入坑笔记 第二章：函数，类型与同态</title>
     <link href="http://blog.e7mc.com/2019/07/20/Category-Theory-2/"/>
     <id>http://blog.e7mc.com/2019/07/20/Category-Theory-2/</id>
     <published>2019-07-20T11:09:41.000Z</published>
-    <updated>2019-07-20T11:09:41.280Z</updated>
+    <updated>2019-07-20T11:15:43.118Z</updated>
     
     <summary type="html">
     
     </summary>
     
+    
+      <category term="Category Theory" scheme="http://blog.e7mc.com/tags/Category-Theory/"/>
+    
+      <category term="Functional Programming" scheme="http://blog.e7mc.com/tags/Functional-Programming/"/>
     
   </entry>
   
