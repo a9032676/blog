@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.e7mc.com/"/>
-  <updated>2019-07-20T11:08:34.848Z</updated>
+  <updated>2019-07-20T11:09:41.280Z</updated>
   <id>http://blog.e7mc.com/</id>
   
   <author>
@@ -17,9 +17,23 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Category-Theory-2</title>
+    <link href="http://blog.e7mc.com/2019/07/20/Category-Theory-2/"/>
+    <id>http://blog.e7mc.com/2019/07/20/Category-Theory-2/</id>
+    <published>2019-07-20T11:09:41.000Z</published>
+    <updated>2019-07-20T11:09:41.280Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>一个 Haskeller 的范畴论入坑笔记 第一章: 组合的本质</title>
-    <link href="http://blog.e7mc.com/2019/07/19/Category-Theory/"/>
-    <id>http://blog.e7mc.com/2019/07/19/Category-Theory/</id>
+    <link href="http://blog.e7mc.com/2019/07/19/Category-Theory-1/"/>
+    <id>http://blog.e7mc.com/2019/07/19/Category-Theory-1/</id>
     <published>2019-07-19T11:13:32.000Z</published>
     <updated>2019-07-20T11:08:34.848Z</updated>
     
