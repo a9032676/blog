@@ -14,25 +14,25 @@
     
     
     
-    <title>Java 泛型的本质 开篇 | 9032676&#39;s Blog | 为探索而生</title>
+    <title>纯函数与副作用，以及如何对 | 9032676&#39;s Blog | 为探索而生</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Java,类型,参数化类型">
-    <meta name="description" content="提起泛型, 或许许多人在学习 Java 的时候就遇到了不少的问题, 又或者只会用基础的特性, 但有些更加高层次根本不知道怎么用, 又或是很容易混淆, 所以就有个想法来写一下关于泛型的一些内容, 接下来可能会用数章的篇幅去讲解下究竟何为泛型, 其中又能发挥些什么作用. 概念待填坑…">
-<meta name="keywords" content="Java,类型,参数化类型">
+    <meta name="keywords" content="Haskell,函数式编程">
+    <meta name="description" content="纯函数是什么？副作用又是什么？它们会引致什么问题或有什么作用？相信对刚踏入函数式编程大门的人会对此抱有疑惑，本篇将会一一讲解。">
+<meta name="keywords" content="Haskell,函数式编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 泛型的本质 开篇">
-<meta property="og:url" content="http://blog.e7mc.com/2019/04/15/Java-generic-type-md/index.html">
+<meta property="og:title" content="纯函数与副作用，以及如何对">
+<meta property="og:url" content="http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
-<meta property="og:description" content="提起泛型, 或许许多人在学习 Java 的时候就遇到了不少的问题, 又或者只会用基础的特性, 但有些更加高层次根本不知道怎么用, 又或是很容易混淆, 所以就有个想法来写一下关于泛型的一些内容, 接下来可能会用数章的篇幅去讲解下究竟何为泛型, 其中又能发挥些什么作用. 概念待填坑…">
+<meta property="og:description" content="纯函数是什么？副作用又是什么？它们会引致什么问题或有什么作用？相信对刚踏入函数式编程大门的人会对此抱有疑惑，本篇将会一一讲解。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-07-22T09:42:09.757Z">
+<meta property="og:updated_time" content="2019-07-25T13:53:08.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 泛型的本质 开篇">
-<meta name="twitter:description" content="提起泛型, 或许许多人在学习 Java 的时候就遇到了不少的问题, 又或者只会用基础的特性, 但有些更加高层次根本不知道怎么用, 又或是很容易混淆, 所以就有个想法来写一下关于泛型的一些内容, 接下来可能会用数章的篇幅去讲解下究竟何为泛型, 其中又能发挥些什么作用. 概念待填坑…">
+<meta name="twitter:title" content="纯函数与副作用，以及如何对">
+<meta name="twitter:description" content="纯函数是什么？副作用又是什么？它们会引致什么问题或有什么作用？相信对刚踏入函数式编程大门的人会对此抱有疑惑，本篇将会一一讲解。">
     
         <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
@@ -120,7 +120,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Java 泛型的本质 开篇</div>
+        <div class="flex-col header-title ellipsis">纯函数与副作用，以及如何对</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -142,11 +142,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Java 泛型的本质 开篇</h1>
+        <h1 class="title">纯函数与副作用，以及如何对</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-04-15T05:01:11.000Z" itemprop="datePublished" class="page-time">
-  2019-04-15
+                <time datetime="2019-07-22T09:22:27.000Z" itemprop="datePublished" class="page-time">
+  2019-07-22
 </time>
 
 
@@ -162,20 +162,13 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念</span></a></li></ol>
-        </nav>
-    </aside>
 
-
-<article id="post-Java-generic-type-md" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-Pure-Function-and-Side-Effects" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Java 泛型的本质 开篇</h1>
+        <h1 class="post-card-title">纯函数与副作用，以及如何对</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-04-15 13:01:11" datetime="2019-04-15T05:01:11.000Z" itemprop="datePublished">2019-04-15</time>
+            <time class="post-time" title="2019-07-22 17:22:27" datetime="2019-07-22T09:22:27.000Z" itemprop="datePublished">2019-07-22</time>
 
             
 
@@ -188,8 +181,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>提起泛型, 或许许多人在学习 Java 的时候就遇到了不少的问题, 又或者只会用基础的特性, 但有些更加高层次根本不知道怎么用, 又或是很容易混淆, 所以就有个想法来写一下关于泛型的一些内容, 接下来可能会用数章的篇幅去讲解下究竟何为泛型, 其中又能发挥些什么作用.</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>待填坑…</p>
+            <p>纯函数是什么？副作用又是什么？它们会引致什么问题或有什么作用？相信对刚踏入函数式编程大门的人会对此抱有疑惑，本篇将会一一讲解。</p>
 
         </div>
 
@@ -198,7 +190,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-07-22T09:42:09.757Z" itemprop="dateUpdated">2019-07-22 17:42:09</time>
+    最終更新：<time datetime="2019-07-25T13:53:08.022Z" itemprop="dateUpdated">2019-07-25 21:53:08</time>
 </span><br>
 
 
@@ -218,7 +210,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/参数化类型/">参数化类型</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型/">类型</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Haskell/">Haskell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
 
 
             
@@ -228,7 +220,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/&title=《Java 泛型的本质 开篇》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/&title=《纯函数与副作用，以及如何对》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -238,22 +230,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/&title=《Java 泛型的本质 开篇》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/&title=《纯函数与副作用，以及如何对》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java 泛型的本质 开篇》 — 9032676's Blog&url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《纯函数与副作用，以及如何对》 — 9032676's Blog&url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -273,21 +265,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/06/24/Codewars-Five-Fundamental-Monads/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Codewars: Haskell Five Fundamental Monads</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/04/Linux-partition-sizes-modify/" id="post-next" class="post-nav-link">
+      <a href="/2019/07/20/Category-Theory-2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">记录一次在 Linux 下增加分区大小的过程</h4>
+        <h4 class="title">一个 Haskeller 的范畴论入坑笔记 第二章：函数，类型与同态</h4>
       </a>
     </div>
   
@@ -358,7 +343,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/&title=《Java 泛型的本质 开篇》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/&title=《纯函数与副作用，以及如何对》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -368,22 +353,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/&title=《Java 泛型的本质 开篇》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/&title=《纯函数与副作用，以及如何对》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java 泛型的本质 开篇》 — 9032676's Blog&url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《纯函数与副作用，以及如何对》 — 9032676's Blog&url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/04/15/Java-generic-type-md/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/07/22/Pure-Function-and-Side-Effects/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -394,7 +379,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3a227EIAxF0fn/n05fK7VB+9ikKs7maTSXwGIkCxt/Pnhc38b6ndqnP+f6PDFkyJBxLONajrvvEGrt0/W8t8+RIUPGCxjrwHf3mn9/HUbXDBSUZciQIQMc13hwJAdHGTJkyHiOQd4nwVeGDBkyakksL8CRUEuS5EdycRkyZBzI4FX3v3/9yP2GDBkyjmJc4eClsc4S41XJkCFjNKP26HW5v3M07KxHhgwZb2B0Wit2lf7TzQp2WoYMGccy9rZTkO+nlwek5CdDhozZDFLQJwG3dj2ZBt/iFaYMGTJGMDopaHqIJEusbZ8MGTJmM3YtPV1urYHj8X9AhgwZ/5jBD3yd4yAv3sVBWYYMGUMZtQlI6stLZrVU9peeERkyZLyAwfPdWvKZ5tPB2mTIkDGawVPHNDWthWN+9Cy2hcmQIeNwRicd7RwNCTVotpAhQ8ZQRq1Altbna0fGdHYZMmTMY9R+1mmzSAMxSm5lyJAxmpEuMU1HeXGNpNPxoVCGDBmDGLtK+Xwj+MGRP02GDBlvY6SXBOtldVLZYnebDBkyhjLSH3daLtIZUeorQ4aMoYwrHPzaIG1d5YE7+B9kyJAxgpFeTO5qF1uHZrJ0HqZlyJAxg1ELsp2AWGsUQ91tMmTIGM3gk6UpbrpNJPTLkCFDRpqsdhJXvlmoT0SGDBky2gc4/kyS6G4IuDJkyDiKwUtptWMiWWK6HTJkyHgPI00d+VUlD9Nkxk7qK0OGjGMZXx/55PNvyp9jAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aUU7sQAwEQO5/afh90oPQbc/AIlW+ViibpII09rbn7S0+3v85/v/785mzz8/XOXzg4eHhLR79+dLP53zFTsD5OfXz4OHh4V3jJY/Y3vi5qMzulT8zHh4e3qvxNqXi+TptacHDw8P7K7y2gU5ii7bJxsPDw/tdXr5MJw8xix5mAcexrAUPDw+v63ijKdLrfL4y38PDw8NbT9WfF9xNVNEWoeHT4uHh4V3g5Qvuvu2uQ4S41f4m4MDDw8O7xmsX+jZEmJWHTUCMh4eHd4+XME4t5bNw4UDigoeHh3eUt2+LZwOw9hXPigQeHh7ePV5yubyRzV/TLKooygMeHh7eUV4bMSTtcr5xavNUUbiMh4eHd4136md/3i7nf5/FHFE9wcPDw1vwNhukkoHZJmtdxRZ4eHh4l3n5bWZLfL41YTZs++R8PDw8vAu8vP9sY99NULsfeuHh4eHd4802SM1igrYw5C+i3jSAh4eHt+ZtMs+8mc7b4ucIo7gLHh4e3o/w2kvsQ4R97Pvly8LDw8O7wMthSaeaL/R5qYgGXbPygIeHhzfi7TcEzKj54K3d8rXKWvDw8PBK3vPXZtsLWmQ9tcPDw8P7cd5zCzsLUvdjrfyO0YYwPDw8vMu8djzfRrptkchX+G+yFjw8PLwLvLMLehvCzqKH6NXg4eHhXePl0cA+ui0G//t/Bh4eHt5l3j4aaAtDu3GhHobh4eHhHeW9l0e+QLeLez4AK0oLHh4e3gXe5sf/bIjVjsrObszCw8PDO8WbRa6b9jdf1vdbtfDw8PDu8c42vu3Ivy0z0+AFDw8P73d4eWOdt8Vt4Sm+i4eHh/cCvNmC3m4vmIXFh1tqPDw8vEdePuafNdNt4nosYsbDw8O7wGt/0bcbp2b4i9M8PDw8vDnvA96VSt9WCZVEAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

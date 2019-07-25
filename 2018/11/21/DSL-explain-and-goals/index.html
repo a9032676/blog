@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>DSL：解释与设计目的 | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="DSL,代码设计">
+    <meta name="description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
+<meta name="keywords" content="DSL,代码设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSL：解释与设计目的">
+<meta property="og:url" content="http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-07-22T09:41:28.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DSL：解释与设计目的">
+<meta name="twitter:description" content="一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。 DSL 的本质与解释首先，我们来看看 Wiki 是怎么解释 DSL 的：  A domain-specific language (DSL) is a computer language specialized to a partic">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me">
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">DSL：解释与设计目的</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">DSL：解释与设计目的</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-21T14:29:41.000Z" itemprop="datePublished" class="page-time">
+  2018-11-21
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DSL-的本质与解释"><span class="post-toc-number">1.</span> <span class="post-toc-text">DSL 的本质与解释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DSL-的设计目标"><span class="post-toc-number">2.</span> <span class="post-toc-text">DSL 的设计目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#延伸阅读"><span class="post-toc-number">4.</span> <span class="post-toc-text">延伸阅读</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-DSL-explain-and-goals" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">DSL：解释与设计目的</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-21 22:29:41" datetime="2018-11-21T14:29:41.000Z" itemprop="datePublished">2018-11-21</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>一直以来，对于 DSL 这个词大家应该是既熟悉而又陌生，熟悉的是它写起来像啥样，陌生的是他的本质到底是什么，而今天作为第一篇在博客发布的文章就想来探讨一下这个问题。</p>
+<h2 id="DSL-的本质与解释"><a href="#DSL-的本质与解释" class="headerlink" title="DSL 的本质与解释"></a>DSL 的本质与解释</h2><p>首先，我们来看看 Wiki 是怎么解释 DSL 的：</p>
+<blockquote>
+<p>A domain-specific language (DSL) is a computer language specialized to a particular application domain. This is in contrast to a general-purpose language (GPL), which is broadly applicable across domains （原文出处：<a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener">Wiki: Domain-Specific Language</a>）</p>
+</blockquote>
+<p>而把上面择要翻译过来就是：DSL (领域特定语言) 是专注于某个应用程序领域的计算机语言，而对比起 GPL （通用程序设计语言，例如 Java / C / Python…），DSL 能够在特定的应用领域中具有更大的拓展性及其延伸性。看到这里可能还有部分人不明白这到底是怎么一回事，其实简单来说 DSL 就是为解决特定领域的事情而生的，如果曾经作为 Java 程序员，你可能会经常使用 Maven 跟 Gradle 这两款包管理器去管理你的依赖/库，而透过对比两者语法上更是大相径庭，例如 Maven 采用的是 XML 语法的标记语言，因此我们先来看一下在 Maven 引用依赖部分是怎么写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;group&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;project&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>而 Gradle 则是像这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile group: &quot;group&quot;, name: &quot;project&quot;, version: 1.0.0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上述看到的两种包管理框架语法差别都很大，而 Gradle 对比起 Maven 而言则要更为简洁，而这是为什么呢？最主要的其实就是这两者各自采用了不同种类的语法，Maven 采用的是基于 GPL 的标记语言： <a href="https://en.wikipedia.org/wiki/General-purpose_markup_language" target="_blank" rel="noopener">GPML (General-purpose markup languages)</a>，而 <code>GPML</code> 还包含了 <code>XML</code> <code>YAML</code> <code>GML</code> 等等。除此以外，我们想要在 Maven 里插入有关构建时执行的代码段（或是Task）是非常困难的，其 XML 语法的甚至都大大束缚了代码编写，例如 <code>if</code> <code>switch</code> 这一类流程控制的语法在 XML 上实现就显得非常困难或根本无法实现。由此可见，其实 Maven 虽然用了 XML，但其本身是基于 GPML 的，对于解决特定范畴的问题就显得特别的繁琐了。</p>
+<p>而 Gradle 呢？除了继承自 Groovy 的语法外，其本身还具有一个特性：为解决 Java，Kotlin，Scala 等包问题管理而推出的一种独立框架，也就三基于 DSL 设计思想出来的产物，而相较于 Maven，Gradle 其本身就是为了解决特定领域的问题而生的，其本身语法上导入包更简洁，而且可以比 Maven 更方便解决插入构建期的代码段，解决了 Maven 一直以来难以实现的地方。</p>
+<h2 id="DSL-的设计目标"><a href="#DSL-的设计目标" class="headerlink" title="DSL 的设计目标"></a>DSL 的设计目标</h2><p>DSL 的设计理应十分谨慎，在软件工程上，DSL 总是负责解决领域相关问题及应用于特定领域。一个良好的 DSL 语法设计可以有助于在特定领域更方便地使用，以至于提升开发效率。</p>
+<p>以下给出在 Wiki 给出的三个设计重点的定义，而且均是有别于 GPL 的：</p>
+<blockquote>
+<p>domain-specific languages are less comprehensive.<br>domain-specific languages are much more expressive in their domain.<br>domain-specific languages should exhibit minimal redundancy.</p>
+</blockquote>
+<ul>
+<li>DSL 相较于 GPL 而言范用性要低，因为需要专注于单个特定领域</li>
+<li>DSL 理应在特定领域上比基于 GPL 发挥的作用更大更广</li>
+<li>DSL 应该要尽可能地将（语法设计）冗余部分最小化，更为简单</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总括而言，虽然 GPL 出来的产物可以广泛地应用在不同领域上，例如序列化，上述的 Maven 包管理等，有些时候这类语言在解决某些领域上的特定问题就很困难。而 DSL 则可以解决某些特定领域的问题，而且提出该领域应用更优的解决方案，就如同上述的 Gradle，SQL 等。</p>
+<h2 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener">Domain-specific language - Wikipedia</a></li>
+<li><a href="https://stackoverflow.com/questions/809574/what-is-domain-specific-language-anybody-using-it-and-in-what-way" target="_blank" rel="noopener">What is domain specific language? Anybody using it? And in what way? - StackOverflow</a></li>
+<li><a href="https://www.jetbrains.com/mps/concepts/domain-specific-languages/" target="_blank" rel="noopener">Domain-Specific Languages - Jetbrains</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-07-22T09:41:28.162Z" itemprop="dateUpdated">2019-07-22 17:41:28</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSL/">DSL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码设计/">代码设计</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/&title=《DSL：解释与设计目的》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/&title=《DSL：解释与设计目的》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DSL：解释与设计目的》 — 9032676's Blog&url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">让 Lambda 特性使你的 Kotlin 代码更加优雅</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/&title=《DSL：解释与设计目的》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/&title=《DSL：解释与设计目的》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DSL：解释与设计目的》 — 9032676's Blog&url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2018/11/21/DSL-explain-and-goals/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aUY4CIRAEUO9/6dkDGLEKcJNhHl/GoMzbTUq64fWKx/U23t8fz3//1Hit1y8GBgbGbRnXcCSMdq0WPJ6DgYHxHMZ4yfGccQR/XDgO9CiUMTAwMIJg3TUfAwMDY51xBaON2nFYY2BgYOQPtKuV1hbJm2txDAyMGzLaNtl/vv7J+QYGBsatGFc51g84k7Zd/VQYGBhHM9rWWH7Noj1OaC9bYGBgYOShmRS6SRk8d/yJgYHxTMb66/ZaRovEwMB4MmPlkHK8zLgYzo8coq0hBgbGcYyVB8q3g+NvK8rUT8+JgYFxNGOuiN3VPpuL4OiUFQMD4zjG3KPPbe8S6lyDDwMD42xGG5f5hYn1llx9hImBgXEcY+4Kxa7tYLLdLMpXDAyMoxkrbf3kICHfFLbvfOkaYmBgHMFIIjKfs96SK0I2qcUxMDCOY+TRtrKhXGnVFQMDA+M4Rv7oLS+Z2V7I2BCyGBgYN2T8Lr/bttpKuGNgYJzNWLkE1jbLVmL3y1oYGBiPYSTXJubmz8VuccyAgYHxAEbblK+b9VNXLorSGgMD41DGVY651tuumI7+DxgYGMcx5hpnCbUN7rzozYttDAyMkxhtyK5coUi+oQ16DAyM5zBWgq/9c7SwqADGwMDAGM5pIzgJ4rzBh4GBgZEssKtl1l7g2Pa7gYGBcRPG3JYuKS/bkrW9moaBgfEERl46LhWZ5TWLdiuJgYFxKOMP0Em8KuP9rr4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
