@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="—写完前端代码后，就要开始写后端代码啦。不用新开一个文件夹，只用在根目录下新建一个server文件夹，用来存放后端的代码。 注意：是根目录不是src目录 ￼title: 一个 Haskeller 的范畴论入坑笔记 第二章：函数与其关系date: 2019-07-20 19:09:41tags:  范畴论 函数式编程   前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://blog.e7mc.com/2019/07/27/Category-Theory-2/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="—写完前端代码后，就要开始写后端代码啦。不用新开一个文件夹，只用在根目录下新建一个server文件夹，用来存放后端的代码。 注意：是根目录不是src目录 ￼title: 一个 Haskeller 的范畴论入坑笔记 第二章：函数与其关系date: 2019-07-20 19:09:41tags:  范畴论 函数式编程   前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.e7mc.com/images/mapping-1.png">
+<meta property="og:updated_time" content="2019-07-27T03:14:39.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="—写完前端代码后，就要开始写后端代码啦。不用新开一个文件夹，只用在根目录下新建一个server文件夹，用来存放后端的代码。 注意：是根目录不是src目录 ￼title: 一个 Haskeller 的范畴论入坑笔记 第二章：函数与其关系date: 2019-07-20 19:09:41tags:  范畴论 函数式编程   前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们">
+<meta name="twitter:image" content="http://blog.e7mc.com/images/mapping-1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me">
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-27T03:14:39.202Z" itemprop="datePublished" class="page-time">
+  2019-07-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数（Function）"><span class="post-toc-number">2.</span> <span class="post-toc-text">函数（Function）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数关系（Relationship-of-function）"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">函数关系（Relationship of function）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#陪域与像（Codomain-and-Image）"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">陪域与像（Codomain and Image）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#满射函数（Surjection-function）"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">满射函数（Surjection function）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Epimorphism（Epic）"><span class="post-toc-number">2.2.2.1.</span> <span class="post-toc-text">Epimorphism（Epic）</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单射函数（Injection-function）"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">单射函数（Injection function）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Monomorphism（Monic）"><span class="post-toc-number">2.2.3.1.</span> <span class="post-toc-text">Monomorphism（Monic）</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双射函数（Bijective-function）"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">双射函数（Bijective function）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#反函数与原像（Inverse-function-and-Preimages）"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">反函数与原像（Inverse function and Preimages）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#函数可逆性（Function-invertibility）"><span class="post-toc-number">2.2.5.1.</span> <span class="post-toc-text">函数可逆性（Function invertibility）</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#并不属于函数范畴的态射关系"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">并不属于函数范畴的态射关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#多值函数（Multivalued-function）"><span class="post-toc-number">2.2.6.1.</span> <span class="post-toc-text">多值函数（Multivalued function）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#偏函数（Partial-function）"><span class="post-toc-number">2.2.6.2.</span> <span class="post-toc-text">偏函数（Partial function）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同构（Isomorphism）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">同构（Isomorphism）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同态（Homomorphism）"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">同态（Homomorphism）</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Category-Theory-2" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-27 11:14:39" datetime="2019-07-27T03:14:39.202Z" itemprop="datePublished">2019-07-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>—写完前端代码后，就要开始写后端代码啦。<br>不用新开一个文件夹，只用在根目录下新建一个server文件夹，用来存放后端的代码。</p>
+<p>注意：是根目录不是src目录</p>
+<p>￼<br>title: 一个 Haskeller 的范畴论入坑笔记 第二章：函数与其关系<br>date: 2019-07-20 19:09:41<br>tags:</p>
+<ul>
+<li>范畴论</li>
+<li>函数式编程</li>
+</ul>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。</p>
+<h2 id="函数（Function）"><a href="#函数（Function）" class="headerlink" title="函数（Function）"></a>函数（Function）</h2><p>函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言的人心中对于函数所理解的了，即使是对于使用函数式编程开发的人，函数的概念多多少少与数学上也是有出入的。正因为在不同领域对函数的定义与概念都不一样，因此先让我们定义函数这个概念究竟是什么。</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>首先我们来回顾一下我在范畴论上一章对于态射（Morphism）与组合（Compose）的概念，且我们得知态射其实是可以被直接作为函数来看待的，在这里要再补充的是：对象（Object）在态射这个过程中不仅仅只是存在一个对象，而是可以有一个或多个对象在同时态射，就例如我们在数学上不仅可以定义两个整数为对象，然后把它们相加在一起（像 $5 + 8$ 这样），而加法本身也是个函数，而且这条函数本身并不仅能接受 $5$ 作为一个参数，然后返回 $8$，而是根据具体这条函数的定义域（Domain）来决定所接受的参数都有什么（例如在这我们设为 $\forall x.x \in \mathbb Z$），再把集合内的所有整数加上另外一个整数（例如 <code>map (+3) [1,2,3]</code> 或 $x + 3$），最后输出到新的集合 $Y$ 上，正如下图这样：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/mapping-1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>集合 $X$ 是作为定义域（Domain）出现的，然后我们把 $X$ 当中的元素给态射到集合 $Y$，即像 / 值域（Image / Range）上，因此使用映射关系也可以公理化成这样：$X \xrightarrow[f]{} Y$。</p>
+<h3 id="函数关系（Relationship-of-function）"><a href="#函数关系（Relationship-of-function）" class="headerlink" title="函数关系（Relationship of function）"></a>函数关系（Relationship of function）</h3><p>既然在概念上我们提到，函数之间的关系可以以集合映射的形式表示出来，因为这样可以更清晰地描述其中的关系。下面我们不妨来粗略地了解下函数的映射关系吧（详尽的定义可以参考维基）。</p>
+<h4 id="陪域与像（Codomain-and-Image）"><a href="#陪域与像（Codomain-and-Image）" class="headerlink" title="陪域与像（Codomain and Image）"></a>陪域与像（Codomain and Image）</h4><p>培域</p>
+<h4 id="满射函数（Surjection-function）"><a href="#满射函数（Surjection-function）" class="headerlink" title="满射函数（Surjection function）"></a>满射函数（Surjection function）</h4><p>满射的含义为完满，完全，所有的意思，也就是指对于在定义域集合上的所有对象（元素），</p>
+<h5 id="Epimorphism（Epic）"><a href="#Epimorphism（Epic）" class="headerlink" title="Epimorphism（Epic）"></a>Epimorphism（Epic）</h5><h4 id="单射函数（Injection-function）"><a href="#单射函数（Injection-function）" class="headerlink" title="单射函数（Injection function）"></a>单射函数（Injection function）</h4><h5 id="Monomorphism（Monic）"><a href="#Monomorphism（Monic）" class="headerlink" title="Monomorphism（Monic）"></a>Monomorphism（Monic）</h5><h4 id="双射函数（Bijective-function）"><a href="#双射函数（Bijective-function）" class="headerlink" title="双射函数（Bijective function）"></a>双射函数（Bijective function）</h4><p>透过观察在概念中 $X \xrightarrow[f]{} Y$ 的例子我们得知，左边的集合（定义域）与右边集合（像 / 值域）的对象是全部对应起来的，因为我们上面的定义域为 $\forall x.x \in \mathbb Z$（也就是对于所有 $x$，它们都属于整数这个集合），且是一一对应的，也就是 $1 \to 2$，$2 \to 3$，$3 \to 6$ 这样，它们并不会形成类似多对一，一对多的关系。因此我们可以把这种关系称之为双射（满射且单射）。</p>
+<h4 id="反函数与原像（Inverse-function-and-Preimages）"><a href="#反函数与原像（Inverse-function-and-Preimages）" class="headerlink" title="反函数与原像（Inverse function and Preimages）"></a>反函数与原像（Inverse function and Preimages）</h4><h5 id="函数可逆性（Function-invertibility）"><a href="#函数可逆性（Function-invertibility）" class="headerlink" title="函数可逆性（Function invertibility）"></a>函数可逆性（Function invertibility）</h5><h4 id="并不属于函数范畴的态射关系"><a href="#并不属于函数范畴的态射关系" class="headerlink" title="并不属于函数范畴的态射关系"></a>并不属于函数范畴的态射关系</h4><h5 id="多值函数（Multivalued-function）"><a href="#多值函数（Multivalued-function）" class="headerlink" title="多值函数（Multivalued function）"></a>多值函数（Multivalued function）</h5><h5 id="偏函数（Partial-function）"><a href="#偏函数（Partial-function）" class="headerlink" title="偏函数（Partial function）"></a>偏函数（Partial function）</h5><h3 id="同构（Isomorphism）"><a href="#同构（Isomorphism）" class="headerlink" title="同构（Isomorphism）"></a>同构（Isomorphism）</h3><h3 id="同态（Homomorphism）"><a href="#同态（Homomorphism）" class="headerlink" title="同态（Homomorphism）"></a>同态（Homomorphism）</h3>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-07-27T03:14:39.162Z" itemprop="dateUpdated">2019-07-27 11:14:39</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/&title=《No title》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/&title=《No title》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/07/27/Category-Theory-2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — 9032676's Blog&url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/22/Pure-Function-and-Side-Effects/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">纯函数与副作用，以及如何对其建模</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/&title=《No title》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/&title=《No title》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/07/27/Category-Theory-2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — 9032676's Blog&url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/07/27/Category-Theory-2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aS27DMAwFwN7/0u62QBvlkXKChhqtgqaxPV4Q/H19xef6cR59u/7/35/zq912MDAwPpZxLU9y496LeHT99d8fPgkGBsYBjHXgS265A14zoqCMgYGBUbx0EqyT62NgYGDcFXDzhDIpXzEwMDB2itgkIK6Twn9Ri2NgYHwgIy8y3//5JfMNDAyMj2JcxfO61PDaOBgYGLMZeYBLWmZ54pinnoXnwcDAGMrIQ2Q+vFwH0OoIIXp9GBgYBzDyVYk8Tby3xfYkuGNgYIxm9Br97wnT5dYbBgbGUEZ13FgdLibNtV7Z/EcRi4GBMZTRW8zKH3cr1csfGgMD4xjGflIYDRrjcUIelDEwMM5h5GXt60aS+W+jEIyBgTGC0Ssye0PHXhFb2BbBwMAYzVgH0Ori104x3ExSMTAwRjPyVC9fj8hDc/Liqu05DAyM2YxeW78XjntD0/IlMDAwBjHydLBXvubjhGoJjYGBcQ4jGSLmSVuVuvNqMDAwzmHcu+aVJ4vJUkWhiMXAwDiMsROI8+Zdkp5uBVwMDIxxjHzNKx9S7nTGyr/CwMAYyriKp9fW3xmIRuNMDAyM0YzqcLFHrd6+18jDwMCYzbhrDJCvTVQL2sLwEgMDYzSjFyh76V0v9YzyXAwMDIxiuz8PwTeUqRgYGBjFVK8aiHPekyIWAwNjNCMpYvMQXP3tTocfAwPjBMZO3lUtTauLYnetd2BgYHws4xtE9EHPa+1SHAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
