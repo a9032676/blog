@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.e7mc.com/"/>
-  <updated>2019-07-27T03:14:39.162Z</updated>
+  <updated>2019-07-25T15:46:23.915Z</updated>
   <id>http://blog.e7mc.com/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://blog.e7mc.com/2019/07/27/Category-Theory-2/"/>
-    <id>http://blog.e7mc.com/2019/07/27/Category-Theory-2/</id>
-    <published>2019-07-27T03:14:39.202Z</published>
-    <updated>2019-07-27T03:14:39.162Z</updated>
-    
-    <content type="html"><![CDATA[<p>—写完前端代码后，就要开始写后端代码啦。<br>不用新开一个文件夹，只用在根目录下新建一个server文件夹，用来存放后端的代码。</p><p>注意：是根目录不是src目录</p><p>￼<br>title: 一个 Haskeller 的范畴论入坑笔记 第二章：函数与其关系<br>date: 2019-07-20 19:09:41<br>tags:</p><ul><li>范畴论</li><li>函数式编程</li></ul><hr><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。</p><h2 id="函数（Function）"><a href="#函数（Function）" class="headerlink" title="函数（Function）"></a>函数（Function）</h2><p>函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言的人心中对于函数所理解的了，即使是对于使用函数式编程开发的人，函数的概念多多少少与数学上也是有出入的。正因为在不同领域对函数的定义与概念都不一样，因此先让我们定义函数这个概念究竟是什么。</p><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>首先我们来回顾一下我在范畴论上一章对于态射（Morphism）与组合（Compose）的概念，且我们得知态射其实是可以被直接作为函数来看待的，在这里要再补充的是：对象（Object）在态射这个过程中不仅仅只是存在一个对象，而是可以有一个或多个对象在同时态射，就例如我们在数学上不仅可以定义两个整数为对象，然后把它们相加在一起（像 $5 + 8$ 这样），而加法本身也是个函数，而且这条函数本身并不仅能接受 $5$ 作为一个参数，然后返回 $8$，而是根据具体这条函数的定义域（Domain）来决定所接受的参数都有什么（例如在这我们设为 $\forall x.x \in \mathbb Z$），再把集合内的所有整数加上另外一个整数（例如 <code>map (+3) [1,2,3]</code> 或 $x + 3$），最后输出到新的集合 $Y$ 上，正如下图这样：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/mapping-1.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>集合 $X$ 是作为定义域（Domain）出现的，然后我们把 $X$ 当中的元素给态射到集合 $Y$，即像 / 值域（Image / Range）上，因此使用映射关系也可以公理化成这样：$X \xrightarrow[f]{} Y$。</p><h3 id="函数关系（Relationship-of-function）"><a href="#函数关系（Relationship-of-function）" class="headerlink" title="函数关系（Relationship of function）"></a>函数关系（Relationship of function）</h3><p>既然在概念上我们提到，函数之间的关系可以以集合映射的形式表示出来，因为这样可以更清晰地描述其中的关系。下面我们不妨来粗略地了解下函数的映射关系吧（详尽的定义可以参考维基）。</p><h4 id="陪域与像（Codomain-and-Image）"><a href="#陪域与像（Codomain-and-Image）" class="headerlink" title="陪域与像（Codomain and Image）"></a>陪域与像（Codomain and Image）</h4><p>培域</p><h4 id="满射函数（Surjection-function）"><a href="#满射函数（Surjection-function）" class="headerlink" title="满射函数（Surjection function）"></a>满射函数（Surjection function）</h4><p>满射的含义为完满，完全，所有的意思，也就是指对于在定义域集合上的所有对象（元素），</p><h5 id="Epimorphism（Epic）"><a href="#Epimorphism（Epic）" class="headerlink" title="Epimorphism（Epic）"></a>Epimorphism（Epic）</h5><h4 id="单射函数（Injection-function）"><a href="#单射函数（Injection-function）" class="headerlink" title="单射函数（Injection function）"></a>单射函数（Injection function）</h4><h5 id="Monomorphism（Monic）"><a href="#Monomorphism（Monic）" class="headerlink" title="Monomorphism（Monic）"></a>Monomorphism（Monic）</h5><h4 id="双射函数（Bijective-function）"><a href="#双射函数（Bijective-function）" class="headerlink" title="双射函数（Bijective function）"></a>双射函数（Bijective function）</h4><p>透过观察在概念中 $X \xrightarrow[f]{} Y$ 的例子我们得知，左边的集合（定义域）与右边集合（像 / 值域）的对象是全部对应起来的，因为我们上面的定义域为 $\forall x.x \in \mathbb Z$（也就是对于所有 $x$，它们都属于整数这个集合），且是一一对应的，也就是 $1 \to 2$，$2 \to 3$，$3 \to 6$ 这样，它们并不会形成类似多对一，一对多的关系。因此我们可以把这种关系称之为双射（满射且单射）。</p><h4 id="反函数与原像（Inverse-function-and-Preimages）"><a href="#反函数与原像（Inverse-function-and-Preimages）" class="headerlink" title="反函数与原像（Inverse function and Preimages）"></a>反函数与原像（Inverse function and Preimages）</h4><h5 id="函数可逆性（Function-invertibility）"><a href="#函数可逆性（Function-invertibility）" class="headerlink" title="函数可逆性（Function invertibility）"></a>函数可逆性（Function invertibility）</h5><h4 id="并不属于函数范畴的态射关系"><a href="#并不属于函数范畴的态射关系" class="headerlink" title="并不属于函数范畴的态射关系"></a>并不属于函数范畴的态射关系</h4><h5 id="多值函数（Multivalued-function）"><a href="#多值函数（Multivalued-function）" class="headerlink" title="多值函数（Multivalued function）"></a>多值函数（Multivalued function）</h5><h5 id="偏函数（Partial-function）"><a href="#偏函数（Partial-function）" class="headerlink" title="偏函数（Partial function）"></a>偏函数（Partial function）</h5><h3 id="同构（Isomorphism）"><a href="#同构（Isomorphism）" class="headerlink" title="同构（Isomorphism）"></a>同构（Isomorphism）</h3><h3 id="同态（Homomorphism）"><a href="#同态（Homomorphism）" class="headerlink" title="同态（Homomorphism）"></a>同态（Homomorphism）</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;—写完前端代码后，就要开始写后端代码啦。&lt;br&gt;不用新开一个文件夹，只用在根目录下新建一个server文件夹，用来存放后端的代码。&lt;/p&gt;
-&lt;p&gt;注意：是根目录不是src目录&lt;/p&gt;
-&lt;p&gt;￼&lt;br&gt;title: 一个 Haskeller 的范畴论入坑笔记 第二章：函数与其
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>纯函数与副作用，以及如何对其建模</title>
@@ -59,7 +36,32 @@
     </summary>
     
     
+      <category term="函数式编程" scheme="http://blog.e7mc.com/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
       <category term="Haskell" scheme="http://blog.e7mc.com/tags/Haskell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个 Haskeller 的范畴论入坑笔记 第二章：函数与其关系</title>
+    <link href="http://blog.e7mc.com/2019/07/20/Category-Theory-2/"/>
+    <id>http://blog.e7mc.com/2019/07/20/Category-Theory-2/</id>
+    <published>2019-07-20T11:09:41.000Z</published>
+    <updated>2019-07-27T03:16:44.958Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。</p><h2 id="函数（Function）"><a href="#函数（Function）" class="headerlink" title="函数（Function）"></a>函数（Function）</h2><p>函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言的人心中对于函数所理解的了，即使是对于使用函数式编程开发的人，函数的概念多多少少与数学上也是有出入的。正因为在不同领域对函数的定义与概念都不一样，因此先让我们定义函数这个概念究竟是什么。</p><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>首先我们来回顾一下我在范畴论上一章对于态射（Morphism）与组合（Compose）的概念，且我们得知态射其实是可以被直接作为函数来看待的，在这里要再补充的是：对象（Object）在态射这个过程中不仅仅只是存在一个对象，而是可以有一个或多个对象在同时态射，就例如我们在数学上不仅可以定义两个整数为对象，然后把它们相加在一起（像 $5 + 8$ 这样），而加法本身也是个函数，而且这条函数本身并不仅能接受 $5$ 作为一个参数，然后返回 $8$，而是根据具体这条函数的定义域（Domain）来决定所接受的参数都有什么（例如在这我们设为 $\forall x.x \in \mathbb Z$），再把集合内的所有整数加上另外一个整数（例如 <code>map (+3) [1,2,3]</code> 或 $x + 3$），最后输出到新的集合 $Y$ 上，正如下图这样：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/mapping-1.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>集合 $X$ 是作为定义域（Domain）出现的，然后我们把 $X$ 当中的元素给态射到集合 $Y$，即像 / 值域（Image / Range）上，因此使用映射关系也可以公理化成这样：$X \xrightarrow[f]{} Y$。</p><h3 id="函数关系（Relationship-of-function）"><a href="#函数关系（Relationship-of-function）" class="headerlink" title="函数关系（Relationship of function）"></a>函数关系（Relationship of function）</h3><p>既然在概念上我们提到，函数之间的关系可以以集合映射的形式表示出来，因为这样可以更清晰地描述其中的关系。下面我们不妨来粗略地了解下函数的映射关系吧（详尽的定义可以参考维基）。</p><h4 id="陪域与像（Codomain-and-Image）"><a href="#陪域与像（Codomain-and-Image）" class="headerlink" title="陪域与像（Codomain and Image）"></a>陪域与像（Codomain and Image）</h4><p>培域</p><h4 id="满射函数（Surjection-function）"><a href="#满射函数（Surjection-function）" class="headerlink" title="满射函数（Surjection function）"></a>满射函数（Surjection function）</h4><p>满射的含义为完满，完全，所有的意思，也就是指对于在定义域集合上的所有对象（元素），</p><h5 id="Epimorphism（Epic）"><a href="#Epimorphism（Epic）" class="headerlink" title="Epimorphism（Epic）"></a>Epimorphism（Epic）</h5><h4 id="单射函数（Injection-function）"><a href="#单射函数（Injection-function）" class="headerlink" title="单射函数（Injection function）"></a>单射函数（Injection function）</h4><h5 id="Monomorphism（Monic）"><a href="#Monomorphism（Monic）" class="headerlink" title="Monomorphism（Monic）"></a>Monomorphism（Monic）</h5><h4 id="双射函数（Bijective-function）"><a href="#双射函数（Bijective-function）" class="headerlink" title="双射函数（Bijective function）"></a>双射函数（Bijective function）</h4><p>透过观察在概念中 $X \xrightarrow[f]{} Y$ 的例子我们得知，左边的集合（定义域）与右边集合（像 / 值域）的对象是全部对应起来的，因为我们上面的定义域为 $\forall x.x \in \mathbb Z$（也就是对于所有 $x$，它们都属于整数这个集合），且是一一对应的，也就是 $1 \to 2$，$2 \to 3$，$3 \to 6$ 这样，它们并不会形成类似多对一，一对多的关系。因此我们可以把这种关系称之为双射（满射且单射）。</p><h4 id="反函数与原像（Inverse-function-and-Preimages）"><a href="#反函数与原像（Inverse-function-and-Preimages）" class="headerlink" title="反函数与原像（Inverse function and Preimages）"></a>反函数与原像（Inverse function and Preimages）</h4><h5 id="函数可逆性（Function-invertibility）"><a href="#函数可逆性（Function-invertibility）" class="headerlink" title="函数可逆性（Function invertibility）"></a>函数可逆性（Function invertibility）</h5><h4 id="并不属于函数范畴的态射关系"><a href="#并不属于函数范畴的态射关系" class="headerlink" title="并不属于函数范畴的态射关系"></a>并不属于函数范畴的态射关系</h4><h5 id="多值函数（Multivalued-function）"><a href="#多值函数（Multivalued-function）" class="headerlink" title="多值函数（Multivalued function）"></a>多值函数（Multivalued function）</h5><h5 id="偏函数（Partial-function）"><a href="#偏函数（Partial-function）" class="headerlink" title="偏函数（Partial function）"></a>偏函数（Partial function）</h5><h3 id="同构（Isomorphism）"><a href="#同构（Isomorphism）" class="headerlink" title="同构（Isomorphism）"></a>同构（Isomorphism）</h3><h3 id="同态（Homomorphism）"><a href="#同态（Homomorphism）" class="headerlink" title="同态（Homomorphism）"></a>同态（Homomorphism）</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数
+      
+    
+    </summary>
+    
+    
+      <category term="范畴论" scheme="http://blog.e7mc.com/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
     
       <category term="函数式编程" scheme="http://blog.e7mc.com/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
