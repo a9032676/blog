@@ -30,7 +30,7 @@
 <meta property="og:description" content="前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。 函数（Function）函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.e7mc.com/images/mapping-1.png">
-<meta property="og:updated_time" content="2019-07-27T03:16:44.958Z">
+<meta property="og:updated_time" content="2019-08-07T04:20:06.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第二章：函数与其关系">
 <meta name="twitter:description" content="前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。 函数（Function）函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言">
@@ -200,7 +200,7 @@
                 <div class="image-caption"></div>
             </figure><br>集合 $X$ 是作为定义域（Domain）出现的，然后我们把 $X$ 当中的元素给态射到集合 $Y$，即像 / 值域（Image / Range）上，因此使用映射关系也可以公理化成这样：$X \xrightarrow[f]{} Y$。</p>
 <h3 id="函数关系（Relationship-of-function）"><a href="#函数关系（Relationship-of-function）" class="headerlink" title="函数关系（Relationship of function）"></a>函数关系（Relationship of function）</h3><p>既然在概念上我们提到，函数之间的关系可以以集合映射的形式表示出来，因为这样可以更清晰地描述其中的关系。下面我们不妨来粗略地了解下函数的映射关系吧（详尽的定义可以参考维基）。</p>
-<h4 id="陪域与像（Codomain-and-Image）"><a href="#陪域与像（Codomain-and-Image）" class="headerlink" title="陪域与像（Codomain and Image）"></a>陪域与像（Codomain and Image）</h4><p>培域</p>
+<h4 id="陪域与像（Codomain-and-Image）"><a href="#陪域与像（Codomain-and-Image）" class="headerlink" title="陪域与像（Codomain and Image）"></a>陪域与像（Codomain and Image）</h4><p>培域就相当于一个于一个函数</p>
 <h4 id="满射函数（Surjection-function）"><a href="#满射函数（Surjection-function）" class="headerlink" title="满射函数（Surjection function）"></a>满射函数（Surjection function）</h4><p>满射的含义为完满，完全，所有的意思，也就是指对于在定义域集合上的所有对象（元素），</p>
 <h5 id="Epimorphism（Epic）"><a href="#Epimorphism（Epic）" class="headerlink" title="Epimorphism（Epic）"></a>Epimorphism（Epic）</h5><h4 id="单射函数（Injection-function）"><a href="#单射函数（Injection-function）" class="headerlink" title="单射函数（Injection function）"></a>单射函数（Injection function）</h4><h5 id="Monomorphism（Monic）"><a href="#Monomorphism（Monic）" class="headerlink" title="Monomorphism（Monic）"></a>Monomorphism（Monic）</h5><h4 id="双射函数（Bijective-function）"><a href="#双射函数（Bijective-function）" class="headerlink" title="双射函数（Bijective function）"></a>双射函数（Bijective function）</h4><p>透过观察在概念中 $X \xrightarrow[f]{} Y$ 的例子我们得知，左边的集合（定义域）与右边集合（像 / 值域）的对象是全部对应起来的，因为我们上面的定义域为 $\forall x.x \in \mathbb Z$（也就是对于所有 $x$，它们都属于整数这个集合），且是一一对应的，也就是 $1 \to 2$，$2 \to 3$，$3 \to 6$ 这样，它们并不会形成类似多对一，一对多的关系。因此我们可以把这种关系称之为双射（满射且单射）。</p>
 <h4 id="反函数与原像（Inverse-function-and-Preimages）"><a href="#反函数与原像（Inverse-function-and-Preimages）" class="headerlink" title="反函数与原像（Inverse function and Preimages）"></a>反函数与原像（Inverse function and Preimages）</h4><h5 id="函数可逆性（Function-invertibility）"><a href="#函数可逆性（Function-invertibility）" class="headerlink" title="函数可逆性（Function invertibility）"></a>函数可逆性（Function invertibility）</h5><h4 id="并不属于函数范畴的态射关系"><a href="#并不属于函数范畴的态射关系" class="headerlink" title="并不属于函数范畴的态射关系"></a>并不属于函数范畴的态射关系</h4><h5 id="多值函数（Multivalued-function）"><a href="#多值函数（Multivalued-function）" class="headerlink" title="多值函数（Multivalued function）"></a>多值函数（Multivalued function）</h5><h5 id="偏函数（Partial-function）"><a href="#偏函数（Partial-function）" class="headerlink" title="偏函数（Partial function）"></a>偏函数（Partial function）</h5><h3 id="同构（Isomorphism）"><a href="#同构（Isomorphism）" class="headerlink" title="同构（Isomorphism）"></a>同构（Isomorphism）</h3><h3 id="同态（Homomorphism）"><a href="#同态（Homomorphism）" class="headerlink" title="同态（Homomorphism）"></a>同态（Homomorphism）</h3>
@@ -211,7 +211,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-27T03:16:44.958Z" itemprop="dateUpdated">2019-07-27 11:16:44</time>
+    Last updated: <time datetime="2019-08-07T04:20:06.879Z" itemprop="dateUpdated">2019-08-07 12:20:06</time>
 </span><br>
 
 
