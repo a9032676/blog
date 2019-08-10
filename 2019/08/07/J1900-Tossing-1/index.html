@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="NAS,硬盘分区,ArchLinux,系统安装">
+    <meta name="keywords" content="NAS,ArchLinux,硬盘分区,系统安装">
     <meta name="description" content="最近本来有打算直接入手一台 Synology 主机的，但经过一个朋友的推介，最终我选择了星际蜗牛搭载 ArchLinux 作为 NAS 使用。 简介由于收到时店家已经为我预装好 Synology (黑群辉）了，本来不太打算怎么折腾直接使用的，但想了想为了日后更好的可自定义化最终还是使用了数天之后展开了重装的旅程（ArchLinux 真香。 配置 CPU: Intel(R) Celeron(R) C">
-<meta name="keywords" content="NAS,硬盘分区,ArchLinux,系统安装">
+<meta name="keywords" content="NAS,ArchLinux,硬盘分区,系统安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="星际蜗牛折腾记 第一章：安装 ArchLinux">
 <meta property="og:url" content="http://blog.e7mc.com/2019/08/07/J1900-Tossing-1/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="最近本来有打算直接入手一台 Synology 主机的，但经过一个朋友的推介，最终我选择了星际蜗牛搭载 ArchLinux 作为 NAS 使用。 简介由于收到时店家已经为我预装好 Synology (黑群辉）了，本来不太打算怎么折腾直接使用的，但想了想为了日后更好的可自定义化最终还是使用了数天之后展开了重装的旅程（ArchLinux 真香。 配置 CPU: Intel(R) Celeron(R) C">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-08-09T08:28:04.589Z">
+<meta property="og:updated_time" content="2019-08-09T16:32:16.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="星际蜗牛折腾记 第一章：安装 ArchLinux">
 <meta name="twitter:description" content="最近本来有打算直接入手一台 Synology 主机的，但经过一个朋友的推介，最终我选择了星际蜗牛搭载 ArchLinux 作为 NAS 使用。 简介由于收到时店家已经为我预装好 Synology (黑群辉）了，本来不太打算怎么折腾直接使用的，但想了想为了日后更好的可自定义化最终还是使用了数天之后展开了重装的旅程（ArchLinux 真香。 配置 CPU: Intel(R) Celeron(R) C">
@@ -238,7 +238,7 @@
 <h3 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h3><h4 id="配置-hosts-文件"><a href="#配置-hosts-文件" class="headerlink" title="配置 hosts 文件"></a>配置 hosts 文件</h4><p>现在我们编辑 <code>/etc/hosts</code> 文件，使 hosts 文件生效，下面是我的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1	localhost</span><br><span class="line">::1		localhost</span><br><span class="line">127.0.1.1	90-ArchLinux</span><br></pre></td></tr></table></figure></p>
 <h4 id="添加网卡配置"><a href="#添加网卡配置" class="headerlink" title="添加网卡配置"></a>添加网卡配置</h4><p>我们可以使用在 base 包自带的 <code>netctl</code> 进行有线网络配置：</p>
 <ol>
-<li>在命令行环境下先输入 <code>netctl addr</code> 查询未启动或未被分配有 IP 的网卡，我这里查询出来的是 enp1s0 与 enp4s0，因为接了网线的网口是下面的所以盲猜应该是 enp4s0。</li>
+<li>在命令行环境下先输入 <code>ip link</code> 查询未启动或未被分配有 IP 的网卡，我这里查询出来的是 enp1s0 与 enp4s0，因为接了网线的网口是下面的所以盲猜应该是 enp4s0。</li>
 <li>使用 <code>nano /etc/netctl/enp4s0</code> 创建并编辑网卡配置（请把下述所有内容的 enp4s0 替换成你网卡配置的名字）：</li>
 </ol>
 <p>DHCP 动态分配 IP 请使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Interface=enp4s0</span><br><span class="line">Connection=ethernet</span><br><span class="line">IP=dhcp</span><br></pre></td></tr></table></figure></p>
@@ -251,9 +251,9 @@
 </ol>
 <h3 id="设置-Root-密码"><a href="#设置-Root-密码" class="headerlink" title="设置 Root 密码"></a>设置 Root 密码</h3><p>设置 Root 密码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># passwd</span><br></pre></td></tr></table></figure></p>
 <h3 id="设置启动引导"><a href="#设置启动引导" class="headerlink" title="设置启动引导"></a>设置启动引导</h3><p>在完成上述所有的步骤之后，现在来到最关键的一步了。在我们把系统配置完成之后，系统本身并不会自行引导并启动系统的，因此我们需要安装启动引导器（Bootloader），而官方给出了一整个 <a href="https://wiki.archlinux.org/index.php/Arch_boot_process#Boot_loader" target="_blank" rel="noopener">启动引导器列表</a> 供我们选择。</p>
-<p>在这里我选用了 Grub 作为我的引导器，因此下面会列出 Grub 的安装流程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S grub efibootmgr</span><br><span class="line"># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</span><br><span class="line"># grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>在这里我选用了 Grub 作为我的引导器，因此下面会列出 Grub 的安装流程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S grub efibootmgr os-prober</span><br><span class="line"># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</span><br><span class="line"># grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></p>
 <ol>
-<li>使用 pacman 下载并安装 grub 与 efibootmgr 包</li>
+<li>使用 pacman 下载并安装 grub，efibootmgr 与 os-prober 包</li>
 <li>执行 grub-install 指令安装，我这里使用的是 UEFI 架构，因此设置 <code>--target</code> 为 <code>x86_64-efi</code>，而 efi 路径则设置为上面创建好的 <code>/boot</code> 路径（也为ESP）即可。</li>
 <li>执行 grub-mkconfig 以生成 grub 的默认配置文件</li>
 </ol>
@@ -267,7 +267,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-09T08:28:04.589Z" itemprop="dateUpdated">2019-08-09 16:28:04</time>
+    Last updated: <time datetime="2019-08-09T16:32:16.842Z" itemprop="dateUpdated">2019-08-10 00:32:16</time>
 </span><br>
 
 
