@@ -36,9 +36,9 @@
     </summary>
     
     
-      <category term="ArchLinux" scheme="http://blog.e7mc.com/tags/ArchLinux/"/>
-    
       <category term="NAS" scheme="http://blog.e7mc.com/tags/NAS/"/>
+    
+      <category term="ArchLinux" scheme="http://blog.e7mc.com/tags/ArchLinux/"/>
     
       <category term="Docker" scheme="http://blog.e7mc.com/tags/Docker/"/>
     
@@ -64,13 +64,13 @@
     </summary>
     
     
-      <category term="ArchLinux" scheme="http://blog.e7mc.com/tags/ArchLinux/"/>
-    
       <category term="NAS" scheme="http://blog.e7mc.com/tags/NAS/"/>
     
-      <category term="RAID" scheme="http://blog.e7mc.com/tags/RAID/"/>
+      <category term="ArchLinux" scheme="http://blog.e7mc.com/tags/ArchLinux/"/>
     
       <category term="硬盘分区" scheme="http://blog.e7mc.com/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
+    
+      <category term="RAID" scheme="http://blog.e7mc.com/tags/RAID/"/>
     
   </entry>
   
@@ -94,9 +94,9 @@
     </summary>
     
     
-      <category term="ArchLinux" scheme="http://blog.e7mc.com/tags/ArchLinux/"/>
-    
       <category term="NAS" scheme="http://blog.e7mc.com/tags/NAS/"/>
+    
+      <category term="ArchLinux" scheme="http://blog.e7mc.com/tags/ArchLinux/"/>
     
       <category term="硬盘分区" scheme="http://blog.e7mc.com/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
     
