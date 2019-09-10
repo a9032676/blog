@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.e7mc.com/"/>
-  <updated>2019-09-10T17:12:32.367Z</updated>
+  <updated>2019-09-10T19:57:29.741Z</updated>
   <id>http://blog.e7mc.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://blog.e7mc.com/2019/08/26/Category-Theory-3/"/>
     <id>http://blog.e7mc.com/2019/08/26/Category-Theory-3/</id>
     <published>2019-08-25T16:04:44.000Z</published>
-    <updated>2019-09-10T17:12:32.367Z</updated>
+    <updated>2019-09-10T19:57:29.741Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！</p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知道的是除了第二章提及的函数关系外，我们究竟还可以拿组合来研究些什么，而排序就是一个很好例子了。</p><p>例如我们有时候会说 $a$ 小于或等于 $b$，而 $b$ 小于或等于 $c$，那么必然蕴含了 $a \leq c$（传递性），这里不难看出实际上排序关系其实也是一个简单的组合，只不过我们把对应的态射给替换成具体我们定义的二元关系 $\leq$ 罢了。<br>$$<br>\begin{align}<br>a \xrightarrow[\leq]{} b \xrightarrow[\leq]{} c \\<br>a \xrightarrow[\leq]{} c<br>\end{align}<br>$$</p><h2 id="排序关系（Order-Relationship）"><a href="#排序关系（Order-Relationship）" class="headerlink" title="排序关系（Order Relationship）"></a>排序关系（Order Relationship）</h2><p>排序关系是对排序在直觉上的自然诠释，同样是属于一种二元关系，它们各自有不同的特性，下面将会介绍一些较为常见的排序关系。</p><h3 id="预序（Preorder（Quasiorder））"><a href="#预序（Preorder（Quasiorder））" class="headerlink" title="预序（Preorder（Quasiorder））"></a>预序（Preorder（Quasiorder））</h3><p>预序关系满足了自反性（Reflexive）及传递性（Transitive），作为排序关系来讲预序可以将其概念进一步推广至等价关系以及非严谨（Non-Strict）的偏序关系。而由预序关系所组成的集合被称为预序集合（Preordered set or Proset）</p><p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个预序关系，例如：</p><ul><li>自反性：$\forall a \in P, a \leq a$</li><li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$（传递性）</li></ul><h3 id="偏序（Partial-order）"><a href="#偏序（Partial-order）" class="headerlink" title="偏序（Partial order）"></a>偏序（Partial order）</h3><p>如果我们将预序进行推广，并加上反对称性（Anti-symmetric）作为约束，那么我们说这个二元关系就是偏序关系。</p><p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个偏序关系，例如：</p><ul><li>自反性：$\forall a \in P, a \leq a$</li><li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$</li><li>反对称性：$\forall a, b \in P$，若 $a \leq b$ 且 $b \leq a$，则蕴含了 $a = b$</li></ul><h3 id="全序（Total-order）"><a href="#全序（Total-order）" class="headerlink" title="全序（Total order）"></a>全序（Total order）</h3><p>同样地，我们甚至可以再将预序关系进一步推广，设 $R$ 为二元关系，限制某一个序的二元关系为 $aRb \lor bRa$，即完全性（Connex）作为约束，那么得出来的这个关系就叫做全序关系。</p><p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个全序关系，例如：</p><ul><li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$</li><li>反对称性：$\forall a, b \in P$，若 $a \leq b$ 且 $b \leq a$，则蕴含了 $a = b$</li><li>完全性：$\forall a, b \in P, a \leq b \lor b \leq a$ （但注意其已蕴含了自反关系，因为 $\forall a, b \in P, a \leq a \lor b \leq b$）</li></ul><h2 id="排序在范畴论上的关系（Order-in-Category-Theory）"><a href="#排序在范畴论上的关系（Order-in-Category-Theory）" class="headerlink" title="排序在范畴论上的关系（Order in Category Theory）"></a>排序在范畴论上的关系（Order in Category Theory）</h2><h2 id="么半群（Monoid）"><a href="#么半群（Monoid）" class="headerlink" title="么半群（Monoid）"></a>么半群（Monoid）</h2><h2 id="Kleisli-范畴（Kleisli-Category）"><a href="#Kleisli-范畴（Kleisli-Category）" class="headerlink" title="Kleisli 范畴（Kleisli Category）"></a>Kleisli 范畴（Kleisli Category）</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！</p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知道的是除了第二章提及的函数关系外，我们究竟还可以拿组合来研究些什么，而排序就是一个很好例子了。</p><p>例如我们有时候会说 $a$ 小于或等于 $b$，而 $b$ 小于或等于 $c$，那么必然蕴含了 $a \leq c$（传递性），这里不难看出实际上排序关系其实也是一个简单的组合，只不过我们把对应的态射给替换成具体我们定义的二元关系 $\leq$ 罢了。<br>$$<br>\begin{align}<br>a \xrightarrow[\leq]{} b \xrightarrow[\leq]{} c \\<br>a \xrightarrow[\leq]{} c<br>\end{align}<br>$$</p><h2 id="排序关系（Order-Relationship）"><a href="#排序关系（Order-Relationship）" class="headerlink" title="排序关系（Order Relationship）"></a>排序关系（Order Relationship）</h2><p>排序关系是对排序在直觉上的自然诠释，同样是属于一种二元关系，它们各自有不同的特性，下面将会介绍一些较为常见的排序关系。</p><h3 id="预序（Preorder（Quasiorder））"><a href="#预序（Preorder（Quasiorder））" class="headerlink" title="预序（Preorder（Quasiorder））"></a>预序（Preorder（Quasiorder））</h3><p>预序关系满足了自反性（Reflexive）及传递性（Transitive），作为排序关系来讲预序可以将其概念进一步推广至等价关系以及非严谨（Non-Strict）的偏序关系。而由预序关系所组成的集合被称为预序集合（Preordered set or Proset）</p><p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个预序关系，例如：</p><ul><li>自反性：$\forall a \in P, a \leq a$</li><li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$（传递性）</li></ul><h3 id="偏序（Partial-order）"><a href="#偏序（Partial-order）" class="headerlink" title="偏序（Partial order）"></a>偏序（Partial order）</h3><p>如果我们将预序进行推广，并加上反对称性（Anti-symmetric）作为约束，那么我们说这个二元关系就是偏序关系。</p><p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个偏序关系，例如：</p><ul><li>自反性：$\forall a \in P, a \leq a$</li><li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$</li><li>反对称性：$\forall a, b \in P$，若 $a \leq b$ 且 $b \leq a$，则蕴含了 $a = b$</li></ul><h3 id="全序（Total-order）"><a href="#全序（Total-order）" class="headerlink" title="全序（Total order）"></a>全序（Total order）</h3><p>同样地，我们甚至可以再将预序关系进一步推广，设 $R$ 为二元关系，限制某一个序的二元关系为 $aRb \lor bRa$，即完全性（Connex）作为约束，那么得出来的这个关系就叫做全序关系。</p><p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个全序关系，例如：</p><ul><li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$</li><li>反对称性：$\forall a, b \in P$，若 $a \leq b$ 且 $b \leq a$，则蕴含了 $a = b$</li><li>完全性：$\forall a, b \in P, a \leq b \lor b \leq a$ （但注意其已蕴含了自反关系，因为 $\forall a, b \in P, a \leq a \lor b \leq b$）</li></ul><h2 id="排序在范畴论上的关系（Order-in-Category-Theory）"><a href="#排序在范畴论上的关系（Order-in-Category-Theory）" class="headerlink" title="排序在范畴论上的关系（Order in Category Theory）"></a>排序在范畴论上的关系（Order in Category Theory）</h2><h3 id="瘦范畴（Thin-category（or-Posetal-category））"><a href="#瘦范畴（Thin-category（or-Posetal-category））" class="headerlink" title="瘦范畴（Thin category（or Posetal category））"></a>瘦范畴（Thin category（or Posetal category））</h3><p>对于上面的排序关系，在范畴上又是怎么样的呢？其实也是很简单的，因为上面所提及到的排序关系其实天然就是一种范畴，比如在开头时我们举过的例子：对于最基础的排序关系，也就是预序关系，我们可以很轻易地把它对应到范畴论上的概念，就如同把二元关系（$\leq$）替换成态射（$\to$）一样，这就已经满足了传递性质了。</p><p>那么自反性呢？对于自反这一概念，由于我们上面已经得知自反的定义，其实不难发现其实也就是范畴上恰巧有一个态射的跟自反性的概念一模一样，那就是单位元态射（Identity morphism）了（因为同样地可以把 $\leq$ 替换成单位元态射 $id_a$，例如：$ a \xrightarrow[id_a]{\leq} a $）。</p><h2 id="么半群（Monoid）"><a href="#么半群（Monoid）" class="headerlink" title="么半群（Monoid）"></a>么半群（Monoid）</h2><h2 id="Kleisli-范畴（Kleisli-Category）"><a href="#Kleisli-范畴（Kleisli-Category）" class="headerlink" title="Kleisli 范畴（Kleisli Category）"></a>Kleisli 范畴（Kleisli Category）</h2>]]></content>
     
     <summary type="html">
     
@@ -35,9 +35,9 @@
     </summary>
     
     
-      <category term="范畴论" scheme="http://blog.e7mc.com/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
-    
       <category term="函数式编程" scheme="http://blog.e7mc.com/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="范畴论" scheme="http://blog.e7mc.com/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
     
   </entry>
   
@@ -174,9 +174,9 @@
     </summary>
     
     
-      <category term="范畴论" scheme="http://blog.e7mc.com/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
-    
       <category term="函数式编程" scheme="http://blog.e7mc.com/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="范畴论" scheme="http://blog.e7mc.com/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
     
   </entry>
   
@@ -199,9 +199,9 @@
     </summary>
     
     
-      <category term="范畴论" scheme="http://blog.e7mc.com/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
-    
       <category term="函数式编程" scheme="http://blog.e7mc.com/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="范畴论" scheme="http://blog.e7mc.com/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
     
   </entry>
   

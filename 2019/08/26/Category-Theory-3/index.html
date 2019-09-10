@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="范畴论,函数式编程">
+    <meta name="keywords" content="函数式编程,范畴论">
     <meta name="description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知">
-<meta name="keywords" content="范畴论,函数式编程">
+<meta name="keywords" content="函数式编程,范畴论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴">
 <meta property="og:url" content="http://blog.e7mc.com/2019/08/26/Category-Theory-3/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-09-10T17:12:32.367Z">
+<meta property="og:updated_time" content="2019-09-10T19:57:29.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴">
 <meta name="twitter:description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知">
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -165,7 +165,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序关系（Order-Relationship）"><span class="post-toc-number">3.</span> <span class="post-toc-text">排序关系（Order Relationship）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预序（Preorder（Quasiorder））"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">预序（Preorder（Quasiorder））</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#偏序（Partial-order）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">偏序（Partial order）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全序（Total-order）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">全序（Total order）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序在范畴论上的关系（Order-in-Category-Theory）"><span class="post-toc-number">4.</span> <span class="post-toc-text">排序在范畴论上的关系（Order in Category Theory）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#么半群（Monoid）"><span class="post-toc-number">5.</span> <span class="post-toc-text">么半群（Monoid）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kleisli-范畴（Kleisli-Category）"><span class="post-toc-number">6.</span> <span class="post-toc-text">Kleisli 范畴（Kleisli Category）</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序关系（Order-Relationship）"><span class="post-toc-number">3.</span> <span class="post-toc-text">排序关系（Order Relationship）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预序（Preorder（Quasiorder））"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">预序（Preorder（Quasiorder））</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#偏序（Partial-order）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">偏序（Partial order）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全序（Total-order）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">全序（Total order）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序在范畴论上的关系（Order-in-Category-Theory）"><span class="post-toc-number">4.</span> <span class="post-toc-text">排序在范畴论上的关系（Order in Category Theory）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#瘦范畴（Thin-category（or-Posetal-category））"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">瘦范畴（Thin category（or Posetal category））</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#么半群（Monoid）"><span class="post-toc-number">5.</span> <span class="post-toc-text">么半群（Monoid）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kleisli-范畴（Kleisli-Category）"><span class="post-toc-number">6.</span> <span class="post-toc-text">Kleisli 范畴（Kleisli Category）</span></a></li></ol>
         </nav>
     </aside>
 
@@ -212,7 +212,9 @@
 <li>反对称性：$\forall a, b \in P$，若 $a \leq b$ 且 $b \leq a$，则蕴含了 $a = b$</li>
 <li>完全性：$\forall a, b \in P, a \leq b \lor b \leq a$ （但注意其已蕴含了自反关系，因为 $\forall a, b \in P, a \leq a \lor b \leq b$）</li>
 </ul>
-<h2 id="排序在范畴论上的关系（Order-in-Category-Theory）"><a href="#排序在范畴论上的关系（Order-in-Category-Theory）" class="headerlink" title="排序在范畴论上的关系（Order in Category Theory）"></a>排序在范畴论上的关系（Order in Category Theory）</h2><h2 id="么半群（Monoid）"><a href="#么半群（Monoid）" class="headerlink" title="么半群（Monoid）"></a>么半群（Monoid）</h2><h2 id="Kleisli-范畴（Kleisli-Category）"><a href="#Kleisli-范畴（Kleisli-Category）" class="headerlink" title="Kleisli 范畴（Kleisli Category）"></a>Kleisli 范畴（Kleisli Category）</h2>
+<h2 id="排序在范畴论上的关系（Order-in-Category-Theory）"><a href="#排序在范畴论上的关系（Order-in-Category-Theory）" class="headerlink" title="排序在范畴论上的关系（Order in Category Theory）"></a>排序在范畴论上的关系（Order in Category Theory）</h2><h3 id="瘦范畴（Thin-category（or-Posetal-category））"><a href="#瘦范畴（Thin-category（or-Posetal-category））" class="headerlink" title="瘦范畴（Thin category（or Posetal category））"></a>瘦范畴（Thin category（or Posetal category））</h3><p>对于上面的排序关系，在范畴上又是怎么样的呢？其实也是很简单的，因为上面所提及到的排序关系其实天然就是一种范畴，比如在开头时我们举过的例子：对于最基础的排序关系，也就是预序关系，我们可以很轻易地把它对应到范畴论上的概念，就如同把二元关系（$\leq$）替换成态射（$\to$）一样，这就已经满足了传递性质了。</p>
+<p>那么自反性呢？对于自反这一概念，由于我们上面已经得知自反的定义，其实不难发现其实也就是范畴上恰巧有一个态射的跟自反性的概念一模一样，那就是单位元态射（Identity morphism）了（因为同样地可以把 $\leq$ 替换成单位元态射 $id_a$，例如：$ a \xrightarrow[id_a]{\leq} a $）。</p>
+<h2 id="么半群（Monoid）"><a href="#么半群（Monoid）" class="headerlink" title="么半群（Monoid）"></a>么半群（Monoid）</h2><h2 id="Kleisli-范畴（Kleisli-Category）"><a href="#Kleisli-范畴（Kleisli-Category）" class="headerlink" title="Kleisli 范畴（Kleisli Category）"></a>Kleisli 范畴（Kleisli Category）</h2>
         </div>
 
         <blockquote class="post-copyright">
@@ -220,7 +222,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-09-10T17:12:32.367Z" itemprop="dateUpdated">2019-09-11 01:12:32</time>
+    Last updated: <time datetime="2019-09-10T19:57:29.741Z" itemprop="dateUpdated">2019-09-11 03:57:29</time>
 </span><br>
 
 
@@ -351,7 +353,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
