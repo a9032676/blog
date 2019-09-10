@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="范畴论,函数式编程">
+    <meta name="keywords" content="函数式编程,范畴论">
     <meta name="description" content="前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。 函数（Function）函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言">
-<meta name="keywords" content="范畴论,函数式编程">
+<meta name="keywords" content="函数式编程,范畴论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第二章：函数与范畴关系">
 <meta property="og:url" content="http://blog.e7mc.com/2019/07/20/Category-Theory-2/index.html">
@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.e7mc.com/images/mapping-1.png">
 <meta property="og:image" content="http://blog.e7mc.com/images/mapping-2.png">
-<meta property="og:updated_time" content="2019-08-31T03:48:16.742Z">
+<meta property="og:updated_time" content="2019-09-10T16:29:29.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第二章：函数与范畴关系">
 <meta name="twitter:description" content="前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。 函数（Function）函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言">
@@ -129,7 +129,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -224,7 +224,7 @@
 <h3 id="满同态（Epimorphism（Epic））"><a href="#满同态（Epimorphism（Epic））" class="headerlink" title="满同态（Epimorphism（Epic））"></a>满同态（Epimorphism（Epic））</h3><p>满同态在范畴论上的概念几乎等同于集合论（或集合范畴 $C_{Set}$）的满射函数，在这里我们不妨也给出 $f : A \to B$ 以及 $g_x : B \to C$，对于态射 $g_1$, $g_2$，若它们均与 $f$ 结合，即 $g_1 \circ f$ 与 $g_2 \circ f$ 隐含了 $g_1 = g_2$ （因为我们可以右消除（Right cancellable） $f$，像这样：$g_1 \require{cancel} \cancel{\circ f} = g_2 \cancel{\circ f}$），所以 $A \twoheadrightarrow B$ 是满同态的。</p>
 <h3 id="同构（Isomorphism）"><a href="#同构（Isomorphism）" class="headerlink" title="同构（Isomorphism）"></a>同构（Isomorphism）</h3><p>同构的皆指在范畴在态射之间保持了不变的结构，换句话说就是一样的结构，假设我们有态射 $f : A \to B$，若这个态射是同构关系，那么它肯定保留了可逆以及对称性，所以有 $g : B \to A$。而因每个对象本身都存在单位元，例如每次当 $g \circ f$ 绕回来的时候其实也就等同于 $id_A$，因此保有如下性质：$g \circ f = id_A$ 以及 $f \circ g = id_B$。</p>
 <p>而在 Haskell 中我们能很简单的定义一个类型表示同构关系：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type ISO a b = (a -&gt; b, b -&gt; a)</span><br></pre></td></tr></table></figure></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本篇略略介绍了一些简单的基础函数与同态的关系，所以当然关系是不止这么一点的，后续会慢慢提及到。而了解清楚这些关系之后在写代码时也有助于看清楚函数背后的真面目，亦为日后进一步研究范畴论铺路出力。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本篇略略介绍了一些简单的基础函数与同态的关系，所以当然关系是不止这么一点的，后续会慢慢提及到。而了解清楚这些关系之后在写代码时也有助于看清楚函数背后的细节与作用，使逻辑条理更为清晰。</p>
 
         </div>
 
@@ -233,7 +233,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-31T03:48:16.742Z" itemprop="dateUpdated">2019-08-31 11:48:16</time>
+    最終更新：<time datetime="2019-09-10T16:29:29.609Z" itemprop="dateUpdated">2019-09-11 00:29:29</time>
 </span><br>
 
 
@@ -371,7 +371,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
