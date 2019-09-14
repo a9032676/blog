@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="范畴论,函数式编程">
+    <meta name="keywords" content="函数式编程,范畴论">
     <meta name="description" content="前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。 函数（Function）函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言">
-<meta name="keywords" content="范畴论,函数式编程">
+<meta name="keywords" content="函数式编程,范畴论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第二章：函数与范畴关系">
 <meta property="og:url" content="http://blog.e7mc.com/2019/07/20/Category-Theory-2/index.html">
@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.e7mc.com/images/mapping-1.png">
 <meta property="og:image" content="http://blog.e7mc.com/images/mapping-2.png">
-<meta property="og:updated_time" content="2019-09-10T16:29:29.609Z">
+<meta property="og:updated_time" content="2019-09-12T20:26:32.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第二章：函数与范畴关系">
 <meta name="twitter:description" content="前言要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。 函数（Function）函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言">
@@ -193,7 +193,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。</p>
 <h2 id="函数（Function）"><a href="#函数（Function）" class="headerlink" title="函数（Function）"></a>函数（Function）</h2><p>函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程语言的人心中对于函数所理解的了，即使是对于使用函数式编程开发的人，函数的概念多多少少与数学上也是有出入的。正因为在不同领域对函数的定义与概念都不一样，因此先让我们定义函数这个概念究竟是什么。</p>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>首先我们来回顾一下我在范畴论上一章对于态射（Morphism）与组合（Compose）的概念，且我们得知态射其实是可以被直接作为函数来看待的，在这里要再补充的是：对象（Object）在态射这个过程中不仅仅只是存在一个对象，而是可以有一个或多个对象在同时态射，就例如我们在数学上不仅可以定义两个整数为对象，然后把它们相加在一起（像 $5 + 8$ 这样），而加法本身也是个函数，而且这条函数本身并不仅能接受 $5$ 作为一个参数，然后返回 $8$，而是根据具体这条函数的定义域（Domain）来决定所接受的参数都有什么（例如在这我们设为 $\forall x.x \in \mathbb Z$），再把集合内的所有整数加上另外一个整数（例如 <code>map (+3) [1,2,3]</code> 或 $x + 3$），最后输出到新的集合 $Y$ 上，正如下图这样：<br><figure class="image-bubble">
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>首先我们来回顾一下我在范畴论上一章对于态射（Morphism）与复合（Compose）的概念，且我们得知态射其实是可以被直接作为函数来看待的，在这里要再补充的是：对象（Object）在态射这个过程中不仅仅只是存在一个对象，而是可以有一个或多个对象在同时态射，就例如我们在数学上不仅可以定义两个整数为对象，然后把它们相加在一起（像 $5 + 8$ 这样），而加法本身也是个函数，而且这条函数本身并不仅能接受 $5$ 作为一个参数，然后返回 $8$，而是根据具体这条函数的定义域（Domain）来决定所接受的参数都有什么（例如在这我们设为 $\forall x.x \in \mathbb Z$），再把集合内的所有整数加上另外一个整数（例如 <code>map (+3) [1,2,3]</code> 或 $x + 3$），最后输出到新的集合 $Y$ 上，正如下图这样：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="/images/mapping-1.png" alt="" title="">
@@ -233,7 +233,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-10T16:29:29.609Z" itemprop="dateUpdated">2019-09-11 00:29:29</time>
+    Last updated: <time datetime="2019-09-12T20:26:32.235Z" itemprop="dateUpdated">2019-09-13 04:26:32</time>
 </span><br>
 
 
@@ -322,7 +322,7 @@
     <div class="waves-block waves-effect next">
       <a href="/2019/07/19/Category-Theory-1/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">一个 Haskeller 的范畴论入坑笔记 第一章: 组合的本质</h4>
+        <h4 class="title">一个 Haskeller 的范畴论入坑笔记 第一章: 复合的本质</h4>
       </a>
     </div>
   

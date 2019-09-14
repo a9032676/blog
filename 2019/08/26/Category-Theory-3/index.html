@@ -14,25 +14,25 @@
     
     
     
-    <title>一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴 | 9032676&#39;s Blog | 为探索而生</title>
+    <title>一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴 | 9032676&#39;s Blog | 为探索而生</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="范畴论,函数式编程">
-    <meta name="description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知">
-<meta name="keywords" content="范畴论,函数式编程">
+    <meta name="keywords" content="函数式编程,范畴论">
+    <meta name="description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解复合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种态射复合（Morphism composition），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再">
+<meta name="keywords" content="函数式编程,范畴论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴">
+<meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴">
 <meta property="og:url" content="http://blog.e7mc.com/2019/08/26/Category-Theory-3/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
-<meta property="og:description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知">
+<meta property="og:description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解复合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种态射复合（Morphism composition），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-09-10T19:57:29.741Z">
+<meta property="og:updated_time" content="2019-09-14T18:09:03.294Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴">
-<meta name="twitter:description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知">
+<meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴">
+<meta name="twitter:description" content="前言为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解复合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念既然范畴论里面我们要讨论的东西无非就是各种态射复合（Morphism composition），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再">
     
         <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
@@ -120,7 +120,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴</div>
+        <div class="flex-col header-title ellipsis">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -142,7 +142,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴</h1>
+        <h1 class="title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-08-25T16:04:44.000Z" itemprop="datePublished" class="page-time">
@@ -165,7 +165,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序关系（Order-Relationship）"><span class="post-toc-number">3.</span> <span class="post-toc-text">排序关系（Order Relationship）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预序（Preorder（Quasiorder））"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">预序（Preorder（Quasiorder））</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#偏序（Partial-order）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">偏序（Partial order）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全序（Total-order）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">全序（Total order）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序在范畴论上的关系（Order-in-Category-Theory）"><span class="post-toc-number">4.</span> <span class="post-toc-text">排序在范畴论上的关系（Order in Category Theory）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#瘦范畴（Thin-category（or-Posetal-category））"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">瘦范畴（Thin category（or Posetal category））</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#么半群（Monoid）"><span class="post-toc-number">5.</span> <span class="post-toc-text">么半群（Monoid）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kleisli-范畴（Kleisli-Category）"><span class="post-toc-number">6.</span> <span class="post-toc-text">Kleisli 范畴（Kleisli Category）</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序关系（Order-Relationship）"><span class="post-toc-number">3.</span> <span class="post-toc-text">排序关系（Order Relationship）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预序（Preorder（Quasiorder））"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">预序（Preorder（Quasiorder））</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#偏序（Partial-order）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">偏序（Partial order）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全序（Total-order）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">全序（Total order）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序在范畴论上的关系（Order-in-Category-Theory）"><span class="post-toc-number">4.</span> <span class="post-toc-text">排序在范畴论上的关系（Order in Category Theory）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hom-集合（Hom-set）"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Hom-集合（Hom-set）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与态射复合的关系（Relationship-with-composition）"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">与态射复合的关系（Relationship with composition）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小范畴与大范畴（Small-and-large-category）"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">小范畴与大范畴（Small and large category）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Thin-范畴（Thin-Category（or-Posetal-category））"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Thin 范畴（Thin Category（or Posetal category））</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是或不是一个-Thin-范畴？（Is-or-not-a-Thin-category-）"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">是或不是一个 Thin 范畴？（Is or not a Thin category?）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与预序集合的关系（Relationship-with-proset）"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">与预序集合的关系（Relationship with proset）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与偏序集合的关系（Relationship-with-poset）"><span class="post-toc-number">4.3.3.</span> <span class="post-toc-text">与偏序集合的关系（Relationship with poset）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#推广至同构与等价关系（Up-to-Isomorphism-and-Equivalence）"><span class="post-toc-number">4.3.4.</span> <span class="post-toc-text">推广至同构与等价关系（Up to Isomorphism and Equivalence）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#么半群（Monoid）"><span class="post-toc-number">5.</span> <span class="post-toc-text">么半群（Monoid）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-Haskell-上使用（Works-with-Haskell）"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">在 Haskell 上使用（Works with Haskell）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kleisli-范畴（Kleisli-Category）"><span class="post-toc-number">6.</span> <span class="post-toc-text">Kleisli 范畴（Kleisli Category）</span></a></li></ol>
         </nav>
     </aside>
 
@@ -173,7 +173,7 @@
 <article id="post-Category-Theory-3" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴</h1>
+        <h1 class="post-card-title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-08-26 00:04:44" datetime="2019-08-25T16:04:44.000Z" itemprop="datePublished">2019-08-26</time>
 
@@ -188,15 +188,15 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解组合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>既然范畴论里面我们要讨论的东西无非就是各种 Composition（组合），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知道的是除了第二章提及的函数关系外，我们究竟还可以拿组合来研究些什么，而排序就是一个很好例子了。</p>
-<p>例如我们有时候会说 $a$ 小于或等于 $b$，而 $b$ 小于或等于 $c$，那么必然蕴含了 $a \leq c$（传递性），这里不难看出实际上排序关系其实也是一个简单的组合，只不过我们把对应的态射给替换成具体我们定义的二元关系 $\leq$ 罢了。<br>$$<br>\begin{align}<br>a \xrightarrow[\leq]{} b \xrightarrow[\leq]{} c \\<br>a \xrightarrow[\leq]{} c<br>\end{align}<br>$$</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解复合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>既然范畴论里面我们要讨论的东西无非就是各种态射复合（Morphism composition），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就不再重提。而我们现在要知道的是除了第二章提及的函数关系外，我们究竟还可以拿复合来研究些什么，而排序就是一个很好例子了。</p>
+<p>例如我们有时候会说 $a$ 小于或等于 $b$，而 $b$ 小于或等于 $c$，那么必然蕴含了 $a \leq c$（传递性），这里不难看出实际上排序关系其实也是一个简单的复合，只不过我们把对应的态射给替换成具体我们定义的二元关系 $\leq$ 罢了。<br>$$<br>a \xrightarrow[\leq]{} b \xrightarrow[\leq]{} c \\<br>a \xrightarrow[\leq]{} c<br>$$</p>
 <h2 id="排序关系（Order-Relationship）"><a href="#排序关系（Order-Relationship）" class="headerlink" title="排序关系（Order Relationship）"></a>排序关系（Order Relationship）</h2><p>排序关系是对排序在直觉上的自然诠释，同样是属于一种二元关系，它们各自有不同的特性，下面将会介绍一些较为常见的排序关系。</p>
 <h3 id="预序（Preorder（Quasiorder））"><a href="#预序（Preorder（Quasiorder））" class="headerlink" title="预序（Preorder（Quasiorder））"></a>预序（Preorder（Quasiorder））</h3><p>预序关系满足了自反性（Reflexive）及传递性（Transitive），作为排序关系来讲预序可以将其概念进一步推广至等价关系以及非严谨（Non-Strict）的偏序关系。而由预序关系所组成的集合被称为预序集合（Preordered set or Proset）</p>
 <p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个预序关系，例如：</p>
 <ul>
 <li>自反性：$\forall a \in P, a \leq a$</li>
-<li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$（传递性）</li>
+<li>传递性：$\forall a, b, c \in P$，若 $a \leq b$ 且 $b \leq c$，则 $a \leq c$</li>
 </ul>
 <h3 id="偏序（Partial-order）"><a href="#偏序（Partial-order）" class="headerlink" title="偏序（Partial order）"></a>偏序（Partial order）</h3><p>如果我们将预序进行推广，并加上反对称性（Anti-symmetric）作为约束，那么我们说这个二元关系就是偏序关系。</p>
 <p>现在设 $\leq$ 是 P 上的二元关系，若果满足下列性质，则称这是一个偏序关系，例如：</p>
@@ -212,9 +212,24 @@
 <li>反对称性：$\forall a, b \in P$，若 $a \leq b$ 且 $b \leq a$，则蕴含了 $a = b$</li>
 <li>完全性：$\forall a, b \in P, a \leq b \lor b \leq a$ （但注意其已蕴含了自反关系，因为 $\forall a, b \in P, a \leq a \lor b \leq b$）</li>
 </ul>
-<h2 id="排序在范畴论上的关系（Order-in-Category-Theory）"><a href="#排序在范畴论上的关系（Order-in-Category-Theory）" class="headerlink" title="排序在范畴论上的关系（Order in Category Theory）"></a>排序在范畴论上的关系（Order in Category Theory）</h2><h3 id="瘦范畴（Thin-category（or-Posetal-category））"><a href="#瘦范畴（Thin-category（or-Posetal-category））" class="headerlink" title="瘦范畴（Thin category（or Posetal category））"></a>瘦范畴（Thin category（or Posetal category））</h3><p>对于上面的排序关系，在范畴上又是怎么样的呢？其实也是很简单的，因为上面所提及到的排序关系其实天然就是一种范畴，比如在开头时我们举过的例子：对于最基础的排序关系，也就是预序关系，我们可以很轻易地把它对应到范畴论上的概念，就如同把二元关系（$\leq$）替换成态射（$\to$）一样，这就已经满足了传递性质了。</p>
+<h2 id="排序在范畴论上的关系（Order-in-Category-Theory）"><a href="#排序在范畴论上的关系（Order-in-Category-Theory）" class="headerlink" title="排序在范畴论上的关系（Order in Category Theory）"></a>排序在范畴论上的关系（Order in Category Theory）</h2><p>对于上面的排序关系，如果把它们的性质在范畴论中呈现出来又是怎么样的呢？其实也是很简单的，因为上面所提及到的排序关系其实天然就是一种范畴，比如在开头时我们举过的例子：对于最基础的排序关系，也就是预序关系，我们可以很轻易地把它对应到范畴论上的概念，就如同把二元关系（$\leq$）替换成态射（$\to$）一样，这就已经满足了传递性质了。</p>
 <p>那么自反性呢？对于自反这一概念，由于我们上面已经得知自反的定义，其实不难发现其实也就是范畴上恰巧有一个态射的跟自反性的概念一模一样，那就是单位元态射（Identity morphism）了（因为同样地可以把 $\leq$ 替换成单位元态射 $id_a$，例如：$ a \xrightarrow[id_a]{\leq} a $）。</p>
-<h2 id="么半群（Monoid）"><a href="#么半群（Monoid）" class="headerlink" title="么半群（Monoid）"></a>么半群（Monoid）</h2><h2 id="Kleisli-范畴（Kleisli-Category）"><a href="#Kleisli-范畴（Kleisli-Category）" class="headerlink" title="Kleisli 范畴（Kleisli Category）"></a>Kleisli 范畴（Kleisli Category）</h2>
+<h3 id="Hom-集合（Hom-set）"><a href="#Hom-集合（Hom-set）" class="headerlink" title="Hom-集合（Hom-set）"></a>Hom-集合（Hom-set）</h3><p>我们的范畴并不总是只有一个态射在其内，而是可以存在很多态射由不同的对象映射到范畴内的其他对象去，例如在范畴 $C$ 内我们有 $a$ 与 $b$ 这两个对象，存在态射 $f, g, h$，它们均是由 $a$ 被态射至对象 $b$ 上，因此这些态射本身可以组成一个由 $a$ 态射至 $b$ 的 Hom-集合，一般写作 $C(a, b)$ 或 $hom_C (a, b)$。</p>
+<h4 id="与态射复合的关系（Relationship-with-composition）"><a href="#与态射复合的关系（Relationship-with-composition）" class="headerlink" title="与态射复合的关系（Relationship with composition）"></a>与态射复合的关系（Relationship with composition）</h4><p>态射复合对于 Hom-集合 来讲也是可以被公理化地写出来的，例如存在对象 $a, b, c$，对于态射 $f \in hom(a, b)$ 以及 $g \in hom(b, c)$，我们可以写成这样：<br>$$ hom(a, b) \times hom(b, c) \implies hom(a, c) $$</p>
+<h3 id="小范畴与大范畴（Small-and-large-category）"><a href="#小范畴与大范畴（Small-and-large-category）" class="headerlink" title="小范畴与大范畴（Small and large category）"></a>小范畴与大范畴（Small and large category）</h3><h3 id="Thin-范畴（Thin-Category（or-Posetal-category））"><a href="#Thin-范畴（Thin-Category（or-Posetal-category））" class="headerlink" title="Thin 范畴（Thin Category（or Posetal category））"></a>Thin 范畴（Thin Category（or Posetal category））</h3><p>当然地，满足了上述性质的范畴当然有个名字，被称为 Thin 范畴，含义即 “瘦” 的意思，也就是当一个范畴内当且仅当存在唯一态射，那么这个范畴就会 “瘦” 到只剩这么一个了。</p>
+<p>设有 $hom_C (a, b)$，分别由 $f$ 与 $g$ 从 $a$ 被态射至 $b$，则蕴含了 $f = g$，形式化定义为：<br>$$ a \overset{f}{\underset{g}\rightrightarrows} b \implies f=g $$</p>
+<h4 id="是或不是一个-Thin-范畴？（Is-or-not-a-Thin-category-）"><a href="#是或不是一个-Thin-范畴？（Is-or-not-a-Thin-category-）" class="headerlink" title="是或不是一个 Thin 范畴？（Is or not a Thin category?）"></a>是或不是一个 Thin 范畴？（Is or not a Thin category?）</h4><p>有时候一些范畴看着并不像是一个 Thin 范畴，假设有范畴 $C$，且存在对象 $a, b, c, d$，而在 $Commutative-Diagram$ 上如下：</p>
+<p>$$ \array{&amp; a &amp; \overset{f}\rightarrow &amp; b &amp; \\<br>            f’ &amp; \downarrow &amp;&amp;\downarrow &amp; g \\<br>           &amp;c &amp; \underset{g’}\rightarrow&amp; d &amp; \\<br>} $$</p>
+<p>我们可以注意到在这个例子中 $hom(a, d)$ 上都看似存在着两条路径，貌似直觉上告诉我们这不是一个 Thin 范畴，因为 “当且仅当存在唯一态射” 这句话告诉了我们如果多于一个态射，那它就不算是 Thin 范畴。</p>
+<p>但事实真是这样吗？要知道范畴最重要的概念之一就是态射复合，而当我们把 $f \circ g$ 之后它的态射实际会相等于 $f’ \circ g’$，因为：<br>$$ hom(a, b) \times hom(b, d) = hom(a, c) \times hom(c, d) \implies hom(a, d) $$</p>
+<p>所以实际上透过态射复合后，这两条路径在交换图上的态射将被视为等价的，亦即只被视为存在唯一态射，而不是两个态射，因此这也是属于 Thin 范畴。</p>
+<h4 id="与预序集合的关系（Relationship-with-proset）"><a href="#与预序集合的关系（Relationship-with-proset）" class="headerlink" title="与预序集合的关系（Relationship with proset）"></a>与预序集合的关系（Relationship with proset）</h4><p>我们常常会把预序集合在范畴论上视作为 Thin 范畴，当然它天生也就是一个 Thin 范畴，但这又怎么去解释呢？现在先假设我们要去比较一个自然数，且他们，例如我们要整除 $6$ 这个数，并将整除结果由预序关系排列出来，可得：$3 \leq 6$，$2 \leq 6$，$1 \leq 6$，可见无论是先 $1 \leq 3 \leq 6$ 或是 $1 \leq 2 \leq 6$，最终的结果都会是 $1 \leq 6$。这里就是一个态射复合后，它们的结果始终相同的一个例子，而最终 $\leq$ 在态射复合后始终都只有存在唯一态射，而不像函数那样大多数情况均有很多态射从定义域被映射到值域，因此这符合了 Thin 范畴的定义，并且天然是一个 Thin 范畴了。</p>
+<h4 id="与偏序集合的关系（Relationship-with-poset）"><a href="#与偏序集合的关系（Relationship-with-poset）" class="headerlink" title="与偏序集合的关系（Relationship with poset）"></a>与偏序集合的关系（Relationship with poset）</h4><p>一般来说既然我们可以对预序集合和 Thin 范畴产生联系，那么按理来说偏序集合与 Thin 范畴也是可以对应得上的。而这里得知偏序实际只比预序关系多了反对称的特性，但这并没有使得偏序集合上会多于唯一的态射，它该是一个还是只有一个，因此偏序集合自然地也是 Thin 范畴了。</p>
+<p>而反对称性我们又怎么在 Thin 范畴上描述出来呢？我们知道当存在反对称性（即 $a \leq b \leq a \implies a = b$），那么这个关系肯定是可互逆（Inverse）的，而现在我们对同构关系进行观察发现，实际上同构关系恰巧就是描述了这种关系，因此我们可以将其定义形式化地写成这样（亦即同构关系）：<br>$$ a \overset{f}{\underset{g}\leftrightarrows} b \implies f=g $$</p>
+<h4 id="推广至同构与等价关系（Up-to-Isomorphism-and-Equivalence）"><a href="#推广至同构与等价关系（Up-to-Isomorphism-and-Equivalence）" class="headerlink" title="推广至同构与等价关系（Up to Isomorphism and Equivalence）"></a>推广至同构与等价关系（Up to Isomorphism and Equivalence）</h4><p>Thin 范畴与预序以及偏序集合的关系上面已经有了个大致的描述了，总括而言只要我们将 Thin 范畴推广至等价关系，亦即态射是并行且相等的，那么它们就是预序了。而偏序关系上面也已经提及到了，对于一个态射可以逆转回去，那么这就变成一个偏序关系了。</p>
+<h2 id="么半群（Monoid）"><a href="#么半群（Monoid）" class="headerlink" title="么半群（Monoid）"></a>么半群（Monoid）</h2><p>对于范畴 $C$ 内的对象 $x$，我们都知道存在单位元态射 $id_f$，但这种单位元态射难道就只能存在一个了吗？当然不是，我们甚至可以有多个单位元态射，例如 $id_f, id_g, id_h, … \in hom(x, x)$，将它们透过态射复合将会亦将得到：<br>$$<br>x \circ id_f = x \\<br>x \circ id_f \circ id_g = x \\<br>x \circ id_f \circ id_g \circ id_h = x \\<br>x \circ id_f \circ id_g \circ id_h \circ … = x<br>$$</p>
+<p>即其实单位元态射可存在无穷多个的，而对于这种一直都存在多个单位元态射且态射至自身的结构我们就称之为么半群。 </p>
+<h3 id="在-Haskell-上使用（Works-with-Haskell）"><a href="#在-Haskell-上使用（Works-with-Haskell）" class="headerlink" title="在 Haskell 上使用（Works with Haskell）"></a>在 Haskell 上使用（Works with Haskell）</h3><h2 id="Kleisli-范畴（Kleisli-Category）"><a href="#Kleisli-范畴（Kleisli-Category）" class="headerlink" title="Kleisli 范畴（Kleisli Category）"></a>Kleisli 范畴（Kleisli Category）</h2>
         </div>
 
         <blockquote class="post-copyright">
@@ -222,7 +237,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-10T19:57:29.741Z" itemprop="dateUpdated">2019-09-11 03:57:29</time>
+    Last updated: <time datetime="2019-09-14T18:09:03.294Z" itemprop="dateUpdated">2019-09-15 02:09:03</time>
 </span><br>
 
 
@@ -252,7 +267,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -262,7 +277,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -272,7 +287,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -375,7 +390,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -385,7 +400,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -395,7 +410,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
