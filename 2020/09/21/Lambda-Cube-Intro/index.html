@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>Lambda 立方体 与 类型系统 简记 | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="函数式编程,类型论,逻辑,计算机编程理论">
+    <meta name="description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
+<meta name="keywords" content="函数式编程,类型论,逻辑,计算机编程理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lambda 立方体 与 类型系统 简记">
+<meta property="og:url" content="http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-09-26T18:17:08.094Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lambda 立方体 与 类型系统 简记">
+<meta name="twitter:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me"  >
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Lambda 立方体 与 类型系统 简记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Lambda 立方体 与 类型系统 简记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-09-21T07:45:00.000Z" itemprop="datePublished" class="page-time">
+  2020-09-21
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三种不同的维度分别代表的含义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">三种不同的维度分别代表的含义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类型系统"><span class="post-toc-number">2.</span> <span class="post-toc-text">类型系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lambdato-简单类型-lambda-演算"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">(\(\lambda\to\)) 简单类型 Lambda 演算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类型推导规则"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">类型推导规则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lambdato_curry-与-lambdato_church-的差异"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">\(\lambda\to_{Curry}\) 与 \(\lambda\to_{Church}\) 的差异</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lambda-2-系统-f"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">(\(\lambda 2\)) 系统 F</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类型推导规则-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">类型推导规则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#进一步的扩展规则"><span class="post-toc-number">2.2.1.1.</span> <span class="post-toc-text">进一步的扩展规则</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编程上的例子"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">编程上的例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lambdaunderlineomega-系统-lambdaunderlineomega"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">(\(\lambda\underline{\omega}\)) 系统 \(\lambda\underline{\omega}\)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#kind-的引入"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">Kind (\(*\)) 的引入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#kind-集合-bbbk-与-kind-构造器-类型构造器"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">Kind 集合 (\(\Bbb{K}\)) 与 \(Kind\) 构造器 (类型构造器)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类型推导规则-2"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">类型推导规则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编程上的例子-1"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">编程上的例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lambda-p-lambda-p"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">(\(\lambda P\)) Lambda-P</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类型推导规则-3"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">类型推导规则</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lambdaomega-系统-lambdaomega"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">(\(\lambda\omega\)) 系统 \(\lambda\omega\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lambda-c-系统-lambda-c"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">(\(\lambda C\)) 系统 \(\lambda C\)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与逻辑系统的关系"><span class="post-toc-number">3.</span> <span class="post-toc-text">与逻辑系统的关系</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#外部链接"><span class="post-toc-number">4.</span> <span class="post-toc-text">外部链接</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Lambda-Cube-Intro"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Lambda 立方体 与 类型系统 简记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-09-21 15:45:00" datetime="2020-09-21T07:45:00.000Z"  itemprop="datePublished">2020-09-21</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="简介">简介</h2>
+<p>在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 <a href="https://en.wikipedia.org/wiki/Henk_Barendregt" target="_blank" rel="noopener">Henk Barendregt</a> 提出的一个框架, 用以探索及研究 简单类型 <span class="math inline">\(\lambda\)</span>-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类型系统之间是怎样扩展开来的.</p>
+<center>
+<embed id="lambda-cube" src="/images/Lambda_Cube_img.svg" type="image/svg+xml">
+</center>
+<h3 id="三种不同的维度分别代表的含义">三种不同的维度分别代表的含义</h3>
+<ul>
+<li>Y轴 (<span class="math inline">\(\uparrow\)</span>): 值依赖于类型, 可被对应到 <code>多态 (Polymorphism)</code> 的概念</li>
+<li>X轴 (<span class="math inline">\(\to\)</span>): 类型依赖于值, 可被对应到 <code>依赖类型 (Dependent types)</code> 的概念</li>
+<li>Z轴 (<span class="math inline">\(\nearrow\)</span>): 类型依赖于类型, 可被对应到 <code>类型构造器 (Type operators)</code> 的概念</li>
+</ul>
+<h2 id="类型系统">类型系统</h2>
+<p>于 Lambda 立方体中, 我们会定义出不同形式的类型系统用以描述各自不同系统之间的作用与规则, 下面将会略举一些例子:</p>
+<h3 id="lambdato-简单类型-lambda-演算">(<span class="math inline">\(\lambda\to\)</span>) 简单类型 Lambda 演算</h3>
+<p>简单类型 Lambda 演算是 Lambda 立方体中最为简单的类型系统, 其只能够透过 <code>值依赖于值 (a term depend on a term)</code> 的方式构造出来</p>
+<h4 id="类型推导规则">类型推导规则</h4>
+<p>简单类型 Lambda 演算 使用了以下的<a href="https://en.wikipedia.org/wiki/Type_rule" target="_blank" rel="noopener">类型推导规则</a>:</p>
+<ol type="1">
+<li><p><font size="5"><span class="math inline">\({\frac { x\ :\ \sigma\ \in\ \Gamma }{ \Gamma\ \vdash\ x\ :\ \sigma }}\)</span></font>(<span class="math inline">\(start\ rule\)</span>) 假设<a href="https://en.wikipedia.org/wiki/Typing_environment" target="_blank" rel="noopener">上下文 (Typing environment)</a> <span class="math inline">\(\Gamma\)</span> 中存在 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span>, 则可推导出 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> .</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ (\sigma\ \to\ \tau)\quad\Gamma\ \vdash\ N\ :\ \sigma }{ \Gamma\ \vdash\ (M\ N)\ :\ \tau }}\)</span></font>(<span class="math inline">\(\to-elimination\)</span>) 给定上下文 <span class="math inline">\(\Gamma\)</span>, 其能推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\sigma \to \tau\)</span> 且 <span class="math inline">\(N\)</span> 的类型为 <span class="math inline">\(\sigma\)</span>, 则可推导出 <span class="math inline">\(M\ N\)</span> 的类型为 <span class="math inline">\(\tau\)</span> .</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ ,\ x\ :\ \sigma\ \vdash\ M\ :\ \tau }{ \Gamma\ \vdash\ (\lambda x.\ M)\ :\ (\sigma\ \to\ \tau) }}\)</span></font>(<span class="math inline">\(\to-introduction\)</span>) 有 <span class="math inline">\(\Gamma\)</span> 并且有 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> 该两个上下文, 假设 <span class="math inline">\(\Gamma\)</span> 能够推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\tau\)</span>, 则亦可推导出 <span class="math inline">\(\lambda x. M\)</span> 的类型为 <span class="math inline">\(\sigma \to \tau\)</span> .</p></li>
+</ol>
+<h4 id="lambdato_curry-与-lambdato_church-的差异"><span class="math inline">\(\lambda\to_{Curry}\)</span> 与 <span class="math inline">\(\lambda\to_{Church}\)</span> 的差异</h4>
+<p><span class="math inline">\(\lambda\to_{Curry}\)</span> 与 <span class="math inline">\(\lambda\to_{Church}\)</span> 这两种系统均能表达 <span class="math inline">\(\lambda\to\)</span> 的含义, 而上述的推导规则是使用了 <span class="math inline">\(Curry\)</span> 版本编写的, 而两者的不同点则在于:</p>
+<ul>
+<li><span class="math inline">\(Curry\)</span> 版本的推导规则为: <span class="math inline">\(\vdash_{Curry} (\lambda x.x) : (\sigma \to \sigma)\)</span></li>
+<li><span class="math inline">\(Church\)</span> 版本的推导规则为: <span class="math inline">\(\vdash_{Church} (\lambda x : \sigma .x) : (\sigma \to \sigma)\)</span></li>
+</ul>
+<p>可见一般在 <span class="math inline">\(Curry\)</span> 中的一个值 <span class="math inline">\(\lambda x. x\)</span> 将会被 <span class="math inline">\(Church\)</span> 标记为 <span class="math inline">\(: \sigma\)</span>, 即显式地标记参数 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span>. 由于我们能够显式地标记值上参数的类型, 因此我们就能够根据该参数的类型直接决定 (Decide) 某个值上究竟是什么类型, 而对于某些使用 <span class="math inline">\(Curry\)</span> 系统定义的规则, 在某些问题上他们是不可决定的 (Undecidable).</p>
+<h3 id="lambda-2-系统-f">(<span class="math inline">\(\lambda 2\)</span>) 系统 F</h3>
+<p>系统 F 相较于 简单类型 <span class="math inline">\(\lambda\)</span> 演算 只能够透过 值依赖于值 的方式去构造出一个抽象 (Abstraction), 其也能够 <code>依赖于类型的值 (terms to depend on types)</code>.</p>
+<h4 id="类型推导规则-1">类型推导规则</h4>
+<p>系统 F 使用的推导规则除了包含 简单类型 <span class="math inline">\(\lambda\)</span> 演算的 <span class="math inline">\(start\ rule\)</span>, <span class="math inline">\(\to-elimination\)</span> 以及 <span class="math inline">\(\to-introduction\)</span> 规则外, 额外新增了:</p>
+<ol type="1">
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ (\forall\alpha.\ \sigma) }{ \Gamma\ \vdash\ M\ :\ (\sigma[\alpha\ :=\ \tau]) }}\)</span></font>, <span class="math inline">\(\tau \in \Bbb{T}\)</span> (<span class="math inline">\(\forall-elimination\)</span>) 给定上下文 <span class="math inline">\(\Gamma\)</span>, 其能推导出 值 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\forall\alpha. \sigma\)</span>, 则亦可推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\sigma[\alpha := \tau]\)</span> (在这里 <span class="math inline">\(\tau\)</span> 为实际的类型, <span class="math inline">\(\alpha\)</span> 为类型参数, 也就是 类型 <span class="math inline">\(\sigma\)</span> 依赖于 <span class="math inline">\(\alpha\)</span> 的值, 即 <span class="math inline">\(\tau\)</span>).</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ \sigma }{ \Gamma\ \vdash\ (\Lambda \alpha. M)\ :\ (\forall\alpha.\sigma) }}\)</span></font>,<span class="math inline">\({\ \alpha \notin FV(\Gamma)}\)</span> (<span class="math inline">\(\forall-introduction\)</span>) 给定上下文 <span class="math inline">\(\Gamma\)</span> 且 <span class="math inline">\(\alpha\)</span> 不是 <span class="math inline">\(\Gamma\)</span> 的 自由变量, 其能推导出 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\sigma\)</span>, 则该上下文亦可推导出 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\forall\alpha. \sigma\)</span> (值上的 <span class="math inline">\(\Lambda \alpha\)</span> 可显式指定 <span class="math inline">\(\alpha\)</span> 的类型).</p></li>
+</ol>
+<h5 id="进一步的扩展规则">进一步的扩展规则</h5>
+<p>除了上述的两条规则外, 由于系统 F, 即 <span class="math inline">\(\lambda 2\)</span>, 与 <span class="math inline">\(\lambda\mu\)</span> 以及 <span class="math inline">\(\lambda P\)</span> <span class="math inline">\((\lambda\cap)\)</span>, 均是由 <span class="math inline">\(\lambda\to\)</span> 延伸出来的, 这些系统都能够加入 <span class="math inline">\(equality\ rule\ (EQ)\)</span> 与 <span class="math inline">\(approximation\ rule\ (A)\)</span> 作推导, 亦能够相互组合出诸如 <span class="math inline">\(\lambda 2\mu\)</span> 或 <span class="math inline">\(\lambda\mu\cap\)</span> 等更强的系统.</p>
+<ol type="1">
+<li><p><font size="5"><span class="math inline">\({\frac { M\ :\ \sigma \quad M\ =_{\beta} \ N }{ N\ :\ \sigma }}\)</span></font>(<span class="math inline">\(EQ\)</span>) 设有值 <span class="math inline">\(M : \sigma\)</span> 且已知 <span class="math inline">\(M = N\)</span>, 则可推导出 <span class="math inline">\(N\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> .</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ P\ :\ \sigma\ for\ all\ P\ \in\ A(M) }{ \Gamma\ \vdash\ M\ :\ \sigma }}\)</span></font>(<span class="math inline">\(A\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac {}{ \Gamma\ \vdash\ \bot\ :\ \sigma }}\)</span></font>(<span class="math inline">\(A\)</span>)</p></li>
+</ol>
+<h4 id="编程上的例子">编程上的例子</h4>
+<p>该规则的定义恰恰对应到了许多编程语言中 <code>多态化参数 (Parametric polymorphism)</code> 的特性, 例如于 Haskell 中 <code>id</code>, <code>const</code>, <code>justInt</code> 以及 <code>intOrStr</code> 的定义实际为: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">id :: forall a. a -&gt; a</span><br><span class="line">id x = x</span><br><span class="line"></span><br><span class="line">const :: forall a b. a -&gt; b -&gt; a</span><br><span class="line">const x y = x</span><br><span class="line"></span><br><span class="line">justInt :: Maybe Int</span><br><span class="line">justInt = Just 123</span><br><span class="line"></span><br><span class="line">intOrStr :: Either Int String</span><br><span class="line">intOrStr = Right &quot;foo&quot;</span><br></pre></td></tr></table></figure></p>
+<p>我们能够透过 <code>forall a.</code> 与 <code>forall a b.</code> 以显式捕获这些函数的多态参数.</p>
+<p>而我们可以将上述例子对应到推导的表达式, 正如: <span class="math inline">\((\Lambda a. \lambda x. x) : (\forall a. a \to a) \vdash_{\lambda 2} (\lambda x. x) : ((a \to a)[a := \tau])\)</span> <span class="math inline">\((\Lambda a\ b. \lambda x\ y. x) : (\forall a\ b. a \to b \to a) \vdash_{\lambda 2} (\lambda x\ y. x) : ((a \to b \to a)[a := \tau_1, b := \tau_2])\)</span> <span class="math inline">\((Just\ 123) : (Maybe\ Int) \vdash_{\lambda 2} (Just\ 123) : Maybe[\alpha := Int]\)</span> <span class="math inline">\((Right\ &quot;foo&quot;) : (Either\ Int\ String) \vdash_{\lambda 2} (Right\ &quot;foo&quot;) : Either[\alpha := Int, \beta := String]\)</span></p>
+<h3 id="lambdaunderlineomega-系统-lambdaunderlineomega">(<span class="math inline">\(\lambda\underline{\omega}\)</span>) 系统 <span class="math inline">\(\lambda\underline{\omega}\)</span></h3>
+<p>系统 <span class="math inline">\(\lambda\underline{\omega}\)</span> 相较于 简单类型 <span class="math inline">\(\lambda\)</span> 演算 只能够透过 值依赖于值 的方式以构造出一个抽象, 其允许了 <code>类型依赖于类型 (types to depend on types)</code> 的情况出现.</p>
+<h4 id="kind-的引入">Kind (<span class="math inline">\(*\)</span>) 的引入</h4>
+<p>由于 <span class="math inline">\(\lambda\underline{\omega}\)</span> 需要表达出类型依赖于类型的概念, 正如 <span class="math inline">\(\alpha \to \alpha\)</span> 一样, <span class="math inline">\(\alpha\)</span> (即函数的协变位置) 依赖于 <span class="math inline">\(\alpha\)</span> (函数的逆变位置), 因此我们需要引入 <span class="math inline">\(Kind\)</span>, 即 <code>类型的类型</code> 的概念. 例如把一个 <span class="math inline">\(Kind\)</span> 的表达式定义为 <span class="math inline">\(\alpha, \beta \in \Bbb{T} \implies (\alpha \to \beta) : \Bbb{T}\)</span>, 这里不难看出 <span class="math inline">\(\alpha, \beta, (\alpha \to \beta) \in \Bbb{T}\)</span>, 因此 <span class="math inline">\(\Bbb{T}\)</span> 亦可被称之为类型的类型, 即 <span class="math inline">\(Kind\)</span>, 形式化地整句表达式可被定义为 <span class="math inline">\(\alpha : *, \beta : * \vdash (\alpha \to \beta) : *\)</span> (使用 <span class="math inline">\(\sigma : *\)</span> 取代了 <span class="math inline">\(\sigma \in \Bbb{T}\)</span>).</p>
+<h4 id="kind-集合-bbbk-与-kind-构造器-类型构造器">Kind 集合 (<span class="math inline">\(\Bbb{K}\)</span>) 与 <span class="math inline">\(Kind\)</span> 构造器 (类型构造器)</h4>
+<p>由于 <span class="math inline">\(Kind\)</span> 的表达式, 如 <span class="math inline">\(f \equiv \lambda\alpha : *. \alpha \to \alpha\)</span> 中, <span class="math inline">\(f\)</span> 既不处于值上, 亦不是居留在类型上, 因此我们需要定义出一个新的集合负责存储起这些 <span class="math inline">\(kinds\)</span> : <span class="math display">\[\Bbb{K} = *\ |\ \Bbb{K} \to \Bbb{K}\]</span> 即有 <span class="math inline">\(\Bbb{K} = \lbrace *, * \to *, * \to * \to *, ... \rbrace\)</span>. 若果 <span class="math inline">\(\vdash k : \Box\)</span> 且 <span class="math inline">\(\vdash F : k\)</span> (这里的 <span class="math inline">\(k : \Box\)</span> 实际上对应了 <span class="math inline">\(k \in \Bbb{K}\)</span>), 则 <span class="math inline">\(F\)</span> 被称之为 <span class="math inline">\(kind\ k\)</span> 的构造器 (类型构造器).</p>
+<h4 id="类型推导规则-2">类型推导规则</h4>
+<ol type="1">
+<li><p><span class="math inline">\(&lt;&gt; \vdash \* : \Box\)</span> (<span class="math inline">\(axiom\)</span>) 空的上下文总能被推导出 <span class="math inline">\(\* : \Box\)</span></p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ s }{ \Gamma,\ x\ :\ A\ \vdash\ x\ :\ A }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(start\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ C\ :\ s }{ \Gamma,\ x\ :\ C\ \vdash\ A\ :\ B }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(weakening\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ s \quad \Gamma\ \vdash\ B\ :\ s }{ \Gamma\ \vdash\ (A\ \to\ B)\ :\ s }}\)</span></font>(<span class="math inline">\(type/kind\ formation\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ F\ :\ (A\ \to\ B) \quad \Gamma\ \vdash\ a\ :\ A }{ \Gamma\ \vdash\ Fa\ :\ B }}\)</span></font>(<span class="math inline">\(application\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma,\ x\ :\ A\ \vdash\ b\ :\ B \quad \Gamma\ \vdash\ (A\ \to\ B)\ :\ s }{ \Gamma\ \vdash\ (\lambda x\ :\ A.\ b)\ :\ (A\ \to\ B) }}\)</span></font>(<span class="math inline">\(abstraction\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ B&#39;\ :\ s \quad B\ =_{\beta}\ B&#39; }{ \Gamma\ \vdash\ A\ :\ B&#39; }}\)</span></font>(<span class="math inline">\(conversion\ rule\)</span>)</p></li>
+</ol>
+<h4 id="编程上的例子-1">编程上的例子</h4>
+<p>于 Haskell 中, 我们得知一个 <code>Functor (f :: * -&gt; *)</code> 其本身是一类型构造器, 现在则可利用 <span class="math inline">\(\lambda\to\)</span> 以及 <span class="math inline">\(\lambda\underline{\omega}\)</span> 的规则, 对 <code>fmap (*2) [1..10]</code> (或 <code>(*2) &lt;$&gt; [1..10]</code>) 进行简单的类型推导:</p>
+<p><font size="1"><span class="math display">\[
+\dfrac
+    {
+        \dfrac
+            {
+                \dfrac
+                    {
+                        \begin{aligned}
+                            \vdots
+                        \end{aligned}
+                    }
+                    { \Gamma, l : [a] \vdash fmap\ (\*2) : [b] }
+                \quad
+                \dfrac
+                    {
+                        \dfrac
+                            { \Gamma \vdash [] : (\* \to \*) \quad \Gamma \vdash a : \* }
+                            { \Gamma \vdash [a] : \* }
+                            (\lambda\underline{\omega}\ app.)
+                        \quad
+                        \dfrac
+                            { \Gamma \vdash [] : (\* \to \*) \quad \Gamma \vdash b : \* }
+                            { \Gamma \vdash [b] : \* }
+                            (\lambda\underline{\omega}\ app.)
+                    }
+                    { \Gamma \vdash ([a] \to [b]) : \* }
+                    (\lambda\underline{\omega}\ form.)
+            }
+            { \Gamma \vdash \lambda l. fmap\ (\*2) : ([a] \to [b]) }
+            (\lambda\underline{\omega}\ abst.)
+        \quad
+        \dfrac
+            {
+                \begin{align}
+                \vdots \\
+                \end{align}
+            }
+            { \Gamma \vdash [1..10] : [a] }
+    }
+    { \Gamma \vdash fmap\ (\*2)\ [1..10] : [b] }
+    (\lambda\to elim.)
+\]</span></font></p>
+<h3 id="lambda-p-lambda-p">(<span class="math inline">\(\lambda P\)</span>) Lambda-P</h3>
+<p>系统 <span class="math inline">\(\lambda P\)</span> 相较于 简单类型 <span class="math inline">\(\lambda\)</span> 演算 只能够透过 值依赖于值 的方式以构造出一个抽象, 亦可于类型上以值作为参数, 正如一个直观的例子 <span class="math inline">\(A^n \to B\)</span> 阐述了 <span class="math inline">\(n\)</span> 实际上是一个值 (例如一个自然数), <span class="math inline">\(A\)</span> 与 <span class="math inline">\(B\)</span> 是类型, 而我们需要构造 <span class="math inline">\(B\)</span> 的时候则必须传入一个值, 因此可被描述为 <code>依赖于值的类型 (types to depend on terms)</code>.</p>
+<h4 id="类型推导规则-3">类型推导规则</h4>
+<p>系统 <span class="math inline">\(\lambda P\)</span> 使用了如下规则进行推导 (其中 <span class="math inline">\(*\)</span> 与 <span class="math inline">\(\Box\)</span> 为 <span class="math inline">\(\lambda P\)</span> 表达式中的常量):</p>
+<ol type="1">
+<li><p><span class="math inline">\(&lt;&gt;\ \vdash \* : \Box\)</span> (<span class="math inline">\(axiom\)</span>) 空的上下文总能被推导出 <span class="math inline">\(\* : \Box\)</span></p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ A\ :\ s }{ \Gamma,\ x\ :\ A\ \vdash\ x\ :\ A }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(start\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ C\ :\ s }{ \Gamma,\ x\ :\ C\ \vdash\ A\ :\ B }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(weakening\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ A\ :\ * \quad \Gamma,\ x\ :\ A\ \vdash\ B\ :\ s }{ \Gamma\ \vdash\ (\Pi x\ :\ A.\ B)\ :\ s }}\)</span></font>(<span class="math inline">\(type/kind\ formation\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ F\ :\ (\Pi x\ :\ A.\ B) \quad \Gamma\ \vdash\ a\ :\ A }{ \Gamma\ \vdash\ Fa\ :\ B[x\ :=\ a] }}\)</span></font>(<span class="math inline">\(application\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma,\ x\ :\ A\ \vdash\ b\ :\ B \quad \Gamma\ \vdash\ (\Pi x\ :\ A.\ B)\ :\ s }{ \Gamma\ \vdash\ (\lambda x\ :\ A.\ b)\ :\ (\Pi x\ :\ A.\ B) }}\)</span></font>(<span class="math inline">\(abstraction\ rule\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ B&#39;\ :\ s \quad B\ =_{\beta}\ B&#39; }{ \Gamma\ \vdash\ A\ :\ B&#39; }}\)</span></font>(<span class="math inline">\(conversion\ rule\)</span>)</p></li>
+</ol>
+<h3 id="lambdaomega-系统-lambdaomega">(<span class="math inline">\(\lambda\omega\)</span>) 系统 <span class="math inline">\(\lambda\omega\)</span></h3>
+<p>系统 <span class="math inline">\(\lambda\omega\)</span> 结合了 <span class="math inline">\(\lambda 2\)</span> 的 <span class="math inline">\(\Lambda\)</span> 构造器, <span class="math inline">\(\lambda\underline{\omega}\)</span> 的 类型构造器 与他们各自的推导规则, 其允许了 <code>依赖于类型的值 (terms to depend on types)</code> 以及 <code>类型依赖于类型 (types to depend on types)</code> 同时存在, 因此从计算的角度来看, 其表达能力非常强, 同时亦被认为具备编程语言所需达到的基础.</p>
+<h3 id="lambda-c-系统-lambda-c">(<span class="math inline">\(\lambda C\)</span>) 系统 <span class="math inline">\(\lambda C\)</span></h3>
+<p>系统 <span class="math inline">\(\lambda C\)</span> 位于 Lambda 立方 的最右上角, 其包含了来自于 <span class="math inline">\(\lambda P\)</span> 逻辑谓词的表达能力 与 <span class="math inline">\(\lambda\omega\)</span> 的计算能力, 因此无论是从逻辑或是计算的角度考量, 均被视为极度具备强大能力的一套类型系统.</p>
+<h2 id="与逻辑系统的关系">与逻辑系统的关系</h2>
+<p>透过 <a href="https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence" target="_blank" rel="noopener">Curry-Howard 同构</a>, 我们得以将 Lambda 立方体 中的类型系统与逻辑系统一一对应起来, 如下表:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">类型系统</th>
+<th style="text-align: center;">逻辑系统</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda\to\)</span></td>
+<td style="text-align: center;">(一阶) <a href="https://en.wikipedia.org/wiki/Propositional_calculus" target="_blank" rel="noopener">命题逻辑</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda 2\)</span></td>
+<td style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Second-order_propositional_logic" target="_blank" rel="noopener">二阶命题逻辑</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda\underline{\omega}\)</span></td>
+<td style="text-align: center;">弱高阶命题逻辑</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda\omega\)</span></td>
+<td style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Higher-order_logic" target="_blank" rel="noopener">高阶命题逻辑</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda P\)</span></td>
+<td style="text-align: center;"><a href="https://en.wikipedia.org/wiki/First-order_logic" target="_blank" rel="noopener">一阶谓词逻辑</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda P2\)</span></td>
+<td style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Second-order_logic" target="_blank" rel="noopener">二阶谓词逻辑</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda P\underline{\omega}\)</span></td>
+<td style="text-align: center;">弱高阶谓词逻辑</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda C\)</span></td>
+<td style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Calculus_of_constructions" target="_blank" rel="noopener">构造演算</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="外部链接">外部链接</h2>
+<p>本文部分内容参考或引用至下列网页，也可供作为额外的延伸资源帮助阅读：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Lambda_cube" target="_blank" rel="noopener">Lambda Cube - Wikipedia</a></li>
+<li><a href="https://ttic.uchicago.edu/~dreyer/course/papers/barendregt.pdf" target="_blank" rel="noopener">Lambda Calculi With Types - Henk Barendregt</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-09-26T18:17:08.094Z" itemprop="dateUpdated">2020-09-27 02:17:08</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型论/">类型论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机编程理论/">计算机编程理论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逻辑/">逻辑</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">不动点组合子的定理证明与推导</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/29/Category-Theory-4/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/09/21/Lambda-Cube-Intro/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aSU4DQRAEQP//08MVCWxndmGk6Y4+IexZwodSbY9HfK7gPPv+9/88+/TntY9PHAwMjNsykpdLXit/SvL0/N0wMDDOYbwOfK+/kwfTPFrm74aBgYGRJHZriWASvjEwMDD+NuDmvCT5w8DAwFgrYucFbXLPj9fiGBgYN2TkReb///2R+QYGBsatGFd58hZ/24y7BgcDA2NvxmQAuVb6Jund4kAUAwNjU8YkwCWN/rw0XQvQo2iNgYFxK0YS8uaLX/NR5dM7Y2BgbM1oR5LtCld+t3xFI1o+w8DAOIzR3rT9IZJRRBv6MTAwdmKsLTck5ehagG5LWQwMDIz5I6Nm2VLI/qUWx8DAOIYxWZ5oW2n5aPNNcomBgbE1I2/Bt62xpEBtm/5JCMbAwNiVMWnWz2E5oN5uw8DA2IJRl4vBmY8k60U0DAyMAxj5jdqkLS9fJ+toGBgYezPm7bD22kkR++aJGBgYBzDmhet8bSKpud+02zAwMA5g5ElhG3aTZLTN+n7pGmJgYGzNmCd2xUpEmYZGiSMGBsYBjOSyfJAwf9H6KgwMjE0ZV3naNlx7h7y1V+S2GBgYN2eshci2oG3XL9bWzjAwMPZmrK1krQXfnF2POTEwMA5gJE38tcSuTfvWfiwMDAyMvOnfLkyspZiLc04MDIwjGe3wYPLTRPMNDAyMrRnzlG6tib+WLGJgYJzGyEvHtnDNS98k05uUvhgYGLdlfAHVetE/5YYtwwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

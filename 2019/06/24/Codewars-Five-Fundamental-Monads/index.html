@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -9,7 +9,7 @@
 
 
 
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
     
     
@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="Haskell,Monad,Data Structures">
-    <meta name="description" content="This kata corresponds to Five-Fundamental-Monads in CodewarsDifficulty: 4 kyuTags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING QuestionsIn this kata we will implement five of the most f">
+    <meta name="description" content="This kata corresponds to Five-Fundamental-Monads in Codewars Difficulty: 4 kyu Tags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING Questions In this kata we will implement five of the mos">
 <meta name="keywords" content="Haskell,Monad,Data Structures">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codewars: Haskell Five Fundamental Monads">
 <meta property="og:url" content="http://blog.e7mc.com/2019/06/24/Codewars-Five-Fundamental-Monads/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
-<meta property="og:description" content="This kata corresponds to Five-Fundamental-Monads in CodewarsDifficulty: 4 kyuTags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING QuestionsIn this kata we will implement five of the most f">
+<meta property="og:description" content="This kata corresponds to Five-Fundamental-Monads in Codewars Difficulty: 4 kyu Tags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING Questions In this kata we will implement five of the mos">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:updated_time" content="2019-06-25T13:24:24.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codewars: Haskell Five Fundamental Monads">
-<meta name="twitter:description" content="This kata corresponds to Five-Fundamental-Monads in CodewarsDifficulty: 4 kyuTags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING QuestionsIn this kata we will implement five of the most f">
+<meta name="twitter:description" content="This kata corresponds to Five-Fundamental-Monads in Codewars Difficulty: 4 kyu Tags: FUNDAMENTALS MONADS DATA STRUCTURES FUNCTIONAL PROGRAMMING Questions In this kata we will implement five of the mos">
     
         <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
@@ -40,15 +40,15 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </head>
 
 <body>
-    <div id="loading" class="active"></div>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -68,42 +68,42 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/a9032676" target="_blank">
+              <a href="https://github.com/a9032676" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about-me">
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -165,50 +165,60 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Questions"><span class="post-toc-number">1.</span> <span class="post-toc-text">Questions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sources-Code"><span class="post-toc-number">2.</span> <span class="post-toc-text">Sources Code</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#How-to-solve"><span class="post-toc-number">3.</span> <span class="post-toc-text">How to solve</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Identity-Monad"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Identity Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Maybe-Monad"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Maybe Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#State-Monad"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">State Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Reader-Monad"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Reader Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Writer-Monad"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Writer Monad</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Conclusion"><span class="post-toc-number">4.</span> <span class="post-toc-text">Conclusion</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#questions"><span class="post-toc-number">1.</span> <span class="post-toc-text">Questions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sources-code"><span class="post-toc-number">2.</span> <span class="post-toc-text">Sources Code</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#how-to-solve"><span class="post-toc-number">3.</span> <span class="post-toc-text">How to solve</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#identity-monad"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Identity Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#maybe-monad"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Maybe Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#state-monad"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">State Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reader-monad"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Reader Monad</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#writer-monad"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Writer Monad</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#conclusion"><span class="post-toc-number">4.</span> <span class="post-toc-text">Conclusion</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Codewars-Five-Fundamental-Monads" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-Codewars-Five-Fundamental-Monads"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">Codewars: Haskell Five Fundamental Monads</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-06-24 19:32:13" datetime="2019-06-24T11:32:13.000Z" itemprop="datePublished">2019-06-24</time>
+            <time class="post-time" title="2019-06-24 19:32:13" datetime="2019-06-24T11:32:13.000Z"  itemprop="datePublished">2019-06-24</time>
 
             
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>This kata corresponds to <a href="https://www.codewars.com/kata/547202bdf7587835d9000c46" target="_blank" rel="noopener">Five-Fundamental-Monads</a> in Codewars<br>Difficulty: 4 kyu<br>Tags: <code>FUNDAMENTALS</code> <code>MONADS</code> <code>DATA STRUCTURES</code> <code>FUNCTIONAL PROGRAMMING</code></p>
-<h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><p>In this kata we will implement five of the most fundamental monads.</p>
+            <p>This kata corresponds to <a href="https://www.codewars.com/kata/547202bdf7587835d9000c46" target="_blank" rel="noopener">Five-Fundamental-Monads</a> in Codewars Difficulty: 4 kyu Tags: <code>FUNDAMENTALS</code> <code>MONADS</code> <code>DATA STRUCTURES</code> <code>FUNCTIONAL PROGRAMMING</code></p>
+<h2 id="questions">Questions</h2>
+<p>In this kata we will implement five of the most fundamental monads.</p>
 <p>Newcomers to Haskell find monads to be one of the most intimidating concepts but on a basic level - they are not too difficult to understand.</p>
-<p>A datatype forms a monad if it is possible to complete the following definitions such that the monad laws (described below) hold. There’s nothing more to it! For a more intuitive understanding then there are a plethora of tutorials which use (sometimes wild) analogies to explain this concept.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Monad m where</span><br><span class="line">    return :: a -&gt; m a</span><br><span class="line">    (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br></pre></td></tr></table></figure></p>
-<p>Monad laws<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return x &gt;&gt;= f = f x</span><br><span class="line">m &gt;&gt;= return = m</span><br><span class="line">(m &gt;&gt;= f) &gt;&gt;= g = m &gt;&gt;= (\x -&gt; f x &gt;&gt;= g)</span><br></pre></td></tr></table></figure></p>
+<p>A datatype forms a monad if it is possible to complete the following definitions such that the monad laws (described below) hold. There's nothing more to it! For a more intuitive understanding then there are a plethora of tutorials which use (sometimes wild) analogies to explain this concept. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Monad m where</span><br><span class="line">    return :: a -&gt; m a</span><br><span class="line">    (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br></pre></td></tr></table></figure></p>
+<p>Monad laws <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return x &gt;&gt;= f = f x</span><br><span class="line">m &gt;&gt;= return = m</span><br><span class="line">(m &gt;&gt;= f) &gt;&gt;= g = m &gt;&gt;= (\x -&gt; f x &gt;&gt;= g)</span><br></pre></td></tr></table></figure></p>
 <p>It turns out that many different types of computation can be encapsulated by monads. For example the Maybe monad encapsulates a computation which can fail and State a computation with mutable state.</p>
 <p>The five we will implement here are <code>Identity</code>, <code>Maybe</code>, <code>State</code>, <code>Writer</code> and <code>Reader</code>.</p>
-<p>Hint: <a href="https://www.haskell.org/haskellwiki/Monad_tutorials_timeline" target="_blank" rel="noopener">https://www.haskell.org/haskellwiki/Monad_tutorials_timeline</a></p>
+<p>Hint: https://www.haskell.org/haskellwiki/Monad_tutorials_timeline</p>
 <p>Note: Please feel free to contribute!</p>
-<h2 id="Sources-Code"><a href="#Sources-Code" class="headerlink" title="Sources Code"></a>Sources Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#123;-# LANGUAGE NoImplicitPrelude #-&#125;</span><br><span class="line">module Monads where</span><br><span class="line"></span><br><span class="line">import Prelude hiding (Monad, Identity, Maybe(..), State, Reader, Writer)</span><br><span class="line">import Data.Monoid</span><br><span class="line"></span><br><span class="line">class Monad m where</span><br><span class="line">  return :: a -&gt; m a</span><br><span class="line">  (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br><span class="line"></span><br><span class="line">data Identity a = Identity a</span><br><span class="line">  deriving (Show, Eq)</span><br><span class="line"></span><br><span class="line">data Maybe a = Nothing | Just a</span><br><span class="line">  deriving (Show, Eq)</span><br><span class="line"></span><br><span class="line">data State s a = State &#123;runState :: s -&gt; (a, s)&#125;</span><br><span class="line"></span><br><span class="line">data Reader s a = Reader &#123;runReader :: s -&gt; a &#125;</span><br><span class="line"></span><br><span class="line">data Writer w a = Writer &#123;runWriter :: (w, a)&#125;</span><br><span class="line"></span><br><span class="line">instance Monad Identity where</span><br><span class="line">  return = undefined</span><br><span class="line">  (Identity v) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monad Maybe where</span><br><span class="line">  return = undefined</span><br><span class="line">  Nothing &gt;&gt;= f = undefined</span><br><span class="line">  (Just v) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monad (State s) where</span><br><span class="line">  return = undefined</span><br><span class="line">  (State g) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monad (Reader s) where</span><br><span class="line">  return = undefined</span><br><span class="line">  (Reader g) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monoid w =&gt; Monad (Writer w) where</span><br><span class="line">  return = undefined</span><br><span class="line">  (Writer (s, v)) &gt;&gt;= f = undefined</span><br></pre></td></tr></table></figure>
-<h2 id="How-to-solve"><a href="#How-to-solve" class="headerlink" title="How to solve"></a>How to solve</h2><h3 id="Identity-Monad"><a href="#Identity-Monad" class="headerlink" title="Identity Monad"></a>Identity Monad</h3><p>Above all, we need to implement the Identity monad instance at first, according to the law of identity in Category Theory: which means for every object $x$, there exists a morphism $id_x : x \mapsto x$ called the identity morphism for $x$, such that for every morphism $f : a \mapsto x$ and every morphism $g : x \mapsto b$, we have $id_x \circ f = f$ and $g \circ id_x = g$. Straightforwardly we can call this as a morphism (or function in a programming language) which always return itself, and for every morphism combine with any identity must be equals to morphism itself anyway.</p>
-<p>By looking at Monad typeclass defination:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Applicative m =&gt; Monad (m :: * -&gt; *) where</span><br><span class="line">  (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br><span class="line">  (&gt;&gt;) :: m a -&gt; m b -&gt; m b</span><br><span class="line">  return :: a -&gt; m a</span><br><span class="line">  fail :: String -&gt; m a</span><br><span class="line">  &#123;-# MINIMAL (&gt;&gt;=) #-&#125;</span><br><span class="line">      -- Defined in ‘GHC.Base’</span><br></pre></td></tr></table></figure></p>
-<p>So, in Haskell we can implement identity instance like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">instance Monad Identity where</span><br><span class="line">  return = Identity</span><br><span class="line">  (Identity v) &gt;&gt;= f = f v</span><br></pre></td></tr></table></figure></p>
+<h2 id="sources-code">Sources Code</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#123;-# LANGUAGE NoImplicitPrelude #-&#125;</span><br><span class="line">module Monads where</span><br><span class="line"></span><br><span class="line">import Prelude hiding (Monad, Identity, Maybe(..), State, Reader, Writer)</span><br><span class="line">import Data.Monoid</span><br><span class="line"></span><br><span class="line">class Monad m where</span><br><span class="line">  return :: a -&gt; m a</span><br><span class="line">  (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br><span class="line"></span><br><span class="line">data Identity a = Identity a</span><br><span class="line">  deriving (Show, Eq)</span><br><span class="line"></span><br><span class="line">data Maybe a = Nothing | Just a</span><br><span class="line">  deriving (Show, Eq)</span><br><span class="line"></span><br><span class="line">data State s a = State &#123;runState :: s -&gt; (a, s)&#125;</span><br><span class="line"></span><br><span class="line">data Reader s a = Reader &#123;runReader :: s -&gt; a &#125;</span><br><span class="line"></span><br><span class="line">data Writer w a = Writer &#123;runWriter :: (w, a)&#125;</span><br><span class="line"></span><br><span class="line">instance Monad Identity where</span><br><span class="line">  return = undefined</span><br><span class="line">  (Identity v) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monad Maybe where</span><br><span class="line">  return = undefined</span><br><span class="line">  Nothing &gt;&gt;= f = undefined</span><br><span class="line">  (Just v) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monad (State s) where</span><br><span class="line">  return = undefined</span><br><span class="line">  (State g) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monad (Reader s) where</span><br><span class="line">  return = undefined</span><br><span class="line">  (Reader g) &gt;&gt;= f = undefined</span><br><span class="line"></span><br><span class="line">instance Monoid w =&gt; Monad (Writer w) where</span><br><span class="line">  return = undefined</span><br><span class="line">  (Writer (s, v)) &gt;&gt;= f = undefined</span><br></pre></td></tr></table></figure>
+<h2 id="how-to-solve">How to solve</h2>
+<h3 id="identity-monad">Identity Monad</h3>
+<p>Above all, we need to implement the Identity monad instance at first, according to the law of identity in Category Theory: which means for every object <span class="math inline">\(x\)</span>, there exists a morphism <span class="math inline">\(id_x : x \mapsto x\)</span> called the identity morphism for <span class="math inline">\(x\)</span>, such that for every morphism <span class="math inline">\(f : a \mapsto x\)</span> and every morphism <span class="math inline">\(g : x \mapsto b\)</span>, we have <span class="math inline">\(id_x \circ f = f\)</span> and <span class="math inline">\(g \circ id_x = g\)</span>. Straightforwardly we can call this as a morphism (or function in a programming language) which always return itself, and for every morphism combine with any identity must be equals to morphism itself anyway.</p>
+<p>By looking at Monad typeclass defination: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Applicative m =&gt; Monad (m :: * -&gt; *) where</span><br><span class="line">  (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br><span class="line">  (&gt;&gt;) :: m a -&gt; m b -&gt; m b</span><br><span class="line">  return :: a -&gt; m a</span><br><span class="line">  fail :: String -&gt; m a</span><br><span class="line">  &#123;-# MINIMAL (&gt;&gt;=) #-&#125;</span><br><span class="line">      -- Defined in ‘GHC.Base’</span><br></pre></td></tr></table></figure></p>
+<p>So, in Haskell we can implement identity instance like this: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">instance Monad Identity where</span><br><span class="line">  return = Identity</span><br><span class="line">  (Identity v) &gt;&gt;= f = f v</span><br></pre></td></tr></table></figure></p>
 <p><code>return</code> function was return a Identity which accepted a parameter <code>a</code> implicitly, and as explicitly can be write like this: <code>return a = Identity a</code></p>
-<p><code>&gt;&gt;=</code> is a monad-binding operator function, means that <code>(Identity v)</code> was bound on function <code>f</code>, by looking at type definition of this function, which accept the parameter <code>m a</code>, <code>(a -&gt; m b)</code> and return the monad <code>m b</code> finally. So now let’s turn back to this instance, <code>(Identity v)</code> is the first parameter <code>m a</code> also <code>f</code> represents to <code>(a -&gt; m b)</code>, after the <code>(Identity v)</code> is done the pattern-matching, by take the parameter <code>v</code> out and put it into <code>f</code> and finally return the monad <code>m b</code>, that’s it what we need!</p>
-<h3 id="Maybe-Monad"><a href="#Maybe-Monad" class="headerlink" title="Maybe Monad"></a>Maybe Monad</h3><p>After done the identity monad, we are learned about how to construct the simple monad in Haskell, but just the only identity? Not enough! So now I’ll start to talk about the next most useful monad in Haskell, the <code>Maybe Monad</code>.</p>
-<p>In this monad, defined two data types: <code>Nothing</code> and <code>Just a</code>, which <code>Nothing</code> does not accept any type parameter but <code>Just a</code> will accept a type parameter <code>a</code> here. So when we hold something just like an integer 1, they we can put it into <code>Just 1</code>, but when holding nothing, then we didn’t need to put anything into <code>Just a</code>, so we use <code>Nothing</code> to alternative that.</p>
-<p>So let’s implement <code>return</code> function on <code>Maybe Monad</code> first, it seems like the identity monad, but still have some differences. In this case, we need to specify the <code>Nothing</code> and <code>Just</code>, just take a look at the type definition of <code>return</code> function, it’s must provide a parameter <code>a</code>, then we can be wrapping it into <code>Just a</code> to becomes <code>return = Just</code> in instance.</p>
-<p>Second, after completed <code>return</code> function, to finish the <code>&gt;&gt;=</code> function, it’s also closed to the identity instance, but we know when we put a <code>Nothing</code> into <code>f</code>, there must always return <code>Nothing</code>, otherwise return the result moand from <code>f</code>, so here could be using pattern-matching to partition these two case.</p>
-<p>Finally the <code>Maybe Monad</code> likes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">instance Monad Maybe where</span><br><span class="line">  return = Just</span><br><span class="line">  Nothing &gt;&gt;= f = Nothing</span><br><span class="line">  (Just v) &gt;&gt;= f = f v</span><br></pre></td></tr></table></figure></p>
-<h3 id="State-Monad"><a href="#State-Monad" class="headerlink" title="State Monad"></a>State Monad</h3><h3 id="Reader-Monad"><a href="#Reader-Monad" class="headerlink" title="Reader Monad"></a>Reader Monad</h3><h3 id="Writer-Monad"><a href="#Writer-Monad" class="headerlink" title="Writer Monad"></a>Writer Monad</h3><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Great thanks to Henry for fixing my noob English grammar problem!</p>
+<p><code>&gt;&gt;=</code> is a monad-binding operator function, means that <code>(Identity v)</code> was bound on function <code>f</code>, by looking at type definition of this function, which accept the parameter <code>m a</code>, <code>(a -&gt; m b)</code> and return the monad <code>m b</code> finally. So now let's turn back to this instance, <code>(Identity v)</code> is the first parameter <code>m a</code> also <code>f</code> represents to <code>(a -&gt; m b)</code>, after the <code>(Identity v)</code> is done the pattern-matching, by take the parameter <code>v</code> out and put it into <code>f</code> and finally return the monad <code>m b</code>, that's it what we need!</p>
+<h3 id="maybe-monad">Maybe Monad</h3>
+<p>After done the identity monad, we are learned about how to construct the simple monad in Haskell, but just the only identity? Not enough! So now I'll start to talk about the next most useful monad in Haskell, the <code>Maybe Monad</code>.</p>
+<p>In this monad, defined two data types: <code>Nothing</code> and <code>Just a</code>, which <code>Nothing</code> does not accept any type parameter but <code>Just a</code> will accept a type parameter <code>a</code> here. So when we hold something just like an integer 1, they we can put it into <code>Just 1</code>, but when holding nothing, then we didn't need to put anything into <code>Just a</code>, so we use <code>Nothing</code> to alternative that.</p>
+<p>So let's implement <code>return</code> function on <code>Maybe Monad</code> first, it seems like the identity monad, but still have some differences. In this case, we need to specify the <code>Nothing</code> and <code>Just</code>, just take a look at the type definition of <code>return</code> function, it's must provide a parameter <code>a</code>, then we can be wrapping it into <code>Just a</code> to becomes <code>return = Just</code> in instance.</p>
+<p>Second, after completed <code>return</code> function, to finish the <code>&gt;&gt;=</code> function, it's also closed to the identity instance, but we know when we put a <code>Nothing</code> into <code>f</code>, there must always return <code>Nothing</code>, otherwise return the result moand from <code>f</code>, so here could be using pattern-matching to partition these two case.</p>
+<p>Finally the <code>Maybe Monad</code> likes: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">instance Monad Maybe where</span><br><span class="line">  return = Just</span><br><span class="line">  Nothing &gt;&gt;= f = Nothing</span><br><span class="line">  (Just v) &gt;&gt;= f = f v</span><br></pre></td></tr></table></figure></p>
+<h3 id="state-monad">State Monad</h3>
+<h3 id="reader-monad">Reader Monad</h3>
+<h3 id="writer-monad">Writer Monad</h3>
+<h2 id="conclusion">Conclusion</h2>
+<p>Great thanks to Henry for fixing my noob English grammar problem!</p>
 
         </div>
 
@@ -304,9 +314,9 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/04/15/Java-generic-type-md/" id="post-next" class="post-nav-link">
+      <a href="/2018/12/04/Linux-partition-sizes-modify/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Java 泛型的本质 开篇</h4>
+        <h4 class="title">记录一次在 Linux 下增加分区大小的过程</h4>
       </a>
     </div>
   
@@ -342,10 +352,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -359,7 +369,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>9032676 &copy; 2018 - 2019</span>
+        <p><span>9032676 &copy; 2018 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -469,32 +479,33 @@ MathJax.Hub.Queue(function() {
 });
 </script>
 
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
 
 </body>
 </html>

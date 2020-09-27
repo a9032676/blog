@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -9,7 +9,7 @@
 
 
 
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
     
     
@@ -40,15 +40,15 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </head>
 
 <body>
-    <div id="loading" class="active"></div>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -68,42 +68,42 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/a9032676" target="_blank">
+              <a href="https://github.com/a9032676" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about-me">
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -170,18 +170,19 @@
     </aside>
 
 
-<article id="post-Linux-partition-sizes-modify" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-Linux-partition-sizes-modify"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">记录一次在 Linux 下增加分区大小的过程</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-04 09:23:54" datetime="2018-12-04T01:23:54.000Z" itemprop="datePublished">2018-12-04</time>
+            <time class="post-time" title="2018-12-04 09:23:54" datetime="2018-12-04T01:23:54.000Z"  itemprop="datePublished">2018-12-04</time>
 
             
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -189,49 +190,46 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 <code>java.io.IOException: No space left on device</code>，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。</p>
-<h2 id="如何扩容"><a href="#如何扩容" class="headerlink" title="如何扩容"></a>如何扩容</h2><ol>
+<h2 id="如何扩容">如何扩容</h2>
+<ol type="1">
 <li>使用 GUI 工具：GParted （本篇文章不进行阐述）</li>
 <li>利用 fdisk / parted / lvm 等指令进行扩容</li>
 </ol>
-<h2 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h2><ol>
+<h2 id="提前准备">提前准备</h2>
+<ol type="1">
 <li>备份重要数据，很关键！！！</li>
 <li>因为涉及到 <code>umount</code> 卸载分区操作，请制作好 LiveCD（对应 Linux 版本的 USB 启动盘）</li>
 <li>遇到其他问题请主动查阅相关资料</li>
 </ol>
-<h2 id="找出空间不足的分区"><a href="#找出空间不足的分区" class="headerlink" title="找出空间不足的分区"></a>找出空间不足的分区</h2><p>首先使用 <code>df -h | grep &quot;dev/sda&quot;</code> 指令查看 <code>/dev/sda</code> 以下各个分区占用比<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  df -h | grep &quot;sda&quot;</span><br><span class="line">/dev/sda10       22G   21G   96M 100% /</span><br><span class="line">/dev/sda8       1.9G  467M  1.3G  27% /media/a9032676/b2b692f8-bdcf-46c1-9998-503b0970f5b3</span><br><span class="line">/dev/sda9        19G  2.8G   15G  16% /media/a9032676/9b5cdc3a-f296-490a-b329-6ae23acee7de</span><br><span class="line">/dev/sda7       4.7G   20M  4.4G   1% /media/a9032676/1bbfb6fa-f919-4460-86f9-5ced5a900ec8</span><br></pre></td></tr></table></figure></p>
-<p>可以得出挂载于 <code>/</code> 的根分区 <code>/dev/sda10</code> 空间严重不足，剩下 96MB。然后我们使用 <code>sudo fdisk -l /dev/sda</code> 指令查询 <code>/dev/sda</code> 下各分区大小及总和。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo fdisk -l /dev/sda</span><br><span class="line">Disk /dev/sda: 232.9 GiB, 250059350016 bytes, 488397168 sectors</span><br><span class="line">/dev/sda1  *         2048   1126399   1124352   549M  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda2         1126400 383537151 382410752 182.4G  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda3       383539198 488396799 104857602    50G  5 Extended</span><br><span class="line">/dev/sda5       383539200 383928319    389120   190M 83 Linux</span><br><span class="line">/dev/sda6       383930368 387928063   3997696   1.9G 82 Linux swap / Solaris</span><br><span class="line">/dev/sda7       387930112 397928447   9998336   4.8G 83 Linux</span><br><span class="line">/dev/sda8       397930496 401928191   3997696   1.9G 83 Linux</span><br><span class="line">/dev/sda9       401930240 441927679  39997440  19.1G 83 Linux</span><br><span class="line">/dev/sda10      441929728 488396799  46467072  22.2G 83 Linux</span><br><span class="line"> a9032676@90-Ubuntu  ~ </span><br></pre></td></tr></table></figure></p>
+<h2 id="找出空间不足的分区">找出空间不足的分区</h2>
+<p>首先使用 <code>df -h | grep "dev/sda"</code> 指令查看 <code>/dev/sda</code> 以下各个分区占用比 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  df -h | grep &quot;sda&quot;</span><br><span class="line">/dev/sda10       22G   21G   96M 100% /</span><br><span class="line">/dev/sda8       1.9G  467M  1.3G  27% /media/a9032676/b2b692f8-bdcf-46c1-9998-503b0970f5b3</span><br><span class="line">/dev/sda9        19G  2.8G   15G  16% /media/a9032676/9b5cdc3a-f296-490a-b329-6ae23acee7de</span><br><span class="line">/dev/sda7       4.7G   20M  4.4G   1% /media/a9032676/1bbfb6fa-f919-4460-86f9-5ced5a900ec8</span><br></pre></td></tr></table></figure></p>
+<p>可以得出挂载于 <code>/</code> 的根分区 <code>/dev/sda10</code> 空间严重不足，剩下 96MB。然后我们使用 <code>sudo fdisk -l /dev/sda</code> 指令查询 <code>/dev/sda</code> 下各分区大小及总和。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo fdisk -l /dev/sda</span><br><span class="line">Disk /dev/sda: 232.9 GiB, 250059350016 bytes, 488397168 sectors</span><br><span class="line">/dev/sda1  *         2048   1126399   1124352   549M  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda2         1126400 383537151 382410752 182.4G  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda3       383539198 488396799 104857602    50G  5 Extended</span><br><span class="line">/dev/sda5       383539200 383928319    389120   190M 83 Linux</span><br><span class="line">/dev/sda6       383930368 387928063   3997696   1.9G 82 Linux swap / Solaris</span><br><span class="line">/dev/sda7       387930112 397928447   9998336   4.8G 83 Linux</span><br><span class="line">/dev/sda8       397930496 401928191   3997696   1.9G 83 Linux</span><br><span class="line">/dev/sda9       401930240 441927679  39997440  19.1G 83 Linux</span><br><span class="line">/dev/sda10      441929728 488396799  46467072  22.2G 83 Linux</span><br><span class="line"> a9032676@90-Ubuntu  ~ </span><br></pre></td></tr></table></figure></p>
 <p>可以看到这个盘大小总和是 232.9G，而由于双系统的缘故， <code>/dev/sda1</code> 与 <code>/dev/sda2</code> 这两个分区是 Windows 10 的，因此是 NTFS 文件系统。<code>/dev/sda5</code> 为 <code>grub</code> 预留分区，而扩展分区 <code>/dev/sda3</code> 则作为我 Ubuntu 系统所有文件的主分区，可以看见扇区从 <code>383539198</code> 横跨到 <code>488396799</code>，途中包含了 <code>sda5</code> 到 <code>sda10</code> 这几个分区，而他们都是 ext4 文件系统的逻辑分区，加起来刚刚好 50G。</p>
-<h2 id="查询分区挂载情况"><a href="#查询分区挂载情况" class="headerlink" title="查询分区挂载情况"></a>查询分区挂载情况</h2><p>确定了是 <code>/dev/sda10</code> 分区空间不足后，我们利用 <code>mount -l | grep &quot;/dev/sda&quot;</code> 指令查看分区实际挂载情况。</p>
+<h2 id="查询分区挂载情况">查询分区挂载情况</h2>
+<p>确定了是 <code>/dev/sda10</code> 分区空间不足后，我们利用 <code>mount -l | grep "/dev/sda"</code> 指令查看分区实际挂载情况。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo mount -l | grep &quot;/dev/sda&quot;</span><br><span class="line">/dev/sda10 on / type ext4 (rw,relatime,errors=remount-ro,data=ordered)</span><br><span class="line">/dev/sda8 on /media/a9032676/b2b692f8-bdcf-46c1-9998-503b0970f5b3 type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br><span class="line">/dev/sda9 on /media/a9032676/9b5cdc3a-f296-490a-b329-6ae23acee7de type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br><span class="line">/dev/sda7 on /media/a9032676/1bbfb6fa-f919-4460-86f9-5ced5a900ec8 type ext4 (rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2)</span><br></pre></td></tr></table></figure>
 <p>从以上情况总括出：这台电脑两个系统都是安装在了同一个盘上面（因为是 SSD），合计可用大小是 232.9G，而分给 Ubuntu 的总共有 50G，Windows 则占用了 182.4G（撇除系统保留的 549M）。但现在 Ubuntu 挂载在根目录的分区 <code>/dev/sda10</code> 已经所剩无几，因此我打算的是从 Windows 处 <code>/dev/sda2</code> 释放 30G 的空间为 <code>/dev/sda10</code> 增加容量。</p>
-<h2 id="开始调整"><a href="#开始调整" class="headerlink" title="开始调整"></a>开始调整</h2><ol>
-<li><p>重启电脑，将系统更换成 Windows 10。</p>
-</li>
-<li><p>在【磁盘管理】处压缩 NTFS 卷/分区，释放已分配空间给予 Ubuntu 使用，这里我共计在 <code>/dev/sda2</code> 处压缩并腾出了共计 30G 的未分配空间。（本步骤不多作阐述，具体可参考：<a href="https://support.microsoft.com/zh-cn/help/944248" target="_blank" rel="noopener">如何在 Windows 中对硬盘进行分区</a>）</p>
-</li>
-<li><p>因为途中涉及根分区前后移动，因此必须要让本身处于 busy（忙碌） 状态的根分区先 <code>unmount</code> （卸载分区），否则会一直锁定着，无法移动。制作对应 Ubuntu 版本的 LiveCD（USB启动盘）。</p>
-</li>
-<li><p>重启电脑并插入刚刚制作好的 USB，切换系统到 USB 搭载的 Ubuntu 系统上。</p>
-</li>
-<li><p>进入系统后。于命令行内手动输入 <code>sudo umount /dev/sda10</code>，把我们的目标分区卸载掉，同时需要将扩展分区内的 Swap Space（交换空间）关闭掉：<code>sudo swapoff -a</code>。</p>
-</li>
-<li><p>然后使用 <code>sudo fdisk /dev/sda</code> 进入 fdisk 命令交互界面以调整分区：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo fdisk /dev/sda</span><br><span class="line">[sudo] password for a9032676: </span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.31.1).</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m for help):</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后我们使用 <code>p</code> 指令查询分区情况，虽然上面已经查询过，但为了安全起见还是先确认一遍。</p>
-</li>
+<h2 id="开始调整">开始调整</h2>
+<ol type="1">
+<li><p>重启电脑，将系统更换成 Windows 10。</p></li>
+<li><p>在【磁盘管理】处压缩 NTFS 卷/分区，释放已分配空间给予 Ubuntu 使用，这里我共计在 <code>/dev/sda2</code> 处压缩并腾出了共计 30G 的未分配空间。（本步骤不多作阐述，具体可参考：<a href="https://support.microsoft.com/zh-cn/help/944248" target="_blank" rel="noopener">如何在 Windows 中对硬盘进行分区</a>）</p></li>
+<li><p>因为途中涉及根分区前后移动，因此必须要让本身处于 busy（忙碌） 状态的根分区先 <code>unmount</code> （卸载分区），否则会一直锁定着，无法移动。制作对应 Ubuntu 版本的 LiveCD（USB启动盘）。</p></li>
+<li><p>重启电脑并插入刚刚制作好的 USB，切换系统到 USB 搭载的 Ubuntu 系统上。</p></li>
+<li><p>进入系统后。于命令行内手动输入 <code>sudo umount /dev/sda10</code>，把我们的目标分区卸载掉，同时需要将扩展分区内的 Swap Space（交换空间）关闭掉：<code>sudo swapoff -a</code>。</p></li>
+<li><p>然后使用 <code>sudo fdisk /dev/sda</code> 进入 fdisk 命令交互界面以调整分区： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> a9032676@90-Ubuntu  ~  sudo fdisk /dev/sda</span><br><span class="line">[sudo] password for a9032676: </span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.31.1).</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m for help):</span><br></pre></td></tr></table></figure></p></li>
+<li><p>然后我们使用 <code>p</code> 指令查询分区情况，虽然上面已经查询过，但为了安全起见还是先确认一遍。</p></li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): p</span><br><span class="line">Disk /dev/sda: 232.9 GiB, 250059350016 bytes, 488397168 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0xdefb6f09</span><br><span class="line"></span><br><span class="line">Device     Boot     Start       End   Sectors   Size Id Type</span><br><span class="line">/dev/sda1  *         2048   1126399   1124352   549M  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda2         1126400 320622591 319496192 152.4G  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sda3       383539198 488396799 104857602    50G  5 Extended</span><br><span class="line">/dev/sda5       383539200 383928319    389120   190M 83 Linux</span><br><span class="line">/dev/sda6       383930368 387928063   3997696   1.9G 82 Linux swap / Solaris</span><br><span class="line">/dev/sda7       387930112 397928447   9998336   4.8G 83 Linux</span><br><span class="line">/dev/sda8       397930496 401928191   3997696   1.9G 83 Linux</span><br><span class="line">/dev/sda9       401930240 441927679  39997440  19.1G 83 Linux</span><br><span class="line">/dev/sda10      441929728 488396799  46467072  22.2G 83 Linux</span><br></pre></td></tr></table></figure>
 <p>可以看到在 <code>/dev/sda2</code> 的扇尾 <code>320622591</code> 与 <code>/dev/sda3</code> 的扇头 <code>383539198</code> 之间差了 <code>62916607</code> 个 Blocks，刚好 30G，也就是我们之前在 Windows 上腾出来的空间。</p>
-<ol start="8">
+<ol start="8" type="1">
 <li>接下来这一步很关键，由于在我们上面的分区里面，没分配空间是处于扩展分区 <code>/dev/sda3</code> 以及 <code>/dev/sda10</code> 的前面（左侧），而我们需要先将其移动到靠近我们的 <code>/dev/sda10</code> 分区右侧（也就是把 free space 移动到整个盘最后面）方可与 <code>/dev/sda10</code> 逻辑分区进行合并，因此我们需要用到 <code>dd</code> 这条指令去操作分区移动：</li>
 </ol>
 <p>待补充</p>
-<ol start="9">
+<ol start="9" type="1">
 <li>但由于我们这里的例子 <code>/dev/sda10</code> 本身已经处于整个盘的最后方，因此可以直接使用 fdisk 的 <code>d</code> 与 <code>n</code> 指令直接合并已经移动到 <code>/dev/sda10</code> 左侧旁的 free space，而省去了最后的从 <code>/dev/sda10</code> 左侧移动到其的右侧。</li>
 </ol>
 <p>待补充</p>
-<ol start="10">
+<ol start="10" type="1">
 <li>在一轮操作完成之后，再输入 <code>p</code> 查询分区表究竟是否有误，再三确认后输入 <code>w</code> 保存变更并退出。</li>
 </ol>
 <p>待补充</p>
@@ -321,9 +319,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/04/15/Java-generic-type-md/" id="post-prev" class="post-nav-link">
+      <a href="/2019/06/24/Codewars-Five-Fundamental-Monads/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Java 泛型的本质 开篇</h4>
+        <h4 class="title">Codewars: Haskell Five Fundamental Monads</h4>
       </a>
     </div>
   
@@ -368,10 +366,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -385,7 +383,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>9032676 &copy; 2018 - 2019</span>
+        <p><span>9032676 &copy; 2018 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -495,32 +493,33 @@ MathJax.Hub.Queue(function() {
 });
 </script>
 
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
 
 </body>
 </html>

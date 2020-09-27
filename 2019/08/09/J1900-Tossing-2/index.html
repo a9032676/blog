@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -9,7 +9,7 @@
 
 
 
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
     
     
@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="NAS,ArchLinux,硬盘分区,RAID">
-    <meta name="description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相较">
+    <meta name="description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介 还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相">
 <meta name="keywords" content="NAS,ArchLinux,硬盘分区,RAID">
 <meta property="og:type" content="article">
 <meta property="og:title" content="星际蜗牛折腾记 第二章：组装 RAID">
 <meta property="og:url" content="http://blog.e7mc.com/2019/08/09/J1900-Tossing-2/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
-<meta property="og:description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相较">
+<meta property="og:description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介 还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:updated_time" content="2019-08-09T16:33:41.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="星际蜗牛折腾记 第二章：组装 RAID">
-<meta name="twitter:description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相较">
+<meta name="twitter:description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介 还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相">
     
         <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
@@ -40,15 +40,15 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </head>
 
 <body>
-    <div id="loading" class="active"></div>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -68,42 +68,42 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/a9032676" target="_blank">
+              <a href="https://github.com/a9032676" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about-me">
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -165,23 +165,24 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#硬盘信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">硬盘信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#准备工作"><span class="post-toc-number">3.</span> <span class="post-toc-text">准备工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#备份"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">备份</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检测硬盘"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">检测硬盘</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组装-RAID"><span class="post-toc-number">4.</span> <span class="post-toc-text">组装 RAID</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#擦除硬盘数据"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">擦除硬盘数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为硬盘建立分区"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">为硬盘建立分区</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立硬盘阵列"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">建立硬盘阵列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询-RAID-状态"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">查询 RAID 状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#格式化-RAID-阵列"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">格式化 RAID 阵列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#挂载-RAID-阵列"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">挂载 RAID 阵列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置开机挂载"><span class="post-toc-number">4.6.1.</span> <span class="post-toc-text">设置开机挂载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重启并验证"><span class="post-toc-number">4.6.2.</span> <span class="post-toc-text">重启并验证</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#硬盘信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">硬盘信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#准备工作"><span class="post-toc-number">3.</span> <span class="post-toc-text">准备工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#备份"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">备份</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检测硬盘"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">检测硬盘</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组装-raid"><span class="post-toc-number">4.</span> <span class="post-toc-text">组装 RAID</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#擦除硬盘数据"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">擦除硬盘数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为硬盘建立分区"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">为硬盘建立分区</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立硬盘阵列"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">建立硬盘阵列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询-raid-状态"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">查询 RAID 状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#格式化-raid-阵列"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">格式化 RAID 阵列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#挂载-raid-阵列"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">挂载 RAID 阵列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置开机挂载"><span class="post-toc-number">4.6.1.</span> <span class="post-toc-text">设置开机挂载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重启并验证"><span class="post-toc-number">4.6.2.</span> <span class="post-toc-text">重启并验证</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-J1900-Tossing-2" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-J1900-Tossing-2"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">星际蜗牛折腾记 第二章：组装 RAID</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-08-09 09:39:53" datetime="2019-08-09T01:39:53.000Z" itemprop="datePublished">2019-08-09</time>
+            <time class="post-time" title="2019-08-09 09:39:53" datetime="2019-08-09T01:39:53.000Z"  itemprop="datePublished">2019-08-09</time>
 
             
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -189,41 +190,50 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 <ruby>故障<rp> (</rp><rt>fān chē</rt><rp>) </rp></ruby>率 相较其他品牌依旧最低） 的 4T 监控盘（非 SMR 叠瓦式，这灵车我还真不敢上），而年产日期有点久远，是 2014 年的，疑似翻新盘，因此买回来之后也跑完了对硬盘的各项检测，确保质量没问题并对这两块硬盘组上 软件RAID1（较为注重数据安全性，但储存容量只有一半），硬件 RAID 需要另行购置 RAID 卡。</p>
-<h2 id="硬盘信息"><a href="#硬盘信息" class="headerlink" title="硬盘信息"></a>硬盘信息</h2><ul>
+<h2 id="简介">简介</h2>
+<p>还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 <ruby>故障<rp> (</rp><rt>fān chē</rt><rp>) </rp></ruby>率 相较其他品牌依旧最低） 的 4T 监控盘（非 SMR 叠瓦式，这灵车我还真不敢上），而年产日期有点久远，是 2014 年的，疑似翻新盘，因此买回来之后也跑完了对硬盘的各项检测，确保质量没问题并对这两块硬盘组上 软件RAID1（较为注重数据安全性，但储存容量只有一半），硬件 RAID 需要另行购置 RAID 卡。</p>
+<h2 id="硬盘信息">硬盘信息</h2>
+<ul>
 <li>型号: HGST HMS5C4040BLE640</li>
 <li>容量: 4TB（格式化后大约 3.6TB 左右）</li>
 <li>类型：监控盘（连续写入较好，随即读取性能较差）</li>
 </ul>
 <p>详细数据请点<a href="https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/hgst/megascale-4000-series/data-sheet-megascale-dc-4000-b.pdf" target="_blank" rel="noopener">这里</a>查询。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><p>如果硬盘之前存放有重要数据，切记切记要先备份，这个很关键。</p>
-<h3 id="检测硬盘"><a href="#检测硬盘" class="headerlink" title="检测硬盘"></a>检测硬盘</h3><p>在组装前请检测硬盘是否存在损坏，坏道，以及对其进行性能测试，确认没有问题之后再开始组装。</p>
-<h2 id="组装-RAID"><a href="#组装-RAID" class="headerlink" title="组装 RAID"></a>组装 RAID</h2><h3 id="擦除硬盘数据"><a href="#擦除硬盘数据" class="headerlink" title="擦除硬盘数据"></a>擦除硬盘数据</h3><p>若果在组装无论是新旧磁盘都必须先格式化，再进行组装。而如果本身硬盘已在之前组装了 RAID 的话，请使用以下步骤将硬盘内数据（包括 RAID 配置数据）擦除掉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mdadm --misc --zero-superblock /dev/&lt;drive&gt;</span><br></pre></td></tr></table></figure></p>
-<p>或者指定硬盘上的其中一个分区：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mdadm --misc --zero-superblock /dev/&lt;partition&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="为硬盘建立分区"><a href="#为硬盘建立分区" class="headerlink" title="为硬盘建立分区"></a>为硬盘建立分区</h3><p>建立分区前，这里我使用了 <code>parted -l</code>（或 <code>fdisk -l</code>，选择 parted 无疑是因为较直观一点）命令查询当前硬盘情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux /]# parted -l</span><br><span class="line">Model: ATA C3M-16G (scsi)</span><br><span class="line">Disk /dev/sda: 16.0GB</span><br><span class="line">Sector size (logical/physical): 512B/512B</span><br><span class="line">Partition Table: gpt</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start   End     Size    File system  Name  Flags</span><br><span class="line"> 1      1049kB  538MB   537MB   fat32              boot, esp</span><br><span class="line"> 2      538MB   16.0GB  15.5GB  ext4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: loop</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start  End  Size  File system  Name  Flags</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdc: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: loop</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start  End     Size    File system  Flags</span><br></pre></td></tr></table></figure></p>
+<h2 id="准备工作">准备工作</h2>
+<h3 id="备份">备份</h3>
+<p>如果硬盘之前存放有重要数据，切记切记要先备份，这个很关键。</p>
+<h3 id="检测硬盘">检测硬盘</h3>
+<p>在组装前请检测硬盘是否存在损坏，坏道，以及对其进行性能测试，确认没有问题之后再开始组装。</p>
+<h2 id="组装-raid">组装 RAID</h2>
+<h3 id="擦除硬盘数据">擦除硬盘数据</h3>
+<p>若果在组装无论是新旧磁盘都必须先格式化，再进行组装。而如果本身硬盘已在之前组装了 RAID 的话，请使用以下步骤将硬盘内数据（包括 RAID 配置数据）擦除掉： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mdadm --misc --zero-superblock /dev/&lt;drive&gt;</span><br></pre></td></tr></table></figure></p>
+<p>或者指定硬盘上的其中一个分区： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mdadm --misc --zero-superblock /dev/&lt;partition&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="为硬盘建立分区">为硬盘建立分区</h3>
+<p>建立分区前，这里我使用了 <code>parted -l</code>（或 <code>fdisk -l</code>，选择 parted 无疑是因为较直观一点）命令查询当前硬盘情况： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux /]# parted -l</span><br><span class="line">Model: ATA C3M-16G (scsi)</span><br><span class="line">Disk /dev/sda: 16.0GB</span><br><span class="line">Sector size (logical/physical): 512B/512B</span><br><span class="line">Partition Table: gpt</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start   End     Size    File system  Name  Flags</span><br><span class="line"> 1      1049kB  538MB   537MB   fat32              boot, esp</span><br><span class="line"> 2      538MB   16.0GB  15.5GB  ext4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: loop</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start  End  Size  File system  Name  Flags</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdc: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: loop</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start  End     Size    File system  Flags</span><br></pre></td></tr></table></figure></p>
 <p>从上面看出，我们现在有两块 HGST 4TB 的 HDD 在这，分别是 <code>/dev/sdb</code> 以及 <code>/dev/sdc</code>，现在我们使用 <code>fdisk /dev/sdb</code> 以及 <code>fdisk /dev/sdc</code> 对它们建立 RAID 分区：</p>
-<p>在建立分区之前首先要更改硬盘的 <code>disklabel</code> 为 GPT 格式，因此先输入 <code>g</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux /]# fdisk /dev/sdb</span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.34).</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line">The old ext4 signature will be removed by a write command.</span><br><span class="line"></span><br><span class="line">Device does not contain a recognized partition table.</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">Created a new DOS disklabel with disk identifier 0xfe1551f9.</span><br><span class="line"></span><br><span class="line">Command (m for help): g</span><br><span class="line">Created a new GPT disklabel (GUID: 3171CF65-B466-9347-A082-3AACDD9B9721).</span><br></pre></td></tr></table></figure></p>
-<p>在更改完成之后，现在使用 <code>n</code> 创建新的分区，然后输入 <code>t</code> 更改刚刚创建的新分区类型为 Linux RAID（序号为 <code>29</code>，GUID为 <code>A19D880F-05FC-4D3B-A006-743F0F84911E</code>），最后输入 <code>i</code> 查询创建结果，在确认无误后输入 <code>w</code> 保存并且退出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): n</span><br><span class="line">Partition number (1-128, default 1): </span><br><span class="line">First sector (2048-7814037134, default 2048): </span><br><span class="line">Last sector, +/-sectors or +/-size&#123;K,M,G,T,P&#125; (2048-7814037134, default 7814037134): </span><br><span class="line"></span><br><span class="line">Created a new partition 1 of type &apos;Linux filesystem&apos; and of size 3.7 TiB.</span><br><span class="line"></span><br><span class="line">Command (m for help): t</span><br><span class="line">Selected partition 1</span><br><span class="line">Partition type (type L to list all types): 29</span><br><span class="line">Changed type of partition &apos;Linux filesystem&apos; to &apos;Linux RAID&apos;.</span><br><span class="line"></span><br><span class="line">Command (m for help): i</span><br><span class="line">Selected partition 1</span><br><span class="line">         Device: /dev/sdb1</span><br><span class="line">          Start: 2048</span><br><span class="line">            End: 7814037134</span><br><span class="line">        Sectors: 7814035087</span><br><span class="line">           Size: 3.7T</span><br><span class="line">           Type: Linux RAID</span><br><span class="line">      Type-UUID: A19D880F-05FC-4D3B-A006-743F0F84911E</span><br><span class="line">           UUID: 6885A106-3022-FA4F-966F-EDBA96B4A9D9</span><br><span class="line"></span><br><span class="line">Command (m for help): w</span><br><span class="line">The partition table has been altered.</span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line">Syncing disks.</span><br><span class="line"></span><br><span class="line">[root@archlinux /]#</span><br></pre></td></tr></table></figure></p>
-<p>然后重复上述步骤为 <code>/dev/sdc</code> 也创建一遍分区表，保存退出并输入 <code>parted -l</code> 查询最终分区表结果（已省略其他硬盘）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: gpt</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start   End     Size    File system  Name  Flags</span><br><span class="line"> 1      1049kB  4001GB  4001GB                     raid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdc: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: gpt</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start   End     Size    File system  Name  Flags</span><br><span class="line"> 1      1049kB  4001GB  4001GB                     raid</span><br></pre></td></tr></table></figure></p>
-<h3 id="建立硬盘阵列"><a href="#建立硬盘阵列" class="headerlink" title="建立硬盘阵列"></a>建立硬盘阵列</h3><p>这里我们需要使用到一系列的 <code>mdadm</code> 命令（请使用 <code>pacman -S mdadm</code> 进行安装）创建硬盘阵列：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/RAID1 /dev/sdb1 /dev/sdc1</span><br></pre></td></tr></table></figure></p>
-<p>用法：mdadm [选项] 设备 分区…<br>选项：</p>
-<ul>
-<li><code>--level</code> 是你要组合的 RAID 类型，这里我们是 RAID1 所以就直接填写 1 即可。</li>
-<li><code>--metadata</code> 默认为 1.2，但若你的启动引导器（Bootloader）使用的是 Syslinux 且版本为 v4.07 的话请将这个变量改为 1.0。</li>
-<li><code>--raid-devices</code> 指的是你要组成阵列的硬盘数量，我们这里只有两个那就填写 2。- <code>/dev/md/YOUR_RAID_NAME</code> 为命令 <code>mdadm</code> 的第一个必填参数，系统会根据这个路径去创建软链接并指向你创建的 RAID 阵列上（这里我使用 <code>ls -l /dev/md</code> 查询出来的结果是：<code>RAID1 -&gt; ../md127</code>）。</li>
-<li><code>/dev/sdX1 /dev/sdX1 ...</code> 后续的参数则是你 RAID 的具体分区位置。</li>
-</ul>
-<h3 id="查询-RAID-状态"><a href="#查询-RAID-状态" class="headerlink" title="查询 RAID 状态"></a>查询 RAID 状态</h3><p>在创建完毕之后，我们可以使用 <code>cat /proc/mdstat</code> 查询 RAID 当前的状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux /]# cat /proc/mdstat</span><br><span class="line">Personalities : [raid1] </span><br><span class="line">md127 : active raid1 sdc1[1] sdb1[0]</span><br><span class="line">      3906885440 blocks super 1.2 [2/2] [UU]</span><br><span class="line">      [&gt;....................]  resync =  0.1% (5158656/3906885440) finish=513.5min speed=126616K/sec</span><br><span class="line">      bitmap: 30/30 pages [120KB], 65536KB chunk</span><br></pre></td></tr></table></figure></p>
+<p>在建立分区之前首先要更改硬盘的 <code>disklabel</code> 为 GPT 格式，因此先输入 <code>g</code>： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux /]# fdisk /dev/sdb</span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.34).</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line">The old ext4 signature will be removed by a write command.</span><br><span class="line"></span><br><span class="line">Device does not contain a recognized partition table.</span><br><span class="line">The size of this disk is 3.7 TiB (4000787030016 bytes). DOS partition table format cannot be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).</span><br><span class="line"></span><br><span class="line">Created a new DOS disklabel with disk identifier 0xfe1551f9.</span><br><span class="line"></span><br><span class="line">Command (m for help): g</span><br><span class="line">Created a new GPT disklabel (GUID: 3171CF65-B466-9347-A082-3AACDD9B9721).</span><br></pre></td></tr></table></figure></p>
+<p>在更改完成之后，现在使用 <code>n</code> 创建新的分区，然后输入 <code>t</code> 更改刚刚创建的新分区类型为 Linux RAID（序号为 <code>29</code>，GUID为 <code>A19D880F-05FC-4D3B-A006-743F0F84911E</code>），最后输入 <code>i</code> 查询创建结果，在确认无误后输入 <code>w</code> 保存并且退出： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): n</span><br><span class="line">Partition number (1-128, default 1): </span><br><span class="line">First sector (2048-7814037134, default 2048): </span><br><span class="line">Last sector, +/-sectors or +/-size&#123;K,M,G,T,P&#125; (2048-7814037134, default 7814037134): </span><br><span class="line"></span><br><span class="line">Created a new partition 1 of type &apos;Linux filesystem&apos; and of size 3.7 TiB.</span><br><span class="line"></span><br><span class="line">Command (m for help): t</span><br><span class="line">Selected partition 1</span><br><span class="line">Partition type (type L to list all types): 29</span><br><span class="line">Changed type of partition &apos;Linux filesystem&apos; to &apos;Linux RAID&apos;.</span><br><span class="line"></span><br><span class="line">Command (m for help): i</span><br><span class="line">Selected partition 1</span><br><span class="line">         Device: /dev/sdb1</span><br><span class="line">          Start: 2048</span><br><span class="line">            End: 7814037134</span><br><span class="line">        Sectors: 7814035087</span><br><span class="line">           Size: 3.7T</span><br><span class="line">           Type: Linux RAID</span><br><span class="line">      Type-UUID: A19D880F-05FC-4D3B-A006-743F0F84911E</span><br><span class="line">           UUID: 6885A106-3022-FA4F-966F-EDBA96B4A9D9</span><br><span class="line"></span><br><span class="line">Command (m for help): w</span><br><span class="line">The partition table has been altered.</span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line">Syncing disks.</span><br><span class="line"></span><br><span class="line">[root@archlinux /]#</span><br></pre></td></tr></table></figure></p>
+<p>然后重复上述步骤为 <code>/dev/sdc</code> 也创建一遍分区表，保存退出并输入 <code>parted -l</code> 查询最终分区表结果（已省略其他硬盘）： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdb: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: gpt</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start   End     Size    File system  Name  Flags</span><br><span class="line"> 1      1049kB  4001GB  4001GB                     raid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Model: ATA HGST HMS5C4040BL (scsi)</span><br><span class="line">Disk /dev/sdc: 4001GB</span><br><span class="line">Sector size (logical/physical): 512B/4096B</span><br><span class="line">Partition Table: gpt</span><br><span class="line">Disk Flags: </span><br><span class="line"></span><br><span class="line">Number  Start   End     Size    File system  Name  Flags</span><br><span class="line"> 1      1049kB  4001GB  4001GB                     raid</span><br></pre></td></tr></table></figure></p>
+<h3 id="建立硬盘阵列">建立硬盘阵列</h3>
+<p>这里我们需要使用到一系列的 <code>mdadm</code> 命令（请使用 <code>pacman -S mdadm</code> 进行安装）创建硬盘阵列： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/RAID1 /dev/sdb1 /dev/sdc1</span><br></pre></td></tr></table></figure></p>
+<p>用法：mdadm [选项] 设备 分区... 选项： - <code>--level</code> 是你要组合的 RAID 类型，这里我们是 RAID1 所以就直接填写 1 即可。 - <code>--metadata</code> 默认为 1.2，但若你的启动引导器（Bootloader）使用的是 Syslinux 且版本为 v4.07 的话请将这个变量改为 1.0。 - <code>--raid-devices</code> 指的是你要组成阵列的硬盘数量，我们这里只有两个那就填写 2。- <code>/dev/md/YOUR_RAID_NAME</code> 为命令 <code>mdadm</code> 的第一个必填参数，系统会根据这个路径去创建软链接并指向你创建的 RAID 阵列上（这里我使用 <code>ls -l /dev/md</code> 查询出来的结果是：<code>RAID1 -&gt; ../md127</code>）。 - <code>/dev/sdX1 /dev/sdX1 ...</code> 后续的参数则是你 RAID 的具体分区位置。</p>
+<h3 id="查询-raid-状态">查询 RAID 状态</h3>
+<p>在创建完毕之后，我们可以使用 <code>cat /proc/mdstat</code> 查询 RAID 当前的状态： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux /]# cat /proc/mdstat</span><br><span class="line">Personalities : [raid1] </span><br><span class="line">md127 : active raid1 sdc1[1] sdb1[0]</span><br><span class="line">      3906885440 blocks super 1.2 [2/2] [UU]</span><br><span class="line">      [&gt;....................]  resync =  0.1% (5158656/3906885440) finish=513.5min speed=126616K/sec</span><br><span class="line">      bitmap: 30/30 pages [120KB], 65536KB chunk</span><br></pre></td></tr></table></figure></p>
 <p>可以发现我们刚组的 RAID 已经在开始在后台同步数据了，这时我们耐心等待同步完毕即可。</p>
-<h3 id="格式化-RAID-阵列"><a href="#格式化-RAID-阵列" class="headerlink" title="格式化 RAID 阵列"></a>格式化 RAID 阵列</h3><p>在等待同步数据的同时，我们可以先对 RAID1 进行格式化（但要注意的是 RAID1 是完全由一个硬盘的所有内容镜像地复制到另外一个硬盘中，因此 RAID1 并没有采用到硬盘条带化（Stripe）技术，所以我们在格式化的时候并不需要手动计算 <code>stripe size</code> <code>stripe width</code> 这些东西，而类似 RAID5 / RAID6 这些则需要特别小心）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux md]# mkfs.ext4 /dev/md127</span><br><span class="line">mke2fs 1.45.3 (14-Jul-2019)</span><br><span class="line">Creating filesystem with 976721360 4k blocks and 244187136 inodes</span><br><span class="line">Filesystem UUID: cce6ae47-1d89-4293-a259-318c3b765a0b</span><br><span class="line">Superblock backups stored on blocks: </span><br><span class="line">	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, </span><br><span class="line">	4096000, 7962624, 11239424, 20480000, 23887872, 71663616, 78675968, </span><br><span class="line">	102400000, 214990848, 512000000, 550731776, 644972544</span><br><span class="line"></span><br><span class="line">Allocating group tables: done                            </span><br><span class="line">Writing inode tables: done                            </span><br><span class="line">Creating journal (262144 blocks): </span><br><span class="line">done</span><br><span class="line">Writing superblocks and filesystem accounting information:            </span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
-<h3 id="挂载-RAID-阵列"><a href="#挂载-RAID-阵列" class="headerlink" title="挂载 RAID 阵列"></a>挂载 RAID 阵列</h3><p>在上述步骤都完成了之后，那现在当然就是挂载 RAID 阵列啦，我们现在使用 <code>mkdir /raid1</code> 创建了一个 <code>raid1</code> 文件夹，并把 <code>/dev/md127</code> 挂载到其上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux md]# mkdir /raid1</span><br><span class="line">[root@archlinux md]# mount /dev/md127 /raid1</span><br></pre></td></tr></table></figure></p>
-<p>使用 <code>df -h | grep &#39;/dev/md127&#39;</code> 验证我们是否挂载成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux raid1]# df -h | grep &apos;dev/md127&apos;</span><br><span class="line">/dev/md127      3.6T   89M  3.4T   1% /raid1</span><br></pre></td></tr></table></figure></p>
-<h4 id="设置开机挂载"><a href="#设置开机挂载" class="headerlink" title="设置开机挂载"></a>设置开机挂载</h4><p>在使用 <code>mount</code> 挂载完后并不意味着 RAID 阵列开机就会启动 RAID 以及自动挂载，因此我们可以使用 mdadm 的指令把现行扫描出来的 RAID 阵列自动加到 <code>/etc/mdadm.conf</code> 上，好让系统在开机时自启 RAID 设备：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdadm -D --scan &gt;&gt; /etc/mdadm.conf</span><br></pre></td></tr></table></figure></p>
-<p>或手动编辑 <code>/etc/mdadm.conf</code> 并设定：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DEVICE partitions</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">ARRAY /dev/md/RAID1 metadata=1.2 name=archlinux:RAID1 UUID=72326a38:db8867f1:6d3c072e:2c1a5d06</span><br></pre></td></tr></table></figure></p>
+<h3 id="格式化-raid-阵列">格式化 RAID 阵列</h3>
+<p>在等待同步数据的同时，我们可以先对 RAID1 进行格式化（但要注意的是 RAID1 是完全由一个硬盘的所有内容镜像地复制到另外一个硬盘中，因此 RAID1 并没有采用到硬盘条带化（Stripe）技术，所以我们在格式化的时候并不需要手动计算 <code>stripe size</code> <code>stripe width</code> 这些东西，而类似 RAID5 / RAID6 这些则需要特别小心）： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux md]# mkfs.ext4 /dev/md127</span><br><span class="line">mke2fs 1.45.3 (14-Jul-2019)</span><br><span class="line">Creating filesystem with 976721360 4k blocks and 244187136 inodes</span><br><span class="line">Filesystem UUID: cce6ae47-1d89-4293-a259-318c3b765a0b</span><br><span class="line">Superblock backups stored on blocks: </span><br><span class="line">	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, </span><br><span class="line">	4096000, 7962624, 11239424, 20480000, 23887872, 71663616, 78675968, </span><br><span class="line">	102400000, 214990848, 512000000, 550731776, 644972544</span><br><span class="line"></span><br><span class="line">Allocating group tables: done                            </span><br><span class="line">Writing inode tables: done                            </span><br><span class="line">Creating journal (262144 blocks): </span><br><span class="line">done</span><br><span class="line">Writing superblocks and filesystem accounting information:            </span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<h3 id="挂载-raid-阵列">挂载 RAID 阵列</h3>
+<p>在上述步骤都完成了之后，那现在当然就是挂载 RAID 阵列啦，我们现在使用 <code>mkdir /raid1</code> 创建了一个 <code>raid1</code> 文件夹，并把 <code>/dev/md127</code> 挂载到其上： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux md]# mkdir /raid1</span><br><span class="line">[root@archlinux md]# mount /dev/md127 /raid1</span><br></pre></td></tr></table></figure></p>
+<p>使用 <code>df -h | grep '/dev/md127'</code> 验证我们是否挂载成功： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@archlinux raid1]# df -h | grep &apos;dev/md127&apos;</span><br><span class="line">/dev/md127      3.6T   89M  3.4T   1% /raid1</span><br></pre></td></tr></table></figure></p>
+<h4 id="设置开机挂载">设置开机挂载</h4>
+<p>在使用 <code>mount</code> 挂载完后并不意味着 RAID 阵列开机就会启动 RAID 以及自动挂载，因此我们可以使用 mdadm 的指令把现行扫描出来的 RAID 阵列自动加到 <code>/etc/mdadm.conf</code> 上，好让系统在开机时自启 RAID 设备： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdadm -D --scan &gt;&gt; /etc/mdadm.conf</span><br></pre></td></tr></table></figure></p>
+<p>或手动编辑 <code>/etc/mdadm.conf</code> 并设定： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DEVICE partitions</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">ARRAY /dev/md/RAID1 metadata=1.2 name=archlinux:RAID1 UUID=72326a38:db8867f1:6d3c072e:2c1a5d06</span><br></pre></td></tr></table></figure></p>
 <p>把你的 RAID 阵列配置加到末尾即可（UUID 可使用 <code>mdadm --detail /dev/mdX</code> 查询）。</p>
-<p>然后编辑 <code>/etc/fstab</code> 并把配置添加到末尾，好让系统开机自动挂载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"># /dev/md127</span><br><span class="line">/dev/md127 /raid1 ext4 defaults 0 0</span><br></pre></td></tr></table></figure></p>
-<h4 id="重启并验证"><a href="#重启并验证" class="headerlink" title="重启并验证"></a>重启并验证</h4><p>最后一步就是输入 <code>reboot</code> 重启并使用 <code>df -h | grep raid1</code> 重新验证自动挂载是否成功。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇折腾的东西与上一篇其实也差不多，目前的话就差一些作为应有的基础配套与应用集群管理体系了，不然单纯作为存储用也就太浪费了，所以下一篇会集中讲述关于在 ArchLinux 部署 Docker 的安装流程与一些事宜。</p>
+<p>然后编辑 <code>/etc/fstab</code> 并把配置添加到末尾，好让系统开机自动挂载： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"># /dev/md127</span><br><span class="line">/dev/md127 /raid1 ext4 defaults 0 0</span><br></pre></td></tr></table></figure></p>
+<h4 id="重启并验证">重启并验证</h4>
+<p>最后一步就是输入 <code>reboot</code> 重启并使用 <code>df -h | grep raid1</code> 重新验证自动挂载是否成功。</p>
+<h2 id="总结">总结</h2>
+<p>这篇折腾的东西与上一篇其实也差不多，目前的话就差一些作为应有的基础配套与应用集群管理体系了，不然单纯作为存储用也就太浪费了，所以下一篇会集中讲述关于在 ArchLinux 部署 Docker 的安装流程与一些事宜。</p>
 
         </div>
 
@@ -357,10 +367,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -374,7 +384,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>9032676 &copy; 2018 - 2019</span>
+        <p><span>9032676 &copy; 2018 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -484,32 +494,33 @@ MathJax.Hub.Queue(function() {
 });
 </script>
 
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
 
 </body>
 </html>

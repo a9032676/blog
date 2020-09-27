@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象 | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="范畴论,函数式编程">
+    <meta name="description" content="前言 上一章介绍了除集合范畴以外一些其他范畴的例子，而对于任意范畴而言，往往是由态射把不同对象链接在一起形成某些关系。而既然我们已经知道了一些不同种类态射与范畴，当然对象也不会例外，透过对对象种类的划分，我们同样地可以得出一些不同的结论出来，因此我们今天就来探讨下关于范畴内对象的一些关系吧。 泛构造（Universal Construction） 在范畴论的语言中，我们常常都会把对象之间透过态射连">
+<meta name="keywords" content="范畴论,函数式编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象">
+<meta property="og:url" content="http://blog.e7mc.com/2019/09/29/Category-Theory-4/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="前言 上一章介绍了除集合范畴以外一些其他范畴的例子，而对于任意范畴而言，往往是由态射把不同对象链接在一起形成某些关系。而既然我们已经知道了一些不同种类态射与范畴，当然对象也不会例外，透过对对象种类的划分，我们同样地可以得出一些不同的结论出来，因此我们今天就来探讨下关于范畴内对象的一些关系吧。 泛构造（Universal Construction） 在范畴论的语言中，我们常常都会把对象之间透过态射连">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-09-21T07:31:53.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象">
+<meta name="twitter:description" content="前言 上一章介绍了除集合范畴以外一些其他范畴的例子，而对于任意范畴而言，往往是由态射把不同对象链接在一起形成某些关系。而既然我们已经知道了一些不同种类态射与范畴，当然对象也不会例外，透过对对象种类的划分，我们同样地可以得出一些不同的结论出来，因此我们今天就来探讨下关于范畴内对象的一些关系吧。 泛构造（Universal Construction） 在范畴论的语言中，我们常常都会把对象之间透过态射连">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me"  >
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-29T14:19:24.000Z" itemprop="datePublished" class="page-time">
+  2019-09-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#泛构造universal-construction"><span class="post-toc-number">2.</span> <span class="post-toc-text">泛构造（Universal Construction）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范性质universal-property"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">范性质（Universal Property）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象的种类type-of-objects"><span class="post-toc-number">3.</span> <span class="post-toc-text">对象的种类（Type of Objects）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#始对象initial-object"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">始对象（Initial Object）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#终对象terminal-object"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">终对象（Terminal Object）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#零对象zero-objector-null-object"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">零对象（Zero Object（or Null Object））</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Category-Theory-4"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-29 22:19:24" datetime="2019-09-29T14:19:24.000Z"  itemprop="datePublished">2019-09-29</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言">前言</h2>
+<p>上一章介绍了除集合范畴以外一些其他范畴的例子，而对于任意范畴而言，往往是由态射把不同对象链接在一起形成某些关系。而既然我们已经知道了一些不同种类态射与范畴，当然对象也不会例外，透过对对象种类的划分，我们同样地可以得出一些不同的结论出来，因此我们今天就来探讨下关于范畴内对象的一些关系吧。</p>
+<h2 id="泛构造universal-construction">泛构造（Universal Construction）</h2>
+<p>在范畴论的语言中，我们常常都会把对象之间透过态射连接起来，但我们从来都没有 "谈对象"，例如在使用 <span class="math inline">\(Commuting-diagram\)</span> 构造一个 <span class="math inline">\(C_{Set}\)</span> 的范畴时我们从来就没有关心过集合里面究竟是由啥具体的整数被映射至啥具体的整数，如：1 / 2 / 3 等等，他们通常只会在具体的例子中出现，而不会在构造时被搬上台面。所以要知道在范畴论上，我们通常谈的是一个被抽象出来的泛概念，对于任何对象我们不会谈对象的本身，而只会把对象与态射连接起来，给定一些特性或特质，然后我们可以给满足某些特性的对象分类，于是乎我们会说："哦！原来满足这些特征那就是一个始对象，而满足这些特征那就是终对象！"。</p>
+<h3 id="范性质universal-property">范性质（Universal Property）</h3>
+<h2 id="对象的种类type-of-objects">对象的种类（Type of Objects）</h2>
+<p>透过泛构造，我们可以在不提及对象是什么的情况下，给定不同的规则，形成不同种类的对象，下面则会列出一些常见的对象类型。</p>
+<h3 id="始对象initial-object">始对象（Initial Object）</h3>
+<p>始对象有着初始，开始的意思，其在范畴中那意味着最初始的那个对象，任何一切都是由此处开始，当然地这个对象也只能够由其本身存在的唯一态射给映射到别的对象中，公理化的性质可描述为： - 当 <span class="math inline">\(I\)</span> 作为始对象时，<span class="math inline">\(\forall X \in C, Hom_C(I, X)\)</span> 当中仅存在唯一态射（Unique morphism） - 当 <span class="math inline">\(I\)</span> 作为始对象时，<span class="math inline">\(\forall X \in C, |C(I, X)| = 1\)</span></p>
+<p>下面是不同范畴作为始对象的一些例子： - 对于 <span class="math inline">\(C_{Set}\)</span>，始对象则是空集合，因为对于集合来说，存在唯一态射的元素（对象）则只有空集合。（下设 <span class="math inline">\(I\)</span> 作为始对象，当我们存在映射 <span class="math inline">\(f : I \to X\)</span> 时，把其作为笛卡儿积 <span class="math inline">\(I \times X \in f\)</span> 来看待，这时候它仅存在唯一元素，也就是 <span class="math inline">\(\varnothing \to X\)</span>，这正正符合了满射函数的定律，我们称之为空函数。） - 对于 <span class="math inline">\(C_{Group}\)</span>，始对象是平凡群（Trivial Group）。（由单元素组成的群，其运算只有 <span class="math inline">\(e + e = e\)</span>）</p>
+<h3 id="终对象terminal-object">终对象（Terminal Object）</h3>
+<p>做人要有始有终，那范畴论当然也不例外！而对于终对象，其与始对象的性质完全相反，公理化的性质可描述为： - 当 <span class="math inline">\(T\)</span> 作为终对象时，<span class="math inline">\(\forall X \in C, Hom_C(X, T)\)</span> 当中仅存在唯一态射 - 当 <span class="math inline">\(T\)</span> 作为终对象时，<span class="math inline">\(\forall X \in C, |C(X, T)| = 1\)</span></p>
+<p>下面是不同范畴作为终对象的一些例子： - 对于 <span class="math inline">\(C_{Set}\)</span>，终对象则是单元素集合（Singleton Set），因为对于集合来说，我们没办法从非空集合态射到一个空集合（试想一下若果培域是空集，那么就不存在任何态射从定义域映射到值域了），存在唯一态射的元素（对象）则只有单元素集合。 - 对于 <span class="math inline">\(C_{Group}\)</span>，终对象也是平凡群。</p>
+<h3 id="零对象zero-objector-null-object">零对象（Zero Object（or Null Object））</h3>
+<p>当一个对象，它同时是始对象以及终对象时，那么我们把它称为零对象。因此它的性质可被描述为： - 当 <span class="math inline">\(0\)</span> 作为零对象时，<span class="math inline">\(\forall 0 \in C, 有 \exists! f \exists! g. f : A \to 0 \land g : 0 \to A\)</span></p>
+<p>下面是不同范畴作为零对象的一些例子： - 由于平凡群同时是始对象与终对象，因此它自然是一个零对象。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-09-21T07:31:53.154Z" itemprop="dateUpdated">2020-09-21 15:31:53</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/范畴论/">范畴论</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/09/29/Category-Theory-4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/09/21/Lambda-Cube-Intro/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Lambda 立方体 与 类型系统 简记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/26/Category-Theory-3/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2019/09/29/Category-Theory-4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2019/09/29/Category-Theory-4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aQW7DMAwEwPz/0+m1QGB7ScltLI1OheMEGh1YUuTrFa/3r/X5/POd8eevOxYGBsZjGe/TdfTTR7CR9xPq4e9gYGBswDjfShJqk+3m0TLfGwYGBkbyzkjyl3yKgYGBkTPy1O18i8mhYGBgYPSK2CTtqxa3/1CLY2BgPJCRF5l///ct/Q0MDIxHMd7FlaRxI2Vtb2FgYKzN6LUwk9QwaWRWr/MuEk0MDIxtGMlFW7V5ef48QUY8DAyMpRm9wrWaRI40G5KBDwwMjFUZ1XbjyBbHG5yF88bAwFiIUR5oKKaDIwMcSWKKgYGxA2PW6ENvu71RjObXMDAwHssYv+oaaX/ewsbAwFiOkZeU+UarrYLx4hkDA2MHRq8EHRlCnZwmYmBgbMDoXaXl5ev40VzsAQMDY2lGnor1xryqv5+XshdVOAYGxkKMuQlcdWwiTzSbYxYYGBhLMPIAWh2JSAJuft0WHT0GBsYGjKQZkKd9SSmbNAwK0RUDA2MDRmH0qphE9sJ0zsbAwNiZ0UsZk+QvD/QRAAMDYwNG9Sq/GiJ7Axm9K0IMDIz1GOMjqrOSv+Rbh3vAwMBYmjG3PzirMZlf1d3S5sTAwPhKRh5k8097rc084F6cNAYGxqKM6vTCrOfV/wCH72NgYGAUR7V6CeJQDouBgYERNyOrxeq0tiUGBsYGjJEiNiHlwxz5EU++bsPAwPhiRi/vSoYqclL1OJqNTAwMjOcxfgC6ax3zXNvlkQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>
