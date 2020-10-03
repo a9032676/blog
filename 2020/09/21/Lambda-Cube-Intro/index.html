@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-09-26T18:17:08.094Z">
+<meta property="og:updated_time" content="2020-09-27T16:32:05.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lambda 立方体 与 类型系统 简记">
 <meta name="twitter:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
@@ -245,7 +245,7 @@
 <p>由于 <span class="math inline">\(Kind\)</span> 的表达式, 如 <span class="math inline">\(f \equiv \lambda\alpha : *. \alpha \to \alpha\)</span> 中, <span class="math inline">\(f\)</span> 既不处于值上, 亦不是居留在类型上, 因此我们需要定义出一个新的集合负责存储起这些 <span class="math inline">\(kinds\)</span> : <span class="math display">\[\Bbb{K} = *\ |\ \Bbb{K} \to \Bbb{K}\]</span> 即有 <span class="math inline">\(\Bbb{K} = \lbrace *, * \to *, * \to * \to *, ... \rbrace\)</span>. 若果 <span class="math inline">\(\vdash k : \Box\)</span> 且 <span class="math inline">\(\vdash F : k\)</span> (这里的 <span class="math inline">\(k : \Box\)</span> 实际上对应了 <span class="math inline">\(k \in \Bbb{K}\)</span>), 则 <span class="math inline">\(F\)</span> 被称之为 <span class="math inline">\(kind\ k\)</span> 的构造器 (类型构造器).</p>
 <h4 id="类型推导规则-2">类型推导规则</h4>
 <ol type="1">
-<li><p><span class="math inline">\(&lt;&gt; \vdash \* : \Box\)</span> (<span class="math inline">\(axiom\)</span>) 空的上下文总能被推导出 <span class="math inline">\(\* : \Box\)</span></p></li>
+<li><p><span class="math inline">\(&lt;&gt; \vdash * : \Box\)</span> (<span class="math inline">\(axiom\)</span>) 空的上下文总能被推导出 <span class="math inline">\(* : \Box\)</span></p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ s }{ \Gamma,\ x\ :\ A\ \vdash\ x\ :\ A }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(start\ rule\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ C\ :\ s }{ \Gamma,\ x\ :\ C\ \vdash\ A\ :\ B }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(weakening\ rule\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ s \quad \Gamma\ \vdash\ B\ :\ s }{ \Gamma\ \vdash\ (A\ \to\ B)\ :\ s }}\)</span></font>(<span class="math inline">\(type/kind\ formation\)</span>)</p></li>
@@ -266,24 +266,24 @@
                             \vdots
                         \end{aligned}
                     }
-                    { \Gamma, l : [a] \vdash fmap\ (\*2) : [b] }
+                    { \Gamma, l : [a] \vdash fmap\ (*2) : [b] }
                 \quad
                 \dfrac
                     {
                         \dfrac
-                            { \Gamma \vdash [] : (\* \to \*) \quad \Gamma \vdash a : \* }
-                            { \Gamma \vdash [a] : \* }
+                            { \Gamma \vdash [] : (* \to *) \quad \Gamma \vdash a : * }
+                            { \Gamma \vdash [a] : * }
                             (\lambda\underline{\omega}\ app.)
                         \quad
                         \dfrac
-                            { \Gamma \vdash [] : (\* \to \*) \quad \Gamma \vdash b : \* }
-                            { \Gamma \vdash [b] : \* }
+                            { \Gamma \vdash [] : (* \to *) \quad \Gamma \vdash b : * }
+                            { \Gamma \vdash [b] : * }
                             (\lambda\underline{\omega}\ app.)
                     }
-                    { \Gamma \vdash ([a] \to [b]) : \* }
+                    { \Gamma \vdash ([a] \to [b]) : * }
                     (\lambda\underline{\omega}\ form.)
             }
-            { \Gamma \vdash \lambda l. fmap\ (\*2) : ([a] \to [b]) }
+            { \Gamma \vdash \lambda l. fmap\ (*2) : ([a] \to [b]) }
             (\lambda\underline{\omega}\ abst.)
         \quad
         \dfrac
@@ -294,7 +294,7 @@
             }
             { \Gamma \vdash [1..10] : [a] }
     }
-    { \Gamma \vdash fmap\ (\*2)\ [1..10] : [b] }
+    { \Gamma \vdash fmap\ (*2)\ [1..10] : [b] }
     (\lambda\to elim.)
 \]</span></font></p>
 <h3 id="lambda-p-lambda-p">(<span class="math inline">\(\lambda P\)</span>) Lambda-P</h3>
@@ -302,7 +302,7 @@
 <h4 id="类型推导规则-3">类型推导规则</h4>
 <p>系统 <span class="math inline">\(\lambda P\)</span> 使用了如下规则进行推导 (其中 <span class="math inline">\(*\)</span> 与 <span class="math inline">\(\Box\)</span> 为 <span class="math inline">\(\lambda P\)</span> 表达式中的常量):</p>
 <ol type="1">
-<li><p><span class="math inline">\(&lt;&gt;\ \vdash \* : \Box\)</span> (<span class="math inline">\(axiom\)</span>) 空的上下文总能被推导出 <span class="math inline">\(\* : \Box\)</span></p></li>
+<li><p><span class="math inline">\(&lt;&gt;\ \vdash * : \Box\)</span> (<span class="math inline">\(axiom\)</span>) 空的上下文总能被推导出 <span class="math inline">\(* : \Box\)</span></p></li>
 <li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ A\ :\ s }{ \Gamma,\ x\ :\ A\ \vdash\ x\ :\ A }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(start\ rule\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ C\ :\ s }{ \Gamma,\ x\ :\ C\ \vdash\ A\ :\ B }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(weakening\ rule\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ A\ :\ * \quad \Gamma,\ x\ :\ A\ \vdash\ B\ :\ s }{ \Gamma\ \vdash\ (\Pi x\ :\ A.\ B)\ :\ s }}\)</span></font>(<span class="math inline">\(type/kind\ formation\)</span>)</p></li>
@@ -372,7 +372,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-09-26T18:17:08.094Z" itemprop="dateUpdated">2020-09-27 02:17:08</time>
+    Last updated: <time datetime="2020-09-27T16:32:05.423Z" itemprop="dateUpdated">2020-09-28 00:32:05</time>
 </span><br>
 
 
@@ -629,7 +629,27 @@ MathJax.Hub.Queue(function() {
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -647,10 +667,5 @@ MathJax.Hub.Queue(function() {
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-
-
 </body>
 </html>
