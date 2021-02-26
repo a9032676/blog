@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>Church-Rosser 定理证明 | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="类型论,逻辑,证明">
+    <meta name="description" content="简介 于理论计算机科学中, Church-Rosser 定理 讲述了当我们尝试给任意 \(\lambda\)-表达式 的变体应用 \(reduction\) 规则时, 不管所规约排序如何, 也定不会影响到最终的运行结果. 该定理由 Alonzo Church 与 J. Barkley Rosser 于 1936 年时证明得出, 并以他们的名称所命名. \(\beta\)-范式 (\(\beta\)">
+<meta name="keywords" content="类型论,逻辑,证明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Church-Rosser 定理证明">
+<meta property="og:url" content="http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="简介 于理论计算机科学中, Church-Rosser 定理 讲述了当我们尝试给任意 \(\lambda\)-表达式 的变体应用 \(reduction\) 规则时, 不管所规约排序如何, 也定不会影响到最终的运行结果. 该定理由 Alonzo Church 与 J. Barkley Rosser 于 1936 年时证明得出, 并以他们的名称所命名. \(\beta\)-范式 (\(\beta\)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-10-12T12:27:42.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Church-Rosser 定理证明">
+<meta name="twitter:description" content="简介 于理论计算机科学中, Church-Rosser 定理 讲述了当我们尝试给任意 \(\lambda\)-表达式 的变体应用 \(reduction\) 规则时, 不管所规约排序如何, 也定不会影响到最终的运行结果. 该定理由 Alonzo Church 与 J. Barkley Rosser 于 1936 年时证明得出, 并以他们的名称所命名. \(\beta\)-范式 (\(\beta\)">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me"  >
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Church-Rosser 定理证明</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Church-Rosser 定理证明</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-10-10T22:08:00.000Z" itemprop="datePublished" class="page-time">
+  2020-10-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#beta-范式-beta-normal-form-beta-nf"><span class="post-toc-number">2.</span> <span class="post-toc-text">\(\beta\)-范式 (\(\beta\)-normal form, \(\beta\)-nf)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引理"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">引理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证明"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">证明</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#church-rosser-定理"><span class="post-toc-number">3.</span> <span class="post-toc-text">Church-Rosser 定理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">定义</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Church-Rosser-Theorem"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Church-Rosser 定理证明</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-10-11 06:08:00" datetime="2020-10-10T22:08:00.000Z"  itemprop="datePublished">2020-10-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="简介">简介</h2>
+<p>于理论计算机科学中, Church-Rosser 定理 讲述了当我们尝试给任意 <span class="math inline">\(\lambda\)</span>-表达式 的变体应用 <span class="math inline">\(reduction\)</span> 规则时, 不管所规约排序如何, 也定不会影响到最终的运行结果. 该定理由 <a href="https://en.wikipedia.org/wiki/Alonzo_Church" target="_blank" rel="noopener">Alonzo Church</a> 与 <a href="https://en.wikipedia.org/wiki/J._Barkley_Rosser" target="_blank" rel="noopener">J. Barkley Rosser</a> 于 1936 年时证明得出, 并以他们的名称所命名.</p>
+<h2 id="beta-范式-beta-normal-form-beta-nf"><span class="math inline">\(\beta\)</span>-范式 (<span class="math inline">\(\beta\)</span>-normal form, <span class="math inline">\(\beta\)</span>-nf)</h2>
+<h3 id="定义">定义</h3>
+<ol type="1">
+<li><span class="math inline">\(\beta\)</span>-redex 的项是类似于 (<span class="math inline">\(\lambda x. M)\ N\)</span> 这样的表达式, 而这个例子中 <span class="math inline">\(M[x := N]\)</span> 则是其的 <span class="math inline">\(contractum\)</span>.</li>
+<li>一个 <span class="math inline">\(\lambda\)</span>-项 <span class="math inline">\(M\)</span> 被称为 <span class="math inline">\(\beta\)</span>-nf 若其没有 <span class="math inline">\(\beta\)</span>-redex 作为子表达式.</li>
+<li>对于 <span class="math inline">\(\exists N\)</span>, 若有项 <span class="math inline">\(M =_{\beta} N\)</span> 且 <span class="math inline">\(N\)</span> 本身存在 <span class="math inline">\(\beta\)</span>-nf, 则 <span class="math inline">\(M\)</span> 亦有 <span class="math inline">\(\beta\)</span>-nf.</li>
+</ol>
+<p>例如 <span class="math inline">\((\lambda x. xx)\ y\)</span> 本身并不是一个 <span class="math inline">\(\beta\)</span>-nf, 但于 <span class="math inline">\(\beta\)</span>-规约 之后存在项 <span class="math inline">\(yy\)</span>, 这便是一个 <span class="math inline">\(\beta\)</span>-nf 了.</p>
+<h3 id="引理">引理</h3>
+<p>设有 <span class="math inline">\(M, M&#39;, N, L \in \Lambda\)</span>.</p>
+<ol type="1">
+<li><p>设 <span class="math inline">\(M\)</span> 为 <span class="math inline">\(\beta\)</span>-nf, 则有 <span class="math inline">\(M \twoheadrightarrow_{\beta} N \implies N \equiv M\)</span>.</p></li>
+<li><p>若 <span class="math inline">\(M \to_{\beta} M&#39;\)</span>, 则有 <span class="math inline">\(M[x := N] \to_{\beta} M&#39;[x := N]\)</span></p></li>
+</ol>
+<h3 id="证明">证明</h3>
+<ol type="1">
+<li><p>由于 <span class="math inline">\(M\)</span> 是 <span class="math inline">\(\beta\)</span>-nf, 定不存在任何的 <span class="math inline">\(\beta\)</span>-redex, 所以永远都不会有 <span class="math inline">\(M \to_{\beta} N\)</span> 的情况出现. 因此即使有 <span class="math inline">\(M \twoheadrightarrow_{\beta} N\)</span>, 也势必是 <span class="math inline">\(M \equiv N\)</span>.</p></li>
+<li><p>直接应用 <span class="math inline">\(\to_{\beta}\)</span> 的规则进行规约亦能得出同样的结果.</p></li>
+</ol>
+<h2 id="church-rosser-定理">Church-Rosser 定理</h2>
+<h3 id="定义-1">定义</h3>
+<p>若果 <span class="math inline">\(M \twoheadrightarrow_{\beta} N_1, M \twoheadrightarrow_{\beta} N_2\)</span>, 则存在某些 <span class="math inline">\(N_3\)</span> 有 <span class="math inline">\(N_1 \twoheadrightarrow_{\beta} N_3\)</span> 且 <span class="math inline">\(N_2 \twoheadrightarrow_{\beta} N_3\)</span>, 如图:</p>
+<p><span class="math display">\[
+\xymatrix{
+ &amp; M \ar@{-&gt;&gt;}[ld] \ar@{-&gt;&gt;}[rd] &amp;  \\
+N_1 \ar@{.&gt;&gt;}[rd] &amp;  &amp; N_2 \ar@{.&gt;&gt;}[ld] \\
+ &amp; N_3 &amp; 
+}
+\]</span></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-10-12T12:27:42.459Z" itemprop="dateUpdated">2020-10-12 20:27:42</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型论/">类型论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/证明/">证明</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逻辑/">逻辑</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/&title=《Church-Rosser 定理证明》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/&title=《Church-Rosser 定理证明》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Church-Rosser 定理证明》 — 9032676's Blog&url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/10/28/Dependent-Function-Types/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/10/09/MPS-do-notation/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">MPS 系列 第一章：为 Java 增加 do-notation 语法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/&title=《Church-Rosser 定理证明》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/&title=《Church-Rosser 定理证明》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Church-Rosser 定理证明》 — 9032676's Blog&url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/10/11/Church-Rosser-Theorem/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3awa6bQAwF0Pz/T1Opq0ptyLVNnoo5s0JhMnBYWGN7Xq94HL/Hn9fvfvn79/N/nT/r4oGBgXFbxnE6kpf4mf++m4OBgfEcRh5ke8F3EtyjoIyBgYFx+kJ5oHw3HwMDA+NaRhJSq1u9CxJdDAyMBzCSB4wC4undH83FMTAwbsiYJJbfvv56fwMDA+O/ZxzFkaSseaKbB98Pb4WBgbGakR+VyGNdDusdsCjscDEwMBYxqpheipsE3AtSZQwMjHWMvGSfLFd90fzuBx4GBsYDGPlCeajttQSq7YrIioGBcXPGeeDLy2fVlmTvkEf0sTAwMJYy8rQzbw9UU9l8zQ+NAQwMjHWMSZMyvzsv532IqxgYGKsZ1WJZNbmtNgxGCS0GBsZqRjVdnB+tqGageYqLgYGxlTHZAlbbjXmhv9AMwMDAeACjV46vNg96K5dbCxgYGOsYvVJ+0gzogXspLgYGxhMY1W1f74DF/HDG25kYGBirGUk+mCydB+Le7jV5IgYGxlbGEYxvtzmrnzJKYjEwMJYyqqGz2rysUgubQgwMjNWM6iMn5f5Jg6E5HwMDYwXjKI7e1i2f0yu9YWBg7Gbko9rU7PUW82Mf1TCNgYFxd8ak3DYJ05O0+R/rYGBgPICRB8HeC03S5mgmBgYGRnE7ODlg0dxoYmBgYAwKavOyWqE9gIGBsZrx7SS2mtaWD2RgYGCsZkwaAxe3GIuf7NVbGgMD406MX140MwhUx2CvAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","http://sonoisa.github.io/xyjax_ext/xypic.js"]}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

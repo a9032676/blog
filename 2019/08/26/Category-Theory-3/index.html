@@ -14,7 +14,7 @@
     
     
     
-    <title>一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴 | 9032676&#39;s Blog | 为探索而生</title>
+    <title>一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴 | 9032676&#39;s Blog | 为探索而生</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,14 +24,14 @@
     <meta name="description" content="前言 为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解复合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念 既然范畴论里面我们要讨论的东西无非就是各种态射复合（Morphism composition），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就">
 <meta name="keywords" content="范畴论,函数式编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴">
+<meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴">
 <meta property="og:url" content="http://blog.e7mc.com/2019/08/26/Category-Theory-3/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="前言 为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解复合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念 既然范畴论里面我们要讨论的东西无非就是各种态射复合（Morphism composition），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-09-26T18:25:04.285Z">
+<meta property="og:updated_time" content="2020-10-16T03:35:06.709Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴">
+<meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴">
 <meta name="twitter:description" content="前言 为什么上两篇范畴论笔记大多数都是针对范畴与函数的关系，难道其他关系不能抽象成一个范畴吗？这个答案当然是否定的，前两篇是借助了函数的概念以更好地理解复合或同态究竟是些什么东西，因此而从本篇开始，我们来说一些与函数关系不大的一些知识吧！ 概念 既然范畴论里面我们要讨论的东西无非就是各种态射复合（Morphism composition），就连排序关系也不例外，在第一章时就已讲述了相关概念，这里就">
     
         <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
@@ -120,7 +120,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴</div>
+        <div class="flex-col header-title ellipsis">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -142,7 +142,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴</h1>
+        <h1 class="title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-08-25T16:04:44.000Z" itemprop="datePublished" class="page-time">
@@ -165,7 +165,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序关系order-relationship"><span class="post-toc-number">3.</span> <span class="post-toc-text">排序关系（Order Relationship）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预序preorderquasiorder"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">预序（Preorder（Quasiorder））</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#偏序partial-order"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">偏序（Partial order）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全序total-order"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">全序（Total order）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序在范畴论上的关系order-in-category-theory"><span class="post-toc-number">4.</span> <span class="post-toc-text">排序在范畴论上的关系（Order in Category Theory）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hom-集合hom-set"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Hom-集合（Hom-set）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与态射复合的关系relationship-with-composition"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">与态射复合的关系（Relationship with composition）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小范畴与大范畴small-and-large-category"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">小范畴与大范畴（Small and large category）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#thin-范畴thin-categoryor-posetal-category"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Thin 范畴（Thin Category（or Posetal category））</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是或不是一个-thin-范畴is-or-not-a-thin-category"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">是或不是一个 Thin 范畴？（Is or not a Thin category?）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与预序集合的关系relationship-with-proset"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">与预序集合的关系（Relationship with proset）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与偏序集合的关系relationship-with-poset"><span class="post-toc-number">4.3.3.</span> <span class="post-toc-text">与偏序集合的关系（Relationship with poset）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#推广至同构与等价关系up-to-isomorphism-and-equivalence"><span class="post-toc-number">4.3.4.</span> <span class="post-toc-text">推广至同构与等价关系（Up to Isomorphism and Equivalence）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#群group"><span class="post-toc-number">5.</span> <span class="post-toc-text">群（Group）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-1"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#半群semi-group"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">半群（Semi-group）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#么半群monoid"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">么半群（Monoid）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在-haskell-上的体现works-with-haskell"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">在 Haskell 上的体现（Works with Haskell）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#定义"><span class="post-toc-number">5.3.1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#应用"><span class="post-toc-number">5.3.1.2.</span> <span class="post-toc-text">应用</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kleisli-范畴kleisli-category"><span class="post-toc-number">6.</span> <span class="post-toc-text">Kleisli 范畴（Kleisli Category）</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序关系order-relationship"><span class="post-toc-number">3.</span> <span class="post-toc-text">排序关系（Order Relationship）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预序preorderquasiorder"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">预序（Preorder（Quasiorder））</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#偏序partial-order"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">偏序（Partial order）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全序total-order"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">全序（Total order）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序在范畴论上的关系order-in-category-theory"><span class="post-toc-number">4.</span> <span class="post-toc-text">排序在范畴论上的关系（Order in Category Theory）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hom-集合hom-set"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Hom-集合（Hom-set）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与态射复合的关系relationship-with-composition"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">与态射复合的关系（Relationship with composition）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小范畴与大范畴small-and-large-category"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">小范畴与大范畴（Small and large category）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#thin-范畴thin-categoryor-posetal-category"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Thin 范畴（Thin Category（or Posetal category））</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是或不是一个-thin-范畴is-or-not-a-thin-category"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">是或不是一个 Thin 范畴？（Is or not a Thin category?）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与预序集合的关系relationship-with-proset"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">与预序集合的关系（Relationship with proset）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与偏序集合的关系relationship-with-poset"><span class="post-toc-number">4.3.3.</span> <span class="post-toc-text">与偏序集合的关系（Relationship with poset）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#推广至同构与等价关系up-to-isomorphism-and-equivalence"><span class="post-toc-number">4.3.4.</span> <span class="post-toc-text">推广至同构与等价关系（Up to Isomorphism and Equivalence）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#群group"><span class="post-toc-number">5.</span> <span class="post-toc-text">群（Group）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-1"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#半群semi-group"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">半群（Semi-group）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#幺半群monoid"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">幺半群（Monoid）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在-haskell-上的体现works-with-haskell"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">在 Haskell 上的体现（Works with Haskell）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#定义"><span class="post-toc-number">5.3.1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#应用"><span class="post-toc-number">5.3.1.2.</span> <span class="post-toc-text">应用</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kleisli-范畴kleisli-category"><span class="post-toc-number">6.</span> <span class="post-toc-text">Kleisli 范畴（Kleisli Category）</span></a></li></ol>
         </nav>
     </aside>
 
@@ -174,7 +174,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴</h1>
+        <h1 class="post-card-title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-08-26 00:04:44" datetime="2019-08-25T16:04:44.000Z"  itemprop="datePublished">2019-08-26</time>
 
@@ -239,24 +239,24 @@ a \xrightarrow[\leq]{} c
 <h3 id="概念-1">概念</h3>
 <p>群这个概念本身是在群论（Group Theory）中出现的，它以集合论为基础，即群本身存在一个集合，且由一个二元关系所组成的代数结构，其必须满足所谓的 “群公理”，即包含了封闭性、结合律、单位元以及逆元这四种性质。</p>
 <p>实际上群与我们日常生活中有着很紧密的联系，就如同日常都可能用到的加法般，我们把两个正整数相加，透过正整数集合与 <span class="math inline">\(+\)</span> 我们可构成一个加法群，记为 <span class="math inline">\(G(\mathbb Z{+}, +)\)</span>，其满足了群公理： - 封闭性：<span class="math inline">\(\forall a, b \in G\)</span>，其运算结果也落入 <span class="math inline">\(G\)</span> 中 - 结合律：<span class="math inline">\(\forall a, b, c \in G, (a · b) · c = a · (b · c)\)</span> - 单位元：<span class="math inline">\(\forall a, \exists e \in G, e · a = a · e = a\)</span> - 逆元：<span class="math inline">\(\forall a, \exists b, e \in G, a · b = b · a = e\)</span></p>
-<p>由于群论并不是我们主要的讨论对象，因此这部分并不会举出很多的例子，而在这仅会讨论么半群的前置知识。</p>
+<p>由于群论并不是我们主要的讨论对象，因此这部分并不会举出很多的例子，而在这仅会讨论幺半群的前置知识。</p>
 <h3 id="半群semi-group">半群（Semi-group）</h3>
 <p>有时候群公理在把关系进一步推广出去的时候，未必要加入额外的一些规则，反而我们可以通过放松一些条件来构成一个新的代数结构。比方说我们可以把一般群公理的单位元与逆元给拿掉，剩下封闭性，结合律这两条公理，随之被称为半群，这就是一个很好的例子。</p>
-<h3 id="么半群monoid">么半群（Monoid）</h3>
-<p>当然地，从抽象代数来讲半群也可以再次被推广成么半群，所谓的 “么” 指的其实就是 “单位元（么元，Identity element）” 的意思，也就是只需要对半群给补上单位元的规则就可以了。</p>
+<h3 id="幺半群monoid">幺半群（Monoid）</h3>
+<p>当然地，从抽象代数来讲半群也可以再次被推广成幺半群，所谓的 “么” 指的其实就是 “单位元（么元，Identity element）” 的意思，也就是只需要对半群给补上单位元的规则就可以了。</p>
 <p>对于范畴 <span class="math inline">\(C\)</span> 内的对象 <span class="math inline">\(x\)</span>，我们都知道存在单位元态射 <span class="math inline">\(id_f\)</span>，但这种单位元态射难道就只能存在一个了吗？当然不是，我们甚至可以有多个单位元态射，例如 <span class="math inline">\(id_f, id_g, id_h, ... \in hom(x, x)\)</span>，将它们透过态射复合将会亦将得到： <span class="math display">\[
 x \circ id_f = x \\\\ 
 x \circ id_f \circ id_g = x \\\\
 x \circ id_f \circ id_g \circ id_h = x \\\\
 x \circ id_f \circ id_g \circ id_h \circ ... = x
 \]</span></p>
-<p>即其实单位元态射可存在无穷多个的，而对于这种一直都存在多个单位元态射且态射至自身的结构（封闭结构）我们就称之为么半群。</p>
-<p>而么半群实际上对于计算机编程来说也是至关重要的概念，比方说我们日常能接触到的 <code>String</code>，即字符串，其实也是一个么半群的结构，这时可以把编程语言的类型视为集合，例如： - 封闭性：<code>"foo" &lt;&gt; "bar" = "foobar"</code> 在运算后的结果都是 <code>String</code> 类型 - 结合律：<code>("foo" &lt;&gt; "bar") &lt;&gt; "foo" = "foo" &lt;&gt; ("bar" &lt;&gt; "foo") = "foobarfoo"</code> - 单位元：<code>"" &lt;&gt; "any" = "any" &lt;&gt; "" = "any"</code></p>
+<p>即其实单位元态射可存在无穷多个的，而对于这种一直都存在多个单位元态射且态射至自身的结构（封闭结构）我们就称之为幺半群。</p>
+<p>而幺半群实际上对于计算机编程来说也是至关重要的概念，比方说我们日常能接触到的 <code>String</code>，即字符串，其实也是一个幺半群的结构，这时可以把编程语言的类型视为集合，例如： - 封闭性：<code>"foo" &lt;&gt; "bar" = "foobar"</code> 在运算后的结果都是 <code>String</code> 类型 - 结合律：<code>("foo" &lt;&gt; "bar") &lt;&gt; "foo" = "foo" &lt;&gt; ("bar" &lt;&gt; "foo") = "foobarfoo"</code> - 单位元：<code>"" &lt;&gt; "any" = "any" &lt;&gt; "" = "any"</code></p>
 <h4 id="在-haskell-上的体现works-with-haskell">在 Haskell 上的体现（Works with Haskell）</h4>
 <h5 id="定义">定义</h5>
-<p>首先我们来看一下在 Haskell 上 <code>Data.Monoid</code> 下的的源码定义究竟是怎样的： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Semigroup a =&gt; Monoid a where</span><br><span class="line">    -- | Identity of &apos;mappend&apos;</span><br><span class="line">    -- | 以 &apos;mappend&apos; 作为二元关系时，以 &apos;mempty&apos; 作为单位元</span><br><span class="line">    mempty  :: a</span><br><span class="line"></span><br><span class="line">    -- | An associative operation</span><br><span class="line">    -- | 结合律公理</span><br><span class="line">    --</span><br><span class="line">    -- __NOTE__: This method is redundant and has the default</span><br><span class="line">    -- implementation @&apos;mappend&apos; = &apos;(&lt;&gt;)&apos;@ since /base-4.11.0.0/.</span><br><span class="line">    mappend :: a -&gt; a -&gt; a</span><br><span class="line">    mappend = (&lt;&gt;)</span><br><span class="line">    &#123;-# INLINE mappend #-&#125;</span><br><span class="line"></span><br><span class="line">    -- | Fold a list using the monoid.</span><br><span class="line">    -- | 使用么半群折叠一个 List</span><br><span class="line">    --</span><br><span class="line">    -- For most types, the default definition for &apos;mconcat&apos; will be</span><br><span class="line">    -- used, but the function is included in the class definition so</span><br><span class="line">    -- that an optimized version can be provided for specific types.</span><br><span class="line">    mconcat :: [a] -&gt; a</span><br><span class="line">    mconcat = foldr mappend mempty</span><br></pre></td></tr></table></figure></p>
+<p>首先我们来看一下在 Haskell 上 <code>Data.Monoid</code> 下的的源码定义究竟是怎样的： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Semigroup a =&gt; Monoid a where</span><br><span class="line">    -- | Identity of &apos;mappend&apos;</span><br><span class="line">    -- | 以 &apos;mappend&apos; 作为二元关系时，以 &apos;mempty&apos; 作为单位元</span><br><span class="line">    mempty  :: a</span><br><span class="line"></span><br><span class="line">    -- | An associative operation</span><br><span class="line">    -- | 结合律公理</span><br><span class="line">    --</span><br><span class="line">    -- __NOTE__: This method is redundant and has the default</span><br><span class="line">    -- implementation @&apos;mappend&apos; = &apos;(&lt;&gt;)&apos;@ since /base-4.11.0.0/.</span><br><span class="line">    mappend :: a -&gt; a -&gt; a</span><br><span class="line">    mappend = (&lt;&gt;)</span><br><span class="line">    &#123;-# INLINE mappend #-&#125;</span><br><span class="line"></span><br><span class="line">    -- | Fold a list using the monoid.</span><br><span class="line">    -- | 使用幺半群折叠一个 List</span><br><span class="line">    --</span><br><span class="line">    -- For most types, the default definition for &apos;mconcat&apos; will be</span><br><span class="line">    -- used, but the function is included in the class definition so</span><br><span class="line">    -- that an optimized version can be provided for specific types.</span><br><span class="line">    mconcat :: [a] -&gt; a</span><br><span class="line">    mconcat = foldr mappend mempty</span><br></pre></td></tr></table></figure></p>
 <h5 id="应用">应用</h5>
-<p>除了上述提及到字符串就是一个幺半群之外，我们也可以利用么半群的定律对其进行一些操作，例如说使用 <code>mappend</code> (或 <code>&lt;&gt;</code>）拼接两个字符串，又或者说可以使用 <code>mconcat</code> 把一个么半群结构给折叠起来，例如： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Prelude&gt; mconcat [[1],[2],[3],[4]]</span><br><span class="line">[1,2,3,4]</span><br></pre></td></tr></table></figure></p>
+<p>除了上述提及到字符串就是一个幺半群之外，我们也可以利用幺半群的定律对其进行一些操作，例如说使用 <code>mappend</code> (或 <code>&lt;&gt;</code>）拼接两个字符串，又或者说可以使用 <code>mconcat</code> 把一个幺半群结构给折叠起来，例如： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Prelude&gt; mconcat [[1],[2],[3],[4]]</span><br><span class="line">[1,2,3,4]</span><br></pre></td></tr></table></figure></p>
 <h2 id="kleisli-范畴kleisli-category">Kleisli 范畴（Kleisli Category）</h2>
 <p>待填坑...</p>
 
@@ -267,7 +267,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-09-26T18:25:04.285Z" itemprop="dateUpdated">2020-09-27 02:25:04</time>
+    Last updated: <time datetime="2020-10-16T03:35:06.709Z" itemprop="dateUpdated">2020-10-16 11:35:06</time>
 </span><br>
 
 
@@ -297,7 +297,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -307,7 +307,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -317,7 +317,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -409,7 +409,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
         </p>
     </div>
     <div class="bottom">
-        <p><span>9032676 &copy; 2018 - 2020</span>
+        <p><span>9032676 &copy; 2018 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -427,7 +427,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -437,7 +437,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&title=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -447,7 +447,7 @@ x \circ id_f \circ id_g \circ id_h \circ ... = x
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，么半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴》 — 9032676's Blog&url=http://blog.e7mc.com/2019/08/26/Category-Theory-3/&via=http://blog.e7mc.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -546,7 +546,7 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","http://sonoisa.github.io/xyjax_ext/xypic.js"]}});
 </script>
 
 <script type="text/x-mathjax-config">

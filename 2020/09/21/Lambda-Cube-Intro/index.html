@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-09-27T16:32:05.423Z">
+<meta property="og:updated_time" content="2020-11-01T05:12:28.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lambda 立方体 与 类型系统 简记">
 <meta name="twitter:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
@@ -207,9 +207,9 @@
 <h4 id="类型推导规则">类型推导规则</h4>
 <p>简单类型 Lambda 演算 使用了以下的<a href="https://en.wikipedia.org/wiki/Type_rule" target="_blank" rel="noopener">类型推导规则</a>:</p>
 <ol type="1">
-<li><p><font size="5"><span class="math inline">\({\frac { x\ :\ \sigma\ \in\ \Gamma }{ \Gamma\ \vdash\ x\ :\ \sigma }}\)</span></font>(<span class="math inline">\(start\ rule\)</span>) 假设<a href="https://en.wikipedia.org/wiki/Typing_environment" target="_blank" rel="noopener">上下文 (Typing environment)</a> <span class="math inline">\(\Gamma\)</span> 中存在 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span>, 则可推导出 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> .</p></li>
-<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ (\sigma\ \to\ \tau)\quad\Gamma\ \vdash\ N\ :\ \sigma }{ \Gamma\ \vdash\ (M\ N)\ :\ \tau }}\)</span></font>(<span class="math inline">\(\to-elimination\)</span>) 给定上下文 <span class="math inline">\(\Gamma\)</span>, 其能推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\sigma \to \tau\)</span> 且 <span class="math inline">\(N\)</span> 的类型为 <span class="math inline">\(\sigma\)</span>, 则可推导出 <span class="math inline">\(M\ N\)</span> 的类型为 <span class="math inline">\(\tau\)</span> .</p></li>
-<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ ,\ x\ :\ \sigma\ \vdash\ M\ :\ \tau }{ \Gamma\ \vdash\ (\lambda x.\ M)\ :\ (\sigma\ \to\ \tau) }}\)</span></font>(<span class="math inline">\(\to-introduction\)</span>) 有 <span class="math inline">\(\Gamma\)</span> 并且有 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> 该两个上下文, 假设 <span class="math inline">\(\Gamma\)</span> 能够推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\tau\)</span>, 则亦可推导出 <span class="math inline">\(\lambda x. M\)</span> 的类型为 <span class="math inline">\(\sigma \to \tau\)</span> .</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { x\ :\ \sigma\ \in\ \Gamma }{ \Gamma\ \vdash\ x\ :\ \sigma }}\)</span></font>(<span class="math inline">\(start\ rule\)</span>) <br> 假设<a href="https://en.wikipedia.org/wiki/Typing_environment" target="_blank" rel="noopener">上下文 (Typing environment)</a> <span class="math inline">\(\Gamma\)</span> 中存在 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span>, 则可推导出 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> .</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ (\sigma\ \to\ \tau)\quad\Gamma\ \vdash\ N\ :\ \sigma }{ \Gamma\ \vdash\ (M\ N)\ :\ \tau }}\)</span></font>(<span class="math inline">\(\to-elimination\)</span>) <br> 给定上下文 <span class="math inline">\(\Gamma\)</span>, 其能推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\sigma \to \tau\)</span> 且 <span class="math inline">\(N\)</span> 的类型为 <span class="math inline">\(\sigma\)</span>, 则可推导出 <span class="math inline">\(M\ N\)</span> 的类型为 <span class="math inline">\(\tau\)</span> .</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ ,\ x\ :\ \sigma\ \vdash\ M\ :\ \tau }{ \Gamma\ \vdash\ (\lambda x.\ M)\ :\ (\sigma\ \to\ \tau) }}\)</span></font>(<span class="math inline">\(\to-introduction\)</span>) <br> 有 <span class="math inline">\(\Gamma\)</span> 并且有 <span class="math inline">\(x\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> 该两个上下文, 假设 <span class="math inline">\(\Gamma\)</span> 能够推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\tau\)</span>, 则亦可推导出 <span class="math inline">\(\lambda x. M\)</span> 的类型为 <span class="math inline">\(\sigma \to \tau\)</span> .</p></li>
 </ol>
 <h4 id="lambdato_curry-与-lambdato_church-的差异"><span class="math inline">\(\lambda\to_{Curry}\)</span> 与 <span class="math inline">\(\lambda\to_{Church}\)</span> 的差异</h4>
 <p><span class="math inline">\(\lambda\to_{Curry}\)</span> 与 <span class="math inline">\(\lambda\to_{Church}\)</span> 这两种系统均能表达 <span class="math inline">\(\lambda\to\)</span> 的含义, 而上述的推导规则是使用了 <span class="math inline">\(Curry\)</span> 版本编写的, 而两者的不同点则在于:</p>
@@ -223,13 +223,13 @@
 <h4 id="类型推导规则-1">类型推导规则</h4>
 <p>系统 F 使用的推导规则除了包含 简单类型 <span class="math inline">\(\lambda\)</span> 演算的 <span class="math inline">\(start\ rule\)</span>, <span class="math inline">\(\to-elimination\)</span> 以及 <span class="math inline">\(\to-introduction\)</span> 规则外, 额外新增了:</p>
 <ol type="1">
-<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ (\forall\alpha.\ \sigma) }{ \Gamma\ \vdash\ M\ :\ (\sigma[\alpha\ :=\ \tau]) }}\)</span></font>, <span class="math inline">\(\tau \in \Bbb{T}\)</span> (<span class="math inline">\(\forall-elimination\)</span>) 给定上下文 <span class="math inline">\(\Gamma\)</span>, 其能推导出 值 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\forall\alpha. \sigma\)</span>, 则亦可推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\sigma[\alpha := \tau]\)</span> (在这里 <span class="math inline">\(\tau\)</span> 为实际的类型, <span class="math inline">\(\alpha\)</span> 为类型参数, 也就是 类型 <span class="math inline">\(\sigma\)</span> 依赖于 <span class="math inline">\(\alpha\)</span> 的值, 即 <span class="math inline">\(\tau\)</span>).</p></li>
-<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ \sigma }{ \Gamma\ \vdash\ (\Lambda \alpha. M)\ :\ (\forall\alpha.\sigma) }}\)</span></font>,<span class="math inline">\({\ \alpha \notin FV(\Gamma)}\)</span> (<span class="math inline">\(\forall-introduction\)</span>) 给定上下文 <span class="math inline">\(\Gamma\)</span> 且 <span class="math inline">\(\alpha\)</span> 不是 <span class="math inline">\(\Gamma\)</span> 的 自由变量, 其能推导出 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\sigma\)</span>, 则该上下文亦可推导出 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\forall\alpha. \sigma\)</span> (值上的 <span class="math inline">\(\Lambda \alpha\)</span> 可显式指定 <span class="math inline">\(\alpha\)</span> 的类型).</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ (\forall\alpha.\ \sigma) }{ \Gamma\ \vdash\ M\ :\ (\sigma[\alpha\ :=\ \tau]) }}\)</span></font>, <span class="math inline">\(\tau \in \Bbb{T}\)</span> (<span class="math inline">\(\forall-elimination\)</span>) <br> 给定上下文 <span class="math inline">\(\Gamma\)</span>, 其能推导出 值 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\forall\alpha. \sigma\)</span>, 则亦可推导出 <span class="math inline">\(M\)</span> 的类型为 <span class="math inline">\(\sigma[\alpha := \tau]\)</span> (在这里 <span class="math inline">\(\tau\)</span> 为实际的类型, <span class="math inline">\(\alpha\)</span> 为类型参数, 也就是 类型 <span class="math inline">\(\sigma\)</span> 依赖于 <span class="math inline">\(\alpha\)</span> 的值, 即 <span class="math inline">\(\tau\)</span>).</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ M\ :\ \sigma }{ \Gamma\ \vdash\ (\Lambda \alpha. M)\ :\ (\forall\alpha.\sigma) }}\)</span></font>,<span class="math inline">\({\ \alpha \notin FV(\Gamma)}\)</span> (<span class="math inline">\(\forall-introduction\)</span>) <br> 给定上下文 <span class="math inline">\(\Gamma\)</span> 且 <span class="math inline">\(\alpha\)</span> 不是 <span class="math inline">\(\Gamma\)</span> 的 自由变量, 其能推导出 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\sigma\)</span>, 则该上下文亦可推导出 <span class="math inline">\(M\)</span> 有类型 <span class="math inline">\(\forall\alpha. \sigma\)</span> (值上的 <span class="math inline">\(\Lambda \alpha\)</span> 可显式指定 <span class="math inline">\(\alpha\)</span> 的类型).</p></li>
 </ol>
 <h5 id="进一步的扩展规则">进一步的扩展规则</h5>
 <p>除了上述的两条规则外, 由于系统 F, 即 <span class="math inline">\(\lambda 2\)</span>, 与 <span class="math inline">\(\lambda\mu\)</span> 以及 <span class="math inline">\(\lambda P\)</span> <span class="math inline">\((\lambda\cap)\)</span>, 均是由 <span class="math inline">\(\lambda\to\)</span> 延伸出来的, 这些系统都能够加入 <span class="math inline">\(equality\ rule\ (EQ)\)</span> 与 <span class="math inline">\(approximation\ rule\ (A)\)</span> 作推导, 亦能够相互组合出诸如 <span class="math inline">\(\lambda 2\mu\)</span> 或 <span class="math inline">\(\lambda\mu\cap\)</span> 等更强的系统.</p>
 <ol type="1">
-<li><p><font size="5"><span class="math inline">\({\frac { M\ :\ \sigma \quad M\ =_{\beta} \ N }{ N\ :\ \sigma }}\)</span></font>(<span class="math inline">\(EQ\)</span>) 设有值 <span class="math inline">\(M : \sigma\)</span> 且已知 <span class="math inline">\(M = N\)</span>, 则可推导出 <span class="math inline">\(N\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> .</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac { M\ :\ \sigma \quad M\ =_{\beta} \ N }{ N\ :\ \sigma }}\)</span></font>(<span class="math inline">\(EQ\)</span>) <br> 设有值 <span class="math inline">\(M : \sigma\)</span> 且已知 <span class="math inline">\(M = N\)</span>, 则可推导出 <span class="math inline">\(N\)</span> 的类型为 <span class="math inline">\(\sigma\)</span> .</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac { \Gamma\ \vdash\ P\ :\ \sigma\ for\ all\ P\ \in\ A(M) }{ \Gamma\ \vdash\ M\ :\ \sigma }}\)</span></font>(<span class="math inline">\(A\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac {}{ \Gamma\ \vdash\ \bot\ :\ \sigma }}\)</span></font>(<span class="math inline">\(A\)</span>)</p></li>
 </ol>
@@ -248,7 +248,7 @@
 <li><p><span class="math inline">\(&lt;&gt; \vdash * : \Box\)</span> (<span class="math inline">\(axiom\)</span>) 空的上下文总能被推导出 <span class="math inline">\(* : \Box\)</span></p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ s }{ \Gamma,\ x\ :\ A\ \vdash\ x\ :\ A }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(start\ rule\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ C\ :\ s }{ \Gamma,\ x\ :\ C\ \vdash\ A\ :\ B }}\)</span></font>, <span class="math inline">\(x \notin \Gamma\)</span> (<span class="math inline">\(weakening\ rule\)</span>)</p></li>
-<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ s \quad \Gamma\ \vdash\ B\ :\ s }{ \Gamma\ \vdash\ (A\ \to\ B)\ :\ s }}\)</span></font>(<span class="math inline">\(type/kind\ formation\)</span>)</p></li>
+<li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ s \quad \Gamma\ \vdash\ B\ :\ s }{ \Gamma\ \vdash\ (A\ \to\ B)\ :\ s }}\)</span></font>(<span class="math inline">\(type/kind\ formation\)</span>) <br> 这里的 <span class="math inline">\(formation-rule\)</span> 指的是怎样把某一个 <span class="math inline">\(kind\)</span> (这里是 <span class="math inline">\(s\)</span>) 构建成一个类型, 例如这里则是当有 <span class="math inline">\(A\)</span> 以及 <span class="math inline">\(B\)</span> 皆为类型时, 则能构筑表达式 <span class="math inline">\(A \to B\)</span> 是一接受 <span class="math inline">\(A\)</span> 类型并且返回 <span class="math inline">\(B\)</span> 类型的函数.</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ F\ :\ (A\ \to\ B) \quad \Gamma\ \vdash\ a\ :\ A }{ \Gamma\ \vdash\ Fa\ :\ B }}\)</span></font>(<span class="math inline">\(application\ rule\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma,\ x\ :\ A\ \vdash\ b\ :\ B \quad \Gamma\ \vdash\ (A\ \to\ B)\ :\ s }{ \Gamma\ \vdash\ (\lambda x\ :\ A.\ b)\ :\ (A\ \to\ B) }}\)</span></font>(<span class="math inline">\(abstraction\ rule\)</span>)</p></li>
 <li><p><font size="5"><span class="math inline">\({\frac{ \Gamma\ \vdash\ A\ :\ B \quad \Gamma\ \vdash\ B&#39;\ :\ s \quad B\ =_{\beta}\ B&#39; }{ \Gamma\ \vdash\ A\ :\ B&#39; }}\)</span></font>(<span class="math inline">\(conversion\ rule\)</span>)</p></li>
@@ -372,7 +372,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-09-27T16:32:05.423Z" itemprop="dateUpdated">2020-09-28 00:32:05</time>
+    Last updated: <time datetime="2020-11-01T05:12:28.365Z" itemprop="dateUpdated">2020-11-01 13:12:28</time>
 </span><br>
 
 
@@ -452,7 +452,7 @@
     <div class="waves-block waves-effect prev">
       <a href="/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">不动点组合子的定理证明与推导</h4>
+        <h4 class="title">不动点组合子的原理与定理证明</h4>
       </a>
     </div>
   
@@ -514,7 +514,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>9032676 &copy; 2018 - 2020</span>
+        <p><span>9032676 &copy; 2018 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -651,7 +651,7 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","http://sonoisa.github.io/xyjax_ext/xypic.js"]}});
 </script>
 
 <script type="text/x-mathjax-config">

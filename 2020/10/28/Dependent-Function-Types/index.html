@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型 | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="类型论,直觉类型论,Agda">
+    <meta name="description" content="简介 于 直觉类型论 (Intuitionistic type theory, 或 Martin-Löf&apos;s type theory) 中, 定义了一些于经典类型论中没有的高阶类型: \(\Pi\)-类型 (依赖函数类型, Dependent function types) 以及 \(\Sigma\)-类型 (依赖乘积类型, Dependent pair types), 该种类型系统可被对应到 \">
+<meta name="keywords" content="类型论,直觉类型论,Agda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型">
+<meta property="og:url" content="http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="简介 于 直觉类型论 (Intuitionistic type theory, 或 Martin-Löf&apos;s type theory) 中, 定义了一些于经典类型论中没有的高阶类型: \(\Pi\)-类型 (依赖函数类型, Dependent function types) 以及 \(\Sigma\)-类型 (依赖乘积类型, Dependent pair types), 该种类型系统可被对应到 \">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-10-31T09:54:25.626Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型">
+<meta name="twitter:description" content="简介 于 直觉类型论 (Intuitionistic type theory, 或 Martin-Löf&apos;s type theory) 中, 定义了一些于经典类型论中没有的高阶类型: \(\Pi\)-类型 (依赖函数类型, Dependent function types) 以及 \(\Sigma\)-类型 (依赖乘积类型, Dependent pair types), 该种类型系统可被对应到 \">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                仓库
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me"  >
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-10-27T17:51:00.000Z" itemprop="datePublished" class="page-time">
+  2020-10-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#全类-universes"><span class="post-toc-number">2.</span> <span class="post-toc-text">全类 (Universes)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全类多态-universe-polymorphism"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">全类多态 (Universe polymorphism)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#隐式层级-implicit-level"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">隐式层级 (Implicit level)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小类型-small-types"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">小类型 (Small types)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类型族-families-of-types"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">类型族 (Families of types)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#agda-上的定义"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Agda 上的定义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pi-类型-pi-type"><span class="post-toc-number">3.</span> <span class="post-toc-text">\(\Pi\)-类型 (\(\Pi\)-Type)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全类上的多态"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">全类上的多态</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Dependent-Function-Types"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-10-28 01:51:00" datetime="2020-10-27T17:51:00.000Z"  itemprop="datePublished">2020-10-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="简介">简介</h2>
+<p>于 <a href="https://en.wikipedia.org/wiki/Intuitionistic_type_theory" target="_blank" rel="noopener">直觉类型论 (Intuitionistic type theory, 或 Martin-Löf's type theory)</a> 中, 定义了一些于经典类型论中没有的高阶类型: <span class="math inline">\(\Pi\)</span>-类型 (依赖函数类型, Dependent function types) 以及 <span class="math inline">\(\Sigma\)</span>-类型 (依赖乘积类型, Dependent pair types), 该种类型系统可被对应到 <span class="math inline">\(\lambda\)</span>立方体 中的 <span class="math inline">\(\lambda P\)</span> 上. 本篇章大部分内容均来自于对 <a href="https://hott.github.io/book/nightly/hott-ebook-1272-ga50f9bd.pdf" target="_blank" rel="noopener">Hott Book</a> 的理解与翻译, 再稍加改动并引入 Agda 作举例用途. 在此推荐读者配合其中 第一章 Foundations 的 1.4 ~ 1.7 节 进行阅读. 由于篇幅过长, 文章将会分为上下两节, 而本篇将先行介绍 全类, <span class="math inline">\(\Pi\)</span>-类型 以及 乘积类型 的概念.</p>
+<h2 id="全类-universes">全类 (Universes)</h2>
+<h3 id="全类多态-universe-polymorphism">全类多态 (Universe polymorphism)</h3>
+<p>于经典类型论中, 一般会非形式化地称 "<span class="math inline">\(A\)</span> 是一个类型", 但为了更准确的形式化地定义出这种关系, 以及描述类型与项之间的关系, 我们需要引入一个全新的概念: 全类 (Universes). 全类的意思就相当于 "整个宇宙" 一般, 其是这个宇宙中所有类型的类型, 一般地会写为 <span class="math inline">\(U_\infty\)</span>. 而当我们试着从集合论出发去定义全类时, 由于 <span class="math inline">\(U_\infty\)</span> 能够包含自身, 即 <span class="math inline">\(U_\infty : U_\infty\)</span>, 但此处将会引发一个非常严重的问题, 即集合论上这么定义是 <a href="https://en.wikipedia.org/wiki/Soundness" target="_blank" rel="noopener">不可靠的 (Unsound)</a> , 这将直接导致罗素悖论 (Russell's paradox) 的出现. 为了避免这种情况的发生, 我们需要独立且不依赖集合论的情况下重新定义出全类的层级:</p>
+<p><span class="math display">\[ U_0 : U_1 : U_1 :\ ... \]</span></p>
+<p>一般地我们会写为 <span class="math inline">\(U_i\)</span> (这里的 <span class="math inline">\(i\)</span> 为全类的层级), 而每个 <span class="math inline">\(U_i\)</span> 都是 <span class="math inline">\(U_{i+1}\)</span> 的元素 (也就是一个大宇宙内包含着一个小宇宙). 而我们称这种分层是 可累加的 (Cumulative), 即对于所有于 <span class="math inline">\(i^{th}\)</span> 全类内的元素亦都是 <span class="math inline">\((i + 1)^{st}\)</span> 内的元素, 例如有 <span class="math inline">\(A : U_i\)</span>, 即亦有 <span class="math inline">\(A : U_{i+1}\)</span>, 而这种概念可被称为 <a href="https://ncatlab.org/nlab/show/universe+polymorphism" target="_blank" rel="noopener">全类多态 (Universe polymorphism)</a> .</p>
+<h3 id="隐式层级-implicit-level">隐式层级 (Implicit level)</h3>
+<p>而于大部分的情况下, 并不需要显式地标记出全类的层级 <span class="math inline">\(i\)</span>, 而亦可将其隐藏起来, 因此可以写成 <span class="math inline">\(U : U\)</span> (其含义与 <span class="math inline">\(U_i : U_{i+1}\)</span> 等价), 这种写法称之为 <code>Typical ambiguity</code>. 这种写法虽然较为便捷, 但还是会略带点危险性, 因为其将允许我们写出看似合法的, 但实质可能会诱发各种自引用悖论的证明. 不过在这里其实也无需太过担心, 于 Agda 或者 Coq 这些语言上, 其全类层级都是可以自动推导得出的.</p>
+<h3 id="小类型-small-types">小类型 (Small types)</h3>
+<p>由于全类多态的出现, 允许了我们编写出表达能力极强的类型系统, 除了类型本身外, 不仅仅可以定义出 "类型的类型", 即 <span class="math inline">\(Kind\)</span> (类型构造器), 还可以定义出类型的类型的类型, 类型的类型的类型的类型, 即 $Type_1 : Type_2 : Type_3 : ... $ 等等. 然后假设现在有 <span class="math inline">\(U\)</span>, 而所有归属于该 <span class="math inline">\(U\)</span> 的元素 (类型) 均可被称之为 <span class="math inline">\(U\)</span> 的 <code>小类型 (Small types)</code>.</p>
+<h3 id="类型族-families-of-types">类型族 (Families of types)</h3>
+<p>为了使类型也能够被参数化, 把一个类型当作函数看待是被允许的. 例如设有类型 <span class="math inline">\(A\)</span>, 然后有一函数 <span class="math inline">\(B : A \to U\)</span>, 其接受 <span class="math inline">\(A\)</span> 作为参数, 返回 <span class="math inline">\(B\)</span> 这个类型, 而陪域上则是 <span class="math inline">\(U\)</span>. 这种函数我们一般称为 类型族 (有时候可被视为依赖类型).</p>
+<p>例如当我们想要模拟出模数取模时, 定义出有限集合 <span class="math inline">\(\{ m\ |\ m &lt; n \}\)</span> 有利于以循环群的形式进行运算, 而该集合则可定义为 Fin : <span class="math inline">\(\Bbb{N} \to U\)</span>, Fin(<span class="math inline">\(n\)</span>) 的 <span class="math inline">\(n\)</span> 则表示了其集合的边界位置, 对应到 Agda 中 <code>Data.Fin.Base</code> 的定义如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Fin : ℕ → Set where</span><br><span class="line">  zero : &#123;n : ℕ&#125; → Fin (suc n)</span><br><span class="line">  suc  : &#123;n : ℕ&#125; (i : Fin n) → Fin (suc n)</span><br></pre></td></tr></table></figure>
+<p>而最直观的且非常重要的例子就非 <code>Constant type</code> 莫属了, 其定义如 <span class="math inline">\((\lambda (x : A). B) : A \to U\)</span>, 由于这个类型族无论参数如何变化, 其永远返回的都将是 <span class="math inline">\(B\)</span>, 则其可被视为为 <span class="math inline">\(B : U\)</span> .</p>
+<h3 id="agda-上的定义">Agda 上的定义</h3>
+<p>于 Agda 上, Set 类型对应的就是全类的概念, 而 Set <span class="math inline">\(\ell\)</span> 中的 <span class="math inline">\(\ell\)</span> 则是全类的层级. 而全类层级于 module <code>Agda.Primitive</code> 中的定义如下: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">infixl 6 _⊔_</span><br><span class="line"></span><br><span class="line">postulate</span><br><span class="line">  Level : Set</span><br><span class="line"></span><br><span class="line">postulate</span><br><span class="line">  lzero : Level</span><br><span class="line">  lsuc  : (ℓ : Level) → Level</span><br><span class="line">  _⊔_   : (ℓ₁ ℓ₂ : Level) → Level</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>该层级的定义实际上是个内置于 Agda 中的自然数, 并非直接使用的 <code>Data.Nat</code> (<span class="math inline">\(\Bbb{N}\)</span>) 类型.</p>
+<h2 id="pi-类型-pi-type"><span class="math inline">\(\Pi\)</span>-类型 (<span class="math inline">\(\Pi\)</span>-Type)</h2>
+<p><span class="math inline">\(\Pi\)</span>-类型, 又称为 <code>依赖函数类型 (Dependent function type)</code>, 是依赖类型的一种. 其于陪域的类型将依赖于传入的值, 即到达域的值而作出改变. 而之所以称为 <span class="math inline">\(\Pi\)</span>-类型 是因为这种类型可以被视为是在类型之上的笛卡儿积.</p>
+<h3 id="定义">定义</h3>
+<p>形式化地, 假设现在有类型 <span class="math inline">\(A : U\)</span> 以及类型族 <span class="math inline">\(B : A \to U\)</span>, 我们便能够构造一个依赖函数类型 <span class="math inline">\(\Pi_{(x : A)} B(x) : U\)</span>. 当然还有许多种不同的写法可供选择, 例如以下这些:</p>
+<p><span class="math display">\[ \Pi_{(x : A)} B(x) \qquad \underset{(x : A)}{\Pi} B(x) \qquad \Pi (x : A), B(x) \]</span></p>
+<p>而对应到 Agda 中的类型标签则如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_ : ∀ (A : Set) &#123;x : A&#125; &#123;B : A → Set&#125; → B x</span><br></pre></td></tr></table></figure>
+<p>而在一个特殊情况下, 当 <span class="math inline">\(B\)</span> 是一个 <code>Constant family</code> 时, 即 <span class="math inline">\(B\)</span> 并没有依赖于 <span class="math inline">\(x : A\)</span>, 则依赖函数类型将 "坍塌" 成一普通函数:</p>
+<p><span class="math display">\[ \Pi_{(x : A)} B \equiv (A \to B) \]</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_ : ∀ (A : Set) &#123;x : A&#125; &#123;B : Set&#125; → B</span><br></pre></td></tr></table></figure>
+<p>在上面给到的例子以及定义中, 类型标签本身是没有名字的 (即 Agda 中的 <code>_</code>), 实际上我们无论于形式化的定义上, 还是 Agda 中, 都可以给予相应的名字, 如: <span class="math inline">\(f : \Pi_{(x : A)} B(x)\)</span>, 即 <span class="math inline">\(f\)</span> 是为一依赖函数的名字, 使得他们是 <code>显式定义 (Explicit definitions)</code> 的. 而除了类型外, 一个依赖函数若果带有诸如表达式 <span class="math inline">\(\Phi : B(x)\)</span> 而涉及到 <span class="math inline">\(x : A\)</span> 的话, 可被描述为:</p>
+<p><span class="math display">\[ f(x) :\equiv \Phi \qquad 对于 x : A \]</span></p>
+<p>当然亦可替代成使用 <span class="math inline">\(\lambda\)</span>-abstraction 的形式进行定义:</p>
+<p><span class="math display">\[ \lambda x. \Phi : \underset{x : A}{\Pi} B(x) \]</span></p>
+<h3 id="全类上的多态">全类上的多态</h3>
+<p>多态能够应用于给定的全类上, 这是又一依赖函数类型至关重要的特性. 用通俗的话来说即是假设现在有 <span class="math inline">\(id : \Pi_{(A : U)} A \to A\)</span> 这么一个依赖函数类型, 而此处则可以像类型族一般, 接受一个类型作为参数, 然后作用于类型 <span class="math inline">\(A\)</span> 的表达式上, 就如同 <span class="math inline">\(id :\equiv \lambda (A : U). \lambda (x : A). x\)</span> 一样.</p>
+<p>而另一个多态函数的例子 <code>swap</code> (或 <code>flip</code>) 函数, 相信大家都非常熟悉的了, 我们可以观察一下它是怎么定义的:</p>
+<p><span class="math display">\[ swap : \underset{(A : U)}{\Pi} \underset{(B : U)}{\Pi} \underset{(C : U)}{\Pi} (A \to B \to C) \to (B \to A \to C) \]</span></p>
+<p>且其表达式为:</p>
+<p><span class="math display">\[ swap(A, B, C, g) :\equiv \lambda b. \lambda a. g(a)(b) \]</span></p>
+<p>当然地, 我们在表达式上并无需要使用到 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> 时, 则可以将其隐藏起来, 如:</p>
+<p><span class="math display">\[ swap_{A, B, C}(g)(b, a) :\equiv g(a)(b) \]</span></p>
+<p>但不要忘记, <code>swap</code> 仅仅还只是个普通的多态函数而已！ 我们现在需要做的是定义出一个基于依赖函数类型的多态函数 <code>swap'</code>, 例如:</p>
+<p><span class="math display">\[ swap&#39; : \underset{(A : U)}{\Pi} \underset{(B : U)}{\Pi} \underset{(C : A \to B \to U)}{\Pi} (\underset{(x : A)}{\Pi} \underset{(y : B)}{\Pi} C(x, y)) \to (\underset{(y : B)}{\Pi} \underset{(x : A)}{\Pi} C(x, y)) \]</span></p>
+<p>而对于上面的 <span class="math inline">\(C(x, y)\)</span>, 实际上等同于 <span class="math inline">\(C(x)(y)\)</span>, 即相当于柯里化. 下面则为 Agda 于 <code>Function.Core</code> 下的对照版本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flip : ∀ &#123;A : Set a&#125; &#123;B : Set b&#125; &#123;C : A → B → Set c&#125; →</span><br><span class="line">       ((x : A) (y : B) → C x y) → ((y : B) (x : A) → C x y)</span><br><span class="line">flip f = λ y x → f x y</span><br></pre></td></tr></table></figure>
+<p>再来一个 <code>_∘_</code> (Compose) 的例子:</p>
+<p>非依赖类型的情况下是:</p>
+<p><span class="math display">\[ comp : \underset{(A, B, C : U)}{\Pi} (B \to C) \to (A \to B) \to (A \to C) \]</span></p>
+<p>而使用了依赖函数类型定义的则是:</p>
+<p><span class="math display">\[ comp : \underset{(A, B, C : U)}{\Pi} \underset{(B : A \to U)}{\Pi} \underset{(C : \underset{(x : A)}{\Pi} B(x) \to U)}{\Pi} (\underset{(x : A)}{\Pi} \underset{(y : B(x))}{\Pi} C(y)) \to \underset{(g : \underset{(x : A)}{\Pi} B(x))}{\Pi} (\underset{(x : A)}{\Pi} C(g(x))) \]</span></p>
+<p>Agda 上的定义则是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">_∘_ : ∀ &#123;A : Set a&#125; &#123;B : A → Set b&#125; &#123;C : &#123;x : A&#125; → B x → Set c&#125; →</span><br><span class="line">      (∀ &#123;x&#125; (y : B x) → C y) → (g : (x : A) → B x) →</span><br><span class="line">      ((x : A) → C (g x))</span><br><span class="line">f ∘ g = λ x → f (g x)</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-10-31T09:54:25.626Z" itemprop="dateUpdated">2020-10-31 17:54:25</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.e7mc.com">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agda/">Agda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直觉类型论/">直觉类型论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型论/">类型论</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/&title=《奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/&title=《奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型》 — 9032676's Blog&url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/11/03/Scala-Depedent-Types/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Dotty Scala 上的依赖类型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/10/11/Church-Rosser-Theorem/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Church-Rosser 定理证明</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/&title=《奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/&title=《奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型》 — 9032676's Blog&url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/&via=http://blog.e7mc.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/10/28/Dependent-Function-Types/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aQY6DMAwF0Ln/pRlpVrOBfttQtcnLqqKU5rGw7Ng/P/E6/tb/z70rZ9+e/dfNCwMD42sZx+U628TZE5J7rjd6Bn7xBAwMjA0Y1SCbh87kdeSv7PQ6BgYGxmUQvA6O1yEYAwMD47mAO0/+emkoBgbGzozk0UnQnITvN9XiGBgYX8joNQbe8/nx/gYGBsbHM47iSp7QSwdHu8LAwFiakRyEXV+vbi5P/vLiGQMDYx9GXjrmx2HVA7Ve8YyBgbE2Ix+emAxyJdfz8jXqbGBgYCzE6B3oVw/uqyNlvWEyDAyMtRnlcrEY6/JSuTpmgYGBsQOjV77mG0pSw15Yx8DA2IcxCaB5ete7J/8VBgbG2oxeKlYNxHmIbBbAGBgY2zDemer1Ct3TZ2JgYGzPmIxcVI/1m0dyGBgYSzMmRWl1PCJplFY3jYGBsQNjMirRSxnvOmjDwMDAmB+6TdjlpikGBsbSjHlSmCSL1/dU25wYGBi7MapBdtJorIbOwv0YGBgbMHJAL6Gshuz8JZb7GxgYGF/IyIchkgZA9Wn5EEb0KwwMjEUZR3FVmwF3BfQX32JgYCzNyFdvDCIalRgXzxgYGDsw8iBbPe7vvcVkD+UEEQMDYwlGdcDi3oO5atDHwMDASLY4fwV5wE3apRgYGBj5SES1GdkbsHgk4GJgYHw8YzIY8VwILvwKAwNjacakMVBtW1bbn+UEEQMDYzXGLzE2f62rtfEuAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","http://sonoisa.github.io/xyjax_ext/xypic.js"]}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

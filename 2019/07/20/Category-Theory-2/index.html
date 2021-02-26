@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.e7mc.com/images/mapping-1.png">
 <meta property="og:image" content="http://blog.e7mc.com/images/mapping-2.png">
-<meta property="og:updated_time" content="2019-10-24T12:32:47.054Z">
+<meta property="og:updated_time" content="2020-10-28T01:25:42.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第二章：函数与范畴关系">
 <meta name="twitter:description" content="前言 要说到函数与类型，只要是个写带有类型系统的编程语言，都应该很熟悉，因为我们天天都会接触到。但是对于在范畴论上，或更广义地我们指在数学上的函数，以及类型的概念（因为数学上类型相等于只是集合，下面会提及），他们又或许又有不一样的面貌展现在我们的面前。 函数（Function） 函数只是一个过程（或者说是一个黑箱），因为它只负责接受某些参数，然后处理，最后返回一些返回值。这或许是大部分写命令式编程">
@@ -218,7 +218,7 @@
 <p>那么培域（Codomain）呢？它其实就相当于一个于一个函数的可能输出范围，那什么叫 "可能输出的范围" 呢？由于我们上面给定的定义域只有 <span class="math inline">\(0, 1, 2\)</span> 这三个数，但我们千万不能忽视除了这几个数以外，对于这条函数来讲其实是可以接受其他整数 <span class="math inline">\(x \in \mathbb Z\)</span> 作为输入的，所以其实我们可能还有 <span class="math inline">\({...,-3,-2,-1,0,1,2,3,...}\)</span> 等等的作为输入的集合，然后对应的可能输出也就是培域（也是值域的超集，<span class="math inline">\(Codomain \supseteq Range\)</span>）了。</p>
 <h4 id="单射函数injective-function">单射函数（Injective function）</h4>
 <p>相较于满射函数，单射函数也就是单独，单一的意思，也即是对于定义域所有的对象，并不会映射到值域上的所有对象，只有部分被一一对应地映射。换句话说就是值域与培域在这种情况下是不相等的，此时值域必然会小于培域（如果相等的话就变成满射函数了）。</p>
-<p>具体定义为： 若满足 <span class="math inline">\(\forall x_1,x_2 \in X, f(x_1) = f(x_2)\)</span>，则 <span class="math inline">\(f : X \to Y\)</span> 为一单射函数。</p>
+<p>具体定义为： 若满足 <span class="math inline">\(\forall x, y \in X, f(x) = f(y) \implies x = y\)</span>，则 <span class="math inline">\(f : X \to Y\)</span> 为一单射函数。</p>
 <h4 id="满射函数surjective-function">满射函数（Surjective function）</h4>
 <p>满射的含义为完满，完全，所有的意思，也就是指对于值域上的所有对象，都必定至少存在一个映射由定义域映射过去，因此我们 "不会错过" 任何一个输出，即便出现多对一映射的情况。所以说对于所有输出不仅仅是可能的，而且是必然的，最终的结果就是值域会直接等同于培域。</p>
 <p>具体定义为： 若满足 <span class="math inline">\(\forall y \in Y, \exists x \in X, f(x) = y\)</span>，则 <span class="math inline">\(f : X \to Y\)</span> 为一满射函数。</p>
@@ -253,7 +253,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-10-24T12:32:47.054Z" itemprop="dateUpdated">2019-10-24 20:32:47</time>
+    Last updated: <time datetime="2020-10-28T01:25:42.326Z" itemprop="dateUpdated">2020-10-28 09:25:42</time>
 </span><br>
 
 
@@ -331,9 +331,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/07/22/Pure-Function-and-Side-Effects/" id="post-prev" class="post-nav-link">
+      <a href="/2019/08/07/J1900-Tossing-1/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">纯函数与副作用，以及如何对其建模</h4>
+        <h4 class="title">星际蜗牛折腾记 第一章：安装 ArchLinux</h4>
       </a>
     </div>
   
@@ -395,7 +395,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>9032676 &copy; 2018 - 2020</span>
+        <p><span>9032676 &copy; 2018 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -532,7 +532,7 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","http://sonoisa.github.io/xyjax_ext/xypic.js"]}});
 </script>
 
 <script type="text/x-mathjax-config">
