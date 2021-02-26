@@ -25,7 +25,7 @@
 <meta name="keywords" content="直觉类型论,Dotty,Scala">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dotty Scala 上的依赖类型">
-<meta property="og:url" content="http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/index.html">
+<meta property="og:url" content="https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="简介 最近由于正在研究直觉类型论以及同伦类型论, 因此特意挑选了 Scala 的 Dotty 编译器作为研究对象, 而由于 Dotty 所设计的依赖类型相较于 Coq, Agda, Idris 之类的语言来讲十分不直观, 导致写出一些带有大量依赖类型的函数则显得较为绕口, 因此本篇文章主要目的是找出一套通用的编码方式, 亦即找寻出 Scala 与 直觉类型论 之间的对应关系. 在 Dotty 中,">
 <meta property="og:locale" content="zh_CN">
@@ -217,7 +217,7 @@
     </div>
     
     <footer>
-        <a href="http://blog.e7mc.com">
+        <a href="https://a9032676.github.io/blog">
             <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
@@ -239,7 +239,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -249,22 +249,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&via=https://a9032676.github.io/blog" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -369,7 +369,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=http://blog.e7mc.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -379,22 +379,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/&via=http://blog.e7mc.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&via=https://a9032676.github.io/blog" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.e7mc.com/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -405,7 +405,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQW6EMAwF0N7/0nRbqQ36tplKJC8rNMMAj0quY/vrK17Xj/X789Vx/u3qmg8vDAyM1zKu27U6p/dwyW/vP1/eBQMD4wDGfeBbHfeCb/IS83thYGBg5I+YB8ck+GJgYGBMGMmj3F+/lz5iYGBg9FK0PMmrBu4P7sUxMDBeyMir7v9//JH+BgYGxqsYV3H1Nq5JangNFgYGxt6MXtqXhOOk0DYJuBgYGGcyetvXyWhFPkwWFewwMDAOZkwGKXohO28SFAIuBgbGaxnVNC4pzfe2r/kLjcptGBgYmzLyVKwHS0Jqs9mJgYFxACOJWr3HnZ8fBV8MDIzDGHmxLC/M9c4ptBAwMDAOYOSl/+poRZXaOx8DA2NvRm9odTJ+mj9uPqiBgYGxN6PaDKhuRPPGQ948WLYwMTAwtmZUC2RPheZe6Q0DA+NMxlNbyuowR7VREf0MAwNjO0YvjOYtxknyV31lGBgYezOSmtWzad/kH0D5b4KBgbEFY9KM7IXaeUnuDwwGBsYBjCS09W6cbE3zAQ4MDIyTGfnNJmWyaou0kCBiYGBsyriKqzdsMWleRsNnGBgYWzPylaRu95eeNDIfaHBiYGC8nJEE2bzpmJOq14malxgYGFszeoGvV6SbpHrLl4WBgYFRvE25AVkc3Xgg4GJgYGzNqAbNSeAutC4wMDAOYOQFtbzBmdy+19TEwMA4jdFL+JJEMG9bTsIuBgbG1oxvlQVBz2Ref88AAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3aMXLjMBAEQP3/03LVRZdQN7NY+BQ0IheLJtEMAGh2X694vP+Mpyvvv8bnK+0zn562PPDw8PBGU38a+eRa2NOkkzkkc8bDw8O7zfu8GSTL9Of72zvbbebxOh4eHt5/5Z0s5e1EZ/+Fh4eH9228fPnOo4TkKI+Hh4f3nbz8NcmnaZ/fbkhXshY8PDy87plFAewb/r5Y38PDw8M7WLLbklgeW7RFtdls8fDw8G7wzluabkQJOTLaMPDw8PAu85If/LPg4PPk2qau4goeHh7eKi8PQLdarLaeGR3T8fDw8C7w2uPybuSat3CdlN/w8PDwdnlt0b3F5PHELG74x9EcDw8P7xpvtg20QUO+uLdveZw/Hh4e3gXe7DXto8+bDI5CBzw8PLxVXr5wtwX7ZMNomwPqgBgPDw/vAi+PRGevLF4/Ko8V7WJ4eHh4S7zzlqn8BDsLcJP4+PEKHh4e3q/wZsX+di/KP8RswximF3h4eHgxL297moWqCxON/xcPDw/vNq/9zZ4s4u3ReStTebwTDw8Pb5U3e3R7CF5Y3INAeS0JxsPDw0tzhqM2gpMnt62oeYMCHh4e3j1e/sp84W5j3/aoXQTNeHh4eKu898eRB7LJ5jHbSPI4+DGMwMPDw1vlJTfNto3ZltAyiuYGPDw8vAu8/HCcl/zzo3kbUsyCYzw8PLwt3kl4Oosk8pi4jSeiGBcPDw9viZcfTM8LWvkneJ0PPDw8vFXeuxwnP/7zVqo2jHjcHvDw8PAu8HY3j3xx3416l3MXPDw8vIDXFr22TrNtFDKLgPHw8PDu8ZKw4MY95wfiqN0KDw8P7wt474PR1vrbTQIPDw/ve3htG9Z5aS0vuS1sDHh4eHglr40M2lBg1nCQ3z/MRfDw8PBGvLYA1n6Otu0gP4KvVfnw8PDwUt4PrjINAdghaDoAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
