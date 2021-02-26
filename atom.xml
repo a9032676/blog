@@ -3,7 +3,7 @@
   <title>9032676&#39;s Blog</title>
   
   <subtitle>为探索而生</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://a9032676.github.io/blog/"/>
   <updated>2021-01-25T18:10:33.003Z</updated>
@@ -291,9 +291,9 @@
     </summary>
     
     
-      <category term="NAS" scheme="https://a9032676.github.io/blog/tags/NAS/"/>
-    
       <category term="ArchLinux" scheme="https://a9032676.github.io/blog/tags/ArchLinux/"/>
+    
+      <category term="NAS" scheme="https://a9032676.github.io/blog/tags/NAS/"/>
     
       <category term="Docker" scheme="https://a9032676.github.io/blog/tags/Docker/"/>
     
@@ -319,13 +319,13 @@
     </summary>
     
     
-      <category term="NAS" scheme="https://a9032676.github.io/blog/tags/NAS/"/>
-    
       <category term="ArchLinux" scheme="https://a9032676.github.io/blog/tags/ArchLinux/"/>
     
-      <category term="硬盘分区" scheme="https://a9032676.github.io/blog/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
+      <category term="NAS" scheme="https://a9032676.github.io/blog/tags/NAS/"/>
     
       <category term="RAID" scheme="https://a9032676.github.io/blog/tags/RAID/"/>
+    
+      <category term="硬盘分区" scheme="https://a9032676.github.io/blog/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
     
   </entry>
   
@@ -350,9 +350,9 @@
     </summary>
     
     
-      <category term="NAS" scheme="https://a9032676.github.io/blog/tags/NAS/"/>
-    
       <category term="ArchLinux" scheme="https://a9032676.github.io/blog/tags/ArchLinux/"/>
+    
+      <category term="NAS" scheme="https://a9032676.github.io/blog/tags/NAS/"/>
     
       <category term="硬盘分区" scheme="https://a9032676.github.io/blog/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
     
