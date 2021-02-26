@@ -25,7 +25,7 @@
 <meta name="keywords" content="NAS,ArchLinux,硬盘分区,RAID">
 <meta property="og:type" content="article">
 <meta property="og:title" content="星际蜗牛折腾记 第二章：组装 RAID">
-<meta property="og:url" content="https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2019/08/09/J1900-Tossing-2/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介 还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="星际蜗牛折腾记 第二章：组装 RAID">
 <meta name="twitter:description" content="经历昨天一天的奋战，在一边装的同时也把上一章文章写好了。今天的话继续为大家带来如何在纯命令行环境下继续折腾我们的星际蜗牛并为硬盘们组装上冗余磁盘阵列（Redundant Array of Independent Disks，又称 RAID）。 简介 还是经由朋友的推介，我从某宝店家中以 400 块单个的价格搞来了两块 HGST（原日立，据说比较靠谱，就数字来讲的话 故障 (fān chē) 率 相">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -242,7 +242,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-09T16:33:41.230Z" itemprop="dateUpdated">2019-08-10 00:33:41</time>
+    最終更新：<time datetime="2019-08-09T16:33:41.230Z" itemprop="dateUpdated">2019-08-10 00:33:41</time>
 </span><br>
 
 
@@ -250,8 +250,8 @@
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -262,7 +262,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ArchLinux/">ArchLinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/NAS/">NAS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/RAID/">RAID</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/硬盘分区/">硬盘分区</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArchLinux/">ArchLinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NAS/">NAS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RAID/">RAID</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/硬盘分区/">硬盘分区</a></li></ul>
 
 
             
@@ -272,7 +272,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -282,22 +282,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -320,7 +320,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2019/08/09/J1900-Tossing-3/" id="post-prev" class="post-nav-link">
+      <a href="/2019/08/09/J1900-Tossing-3/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">星际蜗牛折腾记 第三章：部署 Docker</h4>
       </a>
@@ -329,7 +329,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2019/08/07/J1900-Tossing-1/" id="post-next" class="post-nav-link">
+      <a href="/2019/08/07/J1900-Tossing-1/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">星际蜗牛折腾记 第一章：安装 ArchLinux</h4>
       </a>
@@ -378,9 +378,9 @@
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -402,7 +402,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -412,22 +412,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/&title=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《星际蜗牛折腾记 第二章：组装 RAID》 — 9032676's Blog&url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2019/08/09/J1900-Tossing-2/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2019/08/09/J1900-Tossing-2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -438,7 +438,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3ayW6DUAwF0Pz/T9Ntq6pwbUMl3jusooTpZGF5+nzi4/h2/P7+9zl/fZ8/6/PEgYGB8VrGcXqcn5MAzv+O86uSd8PAwNiHcR748sfkkTAJuMm7YWBgYCTpWh6y51dhYGBg5AE3L02rRSkGBgbGpIg9v2pyz3+txTEwMF7ImATBpz8/Mt/AwMB4FeMoHtV2f/7r6K0wMDCWZuQBLmn956PK+VoGBgYGRh4uk/Orbbjz+xduh4GBsQQjb6LlaV8edpNVjOi5GBgYSzN6jbZ5CVrtns3HohgYGG9nVBv0efFZDbW94SgGBsbOjN7qw7x9ljTvyttkGBgYr2XkDfqcOlnayEP8jztgYGAszegVrtVitYfsJaMYGBjrMfJ2WO+cc0A1rF+sWWBgYCzK6PXV71rt6i1/jHJPDAyMFzLunXZWw2uvJXeRGmJgYCzK6I0hJytl9wZoDAyMtRnVcWaewOWY3rIFBgbGbozq7aqveFf8vPiLMTAwtmHksXmeVlYXzi6CPgYGxjaM6oOT0jQfM4ziJwYGxjaMpEydrKtWQ2phXomBgbEo4ygeecnaTO+KAwYMDIwdGPOGVx5Aq2E9+VzGYGBgvJZRDbK9wjXnNRNHDAyMDRj54kXe4q+WtaONLwwMDIxiulYdalYHFbcFXAwMjEUZ1QxtXltHIwoMDIwNGNWEr9r6v2t1DAMDY0/GPIz2BpBPLJlhYGAsx/gCtZTbGWjh6gwAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aS27DMAwFwN7/0inQrRH3kXSKShqvgsawPFmw/H19xdfr57p+vt5zvfP+uj/r4QsDA2NZRnJM/vfkRe9/mvz5GBgYpzGSY653voMl8TD5thCUMTAwMFqA/NV7aSgGBgZGnq7l4bWa9mFgYGB85HFBWllNDR+uxTEwMBZkTAYDn/78R/MNDAyMf8x4Fa/58fk9hbfCwMDYmtFrylcD8by5ljwHAwPjBMZ9wZkf38NMRp4YGBh7MybrX3koTNpnvciJgYFxMqM6hpwsSSQFc6EWx8DA2JSRDxqTgJgH6HwU+stbYWBgbM3ovWI14esF5dHKBQYGxnaM+zKyx6sWxnl77u39GBgYWzPyoJY3yyaJZu9HwcDAOJlR/TbfOO2llc2Ai4GBsThj3izLm2j5k0c7IxgYGBsx8pQrObIaIntpZWGEiYGBsQUjf0S1WRYtSRRXN6J/ABgYGFsz8nK0+m3yEnmgL0xiMTAwNmL0lhvKtXKLVJ7EYmBgbMf4XCJY/YGqAAwMjDMZ1StJE/OEslfQRnsiGBgYizPmA8g8NawmkZNOGgYGxk6MXpDtrXwlyV8+yBylhhgYGEsxnlrwmpDyzw+srGFgYCzLqI4Bqg24eQKanIiBgXECo9r8qi5GzJtx0SQWAwPjeEY+wpyUpr1EEwMDA+OpxYjRMDIpYjEwMLZmVIvYZweWeRqKgYFxJmOSllXb/fOCuQnAwMBYlfENIDEKP5sF6XMAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -446,12 +446,12 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -471,7 +471,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

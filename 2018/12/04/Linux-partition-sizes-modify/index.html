@@ -25,7 +25,7 @@
 <meta name="keywords" content="硬盘分区,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记录一次在 Linux 下增加分区大小的过程">
-<meta property="og:url" content="https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 java.io.IOException: No space left on device，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="记录一次在 Linux 下增加分区大小的过程">
 <meta name="twitter:description" content="最近因为要开发一个 Android 项目，因此需要在系统上安装 AndroidStudio，安装途中却提示我 java.io.IOException: No space left on device，立刻就意识到分区空间不足了，因此进行了该次扩容。而我本身是双系统（Ubuntu 18.04 作为日常开发使用，而 Windows 10 作为游戏娱乐用），因此我要对 Ubuntu 下的分区进行扩容。">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -241,7 +241,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-22T09:42:36.844Z" itemprop="dateUpdated">2019-07-22 17:42:36</time>
+    最終更新：<time datetime="2019-07-22T09:42:36.844Z" itemprop="dateUpdated">2019-07-22 17:42:36</time>
 </span><br>
 
 
@@ -249,8 +249,8 @@
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -261,7 +261,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/硬盘分区/">硬盘分区</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/硬盘分区/">硬盘分区</a></li></ul>
 
 
             
@@ -271,7 +271,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -281,22 +281,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -319,7 +319,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2019/06/24/Codewars-Five-Fundamental-Monads/" id="post-prev" class="post-nav-link">
+      <a href="/2019/06/24/Codewars-Five-Fundamental-Monads/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Codewars: Haskell Five Fundamental Monads</h4>
       </a>
@@ -328,7 +328,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" id="post-next" class="post-nav-link">
+      <a href="/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">让 Lambda 特性使你的 Kotlin 代码更加优雅</h4>
       </a>
@@ -377,9 +377,9 @@
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -401,7 +401,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -411,22 +411,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/&title=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记录一次在 Linux 下增加分区大小的过程》 — 9032676's Blog&url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2018/12/04/Linux-partition-sizes-modify/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2018/12/04/Linux-partition-sizes-modify/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -437,7 +437,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3ay1LDMAwF0Pz/T5cZVixouXqYlOF4lSnB9skiUiRfVzwenyO//vpLMvL7rxMDDw8Pr7X1ZOF8ht4qyf3l2fDw8PCO8ZJgkLOrm8tXz/eMh4eH9w68PO2upuavH1D+v3h4eHjvxsuX7AWPHhUPDw/vLt7Wx/8k4U4KwQdrLXh4eHgHukjvc31zfw8PD+8f8x7FkaTC1Ttfzz/aLR4eHt4B3uvDUsmnfp7s5mEmDxJR2MDDw8Nb5SXTvZ4if/VP5u8VO/Dw8PBO8HqHnKrNql4poTpPVKvGw8PDW+IlpYfqwtW0eD7b073h4eHhrfK2Pv57zfv8uFWzGYaHh4d3gNdLoHuhotrfnzwIPDw8vHt51bNMSVBJQkt+ZOGHx4qHh4e3yusl0/lik1R7vhM8PDy8E7xJ86l63Kra8n/Eo9xmw8PDwxvzes2nfFuFwkGwh/JnAB4eHt4qr/razTHV8JAXagsJNB4eHt5NvF5yPOlDzZPpbw5d4eHh4S3x8mS3l9TmIWFeqC2ECjw8PLwxrxcS8jy22uKaJOt4eHh4p3l5Qpy/uLeKDnlT7ek9eHh4eL/C672a87LFpKhRKODmOT4eHh7egFd9BW89joRX/es3gQEPDw9vlddrd03CRlJK6KX7hSoLHh4e3oA3Kb/m5Ynk96TAUdgnHh4e3gHepFSaH6sqbKV4fCFaBQ8PD2+Vt7twnkBPmm3X1hR4eHh4Y15vc0n5oNfoygPA0/nx8PDwDvB6RdKkDJEXZ/OyRfUaDw8P7xxvfnyq2sSakMrNMzw8PLxjvF4w6B0yyA9R5XEMDw8P7z15eQmjWk3NW3HlJhkeHh7en+LNjyAszIyHh4d3jJe/snuJeLX8mpQ/ojvx8PDwDvCqn/pb5YZ5wffaGnh4eHgp7wMLEIi91MA0ogAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3a247CMAwFwP3/n2ZfV0K0x3YMaDV9QlzSTpAS68Q/P/H1eLqu33/+9O87yZjXrw9feHh4eONHv2Zcj5N8P5+g/FcvR8DDw8Nb4yXDJcv99cbQ237yTQIPDw/vm3k9QHLfV5/i4eHh/Q9eHjr0oo0ksMDDw8P7FC8fLgltq7Hs9TbwpqwFDw8PL+ZVy99veL1yvoeHh4c3PlWfLLiTQjlvNbgZEw8PD2+Bly+41VK7GiJMGhFujtzw8PDwjvKqi2weEFTr2+R/KMcceHh4eGu8yRFX73BrMjWFZgI8PDy8BV5zwb1c6Kvf3Pg+Hh4e3h6vWi5X2wjmEcPoMAwPDw9vjXcqnK0u5clEVJ/tJmvBw8PDG/OS4fKwoLcN9MLi/Bnw8PDwNniTI6ikFK5eOTV6Kjw8PLwFXr49zAvfcsZ8aArw8PDwTvEmLQL5MVivQeFw0xUeHh7eW3j50NXyujfaI7gKN8bDw8Nr8fKHy1usmjHBoBFhhMTDw8Mr8nrifLbmsz5posXDw8N7P+/sYX/eRpAX9zfv4+Hh4S3z5jerUvNjsGb5joeHh7fASyLUPGzND7TyQDYpvstZNR4eHt6YV21myoODPOxIJq56Xzw8PLw9XrXVqRrs5odn1QgjmlA8PDy8NV71QSfFdK+JKm8paO5XeHh4eC3eBFNdvifLfSFKxsPDw1vmVQvoXnmdH57lTWAvR8DDw8M7yts4lMonKD9Ca7YX4OHh4S3wqotvHr/mW071cOsABg8PD2/MyzeDXlRR/dW8WMfDw8N7D6/XgNWLYs/uWtHGgIeHh/dRXl4cT7aNXnvWTUqNh4eH9yFeXub2JqsX5h4uqfHw8PAOhRHV2CLB95pWyxsDHh4e3lHepLEpWeKTB03whQACDw8Pb4v3CwDJK/Bskhl6AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -445,12 +445,12 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -470,7 +470,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

@@ -25,7 +25,7 @@
 <meta name="keywords" content="范畴论,函数式编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yoneda Lemma 的证明">
-<meta property="og:url" content="https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2021/01/22/Yoneda-Lemma/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="Yoneda Lemma 的证明">
 <meta name="twitter:description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -367,7 +367,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-01-25T18:10:33.003Z" itemprop="dateUpdated">2021-01-26 02:10:33</time>
+    最終更新：<time datetime="2021-01-25T18:10:33.003Z" itemprop="dateUpdated">2021-01-26 02:10:33</time>
 </span><br>
 
 
@@ -375,8 +375,8 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -387,7 +387,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/范畴论/">范畴论</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/范畴论/">范畴论</a></li></ul>
 
 
             
@@ -397,7 +397,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -407,22 +407,22 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Yoneda Lemma 的证明》 — 9032676's Blog&url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Yoneda Lemma 的证明》 — 9032676's Blog&url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -447,7 +447,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2020/11/03/Scala-Depedent-Types/" id="post-next" class="post-nav-link">
+      <a href="/2020/11/03/Scala-Depedent-Types/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">Dotty Scala 上的依赖类型</h4>
       </a>
@@ -496,9 +496,9 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -520,7 +520,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -530,22 +530,22 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/&title=《Yoneda Lemma 的证明》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Yoneda Lemma 的证明》 — 9032676's Blog&url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Yoneda Lemma 的证明》 — 9032676's Blog&url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2021/01/22/Yoneda-Lemma/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2021/01/22/Yoneda-Lemma/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -556,7 +556,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3ay46DMBBE0fz/TxNplEWiCFNVbaJx+3qFiMZwWPT0w4+HvI6/9X79vb5/Pdvh7M74/oQFAwaMZRnHcCmM8W76K44/ynhnGDBg7MDQg2z9kXqwNoIyDBgwYJipnvLrOKDDgAEDRj3guvfdMhgGDBgwsiI2S/KywvXGWhwGDBgLMrLBwG+ub59vwIAB498zDnNlTXzlidn7vP4WBgwYrRlzj0HoQdPdR9oZBgwYTRnuMYtZhav7sS52gwEDxjaMrJjM2nMZ73RnGDBgtGbor5ilgFlgrX9cGDBg9GNkA0I3raw02hQqDBgwujL0R7pDTSVMV4YHH9cwYMBozZiV3rk76K1/Y0QKAwaM1gy9pHQfOWu0qbfzYMCA0Y+hF67KUNMdGyghW/orGDBgtGa4r5hd62NO5QNJ/zFgwIDRlKG0wPRmmTvyzMpge74BAwaMZRmzDltUmm56G84+PwIDBozFGXo5qodUN0xnR8EuJhswYMBoxHAffMfj3SNoMGDA2I1hTDh/OAaQ8tZwUAsDBoxVGVkap/fk3cacHdxhwIDRmuG21fQjYpXRZtYEhAEDRlfGYS63PtYDqDsivTjdBgMGjEaMSp3o3pk1IrUnsTBgwGjBcNM+fWCZtdjCkAoDBowNGG6Q1ZO8UtM/O2ABAwaMjRl6MZmF0VJ7DgYMGDDMctRNMXXexXgABgwYrRmVZr2ewNlHKLJJLAwYMNoxsgJyVjmqpJjTSmIYMGCsx3gCZdvbGbCfKI4AAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOElEQVR42u3aS27DMAwAUd//0uo2QC1nSMoBRI1WRdJYfl7Q4ue68Bofa/b557djsv7/drbX9caSIUPGtozxuGaM+q9mtx7dRYYMGecwngPfc6gl//PlJvC+089lyJAhA186Gl4re8mQIUNG9HKEVyHJkCFDBklHyaFwVUr8Yi4uQ4aMDRm86v77v1/pb8iQIWMrxgiu3BHwOURGg+zNLjJkyGjN4AGOHAejTcrKsU+GDBmnMUi4zBX6eauSF+DCx0QZMmRsziBBMFqy59fPPcSbxyRDhozWjOj2vACXa1jykC1DhozTGPXSWLQMR0p4vKkpQ4aM3gweWKPDEKToz8c4vrwlZMiQ0ZqR2yxcrA8ObfBC2817Q4YMGe0YJLTVg2nlESyoGsqQIWNzRm60Ily9w03TXForQ4aM3ozo8Fa0JJdDloYtZMiQ0Y7B4zEp7vNHE01W0dFQhgwZTRnRW48GZR6Cc4fLK/cGkCFDxoaMenkrd9MkZUWhWYYMGa0ZuZZArkxPmpelvWTIkHEkg7cYKy3PaJFuGqZlyJBxDOONgMgHMl4crZAhQ0YLxqpklR80c21ONHIhQ4aMRowRXDxn5Gktv3LgbCtDhoxGjEqzM3ohHlgrh1QZMmR0ZfCDHUlEK0he/gu/PWTIkNGCkQt8fGiDP6YFubgMGTJkpNqNa5PYi28mQ4aMIxnR5LaeW6MioAwZMg5gVBqQfJAi12BYXG6TIUPGhoxKOWzteFklZMuQIaMp4w/O0tE/hxuXrQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -564,12 +564,12 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -589,7 +589,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

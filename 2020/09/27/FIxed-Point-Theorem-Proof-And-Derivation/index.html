@@ -25,7 +25,7 @@
 <meta name="keywords" content="函数式编程,类型论,逻辑,证明">
 <meta property="og:type" content="article">
 <meta property="og:title" content="不动点组合子的原理与定理证明">
-<meta property="og:url" content="https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="简介 不动点组合子 (Fixed-Point Combinator) 是一种计算其他函数 不动点 (Fixed-Point) 的高阶函数. 有函数 \(f\) 其输入值 \(x\) 若与返回值相同 (同样是返回 \(x\), 即 \(f(x) = x\)), 则称之为函数 \(f\) 上的不动点为 \(x\). 例如现在有 \(f(x) = x ^ 2\), 则其不动点是 \(f(0) = 0 ^">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="不动点组合子的原理与定理证明">
 <meta name="twitter:description" content="简介 不动点组合子 (Fixed-Point Combinator) 是一种计算其他函数 不动点 (Fixed-Point) 的高阶函数. 有函数 \(f\) 其输入值 \(x\) 若与返回值相同 (同样是返回 \(x\), 即 \(f(x) = x\)), 则称之为函数 \(f\) 上的不动点为 \(x\). 例如现在有 \(f(x) = x ^ 2\), 则其不动点是 \(f(0) = 0 ^">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -348,7 +348,7 @@ X \equiv WW
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-12-02T06:40:56.315Z" itemprop="dateUpdated">2020-12-02 14:40:56</time>
+    最終更新：<time datetime="2020-12-02T06:40:56.315Z" itemprop="dateUpdated">2020-12-02 14:40:56</time>
 </span><br>
 
 
@@ -356,8 +356,8 @@ X \equiv WW
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -368,7 +368,7 @@ X \equiv WW
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/类型论/">类型论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/证明/">证明</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/逻辑/">逻辑</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型论/">类型论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/证明/">证明</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逻辑/">逻辑</a></li></ul>
 
 
             
@@ -378,7 +378,7 @@ X \equiv WW
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -388,22 +388,22 @@ X \equiv WW
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不动点组合子的原理与定理证明》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不动点组合子的原理与定理证明》 — 9032676's Blog&url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -426,7 +426,7 @@ X \equiv WW
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2020/10/09/MPS-do-notation/" id="post-prev" class="post-nav-link">
+      <a href="/2020/10/09/MPS-do-notation/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">MPS 系列 第一章：为 Java 增加 do-notation 语法</h4>
       </a>
@@ -435,7 +435,7 @@ X \equiv WW
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2020/09/21/Lambda-Cube-Intro/" id="post-next" class="post-nav-link">
+      <a href="/2020/09/21/Lambda-Cube-Intro/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">Lambda 立方体 与 类型系统 简记</h4>
       </a>
@@ -484,9 +484,9 @@ X \equiv WW
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -508,7 +508,7 @@ X \equiv WW
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -518,22 +518,22 @@ X \equiv WW
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&title=《不动点组合子的原理与定理证明》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不动点组合子的原理与定理证明》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不动点组合子的原理与定理证明》 — 9032676's Blog&url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -544,7 +544,7 @@ X \equiv WW
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3aQW4bMRAEQP//084lBweJVt0cTuIAtSfBWlEsGlhSPfPxEV+fX66vf2k/lYz5+5V/4+GFh4eHN5j689Cv3n319c/jvBr5eZ75nPHw8PC2eclwyf3PmHyE508lc8bDw8P7brz8aqf4vM3g4eHh/Y+8+lAbbzPzYAIPDw/vb/La4ZKjczLpNhRezFrw8PDwuuf2Rzv0v329Ut/Dw8PDG1fV22JYG+8mG8woBMHDw8Nb4J21T80nlxzE8+atN3fi4eHhLfPmj+m2FWASeURhLh4eHt5VXhKw3mqoapcy3xje5NN4eHh4V3mT8lIbMeT4tjwWFcDw8PDwrvLmgey8jeBW4a0og+Hh4eEd8T6PrrubShJhHAYieHh4eAu8Iuu91JKVf1e+HNH2gIeHh3eVlwQBbRwQ5R+T7KT9SYCHh4d3iZcUuiaF/Dw+yCOJOozAw8PDW+ZN4oC7oXBbcvuDCw8PD2+BNy/e50ftu80B7Qh4eHh4e7zkeN2y20lMAogCiYeHh3fEu/B4LePXyWM9X9ZffjHg4eHhXeW1EWreRJW0VSXjt4fyoukKDw8Pb8w7awxt26GeS263DvF4eHh427z2kJq3YbX3n5XTogM6Hh4e3gIvj27z+ydtAbeCZjw8PLxt3tnDOjnBngUTbThSLBMeHh7egNeGpy0g3yrax330H8PDw8Nb4012lWQh5lFC246Ah4eHt83LY9azSZ9Fw208USQWeHh4eGPYvHFqo3B1tqA/38XDw8Nb4N16xk7i4L3XeHh4eHu8PMZtV2tyWG9Dh5cj4OHh4a3x2spRW8Rqo4d8B3tzJx4eHt635OVH50m+2i4WHh4e3vfk5QfrZEtoI+NoI8HDw8Nb4yUP5VstAvOAuJgJHh4e3gLv7Af/WZRwVuAvtoFJexYeHh7e+8/+AMkN5ClB55bmAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3aQU7EMBAEwP3/p0HiCgndHjsLUuWE2JB1+ZAZ2vN6xdfH1/X956vf3N95/7T2zg0XHh4e3tLSr66re5KNSJD5d93fc7k2PDw8vGO8pBgkL/r8Ld0Wj7yc4OHh4f0d3rybzalJ8cDDw8P7v7zJ1+8NJvDw8PCe5LUv4rbxncAeylrw8PDwYt7kAOxdPz90voeHh4dXnqq3UUJeDJJyMr/w8PDwTvDyo/r5gVk7qtU2ysV/DHh4eHgDXrvQ9oXeBrL5GFa0lXh4eHjHeJNRqnxxuwYCikYfDw8P7wBvLVxYW/reeCJfMx4eHt5e3mQ/8jLQjnNNtubV7hweHh7eem9cHETlTfbaVrYBcTRYgIeHh7eJl0cD7cu6LQO7JsiiyQg8PDy8AS//g/mD7u/Mh6jauAQPDw/vBC8/iGpjhXxT5nHw5ad4eHh4W3mTEai8bLRHaHnxwMPDw3ueN3lZt233rhg3b8Tx8PDwzvHyprYtIWujBvmYQh4l4+Hh4e3iTUZL27B1MrKQrCc638PDw8M7wGuP9teihHy5+fDBDwo8PDy8A7x5Q9yOF+wtIXWMi4eHh3eAlxSDyULXhqjysoGHh4f3DK9dxKQM5MNbebl6tRceHh7emNdi2oGAPKLN2/pka/Dw8PBO8PLXbv6yztvillFvLh4eHt6DvPm4Vd5M51tTByJ4eHh4B3jFAfzSgVZectbKTxHj4uHh4W3ifZRX8tC2TW8HFJIgAw8PD+8cb63NnXy6tmUnygkeHh7ehJcUg0mrnUcGbYAbPQEPDw/vGO9cnFqErTFjQ03Dw8PDe4S3NmTQhsWTNPoyn8bDw8N7K++ZktBu9y9hBB4eHt4BXhtGtEu/B0y+65fygIeHh3eA17azCSwfRJgMcm2IKvDw8PA63ieS4uQpjW0mKAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -552,12 +552,12 @@ X \equiv WW
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -577,7 +577,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

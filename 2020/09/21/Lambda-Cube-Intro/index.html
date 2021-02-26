@@ -25,7 +25,7 @@
 <meta name="keywords" content="函数式编程,类型论,逻辑,计算机编程理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lambda 立方体 与 类型系统 简记">
-<meta property="og:url" content="https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="Lambda 立方体 与 类型系统 简记">
 <meta name="twitter:description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -372,7 +372,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-11-01T05:12:28.365Z" itemprop="dateUpdated">2020-11-01 13:12:28</time>
+    最終更新：<time datetime="2020-11-01T05:12:28.365Z" itemprop="dateUpdated">2020-11-01 13:12:28</time>
 </span><br>
 
 
@@ -380,8 +380,8 @@
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -392,7 +392,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/类型论/">类型论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/计算机编程理论/">计算机编程理论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/逻辑/">逻辑</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型论/">类型论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机编程理论/">计算机编程理论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逻辑/">逻辑</a></li></ul>
 
 
             
@@ -402,7 +402,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -412,22 +412,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -450,7 +450,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" id="post-prev" class="post-nav-link">
+      <a href="/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">不动点组合子的原理与定理证明</h4>
       </a>
@@ -459,7 +459,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2019/09/29/Category-Theory-4/" id="post-next" class="post-nav-link">
+      <a href="/2019/09/29/Category-Theory-4/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象</h4>
       </a>
@@ -508,9 +508,9 @@
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -532,7 +532,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -542,22 +542,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/&title=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Lambda 立方体 与 类型系统 简记》 — 9032676's Blog&url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/09/21/Lambda-Cube-Intro/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -568,7 +568,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aQW7DMAwEwPz/0+41QBF3l3IKWB6dgkK1NBeCIvl6xet4W+3O/H/f97++sTAwMG7LOE7Xpz3JFX//PfnC+bkfT8TAwHgA4/wS53tyTBJ883MxMDAwkiCYBO7kC8lvDAwMjJaRhNRZeMXAwMBYecQmjDx9zH9f/BbHwMC4IaMt1v/n76/0NzAwMG7FOMrVti2TktyxvDAwMPZm5AHuKljeKK2HPzAwMLZm5CWwWZOyKJmNHskYGBhPY+RjYTkv2T8ryX3kYWBgbMrIP52Ey/WCfh7iMTAwnsZIAt8Kdda2zE/EwMDYjzEr1rdJWzuKcX6fIjZjYGBsx0iC40ojc+Vt/ccNMTAwtma0Q2Ar01mzlkDSEMXAwNibcVVKl7ce8xOL4IuBgbE149p2YxHR41GPetgCAwNja8bssTobuYg6FUHCWtcRMTAwbshYSeZmD87hq3o9QmNgYNycMftE2+Bsn69FqQ4DA2NrRpuEtcW4qx6o7ekYGBj7MWYtxryIPwuybZjGwMB4GqON1u14WZKe1i1SDAyMBzPygJsPT+RNhTzpxMDA2JVxlGsljWubE8XQGAYGxtaMlS5hfkB7fBuyMTAwnsDIA+hsaGN9OGOpp4qBgbER49r4nSR8s1Rv2BjAwMB4JGM2bJE3EmoqBgYGxqjsNWsVtOkjBgbGcxizZkB+3bzc3+7EwMB4AuN7tayVK16QLGJgYOzA+AGdOXRycwRo+QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aS27jQAwFwNz/0h5gVgMElh/JTjCiqleGrbRUWjD89NdXvF5/1/fP36/5d13/+u76d/sfWBgYGLdlVLeeP+j1q3l3r+vdMDAwnsCYBNmEl+9cvS8GBgbGPO3LwygGBgbG2YD7E8kfBgYGxjUjCYK9Ujb5PrnLsVocAwPjhozJYOCnP//SfAMDA+M/Zrxaa5I4VoN79FcYGBirGddJXjUEz1tseXH7IexiYGCsY1yTeuOBZIRZLYOjphsGBsZSRhLI8gSu91Lyoxvl+QYGBsbNGXl6N7llL6EsfIOBgbGakRwhTfrw1WBdTSWjl4WBgbGakYfI/BVMyuC8VVduwGFgYNyQcWoYUMXPk04MDIznMM621eZjhl5jDgMDYzejdwhs8uh5qC2EaQwMjNWM/IHyIxR5mpiH2sL/CgwMjHWMPOTlHbve+HPS8sPAwHgCo9foz+cMvTFAIQHFwMBYzZhErSTs5jvkzbUDJ0cwMDBuyEhCaq/p3yuMq9dgYGA8k5EXsZMw3SuDC003DAyMdYwkQczbZPkj5sXzh18xMDBWM3rpYK+grY4EymMMDAyMdYxXcVUHjWfL1Lf7Y2BgrGZUg11v2Fl9iPkOGBgY+xj5WDFph+Whs7dnIbfFwMBYx+h12qvjz1NFLAYGBkYvyM7HnIXu4KlZBAYGxjpGAssHnJPjaBgYGM9kJEVsfk3ShquOIj6EXQwMjNWM6mBggqk26cqlLAYGxjbGH+jpN/VNvHECAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -576,12 +576,12 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -601,7 +601,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

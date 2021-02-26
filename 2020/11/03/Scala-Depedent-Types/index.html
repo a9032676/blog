@@ -25,7 +25,7 @@
 <meta name="keywords" content="直觉类型论,Dotty,Scala">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dotty Scala 上的依赖类型">
-<meta property="og:url" content="https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="简介 最近由于正在研究直觉类型论以及同伦类型论, 因此特意挑选了 Scala 的 Dotty 编译器作为研究对象, 而由于 Dotty 所设计的依赖类型相较于 Coq, Agda, Idris 之类的语言来讲十分不直观, 导致写出一些带有大量依赖类型的函数则显得较为绕口, 因此本篇文章主要目的是找出一套通用的编码方式, 亦即找寻出 Scala 与 直觉类型论 之间的对应关系. 在 Dotty 中,">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="Dotty Scala 上的依赖类型">
 <meta name="twitter:description" content="简介 最近由于正在研究直觉类型论以及同伦类型论, 因此特意挑选了 Scala 的 Dotty 编译器作为研究对象, 而由于 Dotty 所设计的依赖类型相较于 Coq, Agda, Idris 之类的语言来讲十分不直观, 导致写出一些带有大量依赖类型的函数则显得较为绕口, 因此本篇文章主要目的是找出一套通用的编码方式, 亦即找寻出 Scala 与 直觉类型论 之间的对应关系. 在 Dotty 中,">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -209,7 +209,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-11-03T02:11:54.222Z" itemprop="dateUpdated">2020-11-03 10:11:54</time>
+    最終更新：<time datetime="2020-11-03T02:11:54.222Z" itemprop="dateUpdated">2020-11-03 10:11:54</time>
 </span><br>
 
 
@@ -217,8 +217,8 @@
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -229,7 +229,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Dotty/">Dotty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Scala/">Scala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/直觉类型论/">直觉类型论</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dotty/">Dotty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/">Scala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直觉类型论/">直觉类型论</a></li></ul>
 
 
             
@@ -239,7 +239,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -249,22 +249,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -287,7 +287,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2021/01/22/Yoneda-Lemma/" id="post-prev" class="post-nav-link">
+      <a href="/2021/01/22/Yoneda-Lemma/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Yoneda Lemma 的证明</h4>
       </a>
@@ -296,7 +296,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2020/10/28/Dependent-Function-Types/" id="post-next" class="post-nav-link">
+      <a href="/2020/10/28/Dependent-Function-Types/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">奇妙的依赖类型 (上): 全类, $\Pi$-类型 以及 乘积类型</h4>
       </a>
@@ -345,9 +345,9 @@
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -369,7 +369,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -379,22 +379,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/&title=《Dotty Scala 上的依赖类型》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Dotty Scala 上的依赖类型》 — 9032676's Blog&url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/11/03/Scala-Depedent-Types/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -405,7 +405,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3aMXLjMBAEQP3/03LVRZdQN7NY+BQ0IheLJtEMAGh2X694vP+Mpyvvv8bnK+0zn562PPDw8PBGU38a+eRa2NOkkzkkc8bDw8O7zfu8GSTL9Of72zvbbebxOh4eHt5/5Z0s5e1EZ/+Fh4eH9228fPnOo4TkKI+Hh4f3nbz8NcmnaZ/fbkhXshY8PDy87plFAewb/r5Y38PDw8M7WLLbklgeW7RFtdls8fDw8G7wzluabkQJOTLaMPDw8PAu85If/LPg4PPk2qau4goeHh7eKi8PQLdarLaeGR3T8fDw8C7w2uPybuSat3CdlN/w8PDwdnlt0b3F5PHELG74x9EcDw8P7xpvtg20QUO+uLdveZw/Hh4e3gXe7DXto8+bDI5CBzw8PLxVXr5wtwX7ZMNomwPqgBgPDw/vAi+PRGevLF4/Ko8V7WJ4eHh4S7zzlqn8BDsLcJP4+PEKHh4e3q/wZsX+di/KP8RswximF3h4eHgxL297moWqCxON/xcPDw/vNq/9zZ4s4u3ReStTebwTDw8Pb5U3e3R7CF5Y3INAeS0JxsPDw0tzhqM2gpMnt62oeYMCHh4e3j1e/sp84W5j3/aoXQTNeHh4eKu898eRB7LJ5jHbSPI4+DGMwMPDw1vlJTfNto3ZltAyiuYGPDw8vAu8/HCcl/zzo3kbUsyCYzw8PLwt3kl4Oosk8pi4jSeiGBcPDw9viZcfTM8LWvkneJ0PPDw8vFXeuxwnP/7zVqo2jHjcHvDw8PAu8HY3j3xx3416l3MXPDw8vIDXFr22TrNtFDKLgPHw8PDu8ZKw4MY95wfiqN0KDw8P7wt474PR1vrbTQIPDw/ve3htG9Z5aS0vuS1sDHh4eHglr40M2lBg1nCQ3z/MRfDw8PBGvLYA1n6Otu0gP4KvVfnw8PDwUt4PrjINAdghaDoAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aQXKDMAwF0Nz/0nSm2xbQl91MI55XmQSMnxcKlvR6lcfxPc6++fn57JvrX8+etW1gYGB8LOO4HNeLTuesb0R9bRgYGM9hXAfZs0WkpMpGVK7EwMDAqLzw1R9/fW8vuGNgYGD0Am5luelmYWBgYKSH2PS4e/2UlVQdBgbG0xhpYeCdn/+wvoGBgfEhjKM10qRbL3wH68HAwBjNSFP8aYkxTcAtNWFgYGAMZfTaHdLy5PVd6a+/zIyBgTGasRJ29xYyNxQGMDAwhjJ6Qba5T62nlF4lMTAwRjOCixZ4lXTbhpCNgYExmtHLX6WtFWnDRL0JAwMDYzajFzpXQnavnHATxDEwMEYzemHu+vUuXcQfVmUxMDAGMdYnrcPSKyvBGgMDYzaj10ixt4RQCdlB9RUDA2McIz2ypt/0ypxL12NgYIxjpK9xlUBZT41V5ikl+DAwMB7A6KW36ofe9WLAzWZhYGCMZvRu6yXL9hYMbrKGGBgYD2CkR9A0NNfTc6VQi4GB8TDGrtauethNg3JeosXAwJjA2JUa683Za7MIarMYGBgfzjjCsdKKsX5MPd0IDAyM0Yz1doeg0Nhq8sDAwMCoH0d7B85eASBNyWFgYDyHsZ6gT5eVRv0bHgYGBsZC+0U9lRZnBzEwMDDKU9ePnfWE3eZzNgYGxgjGysGyfu+uRg0MDIynMfYG5fTlr56ke+t/CwYGxn9hfAECeiLgXzO6UwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -413,12 +413,12 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -438,7 +438,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

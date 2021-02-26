@@ -24,17 +24,17 @@
     <meta name="keywords" content="函数式编程,DSL,Java,语义工程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MPS 系列 第一章：为 Java 增加 do-notation 语法">
-<meta property="og:url" content="https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2020/10/09/MPS-do-notation/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:updated_time" content="2020-10-10T22:35:37.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MPS 系列 第一章：为 Java 增加 do-notation 语法">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -50,10 +50,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -65,28 +65,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -100,7 +100,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -123,7 +123,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -188,7 +188,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-10-10T22:35:37.531Z" itemprop="dateUpdated">2020-10-11 06:35:37</time>
+    最終更新：<time datetime="2020-10-10T22:35:37.531Z" itemprop="dateUpdated">2020-10-11 06:35:37</time>
 </span><br>
 
 
@@ -196,8 +196,8 @@
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -208,7 +208,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DSL/">DSL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/语义工程/">语义工程</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSL/">DSL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语义工程/">语义工程</a></li></ul>
 
 
             
@@ -218,7 +218,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -228,22 +228,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/10/09/MPS-do-notation/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&url=https://a9032676.github.io/2020/10/09/MPS-do-notation/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/10/09/MPS-do-notation/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -266,7 +266,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2020/10/11/Church-Rosser-Theorem/" id="post-prev" class="post-nav-link">
+      <a href="/2020/10/11/Church-Rosser-Theorem/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Church-Rosser 定理证明</h4>
       </a>
@@ -275,7 +275,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" id="post-next" class="post-nav-link">
+      <a href="/2020/09/27/FIxed-Point-Theorem-Proof-And-Derivation/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">不动点组合子的原理与定理证明</h4>
       </a>
@@ -324,9 +324,9 @@
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -348,7 +348,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -358,22 +358,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2020/10/09/MPS-do-notation/&title=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2020/10/09/MPS-do-notation/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MPS 系列 第一章：为 Java 增加 do-notation 语法》 — 9032676's Blog&url=https://a9032676.github.io/2020/10/09/MPS-do-notation/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2020/10/09/MPS-do-notation/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2020/10/09/MPS-do-notation/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -384,7 +384,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACG0lEQVR42u3aQY6DMAwF0N7/0sy20gj6bdNKJC+rUVsCj4XHdvx6xev4t94/T37z/klyr9c3FgYGxmMZx+U6e5Qq4K6dT18KBgbGBozrwNfc+vLas7tff3v6OQYGBsZlupYH1knqiYGBgVENuNXqcl4kY2BgYFTDZZIO5ntOymAMDIwdGNWg+cu/v3K+gYGB8SjGUVx58M2PMI/xwsDAWJvRKzKTkvLbYxkYGBgY80PHe9tz0Q4YGBiLMq4DZV5wJmnfJBH8cF8MDIzNGEmjLS9oew396qgZBgbGbozrLfIEMSlc82PLD0+IgYGxNKPXYst5eejMH715+oqBgfFYRjXYzWc6qkcC0T8ADAyMpRl57JpEuZzduxcGBsbajN5DT5K86kBGYcwCAwNjaUZy2STJ6+3cHLbAwMBYlNHr0uVX3VUYF1JDDAyMhRj5kMQkdcvbaq/5wsDAWI7Ra8TnpWmOqQ5bYGBg7MNIHi4f4coTwV5S+CHcY2BgbMZIQm1+VS/Ilu+IgYGxAaOXoiUlbvUFVQ8YMDAw9mHk4fLeplu10RYdCWBgYCzEOIrr3jmHassvym0xMDCWY0zCXA6u3j5PMcsYDAyMxzImYxbzNzc/WsDAwNiHMQ98eVu/3EpLwjcGBgZGsXHWGx2b7ImBgYHRC4i/SR8xMDD2YYxGsoJXkL+svJDGwMDYhzEJo5MDyOq3k9IXAwPjsYw/1gAi4ImdVCEAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aSW6EMBAF0L7/pck2UmT6VxVEwjyvog6DHwurps8nXsdiJdf//uXvNat7P3csDAyMxzKO07W6prqh/Anndy0/IgYGxgsYySZ6Gzr/JX/vlz1jYGBgBIdsHtKdB44YGBgYVzHuOF4xMDAwzhlJEjs5iJNnJsnzBbk4BgbGAxl5MPf/f9/S38DAwHgU4yiu/GBNCnPVNsByVxgYGFsz8gMuGZ6YtzPzsA8DAwMjL6IlSWleaBu1HDAwMF7JmJTD8rDvnF34TBgYGJsy5uHafPD0/MnRkY2BgfECRn7wVTfaCyurHwgDA2NvRi+lTEK9PAXthZKFVBYDA2M7xmTT86Q0Ry7vwsDA2I4x2UoSAk6e2Sy3YWBgbMqoJp/5CFcexeVp7bKzgYGBsTWjN841TzsvG7bAwMDYmpFj8gJ93pLshY/RzAgGBsamjOrRWf19tMVkYWBgbMqo3jAZpMhDzHJLFQMDY2tGtbmYNzgLyWdrD8snY2BgbMqYDDrk3ylpAyRthuWuMDAwXsDovWAyhFE9rL8c5RgYGC9mVK/JGwm96mDzwMXAwHgs4yiu3harIxeXBYUYGBhbMCZtzup/89dfUDvEwMDYjlEtciXUXhnu/DlfPhwGBsYLGP/f1OyFekskBgYGRmv8K09WLxjdwMDAwCi2IXsHbi98xMDAeA8jH7moFuYmwxy3lNswMDAeyKiOOPQGKSblvMsamRgYGM9j/ADesxkG/mG1EwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -392,12 +392,12 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -417,7 +417,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

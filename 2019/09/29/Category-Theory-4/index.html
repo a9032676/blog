@@ -25,7 +25,7 @@
 <meta name="keywords" content="范畴论,函数式编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象">
-<meta property="og:url" content="https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2019/09/29/Category-Theory-4/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="前言 上一章介绍了除集合范畴以外一些其他范畴的例子，而对于任意范畴而言，往往是由态射把不同对象链接在一起形成某些关系。而既然我们已经知道了一些不同种类态射与范畴，当然对象也不会例外，透过对对象种类的划分，我们同样地可以得出一些不同的结论出来，因此我们今天就来探讨下关于范畴内对象的一些关系吧。 泛构造（Universal Construction） 在范畴论的语言中，我们常常都会把对象之间透过态射连">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象">
 <meta name="twitter:description" content="前言 上一章介绍了除集合范畴以外一些其他范畴的例子，而对于任意范畴而言，往往是由态射把不同对象链接在一起形成某些关系。而既然我们已经知道了一些不同种类态射与范畴，当然对象也不会例外，透过对对象种类的划分，我们同样地可以得出一些不同的结论出来，因此我们今天就来探讨下关于范畴内对象的一些关系吧。 泛构造（Universal Construction） 在范畴论的语言中，我们常常都会把对象之间透过态射连">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -213,7 +213,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-09-21T07:31:53.154Z" itemprop="dateUpdated">2020-09-21 15:31:53</time>
+    最終更新：<time datetime="2020-09-21T07:31:53.154Z" itemprop="dateUpdated">2020-09-21 15:31:53</time>
 </span><br>
 
 
@@ -221,8 +221,8 @@
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -233,7 +233,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/范畴论/">范畴论</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/范畴论/">范畴论</a></li></ul>
 
 
             
@@ -243,7 +243,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -253,22 +253,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2019/09/29/Category-Theory-4/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&url=https://a9032676.github.io/2019/09/29/Category-Theory-4/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2019/09/29/Category-Theory-4/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -291,7 +291,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2020/09/21/Lambda-Cube-Intro/" id="post-prev" class="post-nav-link">
+      <a href="/2020/09/21/Lambda-Cube-Intro/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Lambda 立方体 与 类型系统 简记</h4>
       </a>
@@ -300,7 +300,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2019/08/26/Category-Theory-3/" id="post-next" class="post-nav-link">
+      <a href="/2019/08/26/Category-Theory-3/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">一个 Haskeller 的范畴论入坑笔记 第三章：排序关系，幺半群与 Thin 和 Kleisli 范畴</h4>
       </a>
@@ -349,9 +349,9 @@
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -373,7 +373,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -383,22 +383,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2019/09/29/Category-Theory-4/&title=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2019/09/29/Category-Theory-4/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个 Haskeller 的范畴论入坑笔记 第四章：始对象，终对象与零对象》 — 9032676's Blog&url=https://a9032676.github.io/2019/09/29/Category-Theory-4/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2019/09/29/Category-Theory-4/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2019/09/29/Category-Theory-4/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -409,7 +409,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aQXLEIAwFUd//0p4DJGb6CzxViGaVih3geaEIpOvC4/4zyJtPvyFrXW8MGTJkbMu4h2O8lfEWazM/Pf3yKWXIkHEAYxz4ilMP/5YEXDKnDBkyZJCt8MDK55chQ4aMtQGXpIPkgMrflyFDxpkMvjxP9dI5a6FchgwZJzDSy/pf/vxKfUOGDBlbMe5w8JSOlz95cvm4KxkyZLRm8ABXS85qpYV0PzJkyDiBwYuOq4qUaVvYsiOrDBkytmWk7V9pm0Vt/viaT4YMGa0ZpFhYK0OmLRfpwfjiD2TIkLEtgzR71QLiG+XMx6cyZMg4kjHfyMWLAfx99L9ChgwZTRnzaRy/aJtvL/tnNhkyZLRm1BZLGel2Z67tZMiQ0Y9BlhwH31oA5TMUu0VkyJDRlLGq3Jgegxc0W8iQIeMARi1Q1gJrXFkl68qQIaM1Iw12PFmcKRUsGDJkyGjHqKVutdbVtEgQgGXIkHEMo3YEjdsjSknhl13JkCHjAAYJoyRc8jBN0kd+nJYhQ8YJDJKikYMrLy3w8gMqGMiQIeMARrrYjcdMSA1SSRkyZDRl3OHgG5o5xJKmDZTbypAhowWjVgxIS5vpRR5fJcbIkCFjWwYPoCRNrH05XsKM7/NkyJDRiJEGPs5OQ3axICFDhgwZYUAk7Vy82IACtwwZMmSUAmV69E0/yoKAK0OGjK0YtWJAWuBMj6+vXLfJkCFjQ8ZUpwZOB9PrubSoKUOGjKaMD4yeA/HvuU1tAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3ayYqEQBBFUf//p+1tQ2PyBm3IyJurolD01CIqpuuSz/3r/P1euf7pyqd7ry8ODBgwtmXcy6Nfo2OUZ9nPhQEDxgGMdeBzQ2320spzH7+HAQMGDOHBbkq3BsOAAQPGWwH36VUyHgwYMGCsGW5huQ6afZH8YS0OAwaMDRlZGvc/nz+Zb8CAAWMrxm2edXKmhFo9ZBtvBQMGjNEMPcBliWOTINrLHzBgwBjKUIJpX3y661/6uPRSqmcYMGCMYPQhtWmW6cnf488EAwaM0Yy+l9UshLltvmq9AwYMGCMYShqnDymVJM/9UZS7YMCAMZWRufXQuQ6164TPCNkwYMAYzchu6PFKUWo37GDAgHEMQ8olo9Uxt2S1220wYMAYysgCX7ZykS1w2FU4DBgwRjOaGYIbrF9btoABA8ZhDLc01UebTdMtTA1hwIAxiJE1vLJBppt6Xu6BAQPGOEaftPVDBZdhl68wYMDYnKG0ybKRZBb7m8QRBgwYJzDcVn42ntSLZD3RhAEDxjkM/cFu+ZoF9KprCAMGjNEM5UX15C8LqVlbEAYMGFMZt3n0QJytvboDBhgwYJzA6AecbvB1Ye4oFAYMGFMZbpPLTSKVhTB3+dX+94ABA8YIRrO9oJSsbnOtqsVhwIABo1incEO2QYUBAwYMs+2VBVx3QbZKDWHAgLEhwx0GZPc2sNfabTBgwNiQoadxWbHqvoQ+vIQBA8YBjB/OvgPxQHHjXQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -417,12 +417,12 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -442,7 +442,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

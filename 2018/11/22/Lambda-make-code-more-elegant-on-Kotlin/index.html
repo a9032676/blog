@@ -25,7 +25,7 @@
 <meta name="keywords" content="DSL,代码设计,Kotlin,Lambda">
 <meta property="og:type" content="article">
 <meta property="og:title" content="让 Lambda 特性使你的 Kotlin 代码更加优雅">
-<meta property="og:url" content="https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/index.html">
+<meta property="og:url" content="https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="相信近年来，也许有这么一批人会认为 Java 语法过于保守及传统，代码写起来就显得有点臃肿了，不直观也不方便，而相对于 Java 而言，Kotlin 虽然与 Java 同属 JVM 平台衍生出来的计算机语言，Kotlin 的语法却比起 Java 来讲有更大的语法自由度（这里仅从语法角度分析），因此我们得以很好地实现某些看起来更简洁更方便的写法，就如同我们今天要讲的主题：在 Kotlin 上让你的代">
 <meta property="og:locale" content="zh_CN">
@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="让 Lambda 特性使你的 Kotlin 代码更加优雅">
 <meta name="twitter:description" content="相信近年来，也许有这么一批人会认为 Java 语法过于保守及传统，代码写起来就显得有点臃肿了，不直观也不方便，而相对于 Java 而言，Kotlin 虽然与 Java 同属 JVM 平台衍生出来的计算机语言，Kotlin 的语法却比起 Java 来讲有更大的语法自由度（这里仅从语法角度分析），因此我们得以很好地实现某些看起来更简洁更方便的写法，就如同我们今天要讲的主题：在 Kotlin 上让你的代">
     
-        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/blog/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
-    <link rel="stylesheet" href="/blog/css/style.css?v=1.7.2">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -53,10 +53,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/blog/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">9032676</h5>
@@ -68,28 +68,28 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/blog/"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 仓库
               </a>
@@ -103,7 +103,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/about-me"  >
+              <a href="/about-me"  >
                 <i class="icon icon-lg icon-question-circle"></i>
                 关于我
               </a>
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -228,7 +228,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-22T09:43:19.555Z" itemprop="dateUpdated">2019-07-22 17:43:19</time>
+    最終更新：<time datetime="2019-07-22T09:43:19.555Z" itemprop="dateUpdated">2019-07-22 17:43:19</time>
 </span><br>
 
 
@@ -236,8 +236,8 @@
     </div>
     
     <footer>
-        <a href="https://a9032676.github.io/blog">
-            <img src="/blog/img/avatar.jpg" alt="9032676">
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
             9032676
         </a>
     </footer>
@@ -248,7 +248,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DSL/">DSL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Lambda/">Lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/代码设计/">代码设计</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSL/">DSL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/">Lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码设计/">代码设计</a></li></ul>
 
 
             
@@ -258,7 +258,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -268,22 +268,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -306,7 +306,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/blog/2018/12/04/Linux-partition-sizes-modify/" id="post-prev" class="post-nav-link">
+      <a href="/2018/12/04/Linux-partition-sizes-modify/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">记录一次在 Linux 下增加分区大小的过程</h4>
       </a>
@@ -315,7 +315,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/blog/2018/11/21/DSL-explain-and-goals/" id="post-next" class="post-nav-link">
+      <a href="/2018/11/21/DSL-explain-and-goals/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">DSL：解释与设计目的</h4>
       </a>
@@ -364,9 +364,9 @@
 
         <p>
             
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -388,7 +388,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&pic=https://a9032676.github.io/blog/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -398,22 +398,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&title=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&via=https://a9032676.github.io/blog" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《让 Lambda 特性使你的 Kotlin 代码更加优雅》 — 9032676's Blog&url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/&via=https://a9032676.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/blog/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2018/11/22/Lambda-make-code-more-elegant-on-Kotlin/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -424,7 +424,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3aUWoDMQwE0N7/0u0BQpYZyQ4pvP0qIXX9XLC9I/38xM/vy/P6+fMn735+98nzOIcfPDw8vPXUZ4yW9zxOMubznPHw8PBu894N+jytZKLJ5p5MNB8HDw8P7/t50QadTCVYPjw8PLz/yJsFBG08MQsm8PDw8D7Jy4dLYog8qpht+leyFjw8PLyYd3Zb/8zPV+p7eHh4eOuq+n6LT0pibfGsmC0eHh7eBV6+4eYtBW2xPz+K2nni4eHh3ea123H+h5PYIiHl7Vx4eHh493ibabUx6+yAmS3TqjcBDw8Pb1Qbyv9w2xAwS1xn1308PDy8G7w2DmjDi/2qr4pheHh4eBd4m4GSItamIaANLIq3Bzw8PLwFb1PCz6mrjHkRVeDh4eHd47Xx6CzGzS/Bs+t71DSAh4eHd+itPy/Sb67L+SGRl76igwoPDw/vKG8fOswCiM0i5s2yeHh4eDd4M1j73GgvKHoi8PDw8C7zzgav+0Bh1rCFh4eHd5vXTjG/7OZb/Kl4N/of4uHh4a15mxf+ZENvFy4/KqIjBA8PD+8obxO85m0BCbX9ThSd4OHh4V3gzVqm2hLU2TAiL6Th4eHh3eDNylFtM0G7ZJsMFg8PD+827+w23V6120B2E3/g4eHhneXNCvazVoNkusk1vWgLw8PDw7vGS46HtnB1KsbdxCV4eHh493jJC/+sVLY5iqKtv63y4eHh4S14v+Vz6iBpi1uzAwYPDw/vBq/dcGcNT+2lPCl0tePg4eHhneW1h8HsqGhD5HyZigIYHh4e3lHeflNuf2t4RsXzxMPDw/tm3qmQty2zRYuFh4eH9wW8/Xfy42S2oHh4eHif4SVhRBvjbppQkwgjKn3h4eHhXeC1L/zDUGC2rQdHxYEHDw8PL53PH5Fhh1zr4fJ/AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACxklEQVR42u3awW7qQAwF0P7/T/dJb0sJ99oZSqWTFQIyk5NF7Nj++oqP7//H9TePvz476/HXZ6s9+//NBx4eHt7o0p8dj9tvPl/v2F7P9X/w8PDwTvOug0F+6UmQuL7Q/KwkgOHh4eH9Li9JlK9T6uuV85QaDw8P76/wEnaU5i5SZzw8PLzP4eXb5KGiTZpn595Wa8HDw8PrntJFA+wTPh/s7+Hh4eEtuuptSywPG8k4Qt42e3qdeHh4eAd4SSE1DxVtyWBWesh3wcPDwzvHm7Wmksd3ftbsduRBBQ8PD+89vNnb/b79PxvnisIbHh4e3pq3Lxnkj++2iZUXOwo9Hh4e3pp3bzPsrrJFG3JuBuPh4eEFvHabWSE1GbHKG2NJewwPDw/vBK+oUsThIR+Zmu1evADg4eHhHeBtigKzf27KFrOEHg8PD+9eXv5o3hQdNs22vASMh4eH907e7LU/KcvOEuVZYHhajMDDw8N7C+/eZDcZNZi1x17shYeHh/dGXk7Kb8pmzfbW4OHh4b2Hl7/855vlTawiUc5rtnh4eHjHeO1Df1b8TZr9LePFCnh4eHgHeHlLLCElJYxZat4WlOthAjw8PLyY1za32gttU+S2bRZ11fDw8PBu5bXjAm3hNblZbYDJBw7w8PDwTvPakLAfxtoXiyMkHh4e3gHepinVlhvygDTbMaqy4OHh4a15eUhoh6LagapNs60YvcLDw8O7iTdLbds2fx5IZiVdPDw8vNO87/KYBYA2y52NNfywPh4eHt4B3qb/PgsVyWqb4shw7AAPDw+v5CXBoC3O5uMI+xBS9Pfw8PDwbuXlj++8NZWkvPuEOAoMeHh4eB/Ay4eu2hWS74uiCR4eHt6v8vIN8qLwPml+kZrj4eHhHeMlS+QjBZvQ0t6UOuPGw8PDW/NmDbBZAWJ2m/Kixm39PTw8PLyfz/oHroeIvT4/bzwAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -432,12 +432,12 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/blog/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -457,7 +457,7 @@ var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/blog/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
