@@ -66,9 +66,9 @@
     
       <category term="直觉类型论" scheme="https://a9032676.github.io/tags/%E7%9B%B4%E8%A7%89%E7%B1%BB%E5%9E%8B%E8%AE%BA/"/>
     
-      <category term="Dotty" scheme="https://a9032676.github.io/tags/Dotty/"/>
+      <category term="Dotty" scheme="https://a9032676.github.io/tags/dotty/"/>
     
-      <category term="Scala" scheme="https://a9032676.github.io/tags/Scala/"/>
+      <category term="Scala" scheme="https://a9032676.github.io/tags/scala/"/>
     
   </entry>
   
@@ -96,7 +96,7 @@
     
       <category term="直觉类型论" scheme="https://a9032676.github.io/tags/%E7%9B%B4%E8%A7%89%E7%B1%BB%E5%9E%8B%E8%AE%BA/"/>
     
-      <category term="Agda" scheme="https://a9032676.github.io/tags/Agda/"/>
+      <category term="Agda" scheme="https://a9032676.github.io/tags/agda/"/>
     
   </entry>
   
@@ -150,9 +150,9 @@
     
       <category term="函数式编程" scheme="https://a9032676.github.io/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="DSL" scheme="https://a9032676.github.io/tags/DSL/"/>
+      <category term="DSL" scheme="https://a9032676.github.io/tags/dsl/"/>
     
-      <category term="Java" scheme="https://a9032676.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://a9032676.github.io/tags/java/"/>
     
       <category term="语义工程" scheme="https://a9032676.github.io/tags/%E8%AF%AD%E4%B9%89%E5%B7%A5%E7%A8%8B/"/>
     
@@ -291,11 +291,11 @@
     </summary>
     
     
-      <category term="ArchLinux" scheme="https://a9032676.github.io/tags/ArchLinux/"/>
+      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
     
-      <category term="NAS" scheme="https://a9032676.github.io/tags/NAS/"/>
+      <category term="ArchLinux" scheme="https://a9032676.github.io/tags/archlinux/"/>
     
-      <category term="Docker" scheme="https://a9032676.github.io/tags/Docker/"/>
+      <category term="Docker" scheme="https://a9032676.github.io/tags/docker/"/>
     
   </entry>
   
@@ -319,13 +319,13 @@
     </summary>
     
     
-      <category term="ArchLinux" scheme="https://a9032676.github.io/tags/ArchLinux/"/>
+      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
     
-      <category term="NAS" scheme="https://a9032676.github.io/tags/NAS/"/>
-    
-      <category term="RAID" scheme="https://a9032676.github.io/tags/RAID/"/>
+      <category term="ArchLinux" scheme="https://a9032676.github.io/tags/archlinux/"/>
     
       <category term="硬盘分区" scheme="https://a9032676.github.io/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
+    
+      <category term="RAID" scheme="https://a9032676.github.io/tags/raid/"/>
     
   </entry>
   
@@ -350,9 +350,9 @@
     </summary>
     
     
-      <category term="ArchLinux" scheme="https://a9032676.github.io/tags/ArchLinux/"/>
+      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
     
-      <category term="NAS" scheme="https://a9032676.github.io/tags/NAS/"/>
+      <category term="ArchLinux" scheme="https://a9032676.github.io/tags/archlinux/"/>
     
       <category term="硬盘分区" scheme="https://a9032676.github.io/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
     
@@ -430,11 +430,11 @@
     </summary>
     
     
-      <category term="Haskell" scheme="https://a9032676.github.io/tags/Haskell/"/>
+      <category term="Haskell" scheme="https://a9032676.github.io/tags/haskell/"/>
     
-      <category term="Monad" scheme="https://a9032676.github.io/tags/Monad/"/>
+      <category term="Monad" scheme="https://a9032676.github.io/tags/monad/"/>
     
-      <category term="Data Structures" scheme="https://a9032676.github.io/tags/Data-Structures/"/>
+      <category term="Data Structures" scheme="https://a9032676.github.io/tags/data-structures/"/>
     
   </entry>
   
@@ -459,7 +459,7 @@
     
       <category term="硬盘分区" scheme="https://a9032676.github.io/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
     
-      <category term="Linux" scheme="https://a9032676.github.io/tags/Linux/"/>
+      <category term="Linux" scheme="https://a9032676.github.io/tags/linux/"/>
     
   </entry>
   
@@ -482,13 +482,13 @@
     </summary>
     
     
-      <category term="DSL" scheme="https://a9032676.github.io/tags/DSL/"/>
+      <category term="DSL" scheme="https://a9032676.github.io/tags/dsl/"/>
     
       <category term="代码设计" scheme="https://a9032676.github.io/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Kotlin" scheme="https://a9032676.github.io/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="https://a9032676.github.io/tags/kotlin/"/>
     
-      <category term="Lambda" scheme="https://a9032676.github.io/tags/Lambda/"/>
+      <category term="Lambda" scheme="https://a9032676.github.io/tags/lambda/"/>
     
   </entry>
   
@@ -513,7 +513,7 @@
     </summary>
     
     
-      <category term="DSL" scheme="https://a9032676.github.io/tags/DSL/"/>
+      <category term="DSL" scheme="https://a9032676.github.io/tags/dsl/"/>
     
       <category term="代码设计" scheme="https://a9032676.github.io/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/"/>
     
