@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="范畴论,函数式编程">
+    <meta name="keywords" content="函数式编程,范畴论">
     <meta name="description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 &quot;魔法&quot;，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
-<meta name="keywords" content="范畴论,函数式编程">
+<meta name="keywords" content="函数式编程,范畴论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第一章: 复合的本质">
 <meta property="og:url" content="https://a9032676.github.io/2019/07/19/Category-Theory-1/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 &quot;魔法&quot;，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-09-13T19:12:01.831Z">
+<meta property="og:updated_time" content="2021-03-01T00:08:14.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第一章: 复合的本质">
 <meta name="twitter:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 &quot;魔法&quot;，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
@@ -189,7 +189,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>在入坑接触 Haskell 一段时间后，碰到很多类似 <code>Functor</code> <code>Applicative</code> <code>Monad</code> 等等这些诸如此类的 "魔法"，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 <code>Monoid（么半群）</code> <code>Semigroup（半群）</code> 等等这些群论以至于范畴论上的概念出来。于是乎为了能够 <ruby>彻底弄清楚这一大堆东西<rp> (</rp><rt>mǎn zú hào qí xīn</rt><rp>) </rp></ruby>（顺便记录下学习的过程），特意开了本篇作为学习笔记，也希望能够记录这个入坑 <ruby>猫论<rp> (</rp><rt>Category Theory</rt><rp>) </rp></ruby> 到入土的心路历程（笑。</p>
+            <p>在入坑接触 Haskell 一段时间后，碰到很多类似 <code>Functor</code> <code>Applicative</code> <code>Monad</code> 等等这些诸如此类的 "魔法"，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 <code>Monoid（么半群）</code> <code>Semigroup（半群）</code> 等等这些群论以至于范畴论上的概念出来。于是乎为了能够彻底弄清楚这一大堆东西以及满足好奇心（顺便记录下学习的过程），特意开了本篇作为学习笔记，也希望能够记录这个入坑 猫论 （Category Theory） 到入土的心路历程（笑。</p>
 <h2 id="概念concept">概念（Concept）</h2>
 <blockquote>
 <p>研究范畴就是试图以“公理化”的方法抓住在各种相关连的“数学结构”中的共同特性，并以结构间的“结构保持函数”将这些结构相关起来。因此，对范畴论系统化的研究将允许任何一个此类数学结构的普遍结论由范畴的公理中证出。</p>
@@ -223,7 +223,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-13T19:12:01.831Z" itemprop="dateUpdated">2019-09-14 03:12:01</time>
+    Last updated: <time datetime="2021-03-01T00:08:14.673Z" itemprop="dateUpdated">2021-03-01 08:08:14</time>
 </span><br>
 
 

@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="范畴论,函数式编程">
+    <meta name="keywords" content="函数式编程,范畴论">
     <meta name="description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
-<meta name="keywords" content="范畴论,函数式编程">
+<meta name="keywords" content="函数式编程,范畴论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yoneda Lemma 的证明">
 <meta property="og:url" content="https://a9032676.github.io/2021/01/22/Yoneda-Lemma/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2021-02-27T07:11:41.218Z">
+<meta property="og:updated_time" content="2021-03-01T00:06:00.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yoneda Lemma 的证明">
 <meta name="twitter:description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
@@ -281,7 +281,7 @@ A&#39; \ar@{-&gt;}[u]^{f} \ar@{-&gt;}[rrr]^{Hom(-,X)} &amp;  &amp;  &amp; Hom(A&
  &amp;  &amp; B \ar@{-&gt;}[r]_{h} \ar@{-&gt;}[uuu]|-{Hom(X,-)} &amp; B&#39; \ar@{-&gt;}[uu]|-{Hom(X,-)}
 }
 \]</span></p>
-<p>而由于 <span class="math inline">\(Hom(X, -)\)</span> 以及 <span class="math inline">\(Hom(-, X)\)</span> 二者皆是从某个 category 中 morphism 至 <span class="math inline">\(Set\)</span>，因此该处可构成一 product category (乘积范畴)，即 <span class="math inline">\(C^{op} \times C\)</span>，所以有functor <span class="math inline">\(Hom(-, -) : C^{op} \times C \to Set\)</span>：</p>
+<p>而由于 <span class="math inline">\(Hom(X, -)\)</span> 以及 <span class="math inline">\(Hom(-, X)\)</span> 二者皆是从某个 category 中 morphism 至 <span class="math inline">\(Set\)</span>，因此该处可构成一 product category (乘积范畴)，即 <span class="math inline">\(C^{op} \times C\)</span>，所以有 functor <span class="math inline">\(Hom(-, -) : C^{op} \times C \to Set\)</span>：</p>
 <p><span class="math display">\[
 \xymatrix{
  &amp;  &amp; Hom(A,\ B) \ar@{-&gt;}[rd]|-{Hom(f,\ h)} &amp;  \\
@@ -323,7 +323,7 @@ Hom(A&#39;,\ B) \ar@{-&gt;}[rrr]_{Hom(A&#39;,\ h)} &amp;  &amp;  &amp; Hom(A&#39
 <p><span class="math display">\[ Hom(Hom(X, -),\ F) \cong F(X) \]</span></p>
 <h3 id="透过交换图观察米田引理的结构">透过交换图观察米田引理的结构</h3>
 <p>由于文字叙述往往不是很直观，因此让我们从交换图的角度来观察一下米田引理：</p>
-<p>首先定义 <span class="math inline">\(A, B \in Obj(C)\)</span>，且有态射 <span class="math inline">\(f : A \to B\)</span>，以及一个任意的 object <span class="math inline">\(X\)</span>，因此对于范畴 <span class="math inline">\(C\)</span>，我们有：</p>
+<p>首先定义 <span class="math inline">\(A, B \in Obj(C)\)</span>，且有态射 <span class="math inline">\(f : A \to B\)</span>，以及一个任意的 object <span class="math inline">\(X\)</span>，因此对于 category <span class="math inline">\(C\)</span>，我们有：</p>
 <p><span class="math display">\[
 \xymatrix{
 X \ar@{--&gt;}[r]^{-} \ar@{--&gt;}[rd]_{f \circ -} &amp; A \ar@{-&gt;}[d]^{f} \\
@@ -342,9 +342,9 @@ X \ar@{--&gt;}[r]^{-} \ar@{--&gt;}[rd]_{f \circ -} &amp; A \ar@{-&gt;}[d]^{f} \a
 }
 \]</span></p>
 <p>所以在 category <span class="math inline">\(Set\)</span> 中，有<br> Objects：<span class="math inline">\(Hom(X,\ A), Hom(X,\ B), F(A), F(B)\)</span><br> 作为 Morphisms 的 Functors：<span class="math inline">\(Hom(X,\ f) : Hom(X,\ A) \to Hom(X,\ B)\)</span>，<span class="math inline">\(F\ f : F(A) \to F(B)\)</span><br> 作为 Morphisms 的 Natural transformations：<span class="math inline">\(\alpha_A : Hom(X,\ A) \to F(A)\)</span>，<span class="math inline">\(\alpha_B : Hom(X,\ B) \to F(B)\)</span>。</p>
-<p>对于范畴 <span class="math inline">\(Set\)</span>，由于 <span class="math inline">\((F\ f) \circ \alpha_A = \alpha_B \circ Hom(X,\ f)\)</span>，因此该图可交换。</p>
+<p>对于 category <span class="math inline">\(Set\)</span>，由于 <span class="math inline">\((F\ f) \circ \alpha_A = \alpha_B \circ Hom(X,\ f)\)</span>，因此该图可交换。</p>
 <h3 id="证明-2">证明</h3>
-<p>为了证明米田引理，我们可以把 <span class="math inline">\(Hom(X,\ A)\)</span> 的态射变为 <span class="math inline">\(id_X\)</span>，即有 <span class="math inline">\(Hom(X,\ X)\)</span>，所以我们可以把上图改为：</p>
+<p>为了证明米田引理，可以取出 <span class="math inline">\(Hom(X,\ A)\)</span> 中的 identity morphism <span class="math inline">\(id_X\)</span> 作为实例，即 <span class="math inline">\(Hom(X,\ X)\)</span>，所以上图将更变为：</p>
 <p><span class="math display">\[
 \xymatrix{
 X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt;}[rrdd]|-{Hom(X,-)} \ar@/^1pc/@{-&gt;}[rrrrrdd]|-{F} &amp;  &amp;  &amp;  &amp;  &amp;  \\
@@ -355,8 +355,16 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
  &amp;  &amp;  &amp; Hom(X,\ B) \ar@{-&gt;}[rrr]_{\alpha_B} &amp;  &amp;  &amp; F(B)
 }
 \]</span></p>
+<p>其中包含了 <span class="math inline">\(id_X \in Hom(X,\ X)\)</span>，<span class="math inline">\(u \in F(X)\)</span>，<span class="math inline">\(f \in Hom(X,\ B)\)</span> 以及 <span class="math inline">\(\alpha_B\ f \in F(B)\)</span>。</p>
+<p>而现在我们要做的仅仅是证出该图中所有的 natural transformation <span class="math inline">\(\alpha\)</span> 与 functor <span class="math inline">\(F\)</span> 之间是 isomorphic 的，因此需要证明出 <span class="math inline">\(toYoneda : \forall X \in C. (\forall \varphi \in C. Hom(X,\ \varphi) \to F(\varphi)) \to F(X)\)</span> 以及 <span class="math inline">\(fromYoneda : \forall X \in C. F(X) \to (\forall \varphi \in C. Hom(X,\ \varphi) \to F(\varphi))\)</span> 这两条路是行得通的，所以最终得出证明：<br></p>
+<p>设 <span class="math inline">\(\alpha_\varphi : \forall \varphi. Hom(X,\ \varphi) \to F(\varphi)\)</span>：<br> <span class="math inline">\(toYoneda\)</span>：<span class="math inline">\(id : Hom(\varphi,\ \varphi)\)</span>，有 <span class="math inline">\(\alpha_\varphi\ id = u\)</span><br> <span class="math inline">\(fromYoneda\)</span>：<span class="math inline">\(u : F(\varphi)\)</span>，有 <span class="math inline">\(\alpha_\varphi\ f = (F\ f)\ u\)</span></p>
+<p>至此证毕。</p>
 <h4 id="于-agda-中的表达">于 Agda 中的表达</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">toYoneda : (C : Category o m) &#123;X : Obj C&#125; &#123;F : Functor C (𝒮ℯ𝓉 m)&#125;</span><br><span class="line">           → [ C , 𝒮ℯ𝓉 m ]⟨ Hom C [ X ,─] , F ⟩</span><br><span class="line">           → Fₒ F X</span><br><span class="line">toYoneda</span><br><span class="line">  record &#123; id = id &#125;</span><br><span class="line">  record &#123; η = η &#125;</span><br><span class="line">  = η id</span><br><span class="line"></span><br><span class="line">fromYoneda : &#123;C : Category o m&#125; &#123;X : Obj C&#125; (F : Functor C (𝒮ℯ𝓉 m))</span><br><span class="line">             → Fₒ F X</span><br><span class="line">             → [ C , 𝒮ℯ𝓉 m ]⟨ Hom C [ X ,─] , F ⟩</span><br><span class="line">fromYoneda</span><br><span class="line">  record &#123; Fₘ = Fₘ &#125;</span><br><span class="line">  u</span><br><span class="line">  = record &#123; η = λ f → (Fₘ f) u &#125;</span><br></pre></td></tr></table></figure>
+<p>注：该部分只写出了最终的证明步骤，需要查看详尽的前置定义及源码可移步至 <a href="http://home.e7mc.com:12450/9032676/category-research" target="_blank" rel="noopener">这里</a>。</p>
 <h4 id="于-haskell-中表达">于 Haskell 中表达</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">toYoneda :: (forall a. (x -&gt; a) -&gt; f a) -&gt; f x</span><br><span class="line">toYoneda alpha = alpha id</span><br><span class="line"></span><br><span class="line">fromYoneda :: f x -&gt; (forall a. (x -&gt; a) -&gt; f a)</span><br><span class="line">fromYoneda u f = fmap f u</span><br></pre></td></tr></table></figure>
+<p>注：该证明被直接翻译为 Haskell 中 category theory 的语义，所以与 agda 中把所有在证明过程中所使用的 concept 全部构造出来是有所区别的。</p>
 <h2 id="米田嵌入-yoneda-embedding">米田嵌入 (Yoneda embedding)</h2>
 <h3 id="与-cps-变换的关系">与 CPS 变换的关系</h3>
 
@@ -367,7 +375,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-02-27T07:11:41.218Z" itemprop="dateUpdated">2021-02-27 15:11:41</time>
+    Last updated: <time datetime="2021-03-01T00:06:00.887Z" itemprop="dateUpdated">2021-03-01 08:06:00</time>
 </span><br>
 
 
