@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="函数式编程,范畴论">
+    <meta name="keywords" content="范畴论,函数式编程">
     <meta name="description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 &quot;魔法&quot;，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
-<meta name="keywords" content="函数式编程,范畴论">
+<meta name="keywords" content="范畴论,函数式编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个 Haskeller 的范畴论入坑笔记 第一章: 复合的本质">
 <meta property="og:url" content="https://a9032676.github.io/2019/07/19/Category-Theory-1/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 &quot;魔法&quot;，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2021-03-01T00:08:14.673Z">
+<meta property="og:updated_time" content="2021-03-02T06:07:02.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 Haskeller 的范畴论入坑笔记 第一章: 复合的本质">
 <meta name="twitter:description" content="在入坑接触 Haskell 一段时间后，碰到很多类似 Functor Applicative Monad 等等这些诸如此类的 &quot;魔法&quot;，虽然有时候用是会用了，利用各种自定义的 Monad instance 也实际优化了 FP （Functional Programming） 工程上的代码，但是回头一看 Monad（单子）这个神奇的词，仔细想想又并不这么简单能够解释，一查发现其中又牵涉出 Monoi">
@@ -214,7 +214,11 @@
 <h2 id="总结conclusion">总结（Conclusion）</h2>
 <p>以上便是本章节的内容了，本篇作为第一节可能会较少讲述实质在范畴论上的内容，而概念较多也是为了帮助自己和读者能够理解及学习到范畴论上的概念，作为日后深入范畴论的一个垫脚石。</p>
 <h2 id="外部链接outside-links">外部链接（Outside Links）</h2>
-<p>本文部分内容参考或引用至下列网页，也可供作为额外的延伸资源帮助阅读： - <a href="https://zh.wikipedia.org/wiki/%E8%8C%83%E7%95%B4%E8%AE%BA" target="_blank" rel="noopener">范畴论 - Wikipedia</a> - <a href="https://bartoszmilewski.com/2014/11/04/category-the-essence-of-composition/" target="_blank" rel="noopener">Category: The Essence of Composition - Bartosz Milewski</a></p>
+<p>本文部分内容参考或引用至下列网页，也可供作为额外的延伸资源帮助阅读：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%8C%83%E7%95%B4%E8%AE%BA" target="_blank" rel="noopener">范畴论 - Wikipedia</a></li>
+<li><a href="https://bartoszmilewski.com/2014/11/04/category-the-essence-of-composition/" target="_blank" rel="noopener">Category: The Essence of Composition - Bartosz Milewski</a></li>
+</ul>
 
         </div>
 
@@ -223,7 +227,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-03-01T00:08:14.673Z" itemprop="dateUpdated">2021-03-01 08:08:14</time>
+    Last updated: <time datetime="2021-03-02T06:07:02.400Z" itemprop="dateUpdated">2021-03-02 14:07:02</time>
 </span><br>
 
 
@@ -480,27 +484,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","https://a9032676.github.io/mathjax_ext/xypic.js"]}});
 </script>
@@ -518,5 +502,10 @@ MathJax.Hub.Queue(function() {
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
+
+
+
+
 </body>
 </html>

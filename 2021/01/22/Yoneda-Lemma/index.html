@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="函数式编程,范畴论">
+    <meta name="keywords" content="范畴论,函数式编程">
     <meta name="description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
-<meta name="keywords" content="函数式编程,范畴论">
+<meta name="keywords" content="范畴论,函数式编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yoneda Lemma 的证明">
 <meta property="og:url" content="https://a9032676.github.io/2021/01/22/Yoneda-Lemma/index.html">
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2021-03-01T00:06:00.887Z">
+<meta property="og:updated_time" content="2021-03-02T06:05:13.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yoneda Lemma 的证明">
 <meta name="twitter:description" content="阅读须知  本篇文章面向人群是接触过 Category theory (范畴论) 以及 函数式编程，但未曾接触过 Yoneda Lemma (米田引理) 的读者食用。 通篇对于范畴论内的专有名词一律采用了英文词汇的形式表达，以防中文翻译各类型文章不统一，可能存在误导性。 文章中可能会存在一些 Agda 或 Haskell 语言的代码。没有相关知识不要紧，这只是给予相关领域的朋友一个直觉，用以辅助说">
@@ -165,7 +165,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读须知"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读须知</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hom-set-hom-集合"><span class="post-toc-number">3.</span> <span class="post-toc-text">Hom-set (Hom-集合)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hom-functor-hom-函子"><span class="post-toc-number">4.</span> <span class="post-toc-text">Hom-functor (Hom-函子)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#covariant-hom-functor-协变-hom-函子"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Covariant Hom-functor (协变 Hom-函子)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-1"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证明"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">证明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#contravariant-hom-functor-逆变-hom-函子"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Contravariant Hom-functor (逆变 Hom-函子)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-2"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证明-1"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">证明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mixed-variant-hom-functor-双变-hom-函子"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">Mixed-variant Hom-functor (双变 Hom-函子)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-3"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">定义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#yoneda-lemma"><span class="post-toc-number">5.</span> <span class="post-toc-text">Yoneda Lemma</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#透过交换图观察米田引理的结构"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">透过交换图观察米田引理的结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证明-2"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">证明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#于-agda-中的表达"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">于 Agda 中的表达</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#于-haskell-中表达"><span class="post-toc-number">5.3.2.</span> <span class="post-toc-text">于 Haskell 中表达</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#米田嵌入-yoneda-embedding"><span class="post-toc-number">6.</span> <span class="post-toc-text">米田嵌入 (Yoneda embedding)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#与-cps-变换的关系"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">与 CPS 变换的关系</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读须知"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读须知</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hom-set-hom-集合"><span class="post-toc-number">3.</span> <span class="post-toc-text">Hom-set (Hom-集合)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hom-functor-hom-函子"><span class="post-toc-number">4.</span> <span class="post-toc-text">Hom-functor (Hom-函子)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#covariant-hom-functor-协变-hom-函子"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Covariant Hom-functor (协变 Hom-函子)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-1"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证明"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">证明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#contravariant-hom-functor-逆变-hom-函子"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Contravariant Hom-functor (逆变 Hom-函子)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-2"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证明-1"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">证明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mixed-variant-hom-functor-双变-hom-函子"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">Mixed-variant Hom-functor (双变 Hom-函子)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-3"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">定义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#yoneda-lemma"><span class="post-toc-number">5.</span> <span class="post-toc-text">Yoneda Lemma</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#透过交换图观察米田引理的结构"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">透过交换图观察米田引理的结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证明-2"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">证明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#于-agda-中的表达"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">于 Agda 中的表达</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#于-haskell-中表达"><span class="post-toc-number">5.3.2.</span> <span class="post-toc-text">于 Haskell 中表达</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">6.</span> <span class="post-toc-text">结语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#外部链接"><span class="post-toc-number">7.</span> <span class="post-toc-text">外部链接</span></a></li></ol>
         </nav>
     </aside>
 
@@ -235,7 +235,7 @@ X \ar@/_/@{-&gt;}[r] \ar@{-&gt;}[rd] \ar@/^/@{-&gt;}[r] \ar@/_/@{-&gt;}[rd] \ar@
 <p>那么便可总结出规律，想要定义出 hom-functor 的概念，必须要知道到底 objects 是应该怎样被映射的，morphisms 亦应怎么被映射的，并且证明其满足 functor laws，最终便可定义出 covariant hom-functor 了。</p>
 <h3 id="定义-1">定义</h3>
 <p>设有 locally small category <span class="math inline">\(C\)</span>，固定 <span class="math inline">\(C\)</span> 下的 object <span class="math inline">\(X\)</span> 为 fixed object，有：<br> 1. Objects：<span class="math inline">\(A, B \in obj(C)\)</span>，<span class="math inline">\(Hom(X,\ A)\)</span>，<span class="math inline">\(Hom(X,\ B) \in obj(Set)\)</span><br> 2. Morphisms：<span class="math inline">\(f : A \to B, g : X \to A \in mor(C)\)</span>，<span class="math inline">\(Hom(X,\ f) \in mor(Set)\)</span></p>
-<p>则 <span class="math inline">\(Hom(X, -) : C \to Set\)</span> 被称为 covariant hom-functor，并有如下图表：</p>
+<p>则 <span class="math inline">\(Hom(X, -) : C \to Set\)</span> (或 <span class="math inline">\(h_X\)</span>) 被称为 covariant hom-functor，并有如下图表：</p>
 <p><span class="math display">\[
 \xymatrix{
 X \ar@{-&gt;}[r]^{g} \ar@{-&gt;}[rd]_{f \circ g} &amp; A \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt;}[rr]|-{Hom(X,-)} &amp;  &amp; Hom(X, A) \ar@{-&gt;}[d]_{Hom(X, f)} &amp; g \ar@{|-&gt;}[d] \\
@@ -256,7 +256,8 @@ X &amp; A \ar@/^/@{-&gt;}[l] \ar@/^/@{-&gt;}[rrr]^{Contravariant\ hom-functor} \
 }
 \]</span></p>
 <h3 id="定义-2">定义</h3>
-<p>设有 locally small category <span class="math inline">\(C^{op}\)</span>，固定 <span class="math inline">\(C\)</span> 下的 object <span class="math inline">\(X\)</span> 为 fixed object，并且有：<br> 1. Objects：<span class="math inline">\(A, B \in Obj(C^{op})\)</span>，<span class="math inline">\(Hom(A,\ X), Hom(B,\ X) \in obj(Set)\)</span><br> 2. Morphisms：<span class="math inline">\(f : B \to A, g : A \to X \in mor(C)\)</span>，<span class="math inline">\(Hom(f,\ X) \in mor(Set)\)</span><br> 现在设 <span class="math inline">\(g : A \to X\)</span>，因此能够得出如下图表：</p>
+<p>设有 locally small category <span class="math inline">\(C^{op}\)</span>，固定 <span class="math inline">\(C\)</span> 下的 object <span class="math inline">\(X\)</span> 为 fixed object，并且有：<br> 1. Objects：<span class="math inline">\(A, B \in Obj(C^{op})\)</span>，<span class="math inline">\(Hom(A,\ X), Hom(B,\ X) \in obj(Set)\)</span><br> 2. Morphisms：<span class="math inline">\(f : B \to A, g : A \to X \in mor(C)\)</span>，<span class="math inline">\(Hom(f,\ X) \in mor(Set)\)</span><br></p>
+<p>则 <span class="math inline">\(Hom(-, X) : C \to Set\)</span> (或 <span class="math inline">\(h^X\)</span>) 被称为 contravariant hom-functor，并有如下图表：</p>
 <p><span class="math display">\[
 \xymatrix{
 X &amp; A \ar@{-&gt;}[l]_{g} \ar@/^/@{-&gt;}[rr]^{Hom(-,\ X)} &amp;  &amp; Hom(A,\ X) \ar@{-&gt;}[d]^{Hom(f,\ X)} &amp; g  \ar@{|-&gt;}[d] \\
@@ -365,8 +366,16 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
 <h4 id="于-haskell-中表达">于 Haskell 中表达</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">toYoneda :: (forall a. (x -&gt; a) -&gt; f a) -&gt; f x</span><br><span class="line">toYoneda alpha = alpha id</span><br><span class="line"></span><br><span class="line">fromYoneda :: f x -&gt; (forall a. (x -&gt; a) -&gt; f a)</span><br><span class="line">fromYoneda u f = fmap f u</span><br></pre></td></tr></table></figure>
 <p>注：该证明被直接翻译为 Haskell 中 category theory 的语义，所以与 agda 中把所有在证明过程中所使用的 concept 全部构造出来是有所区别的。</p>
-<h2 id="米田嵌入-yoneda-embedding">米田嵌入 (Yoneda embedding)</h2>
-<h3 id="与-cps-变换的关系">与 CPS 变换的关系</h3>
+<h2 id="结语">结语</h2>
+<p>至此，Yoneda lemma 证明篇正式完毕，而接下来笔者将会撰写两篇后续的文章，重点讨论 Yoneda embedding (米田嵌入) 与 Continuation passing style (CPS 变换) 的关系，以及 co-Yoneda lemma 的证明。在此感谢各位细心阅览！</p>
+<h2 id="外部链接">外部链接</h2>
+<p>本文部分内容参考或引用至下列网页，也可供作为额外的延伸资源帮助阅读：</p>
+<ul>
+<li><a href="https://ncatlab.org/nlab/show/Yoneda+lemma" target="_blank" rel="noopener">Yoneda lemma - nLab</a></li>
+<li><a href="https://bartoszmilewski.com/2015/09/01/the-yoneda-lemma/" target="_blank" rel="noopener">The Yoneda Lemma - Bartosz Milewski</a></li>
+<li><a href="https://www.youtube.com/watch?v=KaBz45nZEZw" target="_blank" rel="noopener">Category Theory II 4.1: Representable Functors</a></li>
+<li><a href="https://www.youtube.com/watch?v=BiWqNdtptDI" target="_blank" rel="noopener">Category Theory II 4.2: The Yoneda Lemma</a></li>
+</ul>
 
         </div>
 
@@ -375,7 +384,7 @@ X \ar@{--&gt;}[r]^{id} \ar@{--&gt;}[rd] &amp; X \ar@{-&gt;}[d]^{f} \ar@/^/@{-&gt
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-03-01T00:06:00.887Z" itemprop="dateUpdated">2021-03-01 08:06:00</time>
+    Last updated: <time datetime="2021-03-02T06:05:13.550Z" itemprop="dateUpdated">2021-03-02 14:05:13</time>
 </span><br>
 
 
@@ -625,27 +634,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","https://a9032676.github.io/mathjax_ext/xypic.js"]}});
 </script>
@@ -663,5 +652,10 @@ MathJax.Hub.Queue(function() {
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
+
+
+
+
 </body>
 </html>
