@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>Algebra: Chapter 0 - 速记（1） | 9032676&#39;s Blog | 为探索而生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="抽象代数,范畴论,群论">
+    <meta name="description" content="引言 由于最近打算多学一点抽象代数的知识，鉴于之前已有范畴论方面的铺垫，并且希望透过范畴论的方式来学习抽象代数，因此采用了 Algebra: Chapter 0 - PaoloAluffi 这本书来作为我的自学参考书。本篇内容将从第二章 开始（跳过基础的集合论与范畴论介绍），并以随手的方式速记。 Chapter II - Groups, first encounter 1. Definition">
+<meta name="keywords" content="抽象代数,范畴论,群论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algebra: Chapter 0 - 速记（1）">
+<meta property="og:url" content="https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/index.html">
+<meta property="og:site_name" content="9032676&#39;s Blog">
+<meta property="og:description" content="引言 由于最近打算多学一点抽象代数的知识，鉴于之前已有范畴论方面的铺垫，并且希望透过范畴论的方式来学习抽象代数，因此采用了 Algebra: Chapter 0 - PaoloAluffi 这本书来作为我的自学参考书。本篇内容将从第二章 开始（跳过基础的集合论与范畴论介绍），并以随手的方式速记。 Chapter II - Groups, first encounter 1. Definition">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2021-05-08T07:15:53.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algebra: Chapter 0 - 速记（1）">
+<meta name="twitter:description" content="引言 由于最近打算多学一点抽象代数的知识，鉴于之前已有范畴论方面的铺垫，并且希望透过范畴论的方式来学习抽象代数，因此采用了 Algebra: Chapter 0 - PaoloAluffi 这本书来作为我的自学参考书。本篇内容将从第二章 开始（跳过基础的集合论与范畴论介绍），并以随手的方式速记。 Chapter II - Groups, first encounter 1. Definition">
+    
+        <link rel="alternate" type="application/atom+xml" title="9032676&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">9032676</h5>
+          <a href="mailto:9032676@gmail.com" title="9032676@gmail.com" class="mail">9032676@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/a9032676" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-link"></i>
+                朋友们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about-me"  >
+                <i class="icon icon-lg icon-question-circle"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Algebra: Chapter 0 - 速记（1）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Algebra: Chapter 0 - 速记（1）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-04-30T23:51:00.000Z" itemprop="datePublished" class="page-time">
+  2021-05-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引言"><span class="post-toc-number">1.</span> <span class="post-toc-text">引言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#chapter-ii---groups-first-encounter"><span class="post-toc-number">2.</span> <span class="post-toc-text">Chapter II - Groups, first encounter</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#definition-of-group群的定义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1. Definition of group（群的定义）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#definition"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">1.2. Definition</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#basic-properties基本特性"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">1.3. Basic properties（基本特性）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#proposition-1.6."><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">Proposition 1.6.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#proof."><span class="post-toc-number">2.1.3.1.</span> <span class="post-toc-text">Proof.</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#h-e_g-h-e_g"><span class="post-toc-number">2.1.3.2.</span> <span class="post-toc-text">\[h = e_G h = e_G\]</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#proposition-1.7.-inverse-is-uniqueness逆元的唯一性"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">Proposition 1.7. Inverse is uniqueness（逆元的唯一性）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#proposition-1.8.-cancellation可消除性"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">Proposition 1.8. Cancellation（可消除性）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#proof.-1"><span class="post-toc-number">2.1.5.1.</span> <span class="post-toc-text">Proof.</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#commutative-groups交换群"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.5. Commutative groups（交换群）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#order阶"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.6. Order（阶）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#definition-1.9."><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">Definition 1.9.</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lemma-1.10."><span class="post-toc-number">2.4.</span> <span class="post-toc-text">Lemma 1.10.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#corollary-1.11."><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Corollary 1.11.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#definition-1.12."><span class="post-toc-number">2.6.</span> <span class="post-toc-text">Definition 1.12.</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Algebra-Chapter-0-1"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Algebra: Chapter 0 - 速记（1）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-01 07:51:00" datetime="2021-04-30T23:51:00.000Z"  itemprop="datePublished">2021-05-01</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="引言">引言</h2>
+<p>由于最近打算多学一点抽象代数的知识，鉴于之前已有范畴论方面的铺垫，并且希望透过范畴论的方式来学习抽象代数，因此采用了 <strong>Algebra: Chapter 0 - PaoloAluffi</strong> 这本书来作为我的自学参考书。本篇内容将从第二章 开始（跳过基础的集合论与范畴论介绍），并以随手的方式速记。</p>
+<h2 id="chapter-ii---groups-first-encounter">Chapter II - Groups, first encounter</h2>
+<h3 id="definition-of-group群的定义">1. Definition of group（群的定义）</h3>
+<h4 id="definition">1.2. Definition</h4>
+<p>设有 nonempty set <span class="math inline">\(G\)</span>，以及 binary operation <span class="math inline">\(\bullet : G \times G \to G\)</span>，即有群 <span class="math inline">\((G, \bullet)\)</span> ，并满足如下定律：</p>
+<ul>
+<li><p>Binary operation <span class="math inline">\(\bullet\)</span> 满足结合律：<span class="math display">\[(\forall g, h, k \in G): (g \bullet h) \bullet k = g \bullet (h \bullet k)\]</span></p></li>
+<li><p>对于 <span class="math inline">\(\bullet\)</span> ，存在 identity element <span class="math inline">\(e_G\)</span>：<span class="math display">\[(\exists e_G \in G) (\forall g \in G): g \bullet e_G = g = e_G \bullet g\]</span></p></li>
+<li><p>所有 <span class="math inline">\(G\)</span> 中的元素 <span class="math inline">\(g\)</span> 均存在逆元 <span class="math inline">\(h\)</span>，即有：<span class="math display">\[(\forall g \in G)(\exists h \in G): g \bullet h = e_G = h \bullet g\]</span></p></li>
+</ul>
+<h4 id="basic-properties基本特性">1.3. Basic properties（基本特性）</h4>
+<p>从 groupoid 的角度出发，identity <span class="math inline">\(e_G\)</span> 将标记为 <span class="math inline">\(1_*\)</span>.</p>
+<h4 id="proposition-1.6.">Proposition 1.6.</h4>
+<p>​ 若 <span class="math inline">\(h \in G\)</span> 是 <span class="math inline">\(G\)</span> 的 identity ，有 <span class="math inline">\(h = e_G\)</span>.</p>
+<h5 id="proof.">Proof.</h5>
+<h5 id="h-e_g-h-e_g"><span class="math display">\[h = e_G h = e_G\]</span></h5>
+<p>（其中 <span class="math inline">\(e_G\)</span> 被称为 left identity 而 h 则为 right identity）</p>
+<h4 id="proposition-1.7.-inverse-is-uniqueness逆元的唯一性">Proposition 1.7. Inverse is uniqueness（逆元的唯一性）</h4>
+<p>​ 若存在逆元 <span class="math inline">\(h_1, h_2 \in G\)</span>，有 <span class="math inline">\(h_1 = h_2\)</span></p>
+<h4 id="proposition-1.8.-cancellation可消除性">Proposition 1.8. Cancellation（可消除性）</h4>
+<p>​ 设 <span class="math inline">\(G\)</span> 为群，并有 <span class="math inline">\(\forall a, g, h \in G\)</span></p>
+<p>​ <span class="math display">\[ga = ha \implies g = h,\ ag = ah \implies g = h\]</span></p>
+<h5 id="proof.-1">Proof.</h5>
+<p><span class="math display">\[
+\begin{aligned}
+ga = ha &amp; \implies (ga)a^{-1} = (ha)a^{-1} \\
+        &amp; \implies g(a\ a^{-1}) = h(a\ a^{-1}) \\
+        &amp; \implies g\ e_G = h\ e_G \\
+        &amp; \implies g = h
+\end{aligned}
+\]</span></p>
+<p>当然，并不是所有的 operation 都存在 cancellation 的 ，例如 <span class="math inline">\(\Bbb{R}\)</span> 中 <span class="math inline">\(1 \cdot 0 = 2 \cdot 0\)</span> 使得 <span class="math inline">\(1 \neq 2\)</span>。这里的问题显然就是因为 <span class="math inline">\(0\)</span> 于 <span class="math inline">\(\Bbb{R}\)</span> 中不存在任何的逆元，那么 <span class="math inline">\(\Bbb{R}\)</span> 便不满足群中所有元素均存在逆元的定律，因此它不能被视为一个群。但若果把 <span class="math inline">\(0\)</span> 从中剔除，即有：<span class="math display">\[R^* := R \setminus \{0\}\]</span> 此处的 <span class="math inline">\(R^*\)</span> 便符合逆元的条件了。</p>
+<h3 id="commutative-groups交换群">1.5. Commutative groups（交换群）</h3>
+<p>由于群的定义并不存在对于 binary operation <span class="math inline">\(\bullet\)</span> 可交换的特性，因此需要基于群的三条定义额外添加交换律，即有：<span class="math display">\[(\forall g, h \in G): g \bullet h = h \bullet g\]</span> 同时满足群公理以及该交换律的结构被称为交换群（或 abelian groups，阿贝尔群）。</p>
+<h3 id="order阶">1.6. Order（阶）</h3>
+<p>通俗的说，在群论中 <strong>order of a group</strong> 指的就是某个群的 cardinality。</p>
+<h4 id="definition-1.9.">Definition 1.9.</h4>
+<p>​ 对于一个群 <span class="math inline">\(G\)</span> 中的元素 <span class="math inline">\(g\)</span> 有 <span class="math inline">\(g^n = e\)</span>（其中 <span class="math inline">\(n\)</span> 为 <span class="math inline">\(\Bbb{Z}^+\)</span>，<span class="math inline">\(e\)</span> 为 identity），则其拥有 finitre order（有限序）。在这个实例中，若果 <span class="math inline">\(g^n = e\)</span>，则序 <span class="math inline">\(|g|\)</span> 等于最小的正整数 <span class="math inline">\(n\)</span>。若果 <span class="math inline">\(g\)</span> 中不存在 <span class="math inline">\(n\)</span>（<span class="math inline">\(n\)</span> 为 <span class="math inline">\(\infty\)</span>），则 <span class="math inline">\(g\)</span> 有 infinite order（无限序），并记为 <span class="math inline">\(|g| = \infty\)</span> 。</p>
+<h3 id="lemma-1.10.">Lemma 1.10.</h3>
+<p>​ 对于任意正整数 <span class="math inline">\(n\)</span> ，有 <span class="math inline">\(g^n = e\)</span>，那么 <span class="math inline">\(|g| \leq n\)</span> ，更精确的说 <span class="math inline">\(|g|\)</span> 是 <span class="math inline">\(n\)</span> 的 divisor 。</p>
+<h3 id="corollary-1.11.">Corollary 1.11.</h3>
+<p>​ 令元素 <span class="math inline">\(g\)</span> 拥有 finite order 且 <span class="math inline">\(N \in \Bbb{Z}\)</span>，那么有：<span class="math display">\[g^N = e \iff N\ is\ a\ multiple\ of\ |g|\]</span>$$</p>
+<h3 id="definition-1.12.">Definition 1.12.</h3>
+<p>​ 若果 <span class="math inline">\(G\)</span> 是有限集合，那么序 <span class="math inline">\(|G|\)</span> 则是其元素的数目。若为 <span class="math inline">\(G\)</span> 无穷大则记为 <span class="math inline">\(|G| = \infty\)</span> 。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2021-05-08T07:15:53.733Z" itemprop="dateUpdated">2021-05-08 15:15:53</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://a9032676.github.io">
+            <img src="/img/avatar.jpg" alt="9032676">
+            9032676
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/抽象代数/">抽象代数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/群论/">群论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/范畴论/">范畴论</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/&title=《Algebra: Chapter 0 - 速记（1）》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/&title=《Algebra: Chapter 0 - 速记（1）》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Algebra: Chapter 0 - 速记（1）》 — 9032676's Blog&url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/&via=https://a9032676.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/22/Yoneda-Lemma/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Yoneda Lemma 的证明</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>9032676 &copy; 2018 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/&title=《Algebra: Chapter 0 - 速记（1）》 — 9032676's Blog&pic=https://a9032676.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/&title=《Algebra: Chapter 0 - 速记（1）》 — 9032676's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Algebra: Chapter 0 - 速记（1）》 — 9032676's Blog&url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/&via=https://a9032676.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://a9032676.github.io/2021/05/01/Algebra-Chapter-0-1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aQY7CMAwF0N7/0ozEFhV92+2IJi8rRKuQl4Wx4xxHPF7vcfb5bHzO8Pn07JvjjoGBgfFYRrKUs2Ul8+S/O9kmDAyMHRiTIHsWOpMtqD49/R4DAwMjCKN5wM2XjoGBgTEJuNXQmW8QBgYGxqSI/V643pc4XlyLY2BgPJAxbwzc9/lf+xsYGBg/yXi1Rp78JcE3bzCczomBgbE043vSVg3BSTMySSiblzAwMDAWZcwvQ+Rtg2oLM7+ugYGBsTYjf5CkhvnBWR76C40BDAyMDRi9hc6XmP9utCkYGBgbMJJ0rVdFVovhZrGNgYGxKKN6uF89sq++2dxWDAyMDRjVK1zV61/VBmeyEgwMjB0Yk8CXpIl58O3NU+hgYGBgPJwxLz6r+Lw5GjVWMTAwlmbkB/TVd45gzEvZI18EBgbGwxn56XqSqM1bnr1AjIGBsSqjF/Kq7cx8a3p9SQwMjLUZ1dKxF+vmrYXyhTAMDIzlGHkjMyll86O6WwpmDAyMRRmTo/lkhjwoT1qeGBgYOzAuuF82IFVTwMI/BgYGxhKMScMgeT9ZdLXleXHfAwMD44cZr+Kotgry5G+SSmJgYKzNmATcydF/NVhjYGBg9IJs76C/WjaXL61iYGAszeg1DKpH+c0l5j1YDAwMjIsak9XjuQiMgYGBESd5+czXhmMMDIwdGHlK1ytE8+uqzQsWGBgYSzOuvWwxbxgkSeTF/y0YGBi/y/gDF0F0ckgB9XoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","https://a9032676.github.io/mathjax_ext/xypic.js"]}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
