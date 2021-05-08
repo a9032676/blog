@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="9032676&#39;s Blog">
 <meta property="og:description" content="引言 由于最近打算多学一点抽象代数的知识，鉴于之前已有范畴论方面的铺垫，并且希望透过范畴论的方式来学习抽象代数，因此采用了 Algebra: Chapter 0 - PaoloAluffi 这本书来作为我的自学参考书。本篇内容将从第二章 开始（跳过基础的集合论与范畴论介绍），并以随手的方式速记。 Chapter II - Groups, first encounter 1. Definition">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2021-05-08T07:17:10.549Z">
+<meta property="og:updated_time" content="2021-05-08T07:35:15.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algebra: Chapter 0 - 速记（1）">
 <meta name="twitter:description" content="引言 由于最近打算多学一点抽象代数的知识，鉴于之前已有范畴论方面的铺垫，并且希望透过范畴论的方式来学习抽象代数，因此采用了 Algebra: Chapter 0 - PaoloAluffi 这本书来作为我的自学参考书。本篇内容将从第二章 开始（跳过基础的集合论与范畴论介绍），并以随手的方式速记。 Chapter II - Groups, first encounter 1. Definition">
@@ -227,13 +227,13 @@ ga = ha &amp; \implies (ga)a^{-1} = (ha)a^{-1} \\
 <h3 id="order阶">1.6. Order（阶）</h3>
 <p>通俗的说，在群论中 <strong>order of a group</strong> 指的就是某个群的 cardinality。</p>
 <h4 id="definition-1.9.">Definition 1.9.</h4>
-<p>​ 对于一个群 <span class="math inline">\(G\)</span> 中的元素 <span class="math inline">\(g\)</span> 有 <span class="math inline">\(g^n = e\)</span>（其中 <span class="math inline">\(n\)</span> 为 <span class="math inline">\(\Bbb{Z}^+\)</span>，<span class="math inline">\(e\)</span> 为 identity），则其拥有 finitre order（有限序）。在这个实例中，若果 <span class="math inline">\(g^n = e\)</span>，则序 <span class="math inline">\(|g|\)</span> 等于最小的正整数 <span class="math inline">\(n\)</span>。若果 <span class="math inline">\(g\)</span> 中不存在 <span class="math inline">\(n\)</span>（<span class="math inline">\(n\)</span> 为 <span class="math inline">\(\infty\)</span>），则 <span class="math inline">\(g\)</span> 有 infinite order（无限序），并记为 <span class="math inline">\(|g| = \infty\)</span> 。</p>
+<p>​ 对于一个群 <span class="math inline">\(G\)</span> 中的元素 <span class="math inline">\(g\)</span> 有 <span class="math inline">\(g^n = e\)</span>（其中 <span class="math inline">\(n\)</span> 为 <span class="math inline">\(\Bbb{Z}^+\)</span>，<span class="math inline">\(e\)</span> 为 identity），则其拥有 finitre order（有限阶）。在这个实例中，若果 <span class="math inline">\(g^n = e\)</span>，则阶 <span class="math inline">\(|g|\)</span> 等于最小的正整数 <span class="math inline">\(n\)</span>。若果 <span class="math inline">\(g\)</span> 中不存在 <span class="math inline">\(n\)</span>（<span class="math inline">\(n\)</span> 为 <span class="math inline">\(\infty\)</span>），则 <span class="math inline">\(g\)</span> 有 infinite order（无限阶），并记为 <span class="math inline">\(|g| = \infty\)</span> 。</p>
 <h3 id="lemma-1.10.">Lemma 1.10.</h3>
 <p>​ 对于任意正整数 <span class="math inline">\(n\)</span> ，有 <span class="math inline">\(g^n = e\)</span>，那么 <span class="math inline">\(|g| \leq n\)</span> ，更精确的说 <span class="math inline">\(|g|\)</span> 是 <span class="math inline">\(n\)</span> 的 divisor 。</p>
 <h3 id="corollary-1.11.">Corollary 1.11.</h3>
-<p>​ 令元素 <span class="math inline">\(g\)</span> 拥有 finite order 且 <span class="math inline">\(N \in \Bbb{Z}\)</span>，那么有：<span class="math display">\[g^N = e \iff N\ is\ a\ multiple\ of\ |g|\]</span>$$</p>
+<p>​ 令元素 <span class="math inline">\(g\)</span> 拥有 finite order 且 <span class="math inline">\(N \in \Bbb{Z}\)</span>，那么有：<span class="math display">\[g^N = e \iff N\ is\ a\ multiple\ of\ |g|\]</span></p>
 <h3 id="definition-1.12.">Definition 1.12.</h3>
-<p>​ 若果 <span class="math inline">\(G\)</span> 是有限集合，那么序 <span class="math inline">\(|G|\)</span> 则是其元素的数目。若为 <span class="math inline">\(G\)</span> 无穷大则记为 <span class="math inline">\(|G| = \infty\)</span> 。</p>
+<p>​ 若果 <span class="math inline">\(G\)</span> 是有限集合，那么阶 <span class="math inline">\(|G|\)</span> 则是其元素的数目。若为 <span class="math inline">\(G\)</span> 无穷大则记为 <span class="math inline">\(|G| = \infty\)</span> 。</p>
 
         </div>
 
@@ -242,7 +242,7 @@ ga = ha &amp; \implies (ga)a^{-1} = (ha)a^{-1} \\
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-05-08T07:17:10.549Z" itemprop="dateUpdated">2021-05-08 15:17:10</time>
+    Last updated: <time datetime="2021-05-08T07:35:15.339Z" itemprop="dateUpdated">2021-05-08 15:35:15</time>
 </span><br>
 
 
