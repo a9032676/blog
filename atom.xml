@@ -66,9 +66,9 @@
     </summary>
     
     
-      <category term="抽象代数" scheme="https://a9032676.github.io/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/"/>
-    
       <category term="范畴论" scheme="https://a9032676.github.io/tags/%E8%8C%83%E7%95%B4%E8%AE%BA/"/>
+    
+      <category term="抽象代数" scheme="https://a9032676.github.io/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/"/>
     
       <category term="群论" scheme="https://a9032676.github.io/tags/%E7%BE%A4%E8%AE%BA/"/>
     
@@ -236,9 +236,9 @@
     </summary>
     
     
-      <category term="类型论" scheme="https://a9032676.github.io/tags/%E7%B1%BB%E5%9E%8B%E8%AE%BA/"/>
-    
       <category term="函数式编程" scheme="https://a9032676.github.io/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="类型论" scheme="https://a9032676.github.io/tags/%E7%B1%BB%E5%9E%8B%E8%AE%BA/"/>
     
       <category term="逻辑" scheme="https://a9032676.github.io/tags/%E9%80%BB%E8%BE%91/"/>
     
@@ -266,9 +266,9 @@
     </summary>
     
     
-      <category term="类型论" scheme="https://a9032676.github.io/tags/%E7%B1%BB%E5%9E%8B%E8%AE%BA/"/>
-    
       <category term="函数式编程" scheme="https://a9032676.github.io/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="类型论" scheme="https://a9032676.github.io/tags/%E7%B1%BB%E5%9E%8B%E8%AE%BA/"/>
     
       <category term="逻辑" scheme="https://a9032676.github.io/tags/%E9%80%BB%E8%BE%91/"/>
     
@@ -349,9 +349,9 @@
     </summary>
     
     
-      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
-    
       <category term="ArchLinux" scheme="https://a9032676.github.io/tags/archlinux/"/>
+    
+      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
     
       <category term="Docker" scheme="https://a9032676.github.io/tags/docker/"/>
     
@@ -377,13 +377,13 @@
     </summary>
     
     
-      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
-    
       <category term="ArchLinux" scheme="https://a9032676.github.io/tags/archlinux/"/>
     
-      <category term="硬盘分区" scheme="https://a9032676.github.io/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
+      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
     
       <category term="RAID" scheme="https://a9032676.github.io/tags/raid/"/>
+    
+      <category term="硬盘分区" scheme="https://a9032676.github.io/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
     
   </entry>
   
@@ -408,9 +408,9 @@
     </summary>
     
     
-      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
-    
       <category term="ArchLinux" scheme="https://a9032676.github.io/tags/archlinux/"/>
+    
+      <category term="NAS" scheme="https://a9032676.github.io/tags/nas/"/>
     
       <category term="硬盘分区" scheme="https://a9032676.github.io/tags/%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA/"/>
     
