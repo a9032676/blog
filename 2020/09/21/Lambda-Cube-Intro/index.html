@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="函数式编程,类型论,逻辑,计算机编程理论">
+    <meta name="keywords" content="类型论,函数式编程,逻辑,计算机编程理论">
     <meta name="description" content="简介 在数学 (尤其指数理逻辑分支) 与类型论的世界, Lambda 立方体 是由 Henk Barendregt 提出的一个框架, 用以探索及研究 简单类型 \(\lambda\)-演算 于不同维度上扩展出来对应的 类型系统, 其也阐述了处于不同维度上的 类型系统 中 类型 (Type) 与值 (Term) 的依赖关系 究竟是怎样的, 简单来说我们可以以三种不同方向的箭头 (维度) 定义出不同类">
-<meta name="keywords" content="函数式编程,类型论,逻辑,计算机编程理论">
+<meta name="keywords" content="类型论,函数式编程,逻辑,计算机编程理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lambda 立方体 与 类型系统 简记">
 <meta property="og:url" content="https://a9032676.github.io/2020/09/21/Lambda-Cube-Intro/index.html">
@@ -629,9 +629,29 @@ MathJax.Hub.Queue(function() {
 
 
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","https://a9032676.github.io/mathjax_ext/xypic.js"]}});
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","https://cdn.jsdelivr.net/gh/a9032676/a9032676.github.io@master/mathjax_ext/xypic.js"]}});
 </script>
 
 <script type="text/x-mathjax-config">
@@ -647,10 +667,5 @@ MathJax.Hub.Queue(function() {
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-
-
 </body>
 </html>

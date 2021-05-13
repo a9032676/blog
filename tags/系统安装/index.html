@@ -162,23 +162,23 @@
 
         
 
-            <a href="/tags/函数式编程/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">函数式编程</a>
+            <a href="/tags/agda/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">Agda</a>
 
         
 
-            <a href="/tags/agda/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">Agda</a>
+            <a href="/tags/类型论/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">类型论</a>
 
         
 
-            <a href="/tags/类型论/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">类型论</a>
+            <a href="/tags/直觉类型论/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">直觉类型论</a>
 
         
 
-            <a href="/tags/直觉类型论/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">直觉类型论</a>
+            <a href="/tags/同伦类型论/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">同伦类型论</a>
 
         
 
-            <a href="/tags/同伦类型论/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">同伦类型论</a>
+            <a href="/tags/函数式编程/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">函数式编程</a>
 
         
 
@@ -226,11 +226,11 @@
 
         
 
-            <a href="/tags/docker/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">Docker</a>
+            <a href="/tags/raid/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">RAID</a>
 
         
 
-            <a href="/tags/raid/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">RAID</a>
+            <a href="/tags/docker/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Docker</a>
 
         
 
@@ -242,27 +242,27 @@
 
         
 
-            <a href="/tags/计算机编程理论/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">计算机编程理论</a>
+            <a href="/tags/kotlin/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Kotlin</a>
 
         
 
-            <a href="/tags/kotlin/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Kotlin</a>
+            <a href="/tags/lambda/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Lambda</a>
 
         
 
-            <a href="/tags/lambda/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Lambda</a>
+            <a href="/tags/dotty/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Dotty</a>
 
         
 
-            <a href="/tags/linux/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">Linux</a>
+            <a href="/tags/scala/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">Scala</a>
 
         
 
-            <a href="/tags/dotty/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">Dotty</a>
+            <a href="/tags/linux/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">Linux</a>
 
         
 
-            <a href="/tags/scala/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">Scala</a>
+            <a href="/tags/计算机编程理论/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">计算机编程理论</a>
 
         
     </nav>
@@ -454,9 +454,29 @@ MathJax.Hub.Queue(function() {
 
 
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","https://a9032676.github.io/mathjax_ext/xypic.js"]}});
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","https://cdn.jsdelivr.net/gh/a9032676/a9032676.github.io@master/mathjax_ext/xypic.js"]}});
 </script>
 
 <script type="text/x-mathjax-config">
@@ -472,10 +492,5 @@ MathJax.Hub.Queue(function() {
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-
-
 </body>
 </html>
